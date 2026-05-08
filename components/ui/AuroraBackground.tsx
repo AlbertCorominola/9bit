@@ -25,7 +25,8 @@ function StarCanvas() {
     resize();
     window.addEventListener('resize', resize);
 
-    for (let i = 0; i < 250; i++) {
+    const STAR_COUNT = window.innerWidth < 768 ? 80 : 140;
+    for (let i = 0; i < STAR_COUNT; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -36,6 +37,10 @@ function StarCanvas() {
     }
 
     const draw = () => {
+      if (document.hidden) {
+        animId = requestAnimationFrame(draw);
+        return;
+      }
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       stars.forEach((s) => {
         s.o += s.speed;
