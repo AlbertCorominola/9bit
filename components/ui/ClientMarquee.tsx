@@ -1,0 +1,25 @@
+const CLIENTS = [
+  'Abril et Nature',
+  'Aguilera Consulting',
+  'Mas Terrats',
+  'Excursions Marítimes El Fadrí',
+  'Restaurant Arest Estanyol',
+  'Oxford Oil Additives',
+  'Econocom',
+  'Perruqueria Lídia Duch',
+];
+
+export default function ClientMarquee() {
+  const list = [...CLIENTS, ...CLIENTS];
+  return (
+    <div className="overflow-hidden py-6 border-y border-outline-variant/20 group">
+      <div className="flex gap-12 animate-marquee whitespace-nowrap text-on-surface-variant/60 font-bold text-xl group-hover:[animation-play-state:paused]">
+        {list.map((c, i) => (
+          <span key={i} className="shrink-0">
+            {c}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}

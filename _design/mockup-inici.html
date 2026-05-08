@@ -1,0 +1,292 @@
+<!-- Inici - 9Bit (Premium Futurista) -->
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>9Bit - Building Information Technologies</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            "colors": {
+                "primary": "#b3c5ff", "secondary": "#b5c4ff", "surface-tint": "#b3c5ff",
+                "tertiary": "#ffb693", "surface-container-low": "#1b1b1b",
+                "on-surface": "#e2e2e2", "on-surface-variant": "#c2c6d8",
+                "background": "#131313", "surface": "#131313",
+                "primary-container": "#0066ff", "surface-container": "#1f1f1f",
+                "outline": "#8c90a1", "outline-variant": "#424656",
+                "surface-container-high": "#2a2a2a", "surface-container-highest": "#353535",
+                "surface-variant": "#353535"
+            },
+            "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+            "spacing": { "gutter": "24px", "margin": "48px", "container-max": "1440px" },
+            "fontFamily": { "headline-xl": ["Inter"], "headline-lg": ["Inter"], "headline-md": ["Inter"], "body-lg": ["Inter"], "body-md": ["Inter"], "label-mono": ["Space Grotesk"] },
+            "fontSize": {
+                "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "label-mono": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}]
+            }
+        }
+    }
+}
+</script>
+<style>
+.grid-bg { background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 24px 24px; }
+.glass-panel { background: rgba(27,27,27,0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-top: 1px solid rgba(255,255,255,0.2); }
+.glow-hover:hover { box-shadow: 0 0 15px rgba(0,102,255,0.3); }
+</style>
+</head>
+<body class="bg-background text-on-background antialiased flex flex-col min-h-screen grid-bg">
+
+<!-- NAVBAR (shared across pages) -->
+<header class="bg-black/60 backdrop-blur-lg fixed top-0 w-full z-50 border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] flex justify-between items-center px-10 py-4">
+<div class="text-xl font-black text-white tracking-tighter">[LOGO 9BIT]</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-['Inter'] uppercase tracking-[0.2em] text-[10px] text-white/50 hover:text-white transition-colors" href="#">inici</a>
+<a class="font-['Inter'] uppercase tracking-[0.2em] text-[10px] text-white/50 hover:text-white transition-colors" href="#">qui som</a>
+<a class="font-['Inter'] uppercase tracking-[0.2em] text-[10px] text-white/50 hover:text-white transition-colors" href="#">serveis</a>
+<a class="font-['Inter'] uppercase tracking-[0.2em] text-[10px] text-white/50 hover:text-white transition-colors" href="#">clients</a>
+<a class="font-['Inter'] uppercase tracking-[0.2em] text-[10px] text-white/50 hover:text-white transition-colors" href="#">contacte</a>
+</nav>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-white/50 hover:text-white cursor-pointer text-[20px]">dark_mode</span>
+<button class="font-['Inter'] uppercase tracking-[0.2em] text-[10px] text-white bg-[#0066FF] shadow-[0_0_15px_rgba(0,102,255,0.4)] px-6 py-2 hover:bg-[#0054d6] hover:shadow-[0_0_20px_rgba(0,102,255,0.6)] active:scale-95 transition-all">contacte</button>
+</div>
+</header>
+
+<main class="flex-grow pt-[80px]">
+
+<!-- HERO -->
+<section class="relative min-h-[819px] flex items-center justify-center px-gutter overflow-hidden">
+<!-- Background: in real impl this is the THREE.js animated shader (aurora). Mockup shows static bg image -->
+<div class="absolute inset-0 z-0 opacity-40">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-background/80 to-background"></div>
+</div>
+<div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
+<div class="font-label-mono text-label-mono text-primary-container bg-primary-container/10 border border-primary-container/30 px-3 py-1 rounded mb-8 inline-block uppercase tracking-widest backdrop-blur-sm">System Initialization</div>
+<h1 class="font-headline-xl text-headline-xl text-white mb-6 tracking-tight">
+9Bit <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-container">Building Information Technologies</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-12">Architecting the digital infrastructure of tomorrow. We forge high-performance systems with uncompromising precision and elite capability.</p>
+<div class="flex gap-4">
+<button class="font-label-mono text-label-mono bg-primary-container text-white px-8 py-4 rounded hover:bg-primary-container/90 transition-all glow-hover active:scale-95 uppercase tracking-wider">Initialize Core</button>
+<button class="font-label-mono text-label-mono border border-white/20 text-white bg-transparent px-8 py-4 rounded hover:border-primary-container hover:text-primary-container transition-all hover:bg-primary-container/5 active:scale-95 uppercase tracking-wider backdrop-blur-md">View Schematics</button>
+</div>
+</div>
+</section>
+
+<!-- METRICS (4 cards) -->
+<section class="py-margin px-gutter max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- card with icon, big number, label -->
+<div class="glass-panel p-8 rounded-xl glow-hover transition-all duration-300 group">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4 group-hover:scale-110 transition-transform">timer</span>
+<div class="font-headline-lg text-headline-lg text-white mb-2">+24</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase">Anys d'experiència</div>
+</div>
+<div class="glass-panel p-8 rounded-xl glow-hover transition-all duration-300 group">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4 group-hover:scale-110 transition-transform">build</span>
+<div class="font-headline-lg text-headline-lg text-white mb-2">+500</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase">Intervencions</div>
+</div>
+<div class="glass-panel p-8 rounded-xl glow-hover transition-all duration-300 group">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4 group-hover:scale-110 transition-transform">thumb_up</span>
+<div class="font-headline-lg text-headline-lg text-white mb-2">98%</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase">Satisfacció</div>
+</div>
+<div class="glass-panel p-8 rounded-xl glow-hover transition-all duration-300 group">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4 group-hover:scale-110 transition-transform">bolt</span>
+<div class="font-headline-lg text-headline-lg text-white mb-2">&lt;2h</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase">Resposta</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES (Bento Grid 6 services) -->
+<section class="py-margin px-gutter max-w-container-max mx-auto relative z-10">
+<div class="mb-12 flex flex-col items-start">
+<h2 class="font-headline-md text-headline-md text-white mb-4">Core Capabilities / Serveis</h2>
+<div class="h-1 w-24 bg-primary-container"></div>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-6 max-w-2xl">Solucions digitals d'alt rendiment amb precisió i zero latència.</p>
+</div>
+<!-- 12-col grid: card1 col-span-8, card2 col-span-4, card3 col-span-12 (with image), card4-5-6 col-span-4 each -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- CARD: Web (8 cols) with tags React/Next.js, Node -->
+<div class="md:col-span-8 bg-surface-container/60 backdrop-blur-xl border border-outline-variant/30 rounded-xl p-8 hover:border-primary-container/50 hover:shadow-[0_0_30px_rgba(0,102,255,0.15)] transition-all group relative overflow-hidden">
+<div class="flex justify-between items-start mb-16">
+<span class="material-symbols-outlined text-4xl text-primary-container">terminal</span>
+<span class="font-label-mono text-[10px] text-outline border border-outline/20 px-2 py-1 rounded">SV-01</span>
+</div>
+<h3 class="font-headline-md text-white mb-4">Desenvolupament Web</h3>
+<p class="text-body-md text-on-surface-variant max-w-md">Plataformes web d'alt rendiment i aplicacions a mida construïdes amb tecnologies modernes.</p>
+<div class="mt-8 flex gap-2">
+<span class="font-label-mono text-[10px] text-on-surface bg-surface-variant px-2 py-1 rounded">React/Next.js</span>
+<span class="font-label-mono text-[10px] text-on-surface bg-surface-variant px-2 py-1 rounded">Node</span>
+</div>
+</div>
+<!-- CARD: Software (4 cols) -->
+<div class="md:col-span-4 bg-surface-container/60 backdrop-blur-xl border border-outline-variant/30 rounded-xl p-8 hover:border-primary-container/50 hover:shadow-[0_0_30px_rgba(0,102,255,0.15)] transition-all group relative overflow-hidden">
+<div class="flex justify-between items-start mb-8">
+<span class="material-symbols-outlined text-4xl text-primary-container">memory</span>
+<span class="font-label-mono text-[10px] text-outline border border-outline/20 px-2 py-1 rounded">SV-02</span>
+</div>
+<h3 class="font-headline-md text-white mb-4">Software a Mida</h3>
+<p class="text-body-md text-on-surface-variant">Solucions úniques adaptades als processos i necessitats de la teva empresa.</p>
+</div>
+<!-- CARD: Suport IT (12 cols, with image) -->
+<div class="md:col-span-12 bg-surface-container/60 backdrop-blur-xl border border-outline-variant/30 rounded-xl p-8 hover:border-primary-container/50 hover:shadow-[0_0_30px_rgba(0,102,255,0.15)] transition-all group relative overflow-hidden flex flex-col md:flex-row items-center gap-12">
+<div class="flex-shrink-0 relative w-full md:w-1/3 aspect-video bg-surface rounded-lg border border-outline-variant overflow-hidden"><div class="w-full h-full bg-gradient-to-br from-primary-container/20 to-transparent"></div></div>
+<div class="flex-grow">
+<div class="flex items-center gap-4 mb-4"><span class="material-symbols-outlined text-3xl text-primary-container">router</span><span class="font-label-mono text-[10px] text-outline border border-outline/20 px-2 py-1 rounded">SV-03</span></div>
+<h3 class="font-headline-md text-white mb-4">Suport IT</h3>
+<p class="text-body-md text-on-surface-variant max-w-2xl mb-6">Assistència tècnica proactiva i resolució d'incidències per mantenir la teva operativitat.</p>
+</div>
+</div>
+<!-- CARD: Automatització (4 cols) -->
+<div class="md:col-span-4 bg-surface-container/60 backdrop-blur-xl border border-outline-variant/30 rounded-xl p-8 hover:border-primary-container/50 hover:shadow-[0_0_30px_rgba(0,102,255,0.15)] transition-all group">
+<div class="flex justify-between items-start mb-8"><span class="material-symbols-outlined text-4xl text-primary-container">auto_awesome</span><span class="font-label-mono text-[10px] text-outline border border-outline/20 px-2 py-1 rounded">SV-04</span></div>
+<h3 class="font-headline-md text-white mb-4">Automatització</h3>
+<p class="text-body-md text-on-surface-variant">Workflows automatitzats, integració de sistemes i connexió d'APIs.</p>
+</div>
+<!-- CARD: Formació (4 cols) -->
+<div class="md:col-span-4 bg-surface-container/60 backdrop-blur-xl border border-outline-variant/30 rounded-xl p-8 hover:border-primary-container/50 hover:shadow-[0_0_30px_rgba(0,102,255,0.15)] transition-all group">
+<div class="flex justify-between items-start mb-8"><span class="material-symbols-outlined text-4xl text-primary-container">school</span><span class="font-label-mono text-[10px] text-outline border border-outline/20 px-2 py-1 rounded">SV-05</span></div>
+<h3 class="font-headline-md text-white mb-4">Formació</h3>
+<p class="text-body-md text-on-surface-variant">Capacitació tecnològica per a equips amb workshops personalitzats.</p>
+</div>
+<!-- CARD: Consultoria (4 cols) -->
+<div class="md:col-span-4 bg-surface-container/60 backdrop-blur-xl border border-outline-variant/30 rounded-xl p-8 hover:border-primary-container/50 hover:shadow-[0_0_30px_rgba(0,102,255,0.15)] transition-all group">
+<div class="flex justify-between items-start mb-8"><span class="material-symbols-outlined text-4xl text-primary-container">insights</span><span class="font-label-mono text-[10px] text-outline border border-outline/20 px-2 py-1 rounded">SV-06</span></div>
+<h3 class="font-headline-md text-white mb-4">Consultoria</h3>
+<p class="text-body-md text-on-surface-variant">Anàlisi, estratègia digital i transformació tecnològica.</p>
+</div>
+</div>
+
+<!-- 4 PILARS -->
+<div class="mt-16 grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="glass-panel p-6 rounded-xl"><span class="material-symbols-outlined text-primary-container text-3xl mb-3">bolt</span><h4 class="text-white font-semibold mb-2">Agilitat</h4><p class="text-sm text-on-surface-variant">Entregues ràpides i iteratives sense comprometre la qualitat.</p></div>
+<div class="glass-panel p-6 rounded-xl"><span class="material-symbols-outlined text-primary-container text-3xl mb-3">target</span><h4 class="text-white font-semibold mb-2">Precisió</h4><p class="text-sm text-on-surface-variant">Desenvolupament exacte basat en requeriments detallats.</p></div>
+<div class="glass-panel p-6 rounded-xl"><span class="material-symbols-outlined text-primary-container text-3xl mb-3">verified</span><h4 class="text-white font-semibold mb-2">Fiabilitat</h4><p class="text-sm text-on-surface-variant">Sistemes robustos i escalables per entorns exigents.</p></div>
+<div class="glass-panel p-6 rounded-xl"><span class="material-symbols-outlined text-primary-container text-3xl mb-3">rocket_launch</span><h4 class="text-white font-semibold mb-2">Innovació</h4><p class="text-sm text-on-surface-variant">Implementació d'últimes tecnologies.</p></div>
+</div>
+</section>
+
+<!-- CLIENTS MARQUEE + SUCCESS STORIES -->
+<section class="py-margin px-gutter max-w-container-max mx-auto">
+<h2 class="font-headline-md text-white mb-4">Empreses que confien en nosaltres</h2>
+<div class="h-1 w-24 bg-primary-container mb-8"></div>
+<!-- Marquee scrolling logos: Abril et Nature, Aguilera Consulting, Mas Terrats, Excursions Marítimes El Fadrí, Restaurant Arest Estanyol, Oxford Oil Additives, Econocom, Perruqueria Lídia Duch -->
+<div class="overflow-hidden mb-12 py-6 border-y border-white/5">
+<div class="flex gap-12 animate-marquee whitespace-nowrap text-white/40 font-bold text-xl">
+<span>Abril et Nature</span><span>Aguilera Consulting</span><span>Mas Terrats</span><span>El Fadrí</span><span>Arest Estanyol</span><span>Oxford Oil</span><span>Econocom</span><span>Perruqueria Lídia Duch</span>
+</div>
+</div>
+<!-- 2 success story cards with image + text -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="glass-panel rounded-xl overflow-hidden group">
+<div class="h-48 bg-gradient-to-br from-primary-container/30 to-surface-container relative">
+<div class="absolute top-4 left-4 font-label-mono text-[10px] bg-black/80 text-primary-container border border-primary-container/50 px-2 py-1 rounded uppercase">Case_01</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline-md text-white mb-3">Restaurant Arest Estanyol</h3>
+<p class="text-on-surface-variant mb-6">Web + SEO. Més visites i reserves.</p>
+</div>
+</div>
+<div class="glass-panel rounded-xl overflow-hidden group">
+<div class="h-48 bg-gradient-to-br from-primary-container/30 to-surface-container relative">
+<div class="absolute top-4 left-4 font-label-mono text-[10px] bg-black/80 text-primary-container border border-primary-container/50 px-2 py-1 rounded uppercase">Case_02</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline-md text-white mb-3">Illes Medes Experience</h3>
+<p class="text-on-surface-variant mb-6">Sistema de reserves i web. Millor gestió.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS (3 real testimonials) -->
+<section class="py-margin px-gutter max-w-container-max mx-auto relative z-10">
+<h2 class="font-headline-md text-white mb-4">El que diuen els nostres clients</h2>
+<div class="h-1 w-24 bg-primary-container mb-8"></div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Each testimonial: glass-panel, big quote icon (opacity 10%), avatar circle with person icon, name+company, italic quote -->
+<div class="glass-panel p-8 rounded-xl border border-white/10 hover:border-primary-container/50 transition-all group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl text-primary-container">format_quote</span></div>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 border border-primary-container/30 shadow-[0_0_15px_rgba(0,102,255,0.2)] flex items-center justify-center"><span class="material-symbols-outlined text-primary-container">person</span></div>
+<div><div class="text-white font-semibold">Gerència</div><div class="text-primary-container font-label-mono text-[10px] uppercase tracking-wider">Restaurant Arest Estanyol</div></div>
+</div>
+<p class="text-on-surface-variant italic">"Ens van fer la web i ens han ajudat amb el SEO. Hem notat més visites i, sobretot, més reserves. Tot el procés va ser molt fàcil."</p>
+</div>
+<div class="glass-panel p-8 rounded-xl border border-white/10 hover:border-primary-container/50 transition-all group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10"><span class="material-symbols-outlined text-6xl text-primary-container">format_quote</span></div>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 border border-primary-container/30 flex items-center justify-center"><span class="material-symbols-outlined text-primary-container">person</span></div>
+<div><div class="text-white font-semibold">Elisabeth Oller</div><div class="text-primary-container font-label-mono text-[10px] uppercase tracking-wider">CEO Illes Medes Experience</div></div>
+</div>
+<p class="text-on-surface-variant italic">"Treballem amb ells per la web i el sistema de reserves. Ara gestionem millor les reserves i hem guanyat tranquil·litat en el dia a dia."</p>
+</div>
+<div class="glass-panel p-8 rounded-xl border border-white/10 hover:border-primary-container/50 transition-all group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10"><span class="material-symbols-outlined text-6xl text-primary-container">format_quote</span></div>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 border border-primary-container/30 flex items-center justify-center"><span class="material-symbols-outlined text-primary-container">person</span></div>
+<div><div class="text-white font-semibold">Ruben Oliver</div><div class="text-primary-container font-label-mono text-[10px] uppercase tracking-wider">CEO Mas Soles</div></div>
+</div>
+<p class="text-on-surface-variant italic">"Amb la nova web i el posicionament hem millorat la visibilitat. Cada cop ens troba més gent i això es nota en les reserves."</p>
+</div>
+</div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="py-24 px-gutter relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary-container/5 to-transparent"></div>
+<div class="max-w-3xl mx-auto glass-panel p-12 rounded-xl text-center relative z-10 border border-primary-container/30 shadow-[0_0_40px_rgba(0,102,255,0.1)]">
+<div class="w-16 h-16 mx-auto bg-primary-container/20 rounded-full flex items-center justify-center mb-6 border border-primary-container/50 shadow-[0_0_20px_rgba(0,102,255,0.4)]">
+<span class="material-symbols-outlined text-primary-container text-3xl">terminal</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-white mb-4">Preparat per fer el següent pas?</h2>
+<p class="text-body-lg text-on-surface-variant mb-8 max-w-xl mx-auto">Parlem del teu projecte i descobrim com podem ajudar-te a assolir els teus objectius.</p>
+<button class="font-label-mono text-label-mono bg-primary-container text-white px-10 py-4 rounded hover:bg-primary-container/90 transition-all glow-hover active:scale-95 uppercase tracking-widest shadow-[0_0_20px_rgba(0,102,255,0.5)]">Contactar ara</button>
+</div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="w-full mt-auto bg-[#0a0a0c] border-t border-white/5">
+<div class="max-w-7xl mx-auto px-10">
+<div class="grid grid-cols-1 md:grid-cols-3 items-center gap-12 py-12">
+<div class="flex flex-col md:flex-row gap-6 items-start">
+<a class="text-white/60 hover:text-primary-container transition-colors text-sm font-semibold" href="#">INICI</a>
+<a class="text-white/60 hover:text-primary-container transition-colors text-sm font-semibold" href="#">SERVEIS</a>
+<a class="text-white/60 hover:text-primary-container transition-colors text-sm font-semibold" href="#">QUI SOM</a>
+<a class="text-white/60 hover:text-primary-container transition-colors text-sm font-semibold" href="#">CLIENTS</a>
+<a class="text-white/60 hover:text-primary-container transition-colors text-sm font-semibold" href="#">CONTACTE</a>
+</div>
+<div class="flex justify-center"><h2 class="text-4xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-primary-container" style="filter: drop-shadow(rgba(0,102,255,0.4) 0px 0px 15px);">9bit</h2></div>
+<div class="flex items-center justify-start md:justify-end gap-6 text-white/50">
+<a href="#" class="hover:text-primary-container">[Instagram]</a>
+<a href="#" class="hover:text-primary-container">[X]</a>
+<a href="#" class="hover:text-primary-container">[LinkedIn]</a>
+</div>
+</div>
+<div class="w-full h-px bg-primary-container/10"></div>
+<div class="py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="text-white/30 text-[10px] tracking-widest uppercase font-mono">© 2026 9BIT ALL RIGHTS RESERVED</div>
+<div class="flex gap-6 text-[10px] text-white/30 tracking-widest uppercase">
+<a class="hover:text-primary-container transition-colors" href="#">Terms</a>
+<a class="hover:text-primary-container transition-colors" href="#">Privacy</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>

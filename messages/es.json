@@ -1,0 +1,324 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "about": "Quiénes somos",
+    "clients": "Clientes",
+    "contact": "Contacto",
+    "cta": "Hablemos"
+  },
+  "hero": {
+    "badge": "Soluciones tecnológicas desde 2001",
+    "title_base": "Construimos soluciones",
+    "words": ["innovadoras", "escalables", "a medida", "seguras", "inteligentes"],
+    "subtitle": "Partner tecnológico para empresas que quieren escalar y optimizar sus procesos.",
+    "cta_primary": "Empezar ahora",
+    "cta_secondary": "Ver servicios"
+  },
+  "metrics": {
+    "experience": { "value": "+24", "label": "Años de experiencia" },
+    "interventions": { "value": "+500", "label": "Intervenciones realizadas" },
+    "satisfaction": { "value": "98%", "label": "Satisfacción" },
+    "response": { "value": "<2h", "label": "Tiempo de respuesta" }
+  },
+  "services": {
+    "heading": "Servicios",
+    "subtitle": "Soluciones digitales de alto rendimiento con precisión y cero latencia.",
+    "items": {
+      "web": { "title": "Desarrollo Web", "desc": "Plataformas web de alto rendimiento y aplicaciones a medida construidas con tecnologías modernas.", "code": "SV-01" },
+      "software": { "title": "Software a Medida", "desc": "Soluciones únicas adaptadas a los procesos y necesidades de tu empresa.", "code": "SV-02" },
+      "support": { "title": "Soporte IT", "desc": "Asistencia técnica proactiva y resolución de incidencias para mantener tu operatividad.", "code": "SV-03" },
+      "automation": { "title": "Automatización", "desc": "Workflows automatizados, integración de sistemas y conexión de APIs.", "code": "SV-04" },
+      "training": { "title": "Formación", "desc": "Capacitación tecnológica para equipos con workshops personalizados.", "code": "SV-05" },
+      "consulting": { "title": "Consultoría", "desc": "Análisis, estrategia digital y transformación tecnológica.", "code": "SV-06" }
+    }
+  },
+  "pillars": {
+    "agility": { "title": "Agilidad", "desc": "Entregas rápidas e iterativas sin comprometer la calidad." },
+    "precision": { "title": "Precisión", "desc": "Desarrollo exacto basado en requerimientos detallados." },
+    "reliability": { "title": "Fiabilidad", "desc": "Sistemas robustos y escalables para entornos exigentes." },
+    "innovation": { "title": "Innovación", "desc": "Implementación de últimas tecnologías." }
+  },
+  "clients": {
+    "heading": "Empresas que confían en nosotros",
+    "cases_heading": "Casos de éxito"
+  },
+  "home": {
+    "trust_strip": "Empresas de Girona confían en nosotros desde 2001",
+    "view_all": "Ver todo",
+    "how_we_work": "Cómo trabajamos"
+  },
+  "testimonials": {
+    "heading": "Lo que dicen nuestros colaboradores"
+  },
+  "cta": {
+    "heading": "¿Preparado para dar el siguiente paso?",
+    "subtitle": "Hablemos de tu proyecto y descubramos cómo podemos ayudarte a alcanzar tus objetivos.",
+    "button": "Contactar ahora"
+  },
+  "contact_page": {
+    "badge": "Contacto",
+    "heading": "Hablemos",
+    "subtitle": "¿Tienes un proyecto en mente? Escríbenos y te responderemos en menos de 2 horas.",
+    "blurb": "Somos tu partner tecnológico desde 2001. Ayudamos a empresas a escalar con soluciones digitales a medida, soporte proactivo y formación.",
+    "submit": "Enviar mensaje",
+    "success_title": "¡Mensaje enviado!",
+    "success_sub": "Gracias. Te respondemos en menos de 2 horas.",
+    "form_title": "Envíanos un mensaje",
+    "form_subtitle": "Te respondemos en menos de 2 horas.",
+    "label_name": "Nombre *",
+    "label_email": "Email *",
+    "label_phone": "Teléfono (opcional)",
+    "label_message": "Mensaje *",
+    "placeholder_name": "Tu nombre",
+    "placeholder_email": "tu@email.com",
+    "placeholder_phone": "+34 6XX XXX XXX",
+    "placeholder_message": "Describe tu proyecto o pregunta...",
+    "error_name_required": "Nombre obligatorio",
+    "error_email_required": "Email obligatorio",
+    "error_email_invalid": "Email no válido",
+    "error_message_required": "Mensaje obligatorio",
+    "submitting": "Enviando...",
+    "error_generic": "No se pudo enviar. Inténtalo de nuevo o escribe directamente a hola@9-bit.com.",
+    "error_rate_limit": "Demasiadas peticiones. Espera un momento.",
+    "info_email_label": "Email",
+    "info_phone_label": "Teléfono",
+    "info_location_label": "Ubicación",
+    "info_location_value": "Girona, Cataluña",
+    "info_hours_label": "Horario",
+    "info_hours_value": "Lunes a viernes / 9:00 - 18:00",
+    "pill_response": "<2h respuesta garantizada",
+    "pill_confidential": "100% confidencial",
+    "pill_languages": "Respuesta en CA/ES/EN",
+    "reset_button": "Enviar otro mensaje",
+    "faq_heading": "Preguntas frecuentes",
+    "faq_subtitle": "Respuestas rápidas a las dudas más habituales.",
+    "faq": {
+      "q1": "¿Cuánto tardáis en responder?",
+      "a1": "Menos de 2 horas en horario laboral.",
+      "q2": "¿Trabajáis con presupuestos pequeños?",
+      "a2": "Sí, nos adaptamos a cada proyecto.",
+      "q3": "¿Dónde estáis ubicados?",
+      "a3": "En Girona, pero trabajamos con clientes de toda España y Europa.",
+      "q4": "¿Qué idiomas habláis?",
+      "a4": "Catalán, castellano e inglés.",
+      "q5": "Tengo una urgencia, ¿qué hago?",
+      "a5": "Llámanos directamente al +34 637 400 350."
+    }
+  },
+  "serveis_page": {
+    "badge_label": "Servicios",
+    "heading": "Lo que hacemos",
+    "cta_heading": "¿Tienes un proyecto?",
+    "cta_sub": "Cuéntanos el reto y encontraremos la solución adecuada para tu empresa.",
+    "cta_button": "Contactar ahora",
+    "metric_services": "servicios",
+    "metric_years": "años",
+    "metric_projects": "proyectos",
+    "featured_label": "Servicio destacado",
+    "all_services_label": "Todos los servicios",
+    "methodology_label": "Metodología",
+    "tech_label": "Tecnologías",
+    "start_label": "Empecemos",
+    "methodology_heading": "Cómo lo hacemos",
+    "tech_heading": "Herramientas que dominamos",
+    "tech_tools_category": "Herramientas",
+    "process": {
+      "briefing": { "title": "Briefing", "desc": "Entender qué necesitas y definir el alcance real del proyecto." },
+      "plan": { "title": "Plan", "desc": "Diseñar la solución, la arquitectura y los entregables." },
+      "build": { "title": "Construcción", "desc": "Construir con precisión, con revisiones semanales." },
+      "launch": { "title": "Lanzamiento", "desc": "Desplegar, monitorizar y mantener en producción." }
+    }
+  },
+  "qui_som_page": {
+    "badge": "Quiénes somos",
+    "heading": "Construimos tecnología desde Girona",
+    "subtitle": "Somos un equipo apasionado por la tecnología que ayuda a empresas a transformarse digitalmente desde 2001.",
+    "story_title": "Nuestra historia",
+    "story_p1": "Empezamos en 2001 con una idea clara: la tecnología debía estar al servicio del negocio, no al revés. Desde entonces hemos ayudado a empresas de todos los sectores en Girona y más allá a crecer con soluciones digitales a medida.",
+    "story_p2": "Trabajamos como partners de largo recorrido. No hacemos trabajos puntuales — construimos relaciones y acompañamos a nuestros clientes en cada paso de su camino digital.",
+    "facts_title": "Datos clave",
+    "fact_year": "Año de fundación",
+    "fact_location": "Ubicación",
+    "fact_projects": "Proyectos",
+    "fact_clients": "Clientes activos",
+    "fact_response": "Tiempo de respuesta",
+    "pillars_title": "Nuestros pilares",
+    "cta_heading": "¿Listo para colaborar?",
+    "cta_sub": "Empecemos a construir algo juntos.",
+    "cta_button": "Contactar",
+    "about_label": "Sobre 9bit",
+    "values_label": "Nuestros valores",
+    "methodology_label": "Metodología",
+    "methodology_heading": "Cómo trabajamos",
+    "timeline": {
+      "t2001": "Fundación en Girona, primeras webs corporativas",
+      "t2005": "Primer equipo estable de 4 personas, 50+ clientes",
+      "t2010": "Expansión hacia software a medida y ERPs",
+      "t2016": "Superadas las 300 webs lanzadas",
+      "t2020": "Transformación digital acelerada, +40% de demanda",
+      "t2024": "Más de 500 proyectos, equipo de 8 especialistas"
+    },
+    "process": {
+      "discovery": { "title": "Descubrimiento", "desc": "Entender el reto, los usuarios y los objetivos de negocio antes de escribir una sola línea de código." },
+      "design": { "title": "Diseño", "desc": "Diseñar la solución: arquitectura, UX y prototipo validado con el equipo cliente." },
+      "build": { "title": "Construcción", "desc": "Implementar con precisión, entregas incrementales y tests continuos." },
+      "support": { "title": "Soporte", "desc": "Acompañar a largo plazo: mantenimiento, evolución y respuesta en menos de 2 h." }
+    }
+  },
+  "clients_page": {
+    "badge": "Clientes",
+    "heading": "Empresas que confían en nosotros",
+    "subtitle": "Más de 50 empresas del territorio han escalado con nuestras soluciones tecnológicas.",
+    "marquee_title": "Algunos de nuestros clientes",
+    "cases_title": "Casos de éxito",
+    "cases_subtitle": "Proyectos reales que han generado resultados reales.",
+    "testimonials_title": "Lo que dicen ellos",
+    "cta_heading": "¿Quieres ser el siguiente?",
+    "cta_sub": "Te hacemos un proyecto a medida con el mismo cuidado que ponemos en todos nuestros clientes.",
+    "cta_button": "Empieza tu proyecto",
+    "cases_label": "Casos de estudio",
+    "clients_label": "Clientes",
+    "feedback_label": "Opiniones",
+    "next_label": "El siguiente paso",
+    "industries_heading": "Trabajamos con empresas de:",
+    "go_to_project": "Visitar proyecto",
+    "featured_badge": "DESTACADO",
+    "featured_case": {
+      "title": "Restaurant Arest Estanyol",
+      "industry": "Restauración",
+      "desc": "Diseño web completo, estrategia SEO local y presencia digital integral. Relanzamiento de marca online que disparó las reservas y la visibilidad en buscadores. El cliente pasó de una web estática y poco visible a una plataforma activa que genera negocio cada día.",
+      "metric": "+180%",
+      "metricLabel": "reservas online"
+    },
+    "cases": [
+      {
+        "badge": "Case_02",
+        "title": "El Fadrí — Excursions Marítimes",
+        "industry": "Turismo activo",
+        "desc": "Web + sistema de reservas online integrado con pagos. Fusión de dos marcas (Illes Medes y El Fadrí) en una presencia digital unificada.",
+        "metric": "+250",
+        "metricLabel": "reservas/mes"
+      },
+      {
+        "badge": "Case_03",
+        "title": "Mas Soles",
+        "industry": "Alojamiento rural",
+        "desc": "Web nueva y posicionamiento SEO. Visibilidad mejorada y reservas directas en aumento.",
+        "metric": "+90%",
+        "metricLabel": "tráfico orgánico"
+      },
+      {
+        "badge": "Case_04",
+        "title": "Aguilera Consulting",
+        "industry": "Consultoría",
+        "desc": "Plataforma interna personalizada de gestión de clientes y facturación.",
+        "metric": "40h",
+        "metricLabel": "ahorradas/semana"
+      },
+      {
+        "badge": "Case_05",
+        "title": "Oxford Oil Additives",
+        "industry": "Industria química",
+        "desc": "Portal corporativo multilingüe e intranet para distribuidores.",
+        "metric": "5",
+        "metricLabel": "idiomas"
+      }
+    ],
+    "industries": [
+      { "label": "Restauración" },
+      { "label": "Turismo" },
+      { "label": "Industria" },
+      { "label": "Consultoría" },
+      { "label": "Alojamiento" },
+      { "label": "Tecnología" }
+    ],
+    "stats": [
+      { "value": "+50", "label": "clientes" },
+      { "value": "+24", "label": "años" },
+      { "value": "98%", "label": "satisfacción" },
+      { "value": "<2h", "label": "respuesta" }
+    ],
+    "testimonials": [
+      {
+        "name": "Gerencia",
+        "initials": "G",
+        "company": "Restaurant Arest Estanyol",
+        "quote": "Nos hicieron la web y nos ayudaron con el SEO. Hemos notado más visitas y, sobre todo, más reservas. Todo el proceso fue muy fácil."
+      },
+      {
+        "name": "Elisabeth Oller",
+        "initials": "EO",
+        "company": "CEO Illes Medes Experience",
+        "quote": "Trabajamos con ellos en la web y el sistema de reservas. Ahora gestionamos mejor las reservas y hemos ganado tranquilidad en el día a día."
+      },
+      {
+        "name": "Ruben Oliver",
+        "initials": "RO",
+        "company": "CEO Mas Soles",
+        "quote": "Con la nueva web y el posicionamiento hemos mejorado la visibilidad. Cada vez nos encuentra más gente y eso se nota en las reservas."
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Construyendo el futuro digital de las empresas.",
+    "copyright": "© 2026 9bit. Todos los derechos reservados.",
+    "terms": "Términos",
+    "privacy": "Privacidad",
+    "cookies": "Cookies"
+  },
+  "cookie_banner": {
+    "title": "Usamos cookies",
+    "body": "Utilizamos cookies esenciales y de analítica para mejorar tu experiencia. Puedes aceptarlas todas o rechazar las no esenciales. Consulta nuestra política de cookies para más detalles.",
+    "accept": "Aceptar todo",
+    "reject": "Rechazar",
+    "policy_link": "Política de cookies"
+  },
+  "legal_pages": {
+    "back_home": "← Volver al inicio",
+    "last_updated": "Última actualización",
+    "cookies": {
+      "title": "Política de cookies",
+      "intro": "Esta página explica cómo 9bit utiliza cookies en este sitio web.",
+      "section_what_title": "Qué son las cookies",
+      "section_what_body": "Las cookies son pequeños archivos de texto que se almacenan en tu navegador cuando visitas un sitio web. Ayudan al sitio a recordar información sobre tu visita.",
+      "section_use_title": "Cómo usamos las cookies",
+      "section_use_body": "Usamos cookies esenciales para que el sitio funcione (preferencia de idioma, estado de consentimiento) y cookies analíticas opcionales para entender cómo los visitantes usan el sitio. No vendemos ni compartimos datos con terceros con fines publicitarios.",
+      "section_types_title": "Tipos de cookies que usamos",
+      "section_essential": "Esenciales — necesarias para que el sitio funcione (estado de consentimiento, idioma).",
+      "section_analytics": "Analíticas — datos de uso anónimos, solo después de que las aceptes.",
+      "section_manage_title": "Gestión de cookies",
+      "section_manage_body": "Puedes borrar las cookies desde la configuración de tu navegador en cualquier momento. Rechazar las cookies no esenciales limitará la analítica pero no afectará a la funcionalidad del sitio.",
+      "section_contact_title": "Contacto",
+      "section_contact_body": "¿Tienes preguntas sobre esta política? Escribe a hola@9-bit.com."
+    },
+    "privacy": {
+      "title": "Política de privacidad",
+      "intro": "9bit respeta tu privacidad. Esta política explica qué datos recopilamos y cómo los utilizamos.",
+      "section_data_title": "Datos que recopilamos",
+      "section_data_body": "Cuando rellenas el formulario de contacto recopilamos: nombre, correo electrónico, teléfono (opcional) y tu mensaje. No realizamos seguimiento de datos personales más allá de lo que nos envías.",
+      "section_use_title": "Cómo usamos tus datos",
+      "section_use_body": "Usamos tu información de contacto únicamente para responder a tu consulta. No la compartimos, vendemos ni transferimos a terceros.",
+      "section_storage_title": "Almacenamiento y conservación",
+      "section_storage_body": "Las comunicaciones se almacenan solo el tiempo necesario para responder y hacer seguimiento. Puedes solicitar su eliminación en cualquier momento.",
+      "section_rights_title": "Tus derechos",
+      "section_rights_body": "Puedes solicitar acceso, rectificación o eliminación de tus datos personales escribiendo a hola@9-bit.com. Conforme al RGPD tienes derecho a oponerte, limitar el tratamiento y presentar una reclamación ante la AEPD (Agencia Española de Protección de Datos).",
+      "section_contact_title": "Contacto",
+      "section_contact_body": "Preguntas sobre privacidad: hola@9-bit.com."
+    },
+    "legal": {
+      "title": "Aviso legal",
+      "intro": "Información requerida por la Ley española 34/2002 (LSSI-CE).",
+      "section_owner_title": "Titular del sitio",
+      "section_owner_body": "9bit — Building Information Technologies. Con sede en Girona, Cataluña, España. Email: hola@9-bit.com. Teléfono: +34 637 400 350.",
+      "section_purpose_title": "Finalidad",
+      "section_purpose_body": "Este sitio web ofrece información sobre los servicios de 9bit y permite a los visitantes contactar con nosotros.",
+      "section_ip_title": "Propiedad intelectual",
+      "section_ip_body": "Todo el contenido de este sitio (textos, diseño, código, imágenes) es propiedad de 9bit o se utiliza bajo licencia. Queda prohibida la reproducción sin autorización por escrito.",
+      "section_liability_title": "Responsabilidad",
+      "section_liability_body": "9bit no se hace responsable de los daños derivados del uso de este sitio, de enlaces a terceros o de las interrupciones del servicio.",
+      "section_law_title": "Ley aplicable",
+      "section_law_body": "Se aplica la legislación española. Las disputas se resolverán en los juzgados de Girona, Cataluña."
+    }
+  }
+}

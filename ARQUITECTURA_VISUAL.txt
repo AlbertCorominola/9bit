@@ -1,0 +1,186 @@
+﻿9BIT WEB ARCHITECTURE OVERVIEW
+================================
+
+FOLDER STRUCTURE:
+─────────────────
+
+app/                                  # Next.js App Router
+  ├── [locale]/                       # Dynamic routing (CA/ES/EN)
+  │   ├── layout.tsx                  # Root layout with providers
+  │   ├── page.tsx                    # HOME
+  │   ├── serveis/page.tsx            # SERVICES
+  │   ├── clients/page.tsx            # CLIENTS
+  │   ├── qui-som/page.tsx            # ABOUT
+  │   ├── contacte/page.tsx           # CONTACT FORM
+  │   ├── cookies/page.tsx            # LEGAL
+  │   ├── privacitat/page.tsx         # LEGAL (Catalan)
+  │   └── legal/page.tsx              # LEGAL
+  ├── api/
+  │   └── contact/route.ts            # POST endpoint
+  ├── globals.css                     # Theme + ambient background
+  └── layout.tsx                      # i18n setup
+
+components/
+  ├── sections/                       # Page sections (reusable)
+  │   ├── HeroSection.tsx             # THREE.js aurora shader
+  │   ├── TrustStripSection.tsx       # Client marquee
+  │   ├── MetricsSection.tsx          # Animated numbers
+  │   ├── ServicesSection.tsx         # Service grid
+  │   ├── PillarsSection.tsx          # "How we work"
+  │   ├── TestimonialsSection.tsx     # Client testimonies
+  │   ├── ClientsSection.tsx          # Clients marquee
+  │   └── CtaSection.tsx              # Call-to-action
+  │
+  └── ui/                             # UI components
+      ├── Navbar.tsx
+      ├── Footer.tsx
+      ├── AnimatedShaderBackground.tsx # WebGL aurora
+      ├── AnimatedHero.tsx            # Framer Motion titles
+      ├── Button.tsx
+      ├── ServiceCard.tsx
+      ├── TestimonialCard.tsx
+      ├── ClientMarquee.tsx
+      ├── CookieBanner.tsx
+      ├── LegalLayout.tsx
+      ├── LanguageSelector.tsx
+      └── providers.tsx               # Context providers
+
+messages/                             # Translations (i18n)
+  ├── ca.json                         # Catalan (300+ keys)
+  ├── es.json                         # Spanish
+  └── en.json                         # English
+
+TECHNOLOGIES:
+─────────────
+✓ Next.js 14 (App Router, SSR)
+✓ React + TypeScript
+✓ Tailwind CSS 3 (dark mode only)
+✓ next-intl (multilingua support)
+✓ Framer Motion (animations)
+✓ THREE.js (WebGL shaders)
+✓ Canvas 2D (particle effects)
+✓ Formspree (form submissions)
+
+KEY FEATURES:
+─────────────
+✓ 3 Languages: CA/ES/EN with 100% translation
+✓ Dark Mode: CSS variables + ambient background
+✓ Responsive: Mobile/Tablet/Desktop
+✓ Animations: Framer Motion scroll reveal, WebGL shaders
+✓ Forms: Validation + security (rate limit, honeypot, XSS prevent)
+✓ Legal: 3 legal pages (cookies, privacy, terms)
+✓ SEO: Dynamic robots.txt + sitemap + meta tags
+✓ Performance: Static generation, no images, GPU-accelerated
+
+HOME PAGE FLOW:
+───────────────
+1. HeroSection (THREE.js aurora + animated text)
+2. TrustStripSection (Marquee: "Trusted by companies...")
+3. MetricsSection (4 animated metrics)
+4. ServicesSection (6 services in 2-col grid)
+5. PillarsSection (4 pillars: Agility, Precision, Reliability, Innovation)
+6. TestimonialsSection (3 client quotes)
+7. CtaSection (Final CTA button)
+
+FORM FLOW (Contact):
+────────────────────
+1. User fills form at /[locale]/contacte
+2. Frontend validation (email, required fields)
+3. POST /api/contact
+   - Rate limit check: 3 req/min/IP → 429 if exceeded
+   - Honeypot: if website !== empty → 200 OK (silent for bots)
+   - Field validation: name, email, phone, message lengths
+   - Sanitization: stripCRLF, escapeHtml (security)
+4. Fetch POST to Formspree: https://formspree.io/f/maqvbrpr
+5. Return 200 OK or error
+6. Frontend: Show "Message sent!" or error message
+
+STYLING ARCHITECTURE:
+─────────────────────
+globals.css:
+  - :root CSS variables (colors, spacing)
+  - .ambient-bg: 4 radial gradients + masked grid
+  - @keyframes for animations
+  
+tailwind.config.ts:
+  - Extends dark mode colors from CSS vars
+  - Custom spacing: margin: 48px
+  - Custom maxWidth: container-max: 1440px
+  - Custom animation: marquee
+  
+Components:
+  - Framer Motion: whileInView, initial, transition
+  - Tailwind utilities: hover:, dark:, sm:, md:, etc
+  - Canvas/WebGL: THREE.js shaders
+
+SECURITY MEASURES:
+──────────────────
+✓ Rate limiting: 3 POST /api/contact per minute per IP
+✓ Honeypot: Hidden "website" field (catches bots)
+✓ HTML escaping: escapeHtml() on all form inputs (XSS prevention)
+✓ CRLF sanitization: stripCRLF() on name (header injection prevention)
+✓ Email validation: Regex pattern check
+✓ Field length validation: name ≤200, message 5-5000
+✓ Dark mode only: No light mode CSS leakage
+✓ No external scripts: No tracking, no ads, no third-party cookies
+
+I18N SYSTEM:
+────────────
+- messages/{ca,es,en}.json: ~300 keys each
+- Namespaces: hero, services, pillars, contact_page, clients_page, etc
+- Access: const t = useTranslations('namespace'); t('key')
+- Dynamic: useLocale() for current language
+- Routing: URL-based (/ca/*, /es/*, /en/*)
+- Middleware: Detects and routes automatically
+
+COMPONENTS BY PURPOSE:
+──────────────────────
+Layout:
+  - Navbar (header + language selector)
+  - Footer (links + copyright)
+  - LegalLayout (template for legal pages)
+  - CookieBanner (consent + localStorage)
+
+Content:
+  - AnimatedHero (titles, subtitles, buttons)
+  - ServiceCard (service information)
+  - TestimonialCard (quotes, stars, author)
+  - CTAPanel (reusable CTA boxes)
+
+Display:
+  - ClientMarquee (infinite scroll animation)
+  - MetricItem (animated counter numbers)
+  - Various section components
+
+Background/FX:
+  - AnimatedShaderBackground (THREE.js WebGL)
+  - ParticleEffectHero (Canvas 2D particles - alternative)
+
+Forms:
+  - Button (universal button component)
+  - Form inputs (name, email, phone, message)
+  - Error messages + validation feedback
+
+PERFORMANCE:
+─────────────
+✓ Code splitting: Each page loaded on demand
+✓ No images: Pure CSS/shader backgrounds
+✓ Lazy loading: useInView for animations
+✓ GPU acceleration: THREE.js, CSS transforms
+✓ Static generation: Pre-built HTML at build time
+✓ CSS variables: Single repaint for theme
+✓ Bundling: Tree-shakeable Framer Motion + THREE.js
+✓ Caching: Translations bundled at build
+
+DEPLOYMENT:
+───────────
+Platform: Vercel (recommended for Next.js)
+Environment vars:
+  - FORMSPREE_ENDPOINT (contact form endpoint)
+  
+Build process:
+  - npm run build
+  - Generates static HTML + JS bundles
+  - Deploys to CDN (fast, global)
+
+Current running on: http://localhost:3001 (dev server)
