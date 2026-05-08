@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Space_Grotesk } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales, type Locale } from '@/i18n';
 import { Providers } from '@/components/providers';
@@ -60,6 +60,7 @@ export default async function LocaleLayout({
   params: { locale: string };
 }) {
   if (!locales.includes(params.locale as Locale)) notFound();
+  setRequestLocale(params.locale);
   const messages = await getMessages();
 
   return (
