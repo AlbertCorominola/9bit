@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { locales, type Locale } from '@/i18n';
 import { Providers } from '@/components/providers';
 import Navbar from '@/components/ui/Navbar';
@@ -73,6 +74,7 @@ export default async function LocaleLayout({
             <Footer />
             <CookieBanner />
             <PortraitLock />
+            <SpeedInsights />
           </NextIntlClientProvider>
         </Providers>
       </body>
