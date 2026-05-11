@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   description:
     'Partner tecnològic per a empreses. Desenvolupament web, software a mida, suport IT i consultoria des del 2001 a Girona.',
   icons: {
-    icon: '/logo_9bit.ico',
-    shortcut: '/logo_9bit.ico',
+    icon: '/logo_9bit.webp',
+    shortcut: '/logo_9bit.webp',
     apple: '/logo_9bit_sin_fondo.png',
   },
   openGraph: {
