@@ -16,7 +16,7 @@ function StarCanvas() {
 
     let animId: number;
 
-    const stars: { x: number; y: number; r: number; o: number; speed: number }[] = [];
+    const stars: { x: number; y: number; r: number; o: number; speed: number; vx: number; vy: number }[] = [];
 
     const resize = () => {
       canvas.width = canvas.offsetWidth;
@@ -32,7 +32,9 @@ function StarCanvas() {
         y: Math.random() * canvas.height,
         r: Math.random() * 1.2 + 0.2,
         o: Math.random(),
-        speed: Math.random() * 0.004 + 0.001,
+        speed: Math.random() * 0.006 + 0.002,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
       });
     }
 
@@ -44,6 +46,12 @@ function StarCanvas() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       stars.forEach((s) => {
         s.o += s.speed;
+        s.x += s.vx;
+        s.y += s.vy;
+        if (s.x < -s.r) s.x = canvas.width + s.r;
+        if (s.x > canvas.width + s.r) s.x = -s.r;
+        if (s.y < -s.r) s.y = canvas.height + s.r;
+        if (s.y > canvas.height + s.r) s.y = -s.r;
         const opacity = 0.3 + 0.7 * Math.abs(Math.sin(s.o));
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
