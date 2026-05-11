@@ -20,8 +20,8 @@ export default function HeroSection() {
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 z-10"
         style={{
-          height: '100vh',
-          background: 'linear-gradient(to top, #0a0a0f 0%, rgba(10,10,15,0.97) 5%, rgba(10,10,15,0.88) 15%, rgba(10,10,15,0.72) 28%, rgba(10,10,15,0.50) 42%, rgba(10,10,15,0.28) 56%, rgba(10,10,15,0.10) 70%, rgba(10,10,15,0.02) 85%, transparent 100%)',
+          height: '120vh',
+          background: 'linear-gradient(to top, #0a0a0f 0%, rgba(10,10,15,0.98) 3%, rgba(10,10,15,0.92) 10%, rgba(10,10,15,0.82) 20%, rgba(10,10,15,0.65) 32%, rgba(10,10,15,0.42) 48%, rgba(10,10,15,0.18) 64%, rgba(10,10,15,0.05) 78%, rgba(10,10,15,0.01) 90%, transparent 100%)',
         }}
       />
 

@@ -25,7 +25,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: '9bit — Building Information Technologies',
+  title: '9bit',
   description:
     'Partner tecnològic per a empreses. Desenvolupament web, software a mida, suport IT i consultoria des del 2001 a Girona.',
   icons: {
