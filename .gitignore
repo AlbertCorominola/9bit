@@ -1,13 +1,68 @@
+# Dependencies
 node_modules/
+.pnp
+.pnp.js
+
+# Build & Next.js
 .next/
 out/
 build/
+dist/
+
+# Environment variables (NEVER commit these)
 .env
 .env.local
-.env*.local
-.DS_Store
-*.log
-.vercel
-next-env.d.ts
+.env.*.local
+.env.*.production.local
+.env.test.local
+.env.development.local
 
-.vercel
+# Vercel
+.vercel/
+
+# OS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# Logs
+*.log
+*.logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+
+# Credentials & Keys (ABSOLUTELY NEVER COMMIT)
+*.key
+*.pem
+*.crt
+*.pfx
+*.p12
+*.jks
+.ssh/
+
+# Generated
+next-env.d.ts
+tsconfig.tsbuildinfo
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Temporary
+*.tmp
+*.temp
+.cache/
+.turbo/
