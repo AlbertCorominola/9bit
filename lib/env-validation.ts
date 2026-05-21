@@ -3,7 +3,7 @@
  * Runs only on server-side to ensure required variables are set
  */
 
-const REQUIRED_ENV_VARS = ['RESEND_API_KEY'] as const;
+const REQUIRED_ENV_VARS = [] as const;
 const OPTIONAL_ENV_VARS = ['FORMSPREE_ENDPOINT'] as const;
 
 function validateEnv(): void {

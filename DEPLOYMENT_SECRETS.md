@@ -19,11 +19,12 @@ Since 9bit is deployed on Vercel, this is the recommended approach.
 3. **Settings → Environment Variables**
    - Add your secrets here
 
-4. **Add Variables:**
+4. **Add Variables (if needed):**
    | Variable | Value | Environments |
    |----------|-------|--------------|
-   | `RESEND_API_KEY` | `re_xxx...` | Production, Preview |
-   | `FORMSPREE_ENDPOINT` | `https://formspree.io/f/maqvbrpr` | Production, Preview |
+   | `FORMSPREE_ENDPOINT` | `https://formspree.io/f/maqvbrpr` | Production, Preview (optional) |
+   
+   **Note:** Formspree endpoint is already in code with fallback value, so environment variable is optional.
 
 5. **Redeploy**
    - Go to Deployments
