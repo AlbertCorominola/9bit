@@ -7,6 +7,7 @@ const CLIENTS = [
   'Oxford Oil Additives',
   'Econocom',
   'Perruqueria Lídia Duch',
+  'MultiEsports Ter',
 ];
 
 export default function ClientMarquee() {

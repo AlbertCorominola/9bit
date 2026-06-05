@@ -5,15 +5,15 @@
     "about": "About",
     "clients": "Clients",
     "contact": "Contact",
-    "cta": "Let's talk"
+    "cta": "Request a quote"
   },
   "hero": {
     "badge": "Technology solutions since 2001",
-    "title_base": "We build",
-    "words": ["innovative", "scalable", "custom", "secure", "intelligent"],
-    "subtitle": "Technology partner for companies looking to scale and optimize their processes.",
-    "cta_primary": "Get started",
-    "cta_secondary": "View services"
+    "title_base": "We build Lasting",
+    "words": ["Partnerships", "Not Just Code", "with Impact", "Together", "At Your Pace"],
+    "subtitle": "Companies trust us for delivering projects at half the time with 98% satisfaction rate.",
+    "cta_primary": "Request quote",
+    "cta_secondary": "View success stories"
   },
   "metrics": {
     "experience": { "value": "+24", "label": "Years of experience" },
@@ -34,10 +34,10 @@
     }
   },
   "pillars": {
-    "agility": { "title": "Agility", "desc": "Fast, iterative deliveries without compromising quality." },
-    "precision": { "title": "Precision", "desc": "Exact development based on detailed requirements." },
-    "reliability": { "title": "Reliability", "desc": "Robust, scalable systems for demanding environments." },
-    "innovation": { "title": "Innovation", "desc": "Implementation of the latest technologies." }
+    "agility": { "title": "2x Faster Delivery", "desc": "Half the time of traditional agencies, zero shortcuts or technical debt." },
+    "precision": { "title": "Zero Production Bugs", "desc": "Exhaustive testing. Our clients enjoy guaranteed 99.9% uptime." },
+    "reliability": { "title": "<2h Response Always", "desc": "On-site support in Girona. Emergencies? We meet you within 24h." },
+    "innovation": { "title": "Current Tech Stack", "desc": "Next.js, TypeScript, React, Cloud Native. We avoid legacy tech chains." }
   },
   "clients": {
     "heading": "Companies that trust us",
@@ -223,6 +223,14 @@
         "desc": "Multilingual corporate portal and distributor intranet.",
         "metric": "5",
         "metricLabel": "languages"
+      },
+      {
+        "badge": "Case_06",
+        "title": "MultiEsports Ter",
+        "industry": "Sports & leisure",
+        "desc": "No website and a badly configured Google listing. Now they have a complete digital presence bringing in new clients every day.",
+        "metric": "0→∞",
+        "metricLabel": "digital presence"
       }
     ],
     "industries": [

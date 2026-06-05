@@ -5,15 +5,15 @@
     "about": "Qui som",
     "clients": "Clients",
     "contact": "Contacte",
-    "cta": "Parlem"
+    "cta": "Demana pressupost"
   },
   "hero": {
     "badge": "Solucions tecnològiques des del 2001",
-    "title_base": "Construïm solucions",
-    "words": ["innovadores", "escalables", "a mida", "segures", "intel·ligents"],
-    "subtitle": "Partner tecnològic per a empreses que volen escalar i optimitzar els seus processos.",
-    "cta_primary": "Començar ara",
-    "cta_secondary": "Veure serveis"
+    "title_base": "Construïm Aliances",
+    "words": ["Duradores", "No Només Codi", "amb Impacte", "Junts", "al Teu Ritme"],
+    "subtitle": "Empreses de tot arreu confien en nosaltres per entregar projectes a la meitat de temps i amb un 98% de satisfacció.",
+    "cta_primary": "Demana pressupost",
+    "cta_secondary": "Veure casos d'èxit"
   },
   "metrics": {
     "experience": { "value": "+24", "label": "Anys d'experiència" },
@@ -34,10 +34,10 @@
     }
   },
   "pillars": {
-    "agility": { "title": "Agilitat", "desc": "Entregues ràpides i iteratives sense comprometre la qualitat." },
-    "precision": { "title": "Precisió", "desc": "Desenvolupament exacte basat en requeriments detallats." },
-    "reliability": { "title": "Fiabilitat", "desc": "Sistemes robustos i escalables per entorns exigents." },
-    "innovation": { "title": "Innovació", "desc": "Implementació d'últimes tecnologies." }
+    "agility": { "title": "Entrega 2x més Ràpida", "desc": "Projectes en la meitat de temps que una agència tradicional sense fer atalles." },
+    "precision": { "title": "Zero Bugs en Producció", "desc": "Testing exhaustiu. Els nostres clients gaudeixen de 99.9% uptime garantit." },
+    "reliability": { "title": "Resposta <2h Sempre", "desc": "Suport presencial a Girona. Si cal, ens trobes en 24 hores." },
+    "innovation": { "title": "Stack Tecnològic Actual", "desc": "Next.js, TypeScript, React, Cloud Native. Evitem legacy que t'encadenar." }
   },
   "clients": {
     "heading": "Empreses que confien en nosaltres",
@@ -223,6 +223,14 @@
         "desc": "Portal corporatiu multilingüe i intranet per a distribuïdors.",
         "metric": "5",
         "metricLabel": "idiomes"
+      },
+      {
+        "badge": "Case_06",
+        "title": "MultiEsports Ter",
+        "industry": "Esports i oci",
+        "desc": "No tenien web i la fitxa de Google estava mal configurada. Ara tenen una presència digital completa que els aporta nous clients cada dia.",
+        "metric": "0→∞",
+        "metricLabel": "presència digital"
       }
     ],
     "industries": [

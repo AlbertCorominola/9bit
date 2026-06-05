@@ -25,6 +25,7 @@ const CASE_COL_SPANS = [
   'md:col-span-6',
   'md:col-span-5',
   'md:col-span-7',
+  'md:col-span-12',
 ];
 
 const CASE_URLS = [
@@ -32,6 +33,7 @@ const CASE_URLS = [
   'https://massoles.com/',
   'https://www.gestoriaguileraperez.com/',
   'https://www.ooadditives.com/',
+  '',
 ];
 
 const FEATURED_URL = 'https://restaurantarestestanyol.com/';
@@ -88,6 +90,7 @@ const CLIENTS_LIST = [
   'Oxford Oil Additives',
   'Econocom',
   'Perruqueria Lídia Duch',
+  'MultiEsports Ter',
 ];
 
 function ClientMarqueeReverse() {
@@ -140,7 +143,7 @@ export default function ClientsPage() {
     metricLabel: t('featured_case.metricLabel'),
   };
 
-  const CASES = [0, 1, 2, 3].map((i) => ({
+  const CASES = [0, 1, 2, 3, 4].map((i) => ({
     badge: t(`cases.${i}.badge`),
     title: t(`cases.${i}.title`),
     industry: t(`cases.${i}.industry`),

@@ -10,6 +10,7 @@ import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import CookieBanner from '@/components/ui/CookieBanner';
 import PortraitLock from '@/components/ui/PortraitLock';
+import WhatsAppWidget from '@/components/WhatsAppWidget';
 import '../globals.css';
 
 const inter = Inter({
@@ -74,6 +75,7 @@ export default async function LocaleLayout({
             <Footer />
             <CookieBanner />
             <PortraitLock />
+            <WhatsAppWidget />
             <SpeedInsights />
           </NextIntlClientProvider>
         </Providers>

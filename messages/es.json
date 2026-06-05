@@ -5,15 +5,15 @@
     "about": "Quiénes somos",
     "clients": "Clientes",
     "contact": "Contacto",
-    "cta": "Hablemos"
+    "cta": "Solicita presupuesto"
   },
   "hero": {
     "badge": "Soluciones tecnológicas desde 2001",
-    "title_base": "Construimos soluciones",
-    "words": ["innovadoras", "escalables", "a medida", "seguras", "inteligentes"],
-    "subtitle": "Partner tecnológico para empresas que quieren escalar y optimizar sus procesos.",
-    "cta_primary": "Empezar ahora",
-    "cta_secondary": "Ver servicios"
+    "title_base": "Construimos Alianzas",
+    "words": ["Duraderas", "No Solo Código", "con Impacto", "Juntos", "a Tu Ritmo"],
+    "subtitle": "Empresas confían en nosotros por entregar proyectos a la mitad de tiempo y con un 98% de satisfacción.",
+    "cta_primary": "Solicita presupuesto",
+    "cta_secondary": "Ver casos de éxito"
   },
   "metrics": {
     "experience": { "value": "+24", "label": "Años de experiencia" },
@@ -34,10 +34,10 @@
     }
   },
   "pillars": {
-    "agility": { "title": "Agilidad", "desc": "Entregas rápidas e iterativas sin comprometer la calidad." },
-    "precision": { "title": "Precisión", "desc": "Desarrollo exacto basado en requerimientos detallados." },
-    "reliability": { "title": "Fiabilidad", "desc": "Sistemas robustos y escalables para entornos exigentes." },
-    "innovation": { "title": "Innovación", "desc": "Implementación de últimas tecnologías." }
+    "agility": { "title": "Entrega 2x Más Rápida", "desc": "Proyectos en la mitad de tiempo que una agencia tradicional sin atajos." },
+    "precision": { "title": "Cero Bugs en Producción", "desc": "Testing exhaustivo. Nuestros clientes disfrutan de 99.9% uptime garantizado." },
+    "reliability": { "title": "Respuesta <2h Siempre", "desc": "Soporte presencial en Girona. Si es urgencia, nos ves en 24 horas." },
+    "innovation": { "title": "Stack Tecnológico Actual", "desc": "Next.js, TypeScript, React, Cloud Native. Evitamos legacy que te encadene." }
   },
   "clients": {
     "heading": "Empresas que confían en nosotros",
@@ -223,6 +223,14 @@
         "desc": "Portal corporativo multilingüe e intranet para distribuidores.",
         "metric": "5",
         "metricLabel": "idiomas"
+      },
+      {
+        "badge": "Case_06",
+        "title": "MultiEsports Ter",
+        "industry": "Deportes y ocio",
+        "desc": "No tenían web y la ficha de Google estaba mal configurada. Ahora tienen una presencia digital completa que les aporta nuevos clientes cada día.",
+        "metric": "0→∞",
+        "metricLabel": "presencia digital"
       }
     ],
     "industries": [
