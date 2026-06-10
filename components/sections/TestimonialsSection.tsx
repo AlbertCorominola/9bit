@@ -1,8 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import TestimonialCard from '@/components/ui/TestimonialCard';
+import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal';
+import Parallax from '@/components/ui/Parallax';
 
 const TESTIMONIALS = [
   {
@@ -29,17 +30,13 @@ export default function TestimonialsSection() {
   const t = useTranslations('testimonials');
   return (
     <section className="py-margin px-6 lg:px-10 max-w-container-max mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.4 }}
-        className="mb-12 max-w-2xl"
-      >
-        <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-blue-200">
-          {t('heading')}
-        </h2>
-      </motion.div>
+      <Parallax speed={0.16} className="mb-12 max-w-2xl">
+        <Reveal direction="up">
+          <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-blue-200">
+            {t('heading')}
+          </h2>
+        </Reveal>
+      </Parallax>
 
       {/* Mobile: horizontal scroll. Desktop: grid */}
       <div className="md:hidden -mx-6 px-6 overflow-x-auto">
@@ -52,28 +49,13 @@ export default function TestimonialsSection() {
         </div>
       </div>
 
-      <motion.div
-        className="hidden md:grid grid-cols-3 gap-5"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: '-80px' }}
-        variants={{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.05 } },
-        }}
-      >
+      <RevealGroup className="hidden md:grid grid-cols-3 gap-5">
         {TESTIMONIALS.map((tt, i) => (
-          <motion.div
-            key={i}
-            variants={{
-              hidden: { opacity: 0, y: 16 },
-              show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-            }}
-          >
+          <RevealItem key={i}>
             <TestimonialCard {...tt} />
-          </motion.div>
+          </RevealItem>
         ))}
-      </motion.div>
+      </RevealGroup>
     </section>
   );
 }

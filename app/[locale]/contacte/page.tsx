@@ -18,13 +18,14 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import Button from '@/components/ui/Button';
+import Parallax from '@/components/ui/Parallax';
 
 /* ─────────────────────────── animation variants ─────────────────────────── */
 const container = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
 };
-const item = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
+const item = { hidden: { opacity: 0, y: 24, filter: 'blur(5px)' }, show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } };
 
 const inViewProps = { initial: 'hidden', whileInView: 'show', viewport: { once: true, margin: '-80px' } } as const;
 
@@ -47,7 +48,7 @@ export default function ContactPage() {
   const t = useTranslations('contact_page');
 
   /* form state */
-  const [form,      setForm]      = useState({ name: '', email: '', phone: '', message: '', website: '' });
+  const [form,      setForm]      = useState({ business: '', site: '', sector: '', name: '', email: '', phone: '', revenue: '', timeline: '', message: '', website: '' });
   const [errors,    setErrors]    = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -86,6 +87,8 @@ export default function ContactPage() {
 
   const validate = () => {
     const e: Record<string, string> = {};
+    if (!form.business.trim()) e.business = t('error_business_required');
+    if (!form.sector.trim())   e.sector   = t('error_sector_required');
     if (!form.name.trim())    e.name    = t('error_name_required');
     if (!form.email.trim())   e.email   = t('error_email_required');
     else if (!form.email.includes('@')) e.email = t('error_email_invalid');
@@ -99,11 +102,28 @@ export default function ContactPage() {
     if (!validate()) return;
     setSubmitError(null);
     setSubmitting(true);
+    const composedMessage = [
+      `Negocio: ${form.business}`,
+      form.site ? `Web: ${form.site}` : null,
+      `Sector: ${form.sector}`,
+      form.revenue ? `Facturación: ${form.revenue}` : null,
+      form.timeline ? `Plazo: ${form.timeline}` : null,
+      '',
+      form.message,
+    ]
+      .filter((l) => l !== null)
+      .join('\n');
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          message: composedMessage,
+          website: form.website,
+        }),
       });
       if (res.ok) {
         setSubmitted(true);
@@ -120,7 +140,7 @@ export default function ContactPage() {
   };
 
   const resetForm = () => {
-    setForm({ name: '', email: '', phone: '', message: '', website: '' });
+    setForm({ business: '', site: '', sector: '', name: '', email: '', phone: '', revenue: '', timeline: '', message: '', website: '' });
     setSubmitted(false);
     setSubmitError(null);
   };
@@ -144,12 +164,14 @@ export default function ContactPage() {
             </motion.div>
 
             {/* Heading */}
-            <motion.h1
-              variants={item}
-              className="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-5 leading-none"
-            >
-              {t('heading')}
-            </motion.h1>
+            <Parallax speed={0.18}>
+              <motion.h1
+                variants={item}
+                className="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-5 leading-none"
+              >
+                {t('heading')}
+              </motion.h1>
+            </Parallax>
 
             {/* Subtitle */}
             <motion.p variants={item} className="text-on-surface-variant max-w-xl mx-auto text-lg mb-8">
@@ -258,6 +280,20 @@ export default function ContactPage() {
                         />
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                           <div>
+                            <label className="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">{t('label_business')}</label>
+                            <input type="text" name="business" value={form.business} onChange={onChange} placeholder={t('placeholder_business')} className={INPUT_CLASS(!!errors.business)} />
+                            {errors.business && <p className="text-red-400 text-xs mt-1 font-mono">{errors.business}</p>}
+                          </div>
+                          <div>
+                            <label className="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">{t('label_site')}</label>
+                            <input type="text" name="site" value={form.site} onChange={onChange} placeholder={t('placeholder_site')} className={INPUT_CLASS(false)} />
+                          </div>
+                          <div>
+                            <label className="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">{t('label_sector')}</label>
+                            <input type="text" name="sector" value={form.sector} onChange={onChange} placeholder={t('placeholder_sector')} className={INPUT_CLASS(!!errors.sector)} />
+                            {errors.sector && <p className="text-red-400 text-xs mt-1 font-mono">{errors.sector}</p>}
+                          </div>
+                          <div>
                             <label className="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">{t('label_name')}</label>
                             <input type="text" name="name" value={form.name} onChange={onChange} placeholder={t('placeholder_name')} className={INPUT_CLASS(!!errors.name)} />
                             {errors.name && <p className="text-red-400 text-xs mt-1 font-mono">{errors.name}</p>}
@@ -267,18 +303,27 @@ export default function ContactPage() {
                             <input type="email" name="email" value={form.email} onChange={onChange} placeholder={t('placeholder_email')} className={INPUT_CLASS(!!errors.email)} />
                             {errors.email && <p className="text-red-400 text-xs mt-1 font-mono">{errors.email}</p>}
                           </div>
+                          <div>
+                            <label className="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">{t('label_phone')}</label>
+                            <input type="tel" name="phone" value={form.phone} onChange={onChange} placeholder={t('placeholder_phone')} className={INPUT_CLASS(false)} />
+                          </div>
+                          <div>
+                            <label className="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">{t('label_revenue')}</label>
+                            <input type="text" name="revenue" value={form.revenue} onChange={onChange} placeholder={t('placeholder_revenue')} className={INPUT_CLASS(false)} />
+                          </div>
+                          <div>
+                            <label className="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">{t('label_timeline')}</label>
+                            <input type="text" name="timeline" value={form.timeline} onChange={onChange} placeholder={t('placeholder_timeline')} className={INPUT_CLASS(false)} />
+                          </div>
                         </div>
 
                         <div>
-                          <label className="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">{t('label_phone')}</label>
-                          <input type="tel" name="phone" value={form.phone} onChange={onChange} placeholder={t('placeholder_phone')} className={INPUT_CLASS(false)} />
-                        </div>
-
-                        <div>
-                          <label className="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">{t('label_message')}</label>
-                          <textarea name="message" value={form.message} onChange={onChange} rows={5} placeholder={t('placeholder_message')} className={`${INPUT_CLASS(!!errors.message)} resize-none`} />
+                          <label className="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">{t('label_objective')}</label>
+                          <textarea name="message" value={form.message} onChange={onChange} rows={4} placeholder={t('placeholder_objective')} className={`${INPUT_CLASS(!!errors.message)} resize-none`} />
                           {errors.message && <p className="text-red-400 text-xs mt-1 font-mono">{errors.message}</p>}
                         </div>
+
+                        <p className="text-on-surface-variant/60 text-xs">{t('privacy_note')}</p>
 
                         <Button
                           variant="primary"

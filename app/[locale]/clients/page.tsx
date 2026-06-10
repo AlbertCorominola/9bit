@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import ClientMarquee from '@/components/ui/ClientMarquee';
+import Parallax from '@/components/ui/Parallax';
 
 // ─── Data (non-localized) ────────────────────────────────────────────────────
 
@@ -33,20 +34,20 @@ const CASE_URLS = [
   'https://massoles.com/',
   'https://www.gestoriaguileraperez.com/',
   'https://www.ooadditives.com/',
-  '',
+  'https://restaurantarestestanyol.com/',
 ];
 
-const FEATURED_URL = 'https://restaurantarestestanyol.com/';
+const FEATURED_URL = '';
 
 
 // ─── Animation variants ───────────────────────────────────────────────────────
 
-const revealInView: TargetAndTransition = { opacity: 1, y: 0 };
+const revealInView: TargetAndTransition = { opacity: 1, y: 0, filter: 'blur(0px)' };
 const reveal = {
-  initial: { opacity: 0, y: 32 },
+  initial: { opacity: 0, y: 24, filter: 'blur(5px)' },
   whileInView: revealInView,
   viewport: { once: true, margin: '-80px' },
-  transition: { duration: 0.6 },
+  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
 };
 
 const staggerContainer = {
@@ -59,8 +60,8 @@ const staggerContainer = {
 };
 
 const staggerItem = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  hidden: { opacity: 0, y: 24, filter: 'blur(5px)' },
+  show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
 };
 
 const floatA = {
@@ -78,38 +79,6 @@ const floatB = {
     transition: { duration: 11, repeat: Infinity, ease: 'easeInOut' },
   },
 };
-
-// ─── Inline reverse marquee ───────────────────────────────────────────────────
-
-const CLIENTS_LIST = [
-  'Abril et Nature',
-  'Aguilera Consulting',
-  'Mas Terrats',
-  'Excursions Marítimes El Fadrí',
-  'Restaurant Arest Estanyol',
-  'Oxford Oil Additives',
-  'Econocom',
-  'Perruqueria Lídia Duch',
-  'MultiEsports Ter',
-];
-
-function ClientMarqueeReverse() {
-  const list = [...CLIENTS_LIST, ...CLIENTS_LIST];
-  return (
-    <div className="overflow-hidden py-6 border-b border-outline-variant/20 group">
-      <div
-        className="flex gap-12 animate-marquee whitespace-nowrap text-on-surface-variant/40 font-bold text-xl group-hover:[animation-play-state:paused]"
-        style={{ animationDirection: 'reverse' }}
-      >
-        {list.map((c, i) => (
-          <span key={i} className="shrink-0">
-            {c}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
@@ -181,14 +150,19 @@ export default function ClientsPage() {
       {/* ── 1. PAGE HERO ──────────────────────────────────────────── */}
       <section className="relative -mt-20 pt-40 pb-24 px-6 lg:px-10 overflow-hidden">
 
-        {/* Decorative giant bg text */}
-        <span
-          aria-hidden="true"
-          className="pointer-events-none select-none absolute right-[-2vw] top-1/2 -translate-y-1/2 font-black tracking-tighter text-primary-container opacity-[0.025] leading-none whitespace-nowrap"
-          style={{ fontSize: 'clamp(120px, 20vw, 320px)' }}
+        {/* Decorative giant bg text — parallax depth */}
+        <Parallax
+          speed={0.6}
+          className="pointer-events-none select-none absolute right-[-2vw] top-1/2 -translate-y-1/2 z-0"
         >
-          +50
-        </span>
+          <span
+            aria-hidden="true"
+            className="font-black tracking-tighter text-primary-container opacity-[0.025] leading-none whitespace-nowrap"
+            style={{ fontSize: 'clamp(120px, 20vw, 320px)' }}
+          >
+            IA
+          </span>
+        </Parallax>
 
         {/* Animated orbs */}
         <motion.div
@@ -216,9 +190,11 @@ export default function ClientsPage() {
             </div>
 
             {/* Heading */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-on-surface mb-6 max-w-4xl leading-[1.05]">
-              {t('heading')}
-            </h1>
+            <Parallax speed={0.2}>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-on-surface mb-6 max-w-4xl leading-[1.05]">
+                {t('heading')}
+              </h1>
+            </Parallax>
 
             {/* Subtitle */}
             <p className="text-on-surface-variant max-w-2xl text-lg lg:text-xl mb-12">
@@ -271,7 +247,7 @@ export default function ClientsPage() {
 
           <div className="border-t border-outline-variant/20">
             <ClientMarquee />
-            <ClientMarqueeReverse />
+            <ClientMarquee reverse />
           </div>
         </motion.div>
       </section>
@@ -328,15 +304,17 @@ export default function ClientsPage() {
                     </span>
                   ))}
                 </div>
-                <a
-                  href={FEATURED_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white bg-primary-container rounded-full px-5 py-2.5 hover:bg-primary-container/90 shadow-[0_0_15px_rgba(0,102,255,0.35)] hover:shadow-[0_0_25px_rgba(0,102,255,0.6)] transition-all active:scale-95"
-                >
-                  {t('go_to_project')}
-                  <ExternalLink size={12} />
-                </a>
+                {FEATURED_URL && (
+                  <a
+                    href={FEATURED_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white bg-primary-container rounded-full px-5 py-2.5 hover:bg-primary-container/90 shadow-[0_0_15px_rgba(0,102,255,0.35)] hover:shadow-[0_0_25px_rgba(0,102,255,0.6)] transition-all active:scale-95"
+                  >
+                    {t('go_to_project')}
+                    <ExternalLink size={12} />
+                  </a>
+                )}
               </div>
 
               {/* Right: big metric */}

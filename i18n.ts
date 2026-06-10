@@ -5,9 +5,12 @@ export const locales = ['ca', 'es', 'en'] as const;
 export const defaultLocale = 'ca' as const;
 export type Locale = (typeof locales)[number];
 
-export default getRequestConfig(async ({ locale }) => {
-  if (!locales.includes(locale as Locale)) notFound();
+export default getRequestConfig(async ({ requestLocale }) => {
+  const requested = await requestLocale;
+  const locale = locales.includes(requested as Locale) ? (requested as Locale) : undefined;
+  if (!locale) notFound();
   return {
+    locale,
     messages: (await import(`./messages/${locale}.json`)).default,
   };
 });

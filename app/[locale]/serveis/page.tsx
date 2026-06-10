@@ -4,11 +4,13 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import {
   Globe,
-  Cpu,
+  Phone,
+  Bot,
   Headphones,
   Workflow,
   GraduationCap,
-  Lightbulb,
+  Server,
+  Sparkles,
   MessageSquare,
   Map,
   Hammer,
@@ -17,21 +19,24 @@ import {
 } from 'lucide-react';
 import ServiceCard from '@/components/ui/ServiceCard';
 import CTAPanel from '@/components/ui/CTAPanel';
+import Parallax from '@/components/ui/Parallax';
 
-const SERVICE_KEYS: { key: 'web' | 'software' | 'support' | 'automation' | 'training' | 'consulting'; icon: LucideIcon }[] = [
-  { key: 'web', icon: Globe },
-  { key: 'software', icon: Cpu },
-  { key: 'support', icon: Headphones },
-  { key: 'automation', icon: Workflow },
-  { key: 'training', icon: GraduationCap },
-  { key: 'consulting', icon: Lightbulb },
+const SERVICE_KEYS: { key: 'web' | 'voice' | 'chatbots' | 'automation' | 'infrastructure' | 'consulting' | 'support' | 'training'; icon: LucideIcon; core: boolean }[] = [
+  { key: 'web', icon: Globe, core: true },
+  { key: 'voice', icon: Phone, core: true },
+  { key: 'chatbots', icon: Bot, core: true },
+  { key: 'automation', icon: Workflow, core: true },
+  { key: 'infrastructure', icon: Server, core: false },
+  { key: 'consulting', icon: Sparkles, core: false },
+  { key: 'support', icon: Headphones, core: false },
+  { key: 'training', icon: GraduationCap, core: false },
 ];
 
 const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
+  initial: { opacity: 0, y: 24, filter: 'blur(5px)' },
+  whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
   viewport: { once: true, margin: '-80px' },
-  transition: { duration: 0.4 },
+  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
 } as const;
 
 export default function ServeisPage() {
@@ -46,10 +51,11 @@ export default function ServeisPage() {
   ];
 
   const TECH_STACK: { category: string; items: string[] }[] = [
-    { category: 'Frontend', items: ['React', 'Next.js', 'Vue', 'TypeScript', 'Tailwind'] },
+    { category: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind'] },
     { category: 'Backend', items: ['Node.js', 'Python', 'PostgreSQL', 'MongoDB'] },
-    { category: 'Cloud / DevOps', items: ['AWS', 'Vercel', 'Docker', 'GitHub Actions'] },
-    { category: tp('tech_tools_category'), items: ['Figma', 'Linear', 'Notion'] },
+    { category: 'Cloud / DevOps', items: ['Vercel', 'Docker', 'GitHub Actions'] },
+    { category: 'IA & Veu', items: ['OpenAI', 'Claude', 'ElevenLabs', 'Twilio', 'Retell AI', 'n8n'] },
+    { category: tp('tech_tools_category'), items: ['Stitch', 'Notion'] },
   ];
 
   return (
@@ -72,9 +78,11 @@ export default function ServeisPage() {
             </div>
 
             {/* Heading */}
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-[0.95] bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-blue-200">
-              {tp('heading')}
-            </h1>
+            <Parallax speed={0.22}>
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-[0.95] bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-blue-200">
+                {tp('heading')}
+              </h1>
+            </Parallax>
 
             {/* Subtitle */}
             <p className="text-on-surface-variant text-lg md:text-xl max-w-xl mb-10 leading-relaxed">
@@ -84,9 +92,9 @@ export default function ServeisPage() {
             {/* Metric pills */}
             <div className="flex flex-wrap gap-3">
               {[
-                { value: '6', label: tp('metric_services') },
+                { value: '8', label: tp('metric_services') },
                 { value: '+24', label: tp('metric_years') },
-                { value: '+500', label: tp('metric_projects') },
+                { value: '100%', label: tp('metric_projects') },
               ].map(({ value, label }) => (
                 <div
                   key={label}
@@ -206,14 +214,46 @@ export default function ServeisPage() {
               {tp('all_services_label')}
             </motion.p>
 
+            {/* Core services */}
             <motion.div
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: '-80px' }}
               variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05 } } }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
             >
-              {SERVICE_KEYS.map(({ key, icon }) => (
+              {SERVICE_KEYS.filter((s) => s.core).map(({ key, icon }) => (
+                <motion.div
+                  key={key}
+                  variants={{
+                    hidden: { opacity: 0, y: 16 },
+                    show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+                  }}
+                >
+                  <ServiceCard
+                    icon={icon}
+                    code={t(`items.${key}.code`)}
+                    title={t(`items.${key}.title`)}
+                    desc={t(`items.${key}.desc`)}
+                    core
+                    coreLabel={t('core_tag')}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Additional services */}
+            <motion.p {...fadeUp} className="text-on-surface-variant/70 text-sm uppercase tracking-wide font-medium mt-12 mb-5">
+              {t('more_label')}
+            </motion.p>
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: '-80px' }}
+              variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05 } } }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+            >
+              {SERVICE_KEYS.filter((s) => !s.core).map(({ key, icon }) => (
                 <motion.div
                   key={key}
                   variants={{

@@ -24,7 +24,7 @@ const config: Config = {
         'outline-variant': 'var(--outline-variant)',
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
         mono: ['var(--font-space-grotesk)', 'monospace'],
       },
       fontSize: {

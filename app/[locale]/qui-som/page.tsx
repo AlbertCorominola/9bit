@@ -8,6 +8,7 @@ import {
   Search, PenTool, Hammer, HeartHandshake,
 } from 'lucide-react';
 import Link from 'next/link';
+import Parallax from '@/components/ui/Parallax';
 
 /* ─── animation helpers ─────────────────────────────────────────────────── */
 
@@ -18,20 +19,20 @@ const fadeUp = (delay = 0) => ({
 });
 
 const revealUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 32 },
-  whileInView: { opacity: 1, y: 0 },
+  initial: { opacity: 0, y: 24, filter: 'blur(5px)' },
+  whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
   viewport: { once: true, margin: '-80px' },
-  transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1], delay },
+  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay },
 });
 
 const staggerContainer = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.04 } },
 };
 
 const staggerItem = {
-  hidden: { opacity: 0, y: 28 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 24, filter: 'blur(5px)' },
+  show:   { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
 };
 
 /* ─── data ──────────────────────────────────────────────────────────────── */
@@ -53,8 +54,8 @@ export default function QuiSomPage() {
   const facts = [
     { icon: Calendar,    label: t('fact_year'),     value: '2001' },
     { icon: MapPin,      label: t('fact_location'), value: 'Girona, CAT' },
-    { icon: FolderGit2,  label: t('fact_projects'), value: '+500' },
-    { icon: Users,       label: t('fact_clients'),  value: '+50' },
+    { icon: FolderGit2,  label: t('fact_projects'), value: '100%' },
+    { icon: Users,       label: t('fact_clients'),  value: '24/7' },
     { icon: Clock,       label: t('fact_response'), value: '<2h' },
   ];
 
@@ -139,12 +140,14 @@ export default function QuiSomPage() {
           </motion.div>
 
           {/* heading */}
-          <motion.h1
-            {...fadeUp(0.08)}
-            className="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-6 max-w-4xl leading-[1.05]"
-          >
-            {t('heading')}
-          </motion.h1>
+          <Parallax speed={0.2}>
+            <motion.h1
+              {...fadeUp(0.08)}
+              className="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-6 max-w-4xl leading-[1.05]"
+            >
+              {t('heading')}
+            </motion.h1>
+          </Parallax>
 
           {/* subtitle */}
           <motion.p {...fadeUp(0.16)} className="text-on-surface-variant text-lg max-w-2xl mb-14">
@@ -229,8 +232,8 @@ export default function QuiSomPage() {
 
               <div className="space-y-4">
                 {[
-                  { label: t('fact_projects'), val: '+500', pct: 100 },
-                  { label: t('fact_clients'),  val: '+50',  pct: 90 },
+                  { label: t('fact_projects'), val: '100%', pct: 100 },
+                  { label: t('fact_clients'),  val: '24/7',  pct: 100 },
                   { label: t('fact_year'),     val: '2001', pct: 80 },
                 ].map(({ label, val, pct }) => (
                   <div key={label}>
@@ -272,8 +275,8 @@ export default function QuiSomPage() {
           >
             {[
               { raw: '2001', label: t('fact_year') },
-              { raw: '+500', label: t('fact_projects') },
-              { raw: '+50',  label: t('fact_clients') },
+              { raw: '100%', label: t('fact_projects') },
+              { raw: '24/7',  label: t('fact_clients') },
               { raw: '<2h',  label: t('fact_response') },
             ].map(({ raw, label }) => (
               <motion.div key={label} variants={staggerItem} className="relative group">
@@ -366,33 +369,29 @@ export default function QuiSomPage() {
           <div className="h-[3px] w-14 bg-primary-container mb-14" />
 
           {/* desktop: horizontal steps with connectors */}
-          <div className="hidden md:flex items-start gap-0">
+          <div className="hidden md:flex items-stretch gap-0">
             {PROCESS.map(({ icon: Icon, step, title, desc }, i) => (
-              <div key={step} className="flex items-start flex-1 min-w-0">
+              <div key={step} className="flex items-stretch flex-1 min-w-0">
                 <motion.div
                   {...revealUp(i * 0.1)}
-                  className="flex-1 glass-panel glow-hover rounded-2xl p-6 border border-outline-variant/20 relative overflow-hidden group"
+                  className="flex-1 flex flex-col glass-panel rounded-2xl p-7 border border-outline-variant/20 hover:border-primary-container/40 hover:-translate-y-1 transition-all duration-200 group"
                 >
-                  {/* step number watermark */}
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute bottom-2 right-3 font-black text-7xl text-primary-container/[0.06] leading-none select-none"
-                  >
-                    {step}
-                  </span>
-
-                  <div className="w-10 h-10 rounded-lg bg-primary-container/15 border border-primary-container/25 flex items-center justify-center mb-4">
-                    <Icon size={18} className="text-primary-container" />
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-12 h-12 rounded-xl bg-primary-container/15 border border-primary-container/30 flex items-center justify-center transition-transform duration-200 group-hover:scale-110">
+                      <Icon size={20} className="text-primary-container" />
+                    </div>
+                    <span className="font-mono text-3xl font-black text-primary-container/25 leading-none tabular-nums group-hover:text-primary-container/40 transition-colors">
+                      {step}
+                    </span>
                   </div>
-                  <span className="font-mono text-[10px] text-primary-container uppercase tracking-widest mb-2 block">{step}</span>
-                  <h3 className="font-sans font-black text-on-surface text-lg tracking-tight mb-2">{title}</h3>
-                  <p className="text-xs text-on-surface-variant leading-relaxed">{desc}</p>
+                  <h3 className="font-sans font-bold text-on-surface text-lg tracking-tight mb-2">{title}</h3>
+                  <p className="text-sm text-on-surface-variant leading-relaxed">{desc}</p>
                 </motion.div>
 
                 {/* arrow connector (not after last) */}
                 {i < PROCESS.length - 1 && (
-                  <div className="shrink-0 flex items-center px-2 pt-8">
-                    <ArrowRight size={16} className="text-primary-container/40" />
+                  <div className="shrink-0 flex items-center px-2">
+                    <ArrowRight size={18} className="text-primary-container/40" />
                   </div>
                 )}
               </div>

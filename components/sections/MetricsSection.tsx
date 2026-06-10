@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Reveal from '@/components/ui/Reveal';
 
 interface Metric {
   value: string;
@@ -39,12 +40,12 @@ function MetricItem({ value, label }: Metric) {
       initial={{ opacity: 0, y: 16 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.4 }}
-      className="flex flex-col gap-2 px-6 py-2"
+      className="flex flex-col gap-2 px-4 sm:px-6 py-3"
     >
-      <div className="text-5xl md:text-6xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-blue-200 leading-none">
+      <div className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-blue-200 leading-none tabular-nums">
         {display}
       </div>
-      <div className="font-mono text-[11px] text-on-surface-variant uppercase tracking-widest">
+      <div className="font-mono text-[10px] sm:text-[11px] text-on-surface-variant uppercase tracking-widest leading-tight">
         {label}
       </div>
     </motion.div>
@@ -62,11 +63,13 @@ export default function MetricsSection() {
 
   return (
     <section className="py-margin px-6 lg:px-10 max-w-container-max mx-auto">
-      <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/[0.06] border-y border-white/[0.06]">
-        {metrics.map((m, i) => (
-          <MetricItem key={i} {...m} />
-        ))}
-      </div>
+      <Reveal direction="up">
+        <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/[0.06] border-y border-white/[0.06]">
+          {metrics.map((m, i) => (
+            <MetricItem key={i} {...m} />
+          ))}
+        </div>
+      </Reveal>
     </section>
   );
 }

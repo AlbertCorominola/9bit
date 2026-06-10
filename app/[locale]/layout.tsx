@@ -11,6 +11,7 @@ import Footer from '@/components/ui/Footer';
 import CookieBanner from '@/components/ui/CookieBanner';
 import PortraitLock from '@/components/ui/PortraitLock';
 import WhatsAppWidget from '@/components/WhatsAppWidget';
+import ContactPopup from '@/components/ui/ContactPopup';
 import '../globals.css';
 
 const inter = Inter({
@@ -25,30 +26,80 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: '9bit',
-  description:
-    'Partner tecnològic per a empreses. Desenvolupament web, software a mida, suport IT i consultoria des del 2001 a Girona.',
-  icons: {
-    icon: '/logo_9bit.webp',
-    shortcut: '/logo_9bit.webp',
-    apple: '/logo_9bit_sin_fondo.png',
+const SEO: Record<string, { title: string; description: string }> = {
+  ca: {
+    title: '9bit · Infraestructura amb IA per a empreses',
+    description:
+      'Webs, agents telefònics IA, chatbots i automatitzacions. T\'ajudem a captar més clients, retenir-los i reduir la càrrega de feina. Girona, des del 2001.',
   },
-  openGraph: {
-    title: '9bit — Building Information Technologies',
-    description: 'Partner tecnològic per a empreses que volen escalar i optimitzar els seus processos.',
-    url: 'https://9-bit.com',
-    siteName: '9bit',
-    type: 'website',
+  es: {
+    title: '9bit · Infraestructura con IA para empresas',
+    description:
+      'Webs, agentes telefónicos IA, chatbots y automatizaciones. Capta más clientes, retenlos y reduce tu carga de trabajo. Girona, desde 2001.',
   },
-  alternates: {
-    languages: {
-      ca: '/ca',
-      es: '/es',
-      en: '/en',
-    },
+  en: {
+    title: '9bit · AI infrastructure for businesses',
+    description:
+      'Websites, AI phone agents, chatbots and automations. Win more clients, retain them and cut your workload. Girona, since 2001.',
   },
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const seo = SEO[params.locale] ?? SEO.ca;
+  return {
+    metadataBase: new URL('https://9-bit.com'),
+    title: {
+      default: seo.title,
+      template: '%s · 9bit',
+    },
+    description: seo.description,
+    keywords: [
+      'desarrollo web',
+      'agentes telefónicos IA',
+      'chatbots IA',
+      'automatización',
+      'infraestructura IA',
+      'inteligencia artificial',
+      'Girona',
+      '9bit',
+    ],
+    authors: [{ name: '9bit' }],
+    icons: {
+      icon: [{ url: '/favicon.png', type: 'image/png', sizes: '128x128' }],
+      shortcut: '/favicon.png',
+      apple: '/favicon.png',
+    },
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      url: `https://9-bit.com/${params.locale}`,
+      siteName: '9bit',
+      locale: params.locale,
+      type: 'website',
+      images: [{ url: '/logo_9bit_sin_fondo.png', width: 1200, height: 630, alt: '9bit' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: seo.title,
+      description: seo.description,
+      images: ['/logo_9bit_sin_fondo.png'],
+    },
+    robots: { index: true, follow: true },
+    alternates: {
+      canonical: `https://9-bit.com/${params.locale}`,
+      languages: {
+        ca: 'https://9-bit.com/ca',
+        es: 'https://9-bit.com/es',
+        en: 'https://9-bit.com/en',
+        'x-default': 'https://9-bit.com/ca',
+      },
+    },
+  };
+}
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -67,7 +118,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={params.locale} suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="ambient-bg flex flex-col min-h-screen">
+      <body className="ambient-bg flex flex-col min-h-screen overflow-x-hidden">
         <Providers>
           <NextIntlClientProvider messages={messages}>
             <Navbar />
@@ -76,6 +127,7 @@ export default async function LocaleLayout({
             <CookieBanner />
             <PortraitLock />
             <WhatsAppWidget />
+            <ContactPopup />
             <SpeedInsights />
           </NextIntlClientProvider>
         </Providers>

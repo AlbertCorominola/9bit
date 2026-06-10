@@ -8,29 +8,35 @@
     "cta": "Solicita presupuesto"
   },
   "hero": {
-    "badge": "Soluciones tecnológicas desde 2001",
-    "title_base": "Construimos Alianzas",
-    "words": ["Duraderas", "No Solo Código", "con Impacto", "Juntos", "a Tu Ritmo"],
-    "subtitle": "Empresas confían en nosotros por entregar proyectos a la mitad de tiempo y con un 98% de satisfacción.",
+    "badge": "Infraestructura con IA · desde 2001",
+    "title_base": "Ofrecemos soluciones",
+    "words": ["con IA", "a medida", "que convierten", "que escalan", "que perduran"],
+    "subtitle": "Capta más clientes, atiéndelos 24/7 y reduce el trabajo repetitivo con webs, agentes telefónicos, chatbots y automatizaciones con IA.",
     "cta_primary": "Solicita presupuesto",
     "cta_secondary": "Ver casos de éxito"
   },
   "metrics": {
     "experience": { "value": "+24", "label": "Años de experiencia" },
-    "interventions": { "value": "+500", "label": "Intervenciones realizadas" },
-    "satisfaction": { "value": "98%", "label": "Satisfacción" },
+    "interventions": { "value": "100%", "label": "A medida" },
+    "satisfaction": { "value": "24/7", "label": "Atención con IA" },
     "response": { "value": "<2h", "label": "Tiempo de respuesta" }
   },
   "services": {
     "heading": "Servicios",
-    "subtitle": "Soluciones digitales de alto rendimiento con precisión y cero latencia.",
+    "intro": "Tu infraestructura digital con IA, de punta a punta.",
+    "core_tag": "Principal",
+    "core_label": "Servicios principales",
+    "more_label": "Además",
+    "subtitle": "Te ayudamos a captar más clientes, retenerlos y reducir tu carga de trabajo con infraestructura digital e IA: webs, agentes telefónicos, chatbots y automatizaciones. Además, soporte in situ o remoto y formaciones a medida.",
     "items": {
-      "web": { "title": "Desarrollo Web", "desc": "Plataformas web de alto rendimiento y aplicaciones a medida construidas con tecnologías modernas.", "code": "SV-01" },
-      "software": { "title": "Software a Medida", "desc": "Soluciones únicas adaptadas a los procesos y necesidades de tu empresa.", "code": "SV-02" },
-      "support": { "title": "Soporte IT", "desc": "Asistencia técnica proactiva y resolución de incidencias para mantener tu operatividad.", "code": "SV-03" },
-      "automation": { "title": "Automatización", "desc": "Workflows automatizados, integración de sistemas y conexión de APIs.", "code": "SV-04" },
-      "training": { "title": "Formación", "desc": "Capacitación tecnológica para equipos con workshops personalizados.", "code": "SV-05" },
-      "consulting": { "title": "Consultoría", "desc": "Análisis, estrategia digital y transformación tecnológica.", "code": "SV-06" }
+      "web": { "title": "Desarrollo Web", "desc": "Webs que captan clientes: rápidas, optimizadas para conversión y SEO y listas para integrar IA.", "code": "SV-01" },
+      "voice": { "title": "Agentes Telefónicos IA", "desc": "Asistentes de voz que atienden cada llamada 24/7, reservan y filtran consultas — captas más y no pierdes ninguna oportunidad.", "code": "SV-02" },
+      "chatbots": { "title": "Chatbots IA", "desc": "Chatbots que responden al instante, cualifican leads y retienen a tus clientes en cualquier canal.", "code": "SV-03" },
+      "automation": { "title": "Automatización", "desc": "Automatizamos tus tareas repetitivas para que tu equipo reduzca carga y se centre en lo que importa.", "code": "SV-04" },
+      "infrastructure": { "title": "Infraestructura IA", "desc": "La infraestructura de IA que conecta captación, atención y operativa en un solo sistema.", "code": "SV-05" },
+      "consulting": { "title": "Consultoría IA", "desc": "Detectamos dónde pierdes clientes, tiempo o ingresos y trazamos la hoja de ruta con IA.", "code": "SV-06" },
+      "support": { "title": "Soporte IT", "desc": "Resolución de incidencias in situ o en remoto y mantenimiento proactivo para que nunca te pares.", "code": "SV-07" },
+      "training": { "title": "Formación", "desc": "Formaciones a medida para que tu equipo saque el máximo partido a la tecnología y a la IA.", "code": "SV-08" }
     }
   },
   "pillars": {
@@ -46,7 +52,8 @@
   "home": {
     "trust_strip": "Empresas de Girona confían en nosotros desde 2001",
     "view_all": "Ver todo",
-    "how_we_work": "Cómo trabajamos"
+    "how_we_work": "Cómo trabajamos",
+    "statement": "Menos trabajo manual. Más clientes. Toda tu operativa conectada y potenciada con inteligencia artificial."
   },
   "testimonials": {
     "heading": "Lo que dicen nuestros colaboradores"
@@ -56,6 +63,25 @@
     "subtitle": "Hablemos de tu proyecto y descubramos cómo podemos ayudarte a alcanzar tus objetivos.",
     "button": "Contactar ahora"
   },
+  "contact_popup": {
+    "label": "¿Hablamos?",
+    "heading": "Antes de irte…",
+    "heading_highlight": "te ayudamos a crecer",
+    "body": "Cuéntanos qué necesitas y te respondemos en menos de 2 horas. Sin compromiso.",
+    "placeholder": "tu@email.com",
+    "button": "Quiero que me contactéis",
+    "sending": "Enviando...",
+    "success_title": "¡Recibido!",
+    "success_sub": "Te escribimos en menos de 2 horas.",
+    "error": "No se pudo enviar. Escríbenos a hola@9-bit.com.",
+    "dismiss": "Ahora no"
+  },
+  "whatsapp": {
+    "title": "¿Hablamos por WhatsApp?",
+    "subtitle": "Normalmente respondemos en pocos minutos.",
+    "cta": "Iniciar chat",
+    "aria": "Abrir chat de WhatsApp"
+  },
   "contact_page": {
     "badge": "Contacto",
     "heading": "Hablemos",
@@ -64,12 +90,27 @@
     "submit": "Enviar mensaje",
     "success_title": "¡Mensaje enviado!",
     "success_sub": "Gracias. Te respondemos en menos de 2 horas.",
-    "form_title": "Envíanos un mensaje",
-    "form_subtitle": "Te respondemos en menos de 2 horas.",
-    "label_name": "Nombre *",
+    "form_title": "Cuéntanos sobre tu negocio",
+    "form_subtitle": "Cuanto más concreto seas, más útil será nuestra propuesta.",
+    "label_name": "Tu nombre *",
     "label_email": "Email *",
     "label_phone": "Teléfono (opcional)",
     "label_message": "Mensaje *",
+    "label_business": "Nombre del negocio *",
+    "placeholder_business": "Ej. Clínica Dental Onyar",
+    "label_site": "Web (si tienes)",
+    "placeholder_site": "https://",
+    "label_sector": "Sector *",
+    "placeholder_sector": "Restauración, salud, retail...",
+    "label_revenue": "Facturación mensual aprox.",
+    "placeholder_revenue": "Ej. 8.000€",
+    "label_timeline": "Plazo deseado",
+    "placeholder_timeline": "Ej. 3 meses",
+    "label_objective": "Objetivo principal *",
+    "placeholder_objective": "Ej. Captar 30 clientes nuevos al mes...",
+    "error_business_required": "Nombre del negocio obligatorio",
+    "error_sector_required": "Sector obligatorio",
+    "privacy_note": "Solo usaremos tus datos para responderte. Sin spam.",
     "placeholder_name": "Tu nombre",
     "placeholder_email": "tu@email.com",
     "placeholder_phone": "+34 6XX XXX XXX",
@@ -114,7 +155,7 @@
     "cta_button": "Contactar ahora",
     "metric_services": "servicios",
     "metric_years": "años",
-    "metric_projects": "proyectos",
+    "metric_projects": "a medida",
     "featured_label": "Servicio destacado",
     "all_services_label": "Todos los servicios",
     "methodology_label": "Metodología",
@@ -140,8 +181,8 @@
     "facts_title": "Datos clave",
     "fact_year": "Año de fundación",
     "fact_location": "Ubicación",
-    "fact_projects": "Proyectos",
-    "fact_clients": "Clientes activos",
+    "fact_projects": "Soluciones a medida",
+    "fact_clients": "Operativo",
     "fact_response": "Tiempo de respuesta",
     "pillars_title": "Nuestros pilares",
     "cta_heading": "¿Listo para colaborar?",
@@ -153,11 +194,11 @@
     "methodology_heading": "Cómo trabajamos",
     "timeline": {
       "t2001": "Fundación en Girona, primeras webs corporativas",
-      "t2005": "Primer equipo estable de 4 personas, 50+ clientes",
+      "t2005": "Primer equipo estable de 4 personas y los primeros clientes fieles",
       "t2010": "Expansión hacia software a medida y ERPs",
-      "t2016": "Superadas las 300 webs lanzadas",
+      "t2016": "Decenas de proyectos web y soluciones a medida",
       "t2020": "Transformación digital acelerada, +40% de demanda",
-      "t2024": "Más de 500 proyectos, equipo de 8 especialistas"
+      "t2024": "Consolidación como partner tecnológico con IA y un equipo de especialistas"
     },
     "process": {
       "discovery": { "title": "Descubrimiento", "desc": "Entender el reto, los usuarios y los objetivos de negocio antes de escribir una sola línea de código." },
@@ -169,7 +210,7 @@
   "clients_page": {
     "badge": "Clientes",
     "heading": "Empresas que confían en nosotros",
-    "subtitle": "Más de 50 empresas del territorio han escalado con nuestras soluciones tecnológicas.",
+    "subtitle": "Empresas del territorio, de todos los sectores, han escalado con nuestras soluciones tecnológicas.",
     "marquee_title": "Algunos de nuestros clientes",
     "cases_title": "Casos de éxito",
     "cases_subtitle": "Proyectos reales que han generado resultados reales.",
@@ -185,11 +226,11 @@
     "go_to_project": "Visitar proyecto",
     "featured_badge": "DESTACADO",
     "featured_case": {
-      "title": "Restaurant Arest Estanyol",
-      "industry": "Restauración",
-      "desc": "Diseño web completo, estrategia SEO local y presencia digital integral. Relanzamiento de marca online que disparó las reservas y la visibilidad en buscadores. El cliente pasó de una web estática y poco visible a una plataforma activa que genera negocio cada día.",
-      "metric": "+180%",
-      "metricLabel": "reservas online"
+      "title": "MultiEsports Ter",
+      "industry": "Gimnasio · Deporte",
+      "desc": "No tenían web y su ficha de Google estaba mal configurada. Construimos su presencia digital completa con SEO local y optimización de Google Business. Hoy son el gimnasio de referencia del pueblo y alrededores, con cerca de un 30% más de visibilidad.",
+      "metric": "+30%",
+      "metricLabel": "más visibilidad"
     },
     "cases": [
       {
@@ -226,11 +267,11 @@
       },
       {
         "badge": "Case_06",
-        "title": "MultiEsports Ter",
-        "industry": "Deportes y ocio",
-        "desc": "No tenían web y la ficha de Google estaba mal configurada. Ahora tienen una presencia digital completa que les aporta nuevos clientes cada día.",
-        "metric": "0→∞",
-        "metricLabel": "presencia digital"
+        "title": "Restaurant Arest Estanyol",
+        "industry": "Restauración",
+        "desc": "Diseño web completo, estrategia SEO local y presencia digital integral. El relanzamiento online disparó las reservas y la visibilidad en buscadores.",
+        "metric": "+180%",
+        "metricLabel": "reservas online"
       }
     ],
     "industries": [
@@ -242,9 +283,9 @@
       { "label": "Tecnología" }
     ],
     "stats": [
-      { "value": "+50", "label": "clientes" },
+      { "value": "CA·ES·EN", "label": "idiomas" },
       { "value": "+24", "label": "años" },
-      { "value": "98%", "label": "satisfacción" },
+      { "value": "24/7", "label": "atención IA" },
       { "value": "<2h", "label": "respuesta" }
     ],
     "testimonials": [

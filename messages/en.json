@@ -8,29 +8,35 @@
     "cta": "Request a quote"
   },
   "hero": {
-    "badge": "Technology solutions since 2001",
-    "title_base": "We build Lasting",
-    "words": ["Partnerships", "Not Just Code", "with Impact", "Together", "At Your Pace"],
-    "subtitle": "Companies trust us for delivering projects at half the time with 98% satisfaction rate.",
+    "badge": "AI infrastructure · since 2001",
+    "title_base": "We deliver solutions",
+    "words": ["with AI", "tailored", "that convert", "that scale", "that last"],
+    "subtitle": "Win more clients, serve them 24/7 and cut repetitive work with AI websites, phone agents, chatbots and automations.",
     "cta_primary": "Request quote",
     "cta_secondary": "View success stories"
   },
   "metrics": {
     "experience": { "value": "+24", "label": "Years of experience" },
-    "interventions": { "value": "+500", "label": "Interventions completed" },
-    "satisfaction": { "value": "98%", "label": "Satisfaction rate" },
+    "interventions": { "value": "100%", "label": "Custom-built" },
+    "satisfaction": { "value": "24/7", "label": "AI-powered support" },
     "response": { "value": "<2h", "label": "Response time" }
   },
   "services": {
     "heading": "Services",
-    "subtitle": "High-performance digital solutions with precision and zero latency.",
+    "intro": "Your AI-powered digital infrastructure, end to end.",
+    "core_tag": "Core",
+    "core_label": "Core services",
+    "more_label": "Also",
+    "subtitle": "We help you win more clients, retain them and cut your workload with digital infrastructure and AI: websites, phone agents, chatbots and automations. Plus on-site or remote support and tailored training.",
     "items": {
-      "web": { "title": "Web Development", "desc": "High-performance web platforms and custom applications built with modern technologies.", "code": "SV-01" },
-      "software": { "title": "Custom Software", "desc": "Unique solutions tailored to your company's specific processes and needs.", "code": "SV-02" },
-      "support": { "title": "IT Support", "desc": "Proactive technical assistance and incident resolution to maintain your operations.", "code": "SV-03" },
-      "automation": { "title": "Automation", "desc": "Automated workflows, system integrations and API connections.", "code": "SV-04" },
-      "training": { "title": "Training", "desc": "Technology training for teams with personalized workshops.", "code": "SV-05" },
-      "consulting": { "title": "Consulting", "desc": "Analysis, digital strategy and technological transformation.", "code": "SV-06" }
+      "web": { "title": "Web Development", "desc": "Websites that win clients: fast, conversion- and SEO-optimized and ready to integrate AI.", "code": "SV-01" },
+      "voice": { "title": "AI Phone Agents", "desc": "Voice assistants that answer every call 24/7, book and screen enquiries — you capture more and never miss an opportunity.", "code": "SV-02" },
+      "chatbots": { "title": "AI Chatbots", "desc": "Chatbots that reply instantly, qualify leads and retain your customers on any channel.", "code": "SV-03" },
+      "automation": { "title": "Automation", "desc": "We automate your repetitive tasks so your team cuts workload and focuses on what matters.", "code": "SV-04" },
+      "infrastructure": { "title": "AI Infrastructure", "desc": "The AI infrastructure that connects acquisition, support and operations in a single system.", "code": "SV-05" },
+      "consulting": { "title": "AI Consulting", "desc": "We pinpoint where you lose clients, time or revenue and map out the AI roadmap.", "code": "SV-06" },
+      "support": { "title": "IT Support", "desc": "On-site or remote incident resolution and proactive maintenance so you never grind to a halt.", "code": "SV-07" },
+      "training": { "title": "Training", "desc": "Tailored training so your team gets the most out of technology and AI.", "code": "SV-08" }
     }
   },
   "pillars": {
@@ -46,7 +52,8 @@
   "home": {
     "trust_strip": "Trusted by companies in Girona since 2001",
     "view_all": "View all",
-    "how_we_work": "How we work"
+    "how_we_work": "How we work",
+    "statement": "Less manual work. More clients. Your entire operation connected and powered by artificial intelligence."
   },
   "testimonials": {
     "heading": "What our partners say"
@@ -56,6 +63,25 @@
     "subtitle": "Let's discuss your project and discover how we can help you reach your goals.",
     "button": "Contact us"
   },
+  "contact_popup": {
+    "label": "Let's talk?",
+    "heading": "Before you go…",
+    "heading_highlight": "we help you grow",
+    "body": "Tell us what you need and we'll reply in under 2 hours. No strings attached.",
+    "placeholder": "you@email.com",
+    "button": "Have us contact you",
+    "sending": "Sending...",
+    "success_title": "Got it!",
+    "success_sub": "We'll write within 2 hours.",
+    "error": "Could not send. Email us at hola@9-bit.com.",
+    "dismiss": "Not now"
+  },
+  "whatsapp": {
+    "title": "Chat on WhatsApp?",
+    "subtitle": "We usually reply within minutes.",
+    "cta": "Start chat",
+    "aria": "Open WhatsApp chat"
+  },
   "contact_page": {
     "badge": "Contact",
     "heading": "Let's talk",
@@ -64,12 +90,27 @@
     "submit": "Send message",
     "success_title": "Message sent!",
     "success_sub": "Thank you. We'll reply in under 2 hours.",
-    "form_title": "Send us a message",
-    "form_subtitle": "We reply within 2 hours.",
-    "label_name": "Name *",
+    "form_title": "Tell us about your business",
+    "form_subtitle": "The more specific you are, the more useful our proposal will be.",
+    "label_name": "Your name *",
     "label_email": "Email *",
     "label_phone": "Phone (optional)",
     "label_message": "Message *",
+    "label_business": "Business name *",
+    "placeholder_business": "e.g. Onyar Dental Clinic",
+    "label_site": "Website (if any)",
+    "placeholder_site": "https://",
+    "label_sector": "Sector *",
+    "placeholder_sector": "Hospitality, health, retail...",
+    "label_revenue": "Approx. monthly revenue",
+    "placeholder_revenue": "e.g. €8,000",
+    "label_timeline": "Desired timeline",
+    "placeholder_timeline": "e.g. 3 months",
+    "label_objective": "Main goal *",
+    "placeholder_objective": "e.g. Get 30 new clients a month...",
+    "error_business_required": "Business name required",
+    "error_sector_required": "Sector required",
+    "privacy_note": "We'll only use your data to reply. No spam.",
     "placeholder_name": "Your name",
     "placeholder_email": "you@email.com",
     "placeholder_phone": "+34 6XX XXX XXX",
@@ -114,7 +155,7 @@
     "cta_button": "Contact us",
     "metric_services": "services",
     "metric_years": "years",
-    "metric_projects": "projects",
+    "metric_projects": "custom-built",
     "featured_label": "Featured service",
     "all_services_label": "All services",
     "methodology_label": "Methodology",
@@ -140,8 +181,8 @@
     "facts_title": "Key facts",
     "fact_year": "Founded",
     "fact_location": "Location",
-    "fact_projects": "Projects",
-    "fact_clients": "Active clients",
+    "fact_projects": "Custom solutions",
+    "fact_clients": "Always-on",
     "fact_response": "Response time",
     "pillars_title": "Our pillars",
     "cta_heading": "Ready to collaborate?",
@@ -153,11 +194,11 @@
     "methodology_heading": "How we work",
     "timeline": {
       "t2001": "Founded in Girona, first corporate websites",
-      "t2005": "First stable team of 4, 50+ clients",
+      "t2005": "First stable team of 4 and our first loyal clients",
       "t2010": "Expansion into custom software and ERPs",
-      "t2016": "Surpassed 300 websites launched",
+      "t2016": "Dozens of web projects and custom solutions",
       "t2020": "Accelerated digital transformation, +40% demand",
-      "t2024": "Over 500 projects, team of 8 specialists"
+      "t2024": "Established as an AI technology partner with a team of specialists"
     },
     "process": {
       "discovery": { "title": "Discovery", "desc": "Understand the challenge, users and business goals before writing a single line of code." },
@@ -169,7 +210,7 @@
   "clients_page": {
     "badge": "Clients",
     "heading": "Companies that trust us",
-    "subtitle": "More than 50 local companies have scaled with our technology solutions.",
+    "subtitle": "Local companies across every sector have scaled with our technology solutions.",
     "marquee_title": "Some of our clients",
     "cases_title": "Success stories",
     "cases_subtitle": "Real projects that delivered real results.",
@@ -185,11 +226,11 @@
     "go_to_project": "Visit project",
     "featured_badge": "FEATURED",
     "featured_case": {
-      "title": "Restaurant Arest Estanyol",
-      "industry": "Hospitality",
-      "desc": "Complete web design, local SEO strategy and integral digital presence. Online brand relaunch that drove reservations and search engine visibility. The client went from a static, low-visibility website to an active platform generating business daily.",
-      "metric": "+180%",
-      "metricLabel": "online reservations"
+      "title": "MultiEsports Ter",
+      "industry": "Gym · Sports",
+      "desc": "They had no website and their Google listing was misconfigured. We built their full digital presence with local SEO and Google Business optimization. Today they're the reference gym in town and the surrounding area, with around 30% more visibility.",
+      "metric": "+30%",
+      "metricLabel": "more visibility"
     },
     "cases": [
       {
@@ -226,11 +267,11 @@
       },
       {
         "badge": "Case_06",
-        "title": "MultiEsports Ter",
-        "industry": "Sports & leisure",
-        "desc": "No website and a badly configured Google listing. Now they have a complete digital presence bringing in new clients every day.",
-        "metric": "0→∞",
-        "metricLabel": "digital presence"
+        "title": "Restaurant Arest Estanyol",
+        "industry": "Hospitality",
+        "desc": "Complete web design, local SEO strategy and integral digital presence. The online relaunch drove reservations and search engine visibility.",
+        "metric": "+180%",
+        "metricLabel": "online reservations"
       }
     ],
     "industries": [
@@ -242,9 +283,9 @@
       { "label": "Technology" }
     ],
     "stats": [
-      { "value": "+50", "label": "clients" },
+      { "value": "CA·ES·EN", "label": "languages" },
       { "value": "+24", "label": "years" },
-      { "value": "98%", "label": "satisfaction" },
+      { "value": "24/7", "label": "AI support" },
       { "value": "<2h", "label": "response" }
     ],
     "testimonials": [
