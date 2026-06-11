@@ -56,7 +56,24 @@
     "statement": "Less manual work. More clients. Your entire operation connected and powered by artificial intelligence."
   },
   "testimonials": {
-    "heading": "What our partners say"
+    "heading": "What our partners say",
+    "items": [
+      {
+        "name": "Management",
+        "company": "Restaurant Arest Estanyol",
+        "quote": "They built our website and helped us with SEO. We've noticed more visits and, most importantly, more reservations. The entire process was very easy."
+      },
+      {
+        "name": "Elisabeth Oller",
+        "company": "CEO Illes Medes Experience",
+        "quote": "We work with them on our website and reservation system. Now we manage reservations better and have gained peace of mind in our daily operations."
+      },
+      {
+        "name": "Ruben Oliver",
+        "company": "CEO Mas Soles",
+        "quote": "With the new website and positioning, we've improved our visibility. More people find us every day, and that translates into more reservations."
+      }
+    ]
   },
   "cta": {
     "heading": "Ready to take the next step?",

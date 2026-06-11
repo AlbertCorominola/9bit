@@ -56,7 +56,24 @@
     "statement": "Menos trabajo manual. Más clientes. Toda tu operativa conectada y potenciada con inteligencia artificial."
   },
   "testimonials": {
-    "heading": "Lo que dicen nuestros colaboradores"
+    "heading": "Lo que dicen nuestros colaboradores",
+    "items": [
+      {
+        "name": "Gerencia",
+        "company": "Restaurant Arest Estanyol",
+        "quote": "Nos hicieron la web y nos han ayudado con el SEO. Hemos notado más visitas y, sobre todo, más reservas. Todo el proceso fue muy fácil."
+      },
+      {
+        "name": "Elisabeth Oller",
+        "company": "CEO Illes Medes Experience",
+        "quote": "Trabajamos con ellos para la web y el sistema de reservas. Ahora gestionamos mejor las reservas y hemos ganado tranquilidad en el día a día."
+      },
+      {
+        "name": "Ruben Oliver",
+        "company": "CEO Mas Soles",
+        "quote": "Con la nueva web y el posicionamiento hemos mejorado la visibilidad. Cada vez nos encuentra más gente y eso se nota en las reservas."
+      }
+    ]
   },
   "cta": {
     "heading": "¿Preparado para dar el siguiente paso?",

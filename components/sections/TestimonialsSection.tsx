@@ -5,29 +5,9 @@ import TestimonialCard from '@/components/ui/TestimonialCard';
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 import Parallax from '@/components/ui/Parallax';
 
-const TESTIMONIALS = [
-  {
-    name: 'Gerència',
-    company: 'Restaurant Arest Estanyol',
-    quote:
-      "Ens van fer la web i ens han ajudat amb el SEO. Hem notat més visites i, sobretot, més reserves. Tot el procés va ser molt fàcil.",
-  },
-  {
-    name: 'Elisabeth Oller',
-    company: 'CEO Illes Medes Experience',
-    quote:
-      "Treballem amb ells per la web i el sistema de reserves. Ara gestionem millor les reserves i hem guanyat tranquil·litat en el dia a dia.",
-  },
-  {
-    name: 'Ruben Oliver',
-    company: 'CEO Mas Soles',
-    quote:
-      "Amb la nova web i el posicionament hem millorat la visibilitat. Cada cop ens troba més gent i això es nota en les reserves.",
-  },
-];
-
 export default function TestimonialsSection() {
   const t = useTranslations('testimonials');
+  const TESTIMONIALS = (t.raw('items') as Array<{ name: string; company: string; quote: string }>) ?? [];
   return (
     <section className="py-margin px-6 lg:px-10 max-w-container-max mx-auto">
       <Parallax speed={0.16} className="mb-12 max-w-2xl">
