@@ -31,7 +31,7 @@ export default function HeroSection() {
   const bgY = useTransform(scrollYProgress, [0, 1], [0, 80]);
 
   return (
-    <section ref={ref} className="relative h-screen -mt-20 flex items-center justify-center">
+    <section ref={ref} className="relative h-screen -mt-20 flex items-start sm:items-center justify-center">
       <motion.div
         style={{ y: bgY }}
         className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent_0%,black_14%,black_48%,transparent_78%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_14%,black_48%,transparent_78%)]"
@@ -39,7 +39,7 @@ export default function HeroSection() {
         <GridGlowBackground backgroundColor="transparent" gridSize={48} />
       </motion.div>
 
-      <motion.div style={{ y: contentY, opacity: contentOpacity }} className="relative z-10 w-full">
+      <motion.div style={{ y: contentY, opacity: contentOpacity }} className="relative z-10 w-full pt-28 sm:pt-0">
         <AnimatedHero
           badge={t('badge')}
           titleBase={t('title_base')}

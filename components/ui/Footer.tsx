@@ -10,8 +10,8 @@ export default function Footer() {
   const links = [
     { href: `/${locale}`, label: t('nav.home') },
     { href: `/${locale}/serveis`, label: t('nav.services') },
-    { href: `/${locale}#about`, label: t('nav.about') },
-    { href: `/${locale}#clients`, label: t('nav.clients') },
+    { href: `/${locale}/qui-som`, label: t('nav.about') },
+    { href: `/${locale}/clients`, label: t('nav.clients') },
     { href: `/${locale}/contacte`, label: t('nav.contact') },
   ];
 

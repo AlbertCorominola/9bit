@@ -95,7 +95,7 @@ export default function AnimatedHero({ badge, titleBase, words, subtitle, ctaPri
         <Link href={`/${locale}/contacte`}>
           <Button variant="primary">{ctaPrimary}</Button>
         </Link>
-        <Link href={`/${locale}/serveis`}>
+        <Link href={`/${locale}/clients`}>
           <Button variant="secondary">{ctaSecondary}</Button>
         </Link>
       </motion.div>
