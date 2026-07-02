@@ -1,22 +1,23 @@
-'use client';
+import type { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { buildPageMetadata } from '@/lib/seo';
+import LegalContent from './LegalContent';
 
-import { useTranslations } from 'next-intl';
-import LegalLayout from '@/components/ui/LegalLayout';
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: 'meta.legal' });
+  return buildPageMetadata({
+    locale: params.locale,
+    path: '/legal',
+    title: t('title'),
+    description: t('description'),
+  });
+}
 
-export default function LegalPage() {
-  const t = useTranslations('legal_pages.legal');
-  return (
-    <LegalLayout
-      title={t('title')}
-      intro={t('intro')}
-      lastUpdated="2026-05-07"
-      sections={[
-        { title: t('section_owner_title'), body: t('section_owner_body') },
-        { title: t('section_purpose_title'), body: t('section_purpose_body') },
-        { title: t('section_ip_title'), body: t('section_ip_body') },
-        { title: t('section_liability_title'), body: t('section_liability_body') },
-        { title: t('section_law_title'), body: t('section_law_body') },
-      ]}
-    />
-  );
+export default function Page({ params }: { params: { locale: string } }) {
+  setRequestLocale(params.locale);
+  return <LegalContent />;
 }

@@ -386,5 +386,15 @@
       "section_law_title": "Ley aplicable",
       "section_law_body": "Se aplica la legislación española. Las disputas se resolverán en los juzgados de Girona, Cataluña."
     }
+  },
+  "meta": {
+    "home": { "title": "9bit · Infraestructura con IA para empresas", "description": "Webs, agentes telefónicos IA, chatbots y automatizaciones. Capta más clientes, retenlos y reduce tu carga de trabajo. Girona, desde 2001." },
+    "serveis": { "title": "Servicios: webs, agentes IA y automatización", "description": "Desarrollo web, agentes telefónicos con IA, chatbots, automatizaciones y formación para empresas. Descubre cómo trabajamos en 9bit, agencia digital de Girona desde 2001." },
+    "contacte": { "title": "Contacto", "description": "Cuéntanos tu proyecto y te responderemos en menos de 2 horas. Llámanos, escríbenos o ven a vernos: estamos en Girona, a tu lado desde 2001." },
+    "qui_som": { "title": "Quiénes somos", "description": "Conoce al equipo detrás de 9bit. Desde 2001 ayudamos a empresas a crecer con webs, inteligencia artificial y automatización, con trato cercano desde Girona." },
+    "clients": { "title": "Clientes y casos de éxito", "description": "Empresas de todos los sectores confían en 9bit para digitalizarse. Descubre nuestros clientes y casos de éxito en web, IA y automatización." },
+    "legal": { "title": "Aviso legal", "description": "Aviso legal de 9bit: datos identificativos, condiciones de uso y responsabilidad del sitio web 9-bit.com." },
+    "privacitat": { "title": "Política de privacidad", "description": "Descubre cómo 9bit recoge, utiliza y protege tus datos personales cuando navegas por 9-bit.com o contactas con nosotros." },
+    "cookies": { "title": "Política de cookies", "description": "Información sobre las cookies que utiliza la web de 9bit, para qué sirven y cómo puedes gestionarlas o desactivarlas." }
   }
 }

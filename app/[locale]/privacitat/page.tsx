@@ -1,22 +1,23 @@
-'use client';
+import type { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { buildPageMetadata } from '@/lib/seo';
+import PrivacitatContent from './PrivacitatContent';
 
-import { useTranslations } from 'next-intl';
-import LegalLayout from '@/components/ui/LegalLayout';
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: 'meta.privacitat' });
+  return buildPageMetadata({
+    locale: params.locale,
+    path: '/privacitat',
+    title: t('title'),
+    description: t('description'),
+  });
+}
 
-export default function PrivacyPage() {
-  const t = useTranslations('legal_pages.privacy');
-  return (
-    <LegalLayout
-      title={t('title')}
-      intro={t('intro')}
-      lastUpdated="2026-05-07"
-      sections={[
-        { title: t('section_data_title'), body: t('section_data_body') },
-        { title: t('section_use_title'), body: t('section_use_body') },
-        { title: t('section_storage_title'), body: t('section_storage_body') },
-        { title: t('section_rights_title'), body: t('section_rights_body') },
-        { title: t('section_contact_title'), body: t('section_contact_body') },
-      ]}
-    />
-  );
+export default function Page({ params }: { params: { locale: string } }) {
+  setRequestLocale(params.locale);
+  return <PrivacitatContent />;
 }

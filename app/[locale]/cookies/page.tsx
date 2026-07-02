@@ -1,30 +1,23 @@
-'use client';
+import type { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { buildPageMetadata } from '@/lib/seo';
+import CookiesContent from './CookiesContent';
 
-import { useTranslations } from 'next-intl';
-import LegalLayout from '@/components/ui/LegalLayout';
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: 'meta.cookies' });
+  return buildPageMetadata({
+    locale: params.locale,
+    path: '/cookies',
+    title: t('title'),
+    description: t('description'),
+  });
+}
 
-export default function CookiesPage() {
-  const t = useTranslations('legal_pages.cookies');
-  return (
-    <LegalLayout
-      title={t('title')}
-      intro={t('intro')}
-      lastUpdated="2026-05-07"
-      sections={[
-        { title: t('section_what_title'), body: t('section_what_body') },
-        { title: t('section_use_title'), body: t('section_use_body') },
-        {
-          title: t('section_types_title'),
-          body: (
-            <ul className="space-y-2 list-disc list-inside">
-              <li>{t('section_essential')}</li>
-              <li>{t('section_analytics')}</li>
-            </ul>
-          ),
-        },
-        { title: t('section_manage_title'), body: t('section_manage_body') },
-        { title: t('section_contact_title'), body: t('section_contact_body') },
-      ]}
-    />
-  );
+export default function Page({ params }: { params: { locale: string } }) {
+  setRequestLocale(params.locale);
+  return <CookiesContent />;
 }

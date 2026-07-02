@@ -95,7 +95,7 @@ export async function generateMetadata({
         ca: 'https://9-bit.com/ca',
         es: 'https://9-bit.com/es',
         en: 'https://9-bit.com/en',
-        'x-default': 'https://9-bit.com/ca',
+        'x-default': 'https://9-bit.com/',
       },
     },
   };

@@ -386,5 +386,15 @@
       "section_law_title": "Applicable law",
       "section_law_body": "Spanish law applies. Disputes will be resolved by the courts of Girona, Catalonia."
     }
+  },
+  "meta": {
+    "home": { "title": "9bit · AI infrastructure for businesses", "description": "Websites, AI phone agents, chatbots and automations. Win more clients, retain them and cut your workload. Girona, since 2001." },
+    "serveis": { "title": "Services: websites, AI agents and automation", "description": "Web development, AI phone agents, chatbots, automations and training for businesses. See how we work at 9bit, a digital agency in Girona since 2001." },
+    "contacte": { "title": "Contact", "description": "Tell us about your project and we'll get back to you within 2 hours. Call us, write to us or drop by: we're in Girona, by your side since 2001." },
+    "qui_som": { "title": "About us", "description": "Meet the team behind 9bit. Since 2001 we've helped businesses grow with websites, artificial intelligence and automation, working closely from Girona." },
+    "clients": { "title": "Clients and success stories", "description": "Businesses across every sector trust 9bit for their digital projects. Discover our clients and success stories in web, AI and automation." },
+    "legal": { "title": "Legal notice", "description": "9bit legal notice: company details, terms of use and liability for the 9-bit.com website." },
+    "privacitat": { "title": "Privacy policy", "description": "Learn how 9bit collects, uses and protects your personal data when you browse 9-bit.com or get in touch with us." },
+    "cookies": { "title": "Cookie policy", "description": "Information about the cookies used on the 9bit website, what they are for and how you can manage or disable them." }
   }
 }

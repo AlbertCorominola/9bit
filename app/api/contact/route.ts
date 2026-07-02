@@ -21,20 +21,13 @@ function checkRateLimit(ip: string): boolean {
   return true;
 }
 
+// Collapse CR/LF to spaces so a value forwarded into an email header
+// (name / _replyto) cannot inject extra headers. Applied to single-line fields.
 function stripCRLF(s: string): string {
-  return s.replace(/[\r\n]+/g, ' ').slice(0, 200);
+  return s.replace(/[\r\n]+/g, ' ');
 }
 
 const isEmail = (s: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
-
-function escapeHtml(s: string): string {
-  return s
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
 
 export async function POST(req: NextRequest) {
   try {
@@ -50,22 +43,31 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const body = (await req.json()) as Partial<{
+    if (!req.headers.get('content-type')?.includes('application/json')) {
+      return NextResponse.json({ error: 'Invalid content type' }, { status: 415 });
+    }
+
+    let body: Partial<{
       name: string;
       email: string;
       phone: string;
       message: string;
       website: string; // honeypot
     }>;
+    try {
+      body = await req.json();
+    } catch {
+      return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+    }
 
     // honeypot — if filled, silently 200 (don't reveal it's spam)
     if (body.website && body.website.trim() !== '') {
       return NextResponse.json({ ok: true });
     }
 
-    const name = (body.name || '').trim();
-    const email = (body.email || '').trim();
-    const phone = (body.phone || '').trim();
+    const name = stripCRLF((body.name || '').trim());
+    const email = stripCRLF((body.email || '').trim());
+    const phone = stripCRLF((body.phone || '').trim());
     const message = (body.message || '').trim();
 
     if (!name || name.length > 200) {
