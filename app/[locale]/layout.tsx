@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { headers } from 'next/headers';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { locales, type Locale } from '@/i18n';
 import { Providers } from '@/components/providers';
@@ -101,9 +102,9 @@ export async function generateMetadata({
   };
 }
 
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
+// Per-request CSP nonces (see middleware.ts) require dynamic rendering:
+// prerendered HTML cannot carry a nonce that changes on every request.
+export const dynamic = 'force-dynamic';
 
 export default async function LocaleLayout({
   children,
@@ -115,11 +116,14 @@ export default async function LocaleLayout({
   if (!locales.includes(params.locale as Locale)) notFound();
   setRequestLocale(params.locale);
   const messages = await getMessages();
+  // Nonce generated per-request in middleware.ts; next-themes needs it for
+  // the inline theme script it injects before hydration.
+  const nonce = headers().get('x-nonce') ?? undefined;
 
   return (
     <html lang={params.locale} suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="ambient-bg flex flex-col min-h-screen overflow-x-hidden">
-        <Providers>
+        <Providers nonce={nonce}>
           <NextIntlClientProvider messages={messages}>
             <Navbar />
             <main className="flex-grow pt-20">{children}</main>
