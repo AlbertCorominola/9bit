@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { X } from 'lucide-react';
 
 const STORAGE_KEY = '9bit-cookie-consent';
+export const CONSENT_EVENT = '9bit:cookie-consent';
 
 export default function CookieBanner() {
   const t = useTranslations('cookie_banner');
@@ -21,8 +22,16 @@ export default function CookieBanner() {
     }
   }, []);
 
-  const accept = () => { localStorage.setItem(STORAGE_KEY, 'accepted'); setVisible(false); };
-  const reject = () => { localStorage.setItem(STORAGE_KEY, 'rejected'); setVisible(false); };
+  // Otras capas fijas (el widget de WhatsApp) esperan a que se responda esto
+  // para no amontonarse en la misma esquina.
+  const answer = (value: 'accepted' | 'rejected') => {
+    localStorage.setItem(STORAGE_KEY, value);
+    setVisible(false);
+    window.dispatchEvent(new Event(CONSENT_EVENT));
+  };
+
+  const accept = () => answer('accepted');
+  const reject = () => answer('rejected');
 
   return (
     <AnimatePresence>

@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { X, ArrowRight, Mail, CheckCircle2 } from 'lucide-react';
 
 const STORAGE_KEY = '9bit_contact_popup_seen';
+const COOKIE_CONSENT_KEY = '9bit-cookie-consent';
 const DELAY_MS = 25_000;
 
 export default function ContactPopup() {
@@ -30,16 +31,43 @@ export default function ContactPopup() {
       }
     };
 
-    const timer = setTimeout(trigger, DELAY_MS);
+    // Este pop-up no debe apilarse sobre el banner de cookies: hasta que no se
+    // responda al banner no empieza a contar, y el exit-intent tampoco dispara.
+    const consentAnswered = () => {
+      try {
+        return !!localStorage.getItem(COOKIE_CONSENT_KEY);
+      } catch {
+        return true;
+      }
+    };
+
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    let poll: ReturnType<typeof setInterval> | undefined;
+
+    const startTimer = () => {
+      timer = setTimeout(trigger, DELAY_MS);
+    };
+
+    if (consentAnswered()) {
+      startTimer();
+    } else {
+      poll = setInterval(() => {
+        if (!consentAnswered()) return;
+        clearInterval(poll);
+        poll = undefined;
+        startTimer();
+      }, 1000);
+    }
 
     // exit-intent: mouse leaves through the top of the viewport
     const onMouseOut = (e: MouseEvent) => {
-      if (e.clientY <= 0) trigger();
+      if (e.clientY <= 0 && consentAnswered()) trigger();
     };
     document.addEventListener('mouseout', onMouseOut);
 
     return () => {
-      clearTimeout(timer);
+      if (timer) clearTimeout(timer);
+      if (poll) clearInterval(poll);
       document.removeEventListener('mouseout', onMouseOut);
     };
   }, []);

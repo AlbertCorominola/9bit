@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
+import { CONSENT_EVENT } from '@/components/ui/CookieBanner';
+
+const COOKIE_CONSENT_KEY = '9bit-cookie-consent';
 
 export default function WhatsAppWidget() {
   const t = useTranslations('whatsapp');
@@ -11,7 +14,24 @@ export default function WhatsAppWidget() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    setIsVisible(true);
+    // El banner de cookies ocupa esta misma esquina y lo taparía por completo,
+    // así que este botón no aparece hasta que se haya respondido al banner.
+    const answered = () => {
+      try {
+        return !!localStorage.getItem(COOKIE_CONSENT_KEY);
+      } catch {
+        return true;
+      }
+    };
+
+    if (answered()) {
+      setIsVisible(true);
+      return;
+    }
+
+    const onConsent = () => setIsVisible(true);
+    window.addEventListener(CONSENT_EVENT, onConsent);
+    return () => window.removeEventListener(CONSENT_EVENT, onConsent);
   }, []);
 
   const message = "Hola! M'agradaria saber més sobre els vostres serveis.";
