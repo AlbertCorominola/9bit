@@ -2,6 +2,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Instagram, Linkedin, Twitter } from 'lucide-react';
+import Reveal from '@/components/ui/Reveal';
 
 export default function Footer() {
   const t = useTranslations();
@@ -18,7 +19,7 @@ export default function Footer() {
   return (
     <footer className="w-full mt-auto bg-[#0a0a0c] dark:bg-[#0a0a0c] border-t border-white/5 text-white/60">
       <div className="max-w-container-max mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-12 py-12">
+        <Reveal blur={false} className="grid grid-cols-1 md:grid-cols-3 items-center gap-12 py-12">
           <div className="flex flex-wrap justify-center md:justify-start gap-x-4 lg:gap-x-5 gap-y-3">
             {links.map((l) => (
               <Link
@@ -53,7 +54,7 @@ export default function Footer() {
               <Linkedin size={20} />
             </a>
           </div>
-        </div>
+        </Reveal>
 
         <div className="w-full h-px bg-primary-container/10" />
 

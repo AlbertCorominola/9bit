@@ -1,0 +1,128 @@
+'use client';
+
+import Image from 'next/image';
+import { cn } from '@/lib/utils';
+
+export type MarqueeLogo = {
+  src: string;
+  alt: string;
+  gradient: { from: string; via: string; to: string };
+  /**
+   * Cómo pintar el logo sobre la tarjeta oscura, según cómo sea el archivo:
+   * - `silhouette` (por defecto): PNG/WebP con transparencia → silueta blanca uniforme.
+   * - `as-is`: ya viene claro sobre fondo oscuro → se deja tal cual, el fondo se funde.
+   * - `plate`: logo a color sobre fondo blanco opaco → placa clara para que no recorte.
+   */
+  treatment?: 'silhouette' | 'as-is' | 'plate';
+};
+
+export interface LogoMarqueeProps {
+  logos: MarqueeLogo[];
+  /** Duración de la animación. normal = 40s, slow = 80s, fast = 20s */
+  speed?: 'slow' | 'normal' | 'fast';
+  /** Invierte la dirección del scroll */
+  reverse?: boolean;
+  /** Titular opcional encima del marquee */
+  title?: string;
+  /** Texto descriptivo opcional, a la derecha del titular en desktop */
+  description?: string;
+  className?: string;
+}
+
+const DURATIONS: Record<NonNullable<LogoMarqueeProps['speed']>, string> = {
+  slow: '80s',
+  normal: '40s',
+  fast: '20s',
+};
+
+const EDGE_MASK = 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)';
+
+export default function LogoMarquee({
+  logos,
+  speed = 'normal',
+  reverse = false,
+  title,
+  description,
+  className,
+}: LogoMarqueeProps): JSX.Element {
+  const loop = [...logos, ...logos];
+  const hasHeader = Boolean(title || description);
+
+  return (
+    <section
+      aria-label={title ?? undefined}
+      className={cn('relative w-full py-12', className)}
+    >
+      {hasHeader && (
+        <div className="mx-auto mb-10 flex max-w-container-max flex-col gap-4 px-gutter md:flex-row md:items-end md:justify-between">
+          {title && (
+            <h2 className="text-headline-lg font-black tracking-tighter text-on-surface">
+              {title}
+            </h2>
+          )}
+          {description && (
+            <p className="max-w-md text-body-md text-on-surface-variant md:text-right">
+              {description}
+            </p>
+          )}
+        </div>
+      )}
+
+      <div
+        className="group relative overflow-hidden"
+        style={{ maskImage: EDGE_MASK, WebkitMaskImage: EDGE_MASK }}
+      >
+        <div
+          className="flex w-max gap-4 animate-marquee will-change-transform group-hover:[animation-play-state:paused]"
+          style={{
+            animationDuration: DURATIONS[speed],
+            animationDirection: reverse ? 'reverse' : 'normal',
+          }}
+        >
+          {loop.map((logo, i) => (
+            <div
+              key={`${i}-${logo.src}`}
+              aria-hidden={i >= logos.length}
+              // El gradiente de marca viaja como custom properties para consumirse en clases arbitrarias
+              style={
+                {
+                  '--from': logo.gradient.from,
+                  '--via': logo.gradient.via,
+                  '--to': logo.gradient.to,
+                } as React.CSSProperties
+              }
+              className="group/card relative flex h-24 w-44 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.03]"
+            >
+              <div
+                aria-hidden
+                className="absolute inset-0 scale-150 bg-gradient-to-br from-[var(--from)] via-[var(--via)] to-[var(--to)] opacity-0 transition-all duration-700 ease-out group-hover/card:scale-100 group-hover/card:opacity-100"
+              />
+              {logo.treatment === 'plate' ? (
+                <span className="relative z-10 flex items-center justify-center rounded-lg bg-white/90 px-3 py-2">
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={150}
+                    height={48}
+                    className="h-9 w-auto max-w-full object-contain grayscale opacity-80 transition-all duration-500 group-hover/card:grayscale-0 group-hover/card:opacity-100"
+                  />
+                </span>
+              ) : (
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={150}
+                  height={48}
+                  className={cn(
+                    'relative z-10 h-11 w-auto max-w-[80%] object-contain opacity-65 transition-opacity duration-500 group-hover/card:opacity-100',
+                    logo.treatment !== 'as-is' && 'brightness-0 invert'
+                  )}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

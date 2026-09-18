@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import Reveal from '@/components/ui/Reveal';
 
 interface LegalLayoutProps {
   title: string;
@@ -35,15 +36,18 @@ export default function LegalLayout({ title, intro, lastUpdated, sections }: Leg
           <p className="text-on-surface-variant/60 text-xs font-mono uppercase tracking-widest mb-12">
             {t('last_updated')}: {lastUpdated}
           </p>
-          <div className="space-y-10">
-            {sections.map((s, i) => (
-              <section key={i}>
+        </motion.div>
+
+        <div className="space-y-10">
+          {sections.map((s, i) => (
+            <Reveal key={i} blur={false}>
+              <section>
                 <h2 className="text-xl md:text-2xl font-bold text-on-surface mb-3">{s.title}</h2>
                 <div className="text-on-surface-variant leading-relaxed">{s.body}</div>
               </section>
-            ))}
-          </div>
-        </motion.div>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </div>
   );

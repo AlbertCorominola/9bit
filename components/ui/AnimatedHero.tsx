@@ -41,33 +41,35 @@ export default function AnimatedHero({ badge, titleBase, words, subtitle, ctaPri
       </motion.div>
 
       {/* 9bit brand */}
-      <motion.div
+      <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="font-sans font-black tracking-tighter leading-none mb-2 text-7xl sm:text-8xl md:text-9xl"
+        className="font-sans font-black tracking-tighter leading-none mb-3 text-5xl sm:text-6xl md:text-7xl"
       >
         <span className="text-on-surface">9</span>
         <span className="text-primary-container">bit</span>
-      </motion.div>
+      </motion.p>
 
-      {/* Construïm solucions + rotating word */}
+      {/* Titular principal + palabra rotatoria */}
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="font-sans text-xl sm:text-2xl md:text-3xl text-on-surface/80 mb-6 tracking-tight font-medium leading-snug text-center"
+        className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-on-surface mb-6 tracking-tighter font-black leading-[1.08] text-center text-balance"
       >
         <span className="block">{titleBase}</span>
         <span className="relative block min-h-[1.2em] overflow-hidden">
-          <AnimatePresence mode="wait">
+          {/* Sin mode="wait": entrante y saliente se solapan para que nunca
+              quede la línea vacía, que con este tamaño de titular canta mucho. */}
+          <AnimatePresence initial={false}>
             <motion.span
               key={words[index]}
               initial={{ y: 32, opacity: 0, filter: 'blur(6px)' }}
               animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
               exit={{ y: -32, opacity: 0, filter: 'blur(6px)' }}
-              transition={{ type: 'spring', stiffness: 130, damping: 16 }}
-              className="inline-block"
+              transition={{ type: 'spring', stiffness: 130, damping: 18 }}
+              className="absolute inset-x-0 block"
             >
               <span className="shiny-text">{words[index]}</span>
             </motion.span>
@@ -80,7 +82,7 @@ export default function AnimatedHero({ badge, titleBase, words, subtitle, ctaPri
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="text-body-lg text-on-surface-variant max-w-2xl mb-10"
+        className="text-base sm:text-body-lg text-on-surface-variant max-w-2xl mb-9 text-balance"
       >
         {subtitle}
       </motion.p>
@@ -90,13 +92,17 @@ export default function AnimatedHero({ badge, titleBase, words, subtitle, ctaPri
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="flex flex-col sm:flex-row gap-4"
+        className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto"
       >
-        <Link href={`/${locale}/contacte`}>
-          <Button variant="primary">{ctaPrimary}</Button>
+        <Link href={`/${locale}/contacte`} className="w-full sm:w-auto">
+          <Button variant="primary" className="w-full sm:w-auto">
+            {ctaPrimary}
+          </Button>
         </Link>
-        <Link href={`/${locale}/clients`}>
-          <Button variant="secondary">{ctaSecondary}</Button>
+        <Link href={`/${locale}/clients`} className="w-full sm:w-auto">
+          <Button variant="secondary" className="w-full sm:w-auto">
+            {ctaSecondary}
+          </Button>
         </Link>
       </motion.div>
 
@@ -106,12 +112,12 @@ export default function AnimatedHero({ badge, titleBase, words, subtitle, ctaPri
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.55 }}
-          className="mt-12 flex flex-wrap items-center justify-center gap-2.5"
+          className="mt-10 grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:flex-wrap sm:items-center sm:justify-center sm:gap-2.5"
         >
           {offerings.map(({ icon: Icon, label }) => (
             <li
               key={label}
-              className="inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.03] px-4 py-2 backdrop-blur-sm transition-colors hover:border-primary-container/40 hover:bg-white/[0.06]"
+              className="flex items-center justify-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.03] px-3 py-2 backdrop-blur-sm transition-colors hover:border-primary-container/40 hover:bg-white/[0.06] sm:px-4"
             >
               <Icon size={15} className="text-primary-container" />
               <span className="text-xs sm:text-sm font-medium text-on-surface/90">{label}</span>

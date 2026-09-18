@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform, type MotionStyle } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform, type MotionStyle } from 'framer-motion';
 import { useRef, type ReactNode } from 'react';
 
 interface ParallaxProps {
@@ -20,6 +20,7 @@ interface ParallaxProps {
  */
 export default function Parallax({ children, speed = 0.3, fade = false, className, style }: ParallaxProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start'],
@@ -28,6 +29,14 @@ export default function Parallax({ children, speed = 0.3, fade = false, classNam
   const distance = speed * 120;
   const y = useTransform(scrollYProgress, [0, 1], [distance, -distance]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.85, 1], [0.4, 1, 1, 0.4]);
+
+  if (reduced) {
+    return (
+      <div ref={ref} className={className}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div ref={ref} style={{ y, opacity: fade ? opacity : undefined, ...style }} className={className}>

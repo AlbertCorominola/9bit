@@ -8,6 +8,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { locales, type Locale } from '@/i18n';
 import { Providers } from '@/components/providers';
 import Navbar from '@/components/ui/Navbar';
+import ScrollProgress from '@/components/ui/ScrollProgress';
 import Footer from '@/components/ui/Footer';
 import CookieBanner from '@/components/ui/CookieBanner';
 import PortraitLock from '@/components/ui/PortraitLock';
@@ -122,10 +123,11 @@ export default async function LocaleLayout({
 
   return (
     <html lang={params.locale} suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="ambient-bg flex flex-col min-h-screen overflow-x-hidden">
+      <body className="ambient-bg flex flex-col min-h-screen overflow-x-clip">
         <Providers nonce={nonce}>
           <NextIntlClientProvider messages={messages}>
             <Navbar />
+            <ScrollProgress />
             <main className="flex-grow pt-20">{children}</main>
             <Footer />
             <CookieBanner />

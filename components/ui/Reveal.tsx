@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, type Variants } from 'framer-motion';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import type { ReactNode } from 'react';
 
 type Direction = 'up' | 'down' | 'left' | 'right' | 'none';
@@ -43,6 +43,13 @@ export default function Reveal({
   once = true,
   className,
 }: RevealProps) {
+  // framer-motion no se ve afectado por el override de prefers-reduced-motion de globals.css
+  const reduced = useReducedMotion();
+
+  if (reduced) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       className={className}
@@ -77,6 +84,12 @@ export function RevealGroup({
   className?: string;
   once?: boolean;
 }) {
+  const reduced = useReducedMotion();
+
+  if (reduced) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       className={className}
@@ -91,6 +104,12 @@ export function RevealGroup({
 }
 
 export function RevealItem({ children, className }: { children: ReactNode; className?: string }) {
+  const reduced = useReducedMotion();
+
+  if (reduced) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div className={className} variants={itemVariants}>
       {children}

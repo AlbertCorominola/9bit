@@ -162,6 +162,11 @@ export default function ClientsPage() {
     galleryLabels: i === 6 ? (t.raw('cases.6.gallery_labels') as string[]) : undefined,
   }));
 
+  // Mas Terrats (agente IA) y las dos instalaciones LED encabezan la parrilla:
+  // son los trabajos que mejor representan hacia dónde va la agencia.
+  const HIGHLIGHTED_CASES = [5, 6, 7].map((i) => CASES[i]);
+  const OTHER_CASES = [0, 1, 2, 3, 4].map((i) => CASES[i]);
+
   const TESTIMONIALS = [
     {
       name: t('testimonials.0.name'),
@@ -182,6 +187,103 @@ export default function ClientsPage() {
       quote: t('testimonials.2.quote'),
     },
   ];
+
+  const renderCase = (c: (typeof CASES)[number]) => {
+    const TypeIcon = CASE_TYPE_ICONS[c.type];
+    return (
+      <motion.div
+        key={c.badge}
+        variants={staggerItem}
+        className={`${c.colSpan} glass-panel rounded-xl border border-outline-variant/20 hover:border-primary-container/40 overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[0_0_20px_var(--glow-color)] group`}
+      >
+        {/* Cabecera: galería (Epicentre) / vídeo (Camping) / degradado (resto) */}
+        {c.galleryLabels ? (
+          <div className="relative flex flex-col md:flex-row pt-14 md:pt-0 md:h-48">
+            {EPICENTRE_GALLERY.map((src, idx) => (
+              <div key={src} className="relative h-44 md:h-full md:flex-1">
+                <Image
+                  src={src}
+                  alt={c.galleryLabels![idx]}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                />
+                <span className="absolute bottom-2 left-2 font-mono text-[9px] bg-black/70 text-white px-2 py-0.5 rounded uppercase tracking-widest">
+                  {c.galleryLabels![idx]}
+                </span>
+              </div>
+            ))}
+            <div className="absolute top-3 left-3 right-3 flex items-start justify-between z-10">
+              <span className="font-mono text-[10px] bg-black/70 text-primary-container border border-primary-container/50 px-2 py-1 rounded uppercase tracking-widest flex items-center gap-1">
+                <TypeIcon size={11} />
+                {c.badge}
+              </span>
+              <span className="font-mono text-[10px] text-white bg-black/60 px-2 py-1 rounded uppercase tracking-widest">
+                {c.industry}
+              </span>
+            </div>
+          </div>
+        ) : c.type === 'installation' ? (
+          <div className="h-64 relative">
+            <video
+              src={CAMPING_VIDEO}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="none"
+              aria-hidden
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute top-3 left-3 right-3 flex items-start justify-between z-10">
+              <span className="font-mono text-[10px] bg-black/70 text-primary-container border border-primary-container/50 px-2 py-1 rounded uppercase tracking-widest flex items-center gap-1">
+                <TypeIcon size={11} />
+                {c.badge}
+              </span>
+              <span className="font-mono text-[10px] text-white bg-black/60 px-2 py-1 rounded uppercase tracking-widest">
+                {c.industry}
+              </span>
+            </div>
+          </div>
+        ) : (
+          <div className="h-28 bg-gradient-to-br from-primary-container/30 via-primary-container/10 to-surface-container relative flex items-start justify-between p-3">
+            <span className="font-mono text-[10px] bg-black/70 text-primary-container border border-primary-container/50 px-2 py-1 rounded uppercase tracking-widest flex items-center gap-1">
+              <TypeIcon size={11} />
+              {c.badge}
+            </span>
+            <span className="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
+              {c.industry}
+            </span>
+          </div>
+        )}
+
+        <div className="p-6">
+          <h3 className="font-sans font-bold text-on-surface text-lg mb-2 leading-snug">
+            {c.title}
+          </h3>
+          <p className="text-on-surface-variant text-sm leading-relaxed mb-5">{c.desc}</p>
+
+          <div className="flex items-baseline gap-2 pt-4 border-t border-outline-variant/15 mb-5">
+            <span className="font-sans font-black text-3xl text-primary-container">{c.metric}</span>
+            <span className="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
+              {c.metricLabel}
+            </span>
+          </div>
+          {c.url && (
+            <a
+              href={c.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-white bg-primary-container rounded-full px-4 py-2 hover:bg-primary-container/90 shadow-[0_0_10px_var(--glow-color)] hover:shadow-[0_0_20px_var(--glow-color)] transition-all active:scale-95"
+            >
+              {t('go_to_project')}
+              <ExternalLink size={11} />
+            </a>
+          )}
+        </div>
+      </motion.div>
+    );
+  };
 
   return (
     <div className="min-h-screen">
@@ -371,7 +473,13 @@ export default function ClientsPage() {
             </div>
           </motion.div>
 
-          {/* 4. Asymmetric case grid */}
+          {/* 4. Casos destacados */}
+          <motion.p
+            {...reveal}
+            className="font-mono text-xs text-primary-container uppercase tracking-widest mb-6"
+          >
+            {t('highlighted_label')}
+          </motion.p>
           <motion.div
             className="grid grid-cols-1 md:grid-cols-12 gap-6"
             initial="hidden"
@@ -379,106 +487,24 @@ export default function ClientsPage() {
             viewport={{ once: true, margin: '-80px' }}
             variants={staggerContainer}
           >
-            {CASES.map((c) => {
-              const TypeIcon = CASE_TYPE_ICONS[c.type];
-              return (
-                <motion.div
-                  key={c.badge}
-                  variants={staggerItem}
-                  className={`${c.colSpan} glass-panel rounded-xl border border-outline-variant/20 hover:border-primary-container/40 overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[0_0_20px_var(--glow-color)] group`}
-                >
-                  {/* Header: photo gallery (Epicentre) / video (Camping) / gradient (rest) */}
-                  {c.galleryLabels ? (
-                    <div className="h-48 relative flex">
-                      {EPICENTRE_GALLERY.map((src, idx) => (
-                        <div key={src} className="relative flex-1 h-full">
-                          <Image
-                            src={src}
-                            alt={c.galleryLabels![idx]}
-                            fill
-                            className="object-cover"
-                            sizes="(min-width: 768px) 33vw, 100vw"
-                          />
-                          <span className="absolute bottom-2 left-2 font-mono text-[9px] bg-black/70 text-white px-2 py-0.5 rounded uppercase tracking-widest">
-                            {c.galleryLabels![idx]}
-                          </span>
-                        </div>
-                      ))}
-                      <div className="absolute top-3 left-3 right-3 flex items-start justify-between z-10">
-                        <span className="font-mono text-[10px] bg-black/70 text-primary-container border border-primary-container/50 px-2 py-1 rounded uppercase tracking-widest flex items-center gap-1">
-                          <TypeIcon size={11} />
-                          {c.badge}
-                        </span>
-                        <span className="font-mono text-[10px] text-white bg-black/60 px-2 py-1 rounded uppercase tracking-widest">
-                          {c.industry}
-                        </span>
-                      </div>
-                    </div>
-                  ) : c.type === 'installation' ? (
-                    <div className="h-64 relative">
-                      <video
-                        src={CAMPING_VIDEO}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover"
-                      />
-                      <div className="absolute top-3 left-3 right-3 flex items-start justify-between z-10">
-                        <span className="font-mono text-[10px] bg-black/70 text-primary-container border border-primary-container/50 px-2 py-1 rounded uppercase tracking-widest flex items-center gap-1">
-                          <TypeIcon size={11} />
-                          {c.badge}
-                        </span>
-                        <span className="font-mono text-[10px] text-white bg-black/60 px-2 py-1 rounded uppercase tracking-widest">
-                          {c.industry}
-                        </span>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="h-28 bg-gradient-to-br from-primary-container/30 via-primary-container/10 to-surface-container relative flex items-start justify-between p-3">
-                      <span className="font-mono text-[10px] bg-black/70 text-primary-container border border-primary-container/50 px-2 py-1 rounded uppercase tracking-widest flex items-center gap-1">
-                        <TypeIcon size={11} />
-                        {c.badge}
-                      </span>
-                      <span className="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
-                        {c.industry}
-                      </span>
-                    </div>
-                  )}
+            {HIGHLIGHTED_CASES.map(renderCase)}
+          </motion.div>
 
-                  {/* Body */}
-                  <div className="p-6">
-                    <h3 className="font-sans font-bold text-on-surface text-lg mb-2 leading-snug">
-                      {c.title}
-                    </h3>
-                    <p className="text-on-surface-variant text-sm leading-relaxed mb-5">
-                      {c.desc}
-                    </p>
-
-                    {/* Metric */}
-                    <div className="flex items-baseline gap-2 pt-4 border-t border-outline-variant/15 mb-5">
-                      <span className="font-sans font-black text-3xl text-primary-container">
-                        {c.metric}
-                      </span>
-                      <span className="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
-                        {c.metricLabel}
-                      </span>
-                    </div>
-                    {c.url && (
-                      <a
-                        href={c.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-white bg-primary-container rounded-full px-4 py-2 hover:bg-primary-container/90 shadow-[0_0_10px_rgba(0,102,255,0.3)] hover:shadow-[0_0_20px_rgba(0,102,255,0.5)] transition-all active:scale-95"
-                      >
-                        {t('go_to_project')}
-                        <ExternalLink size={11} />
-                      </a>
-                    )}
-                  </div>
-                </motion.div>
-              );
-            })}
+          {/* 5. Resto de proyectos */}
+          <motion.p
+            {...reveal}
+            className="font-mono text-xs text-on-surface-variant uppercase tracking-widest mt-20 mb-6"
+          >
+            {t('more_projects_label')}
+          </motion.p>
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-12 gap-6"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={staggerContainer}
+          >
+            {OTHER_CASES.map(renderCase)}
           </motion.div>
         </div>
       </section>

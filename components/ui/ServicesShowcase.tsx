@@ -1,0 +1,262 @@
+'use client';
+
+import Link from 'next/link';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import type { LucideIcon } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+export type ShowcaseSlide = {
+  /** Código corto tipo "01" o "SVC_01" */
+  code: string;
+  title: string;
+  description: string;
+  Icon: LucideIcon;
+};
+
+export interface ServicesShowcaseProps {
+  /** Label mono pequeño encima del titular */
+  label: string;
+  heading: string;
+  intro: string;
+  slides: ShowcaseSlide[];
+  ctaLabel: string;
+  ctaHref: string;
+  className?: string;
+}
+
+const CTA_CLASS =
+  'inline-flex items-center justify-center gap-2 rounded-full bg-primary-container px-7 py-3 text-xs font-semibold uppercase tracking-widest text-white shadow-[0_0_20px_var(--glow-color)] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-container/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background';
+
+const LABEL_CLASS = 'font-mono text-xs uppercase tracking-widest text-primary-container';
+
+export default function ServicesShowcase({
+  label,
+  heading,
+  intro,
+  slides,
+  ctaLabel,
+  ctaHref,
+  className,
+}: ServicesShowcaseProps): JSX.Element {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const frameRef = useRef<number | null>(null);
+  const [active, setActive] = useState(0);
+  // Arranca en false para que SSR y el primer render cliente coincidan (variante apilada).
+  const [scrollMode, setScrollMode] = useState(false);
+
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 768px)');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const sync = () => setScrollMode(desktop.matches && !reduced.matches);
+
+    sync();
+    desktop.addEventListener('change', sync);
+    reduced.addEventListener('change', sync);
+    return () => {
+      desktop.removeEventListener('change', sync);
+      reduced.removeEventListener('change', sync);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!scrollMode) {
+      setActive(0);
+      return;
+    }
+
+    const compute = () => {
+      frameRef.current = null;
+      const el = wrapperRef.current;
+      if (!el) return;
+      // getBoundingClientRect().top ya está expresado respecto al viewport, así que
+      // incorpora el scroll de ventana sin necesidad de sumar offsetTop de los padres
+      // (que fallaría con cualquier ancestro posicionado o transformado).
+      const travelled = -el.getBoundingClientRect().top;
+      const step = window.innerHeight;
+      const next = Math.min(slides.length - 1, Math.max(0, Math.floor(travelled / step)));
+      setActive((prev) => (prev === next ? prev : next));
+    };
+
+    const onScroll = () => {
+      if (frameRef.current !== null) return;
+      frameRef.current = window.requestAnimationFrame(compute);
+    };
+
+    compute();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current);
+        frameRef.current = null;
+      }
+    };
+  }, [scrollMode, slides.length]);
+
+  const goToSlide = useCallback(
+    (index: number) => {
+      const el = wrapperRef.current;
+      if (!scrollMode || !el) {
+        setActive(index);
+        return;
+      }
+      const top = window.scrollY + el.getBoundingClientRect().top + index * window.innerHeight;
+      window.scrollTo({ top, behavior: 'smooth' });
+    },
+    [scrollMode]
+  );
+
+  const header = (
+    <div>
+      <p className={LABEL_CLASS}>{label}</p>
+      <h2 className="mt-4 text-4xl font-black tracking-tighter leading-[1.05] text-on-surface md:text-5xl lg:text-6xl">
+        {heading}
+      </h2>
+      <p className="mt-5 max-w-md text-base leading-relaxed text-on-surface-variant">{intro}</p>
+    </div>
+  );
+
+  // Desplaza el glow del panel derecho según el slide activo (-12% → +12%).
+  const glowShift = slides.length > 1 ? active / (slides.length - 1) - 0.5 : 0;
+  const activeSlide = slides[active];
+
+  if (!scrollMode) {
+    return (
+      <section className={cn('py-margin px-6 lg:px-10 max-w-container-max mx-auto', className)}>
+        {header}
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {slides.map(({ code, title, description, Icon }) => (
+            <article
+              key={code}
+              className="glass-panel glow-hover flex flex-col gap-4 rounded-2xl p-6"
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-primary-container/30 bg-primary-container/10">
+                  <Icon size={22} className="text-primary-container" />
+                </div>
+                <span className="font-mono text-[10px] tracking-widest text-on-surface-variant/70">
+                  {code}
+                </span>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold tracking-tight text-on-surface">{title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-on-surface-variant">
+                  {description}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="mt-10">
+          <Link href={ctaHref} className={CTA_CLASS}>
+            {ctaLabel}
+          </Link>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className={cn('relative', className)}>
+      <div ref={wrapperRef} style={{ height: `${slides.length * 100}vh` }}>
+        <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+          <div className="mx-auto grid w-full max-w-container-max grid-cols-1 items-center gap-10 px-6 md:grid-cols-2 lg:gap-16 lg:px-10">
+            {/* Columna izquierda */}
+            <div className="md:border-r md:border-outline-variant/20 md:pr-10 lg:pr-16">
+              {header}
+
+              <nav className="mt-8 flex items-center gap-2" aria-label={heading}>
+                {slides.map((slide, i) => (
+                  <button
+                    key={slide.code}
+                    type="button"
+                    aria-current={i === active}
+                    aria-label={`${slide.code} — ${slide.title}`}
+                    onClick={() => goToSlide(i)}
+                    className={cn(
+                      'h-1 rounded-full transition-all duration-300 ease-out',
+                      i === active ? 'w-12 bg-primary-container' : 'w-6 bg-white/20 hover:bg-white/40'
+                    )}
+                  />
+                ))}
+              </nav>
+
+              <div className="relative mt-8 min-h-[13rem]">
+                {slides.map((slide, i) => (
+                  <div
+                    key={slide.code}
+                    aria-hidden={i !== active}
+                    className={cn(
+                      'absolute inset-0 transition-all ease-out',
+                      i === active
+                        ? 'translate-y-0 opacity-100'
+                        : 'pointer-events-none translate-y-8 opacity-0'
+                    )}
+                    style={{ transitionDuration: '420ms' }}
+                  >
+                    <span className="font-mono text-[11px] uppercase tracking-widest text-on-surface-variant/60">
+                      {slide.code}
+                    </span>
+                    <h3 className="mt-3 text-3xl font-black tracking-tighter text-on-surface lg:text-4xl">
+                      {slide.title}
+                    </h3>
+                    <p className="mt-4 max-w-md text-base leading-relaxed text-on-surface-variant">
+                      {slide.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-10">
+                <Link href={ctaHref} className={CTA_CLASS}>
+                  {ctaLabel}
+                </Link>
+              </div>
+            </div>
+
+            {/* Columna derecha: visual abstracto generado (sin imágenes) */}
+            <div className="hidden md:flex md:justify-center">
+              <div className="glass-panel grid-bg relative aspect-square w-full max-w-[480px] overflow-hidden rounded-2xl">
+                <div
+                  aria-hidden
+                  className="absolute inset-0 transition-transform duration-700 ease-out"
+                  style={{
+                    transform: `translate3d(${glowShift * 22}%, ${glowShift * -18}%, 0)`,
+                    background:
+                      'radial-gradient(45% 45% at 50% 50%, rgba(0,102,255,0.28), transparent 70%)',
+                  }}
+                />
+                {slides.map((slide, i) => {
+                  const SlideIcon = slide.Icon;
+                  return (
+                    <div
+                      key={slide.code}
+                      aria-hidden
+                      className={cn(
+                        'absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out',
+                        i === active
+                          ? 'scale-100 opacity-100'
+                          : 'pointer-events-none scale-90 opacity-0'
+                      )}
+                    >
+                      <SlideIcon
+                        size={120}
+                        strokeWidth={1}
+                        className="text-primary-container drop-shadow-[0_0_30px_var(--glow-color)]"
+                      />
+                    </div>
+                  );
+                })}
+                <span className="absolute bottom-5 right-6 font-mono text-[10px] uppercase tracking-widest text-on-surface-variant/60">
+                  {activeSlide?.code}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
