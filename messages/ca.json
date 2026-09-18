@@ -166,6 +166,19 @@
     }
   },
   "serveis_page": {
+    "faq": {
+      "label": "Preguntes freqüents",
+      "heading": "Com s’implementa la IA en un negoci?",
+      "items": [
+        { "q": "Com puc implementar IA al meu negoci?", "a": "Comencem per una auditoria: mirem on se’n van les hores i on es perden clients (trucades sense atendre, consultes sense resposta, tasques que es repeteixen cada dia). D’aquí surt una proposta prioritzada, amb què automatitzar primer i quin impacte esperar. Després ho construïm i ho deixem funcionant en producció, amb seguiment." },
+        { "q": "Quant costa implementar IA en una empresa?", "a": "Depèn de l’abast, així que no donem un preu tancat sense veure el teu cas. El que sí que fem és començar per l’auditoria i presentar-te una proposta amb el cost i el retorn esperat abans que et comprometis a res." },
+        { "q": "Quines solucions d’IA es poden aplicar a una empresa com la meva?", "a": "Les més habituals són tres: agents telefònics que atenen les trucades 24/7 i agenden o filtren, chatbots que responen a l’instant i qualifiquen contactes, i automatitzacions que eliminen tasques repetitives. Treballem amb restauració, turisme, indústria, consultoria, allotjament i esdeveniments." },
+        { "q": "He de ser una empresa gran o tenir equip tècnic?", "a": "No. La majoria dels nostres clients són pimes sense departament informàtic. Nosaltres muntem, connectem i mantenim; tu només ens has d’explicar com funciona el teu negoci." },
+        { "q": "La IA substituirà el meu equip?", "a": "No és l’objectiu. El que traiem del mig és el repetitiu: contestar vint vegades el mateix, passar dades d’un lloc a l’altre, atendre fora d’horari. El teu equip es queda amb el que necessita criteri." },
+        { "q": "Funciona en diversos idiomes?", "a": "Sí. Tenim agents en producció atenent en català, castellà, anglès i francès, que detecten l’idioma de qui escriu i responen en el seu." },
+        { "q": "Què passa amb les dades dels meus clients?", "a": "Definim des del principi quines dades es tracten, on es desen i qui hi accedeix. Treballem conforme al RGPD i només amb la informació necessària per prestar el servei." }
+      ]
+    },
     "badge_label": "Serveis",
     "heading": "El que fem",
     "cta_heading": "Tens un projecte?",
@@ -418,11 +431,11 @@
     }
   },
   "meta": {
-    "home": { "title": "9bit · Infraestructura amb IA per a empreses", "description": "Webs, agents telefònics IA, chatbots i automatitzacions. T'ajudem a captar més clients, retenir-los i reduir la càrrega de feina. Girona, des del 2001." },
-    "serveis": { "title": "Serveis: webs, agents IA i automatització", "description": "Desenvolupament web, agents telefònics amb IA, chatbots, automatitzacions i formació per a empreses. Descobreix com treballem a 9bit, agència digital de Girona des del 2001." },
+    "home": { "title": "9bit · Solucions d’IA per a empreses", "description": "Implementa IA al teu negoci: agents telefònics que atenen 24/7, chatbots, automatització de tasques i webs que capten clients. Girona, des del 2001." },
+    "serveis": { "title": "Solucions d’IA per a empreses: agents, chatbots i automatització", "description": "Vols implementar IA al teu negoci? Auditem la teva operativa i desplegem agents telefònics, chatbots i automatitzacions. També desenvolupament web i suport. Girona, des del 2001." },
     "contacte": { "title": "Contacte", "description": "Explica'ns el teu projecte i et respondrem en menys de 2 hores. Truca'ns, escriu-nos o vine a veure'ns: som a Girona, al teu costat des del 2001." },
     "qui_som": { "title": "Qui som", "description": "Coneix l'equip darrere de 9bit. Des del 2001 ajudem empreses a créixer amb webs, intel·ligència artificial i automatització, amb tracte proper des de Girona." },
-    "clients": { "title": "Clients i casos d'èxit", "description": "Empreses de tots els sectors confien en 9bit per digitalitzar-se. Descobreix els nostres clients i casos d'èxit en web, IA i automatització." },
+    "clients": { "title": "Casos d’èxit en IA, automatització i web", "description": "Casos reals d’empreses que ja han implementat IA i automatització amb 9bit: agents que atenen sols, instal·lacions i webs que capten clients." },
     "legal": { "title": "Avís legal", "description": "Avís legal de 9bit: dades identificatives, condicions d'ús i responsabilitat del lloc web 9-bit.com." },
     "privacitat": { "title": "Política de privacitat", "description": "Descobreix com 9bit recull, utilitza i protegeix les teves dades personals quan navegues per 9-bit.com o contactes amb nosaltres." },
     "cookies": { "title": "Política de cookies", "description": "Informació sobre les cookies que utilitza el web de 9bit, per a què serveixen i com pots gestionar-les o desactivar-les." }

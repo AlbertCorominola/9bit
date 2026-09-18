@@ -166,6 +166,19 @@
     }
   },
   "serveis_page": {
+    "faq": {
+      "label": "Frequently asked questions",
+      "heading": "How do you implement AI in a business?",
+      "items": [
+        { "q": "How can I implement AI in my business?", "a": "We start with an audit: we look at where the hours go and where customers are lost (unanswered calls, enquiries left hanging, tasks repeated every day). That produces a prioritised proposal covering what to automate first and what impact to expect. Then we build it and leave it running in production, with follow-up." },
+        { "q": "How much does it cost to implement AI in a company?", "a": "It depends on the scope, so we do not quote a fixed price without seeing your case. What we do is start with the audit and put a proposal in front of you, with the cost and the expected return, before you commit to anything." },
+        { "q": "What AI solutions can a company like mine actually use?", "a": "Three are the most common: phone agents that answer calls 24/7 and book or screen them, chatbots that reply instantly and qualify contacts, and automations that remove repetitive tasks. We work with hospitality, tourism, industry, consulting, accommodation and events." },
+        { "q": "Do I need to be a large company or have a technical team?", "a": "No. Most of our clients are small and medium businesses with no IT department. We set it up, connect it and maintain it; you just tell us how your business works." },
+        { "q": "Is AI going to replace my team?", "a": "That is not the point. What we take off their plate is the repetitive part: answering the same thing twenty times, moving data between systems, covering out of hours. Your team keeps the work that needs judgement." },
+        { "q": "Does it work in several languages?", "a": "Yes. We have agents in production handling Catalan, Spanish, English and French, detecting the language someone writes in and replying in theirs." },
+        { "q": "What happens to my customers’ data?", "a": "We define from the start what data is processed, where it is stored and who has access. We work in line with GDPR and only with the information needed to deliver the service." }
+      ]
+    },
     "badge_label": "Services",
     "heading": "What we do",
     "cta_heading": "Have a project?",
@@ -418,11 +431,11 @@
     }
   },
   "meta": {
-    "home": { "title": "9bit · AI infrastructure for businesses", "description": "Websites, AI phone agents, chatbots and automations. Win more clients, retain them and cut your workload. Girona, since 2001." },
-    "serveis": { "title": "Services: websites, AI agents and automation", "description": "Web development, AI phone agents, chatbots, automations and training for businesses. See how we work at 9bit, a digital agency in Girona since 2001." },
+    "home": { "title": "9bit · AI solutions for businesses", "description": "Implement AI in your business: phone agents answering 24/7, chatbots, task automation and websites that win clients. Girona, since 2001." },
+    "serveis": { "title": "AI solutions for businesses: agents, chatbots and automation", "description": "Want to implement AI in your business? We audit your operation and deploy phone agents, chatbots and automations. Plus web development and support. Girona, since 2001." },
     "contacte": { "title": "Contact", "description": "Tell us about your project and we'll get back to you within 2 hours. Call us, write to us or drop by: we're in Girona, by your side since 2001." },
     "qui_som": { "title": "About us", "description": "Meet the team behind 9bit. Since 2001 we've helped businesses grow with websites, artificial intelligence and automation, working closely from Girona." },
-    "clients": { "title": "Clients and success stories", "description": "Businesses across every sector trust 9bit for their digital projects. Discover our clients and success stories in web, AI and automation." },
+    "clients": { "title": "Success stories in AI, automation and web", "description": "Real cases of businesses that have already implemented AI and automation with 9bit: agents that handle enquiries on their own, installations and websites that win clients." },
     "legal": { "title": "Legal notice", "description": "9bit legal notice: company details, terms of use and liability for the 9-bit.com website." },
     "privacitat": { "title": "Privacy policy", "description": "Learn how 9bit collects, uses and protects your personal data when you browse 9-bit.com or get in touch with us." },
     "cookies": { "title": "Cookie policy", "description": "Information about the cookies used on the 9bit website, what they are for and how you can manage or disable them." }

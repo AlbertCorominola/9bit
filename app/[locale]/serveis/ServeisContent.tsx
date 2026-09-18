@@ -15,6 +15,7 @@ import {
   Map,
   Hammer,
   Rocket,
+  ChevronDown,
   LucideIcon,
 } from 'lucide-react';
 import ServiceCard from '@/components/ui/ServiceCard';
@@ -57,6 +58,8 @@ export default function ServeisPage() {
     { category: 'IA & Veu', items: ['OpenAI', 'Claude', 'ElevenLabs', 'Twilio', 'Retell AI', 'n8n'] },
     { category: tp('tech_tools_category'), items: ['Stitch', 'Notion'] },
   ];
+
+  const FAQ_ITEMS = tp.raw('faq.items') as { q: string; a: string }[];
 
   return (
     <div className="min-h-screen">
@@ -355,6 +358,33 @@ export default function ServeisPage() {
                     ))}
                   </div>
                 </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ── FAQ ───────────────────────────────────────────── */}
+          <section>
+            <motion.div {...fadeUp} className="mb-10">
+              <p className="text-on-surface-variant text-sm uppercase tracking-wide font-medium mb-4">
+                {tp('faq.label')}
+              </p>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] text-on-surface">
+                {tp('faq.heading')}
+              </h2>
+            </motion.div>
+
+            <div className="divide-y divide-white/[0.06] border-y border-white/[0.06]">
+              {FAQ_ITEMS.map(({ q, a }) => (
+                <details key={q} className="group py-5">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-on-surface">
+                    <h3 className="text-base md:text-lg font-semibold leading-snug">{q}</h3>
+                    <ChevronDown
+                      size={18}
+                      className="mt-0.5 shrink-0 text-primary-text transition-transform duration-200 group-open:rotate-180"
+                    />
+                  </summary>
+                  <p className="mt-3 max-w-3xl text-on-surface-variant leading-relaxed">{a}</p>
+                </details>
               ))}
             </div>
           </section>
