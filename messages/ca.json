@@ -318,8 +318,8 @@
         "badge": "Case_08",
         "title": "Epicentre (Palamós)",
         "industry": "Oci nocturn",
-        "desc": "Instal·lació de panells LED en col·laboració amb Megaluz.",
-        "metric": "Megaluz",
+        "desc": "Instal·lació de panells LED en col·laboració amb Megalux.",
+        "metric": "Megalux",
         "metricLabel": "instal·lació en col·laboració amb",
         "gallery_labels": ["Abans", "Després — interior", "Després — exterior"]
       },
@@ -327,8 +327,8 @@
         "badge": "Case_09",
         "title": "Camping Les Medes",
         "industry": "Turisme / Càmping",
-        "desc": "Instal·lació de panells LED en col·laboració amb Megaluz.",
-        "metric": "Megaluz",
+        "desc": "Instal·lació de panells LED en col·laboració amb Megalux.",
+        "metric": "Megalux",
         "metricLabel": "instal·lació en col·laboració amb"
       }
     ],

@@ -8,7 +8,7 @@ La página de clientes (`app/[locale]/clients/ClientsContent.tsx`) muestra actua
 
 9bit ha realizado también otros dos tipos de trabajo que aún no aparecen en la web:
 1. Un **agente de IA** (recepcionista por email, "Rosa") para el cliente Mas Terrats (finca de bodas), construido en n8n. Gestiona consultas, disponibilidad, presupuestos y deriva casos complejos a la propietaria, integrado con un CRM propio (Dolomit).
-2. **Instalaciones de paneles LED**, en colaboración con Megaluz (instalador físico), en dos ubicaciones: Epicentre (Palamós) y Camping Les Medes.
+2. **Instalaciones de paneles LED**, en colaboración con Megalux (instalador físico), en dos ubicaciones: Epicentre (Palamós) y Camping Les Medes.
 
 Este spec cubre solo la incorporación de estos 3 nuevos casos a la página de clientes existente. La mejora general de UX/diseño/features de la web queda fuera de alcance y se abordará en un brainstorming separado.
 
@@ -24,7 +24,7 @@ Diferenciando visualmente el tipo de proyecto (web / agente IA / instalación) y
 ## Restricciones acordadas con el cliente
 
 - **Mas Terrats**: sin link a masterrats.com. Se destaca el agente de email (Rosa), no el agente de voz (Vapi) — aunque ambos existen, el caso de uso a mostrar es el de correo.
-- **Epicentre y Camping Les Medes**: no se deben "publicitar" como casos completos con link — solo mencionar dónde se instalaron los paneles LED, en colaboración con Megaluz. Sin botón "Ir al proyecto".
+- **Epicentre y Camping Les Medes**: no se deben "publicitar" como casos completos con link — solo mencionar dónde se instalaron los paneles LED, en colaboración con Megalux. Sin botón "Ir al proyecto".
 
 ## Assets disponibles
 
@@ -87,15 +87,15 @@ Se añade al `CASE_ICON_MAP` y se pinta junto al badge `Case_0X` en la cabecera 
 
 **Case_08 — Epicentre** (`installation`, mini-galería de 3 fotos en vez de degradado)
 - Industria: "Ocio nocturno"
-- Descripción: instalación de paneles LED en colaboración con Megaluz
+- Descripción: instalación de paneles LED en colaboración con Megalux
 - Galería: 3 fotos en fila dentro de la cabecera de la tarjeta (más alta que el resto, ~h-48 en vez de h-28, dado que `md:col-span-8`), cada una con etiqueta pequeña superpuesta: "Antes" (`pre-epicentre in.jpeg`), "Después — interior" (`epicentre-in.jpeg`), "Después — exterior" (`epicentre-out.jpeg`)
-- Métrica: en vez de número, texto destacado **"Megaluz"** + label "instalación en colaboración con"
+- Métrica: en vez de número, texto destacado **"Megalux"** + label "instalación en colaboración con"
 
 **Case_09 — Camping Les Medes** (`installation`, ancho completo, vídeo en vez de degradado)
 - Industria: "Turismo / Camping"
-- Descripción: instalación de paneles LED en colaboración con Megaluz
+- Descripción: instalación de paneles LED en colaboración con Megalux
 - Cabecera: `video_camping.mp4` en autoplay, muted, loop, playsInline, altura ~h-64 (más alta al ser ancho completo)
-- Métrica: mismo patrón que Epicentre — **"Megaluz"** + "instalación en colaboración con"
+- Métrica: mismo patrón que Epicentre — **"Megalux"** + "instalación en colaboración con"
 
 ### 4. Sección de industrias
 
