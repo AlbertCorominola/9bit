@@ -9,6 +9,7 @@ import { locales, type Locale } from '@/i18n';
 import { Providers } from '@/components/providers';
 import Navbar from '@/components/ui/Navbar';
 import ScrollProgress from '@/components/ui/ScrollProgress';
+import StructuredData from '@/components/StructuredData';
 import Footer from '@/components/ui/Footer';
 import CookieBanner from '@/components/ui/CookieBanner';
 import PortraitLock from '@/components/ui/PortraitLock';
@@ -82,13 +83,11 @@ export async function generateMetadata({
       siteName: '9bit',
       locale: params.locale,
       type: 'website',
-      images: [{ url: '/logo_9bit_sin_fondo.png', width: 1200, height: 630, alt: '9bit' }],
     },
     twitter: {
       card: 'summary_large_image',
       title: seo.title,
       description: seo.description,
-      images: ['/logo_9bit_sin_fondo.png'],
     },
     robots: { index: true, follow: true },
     alternates: {
@@ -123,6 +122,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={params.locale} suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <head>
+        <StructuredData locale={params.locale} />
+      </head>
       <body className="ambient-bg flex flex-col min-h-screen overflow-x-clip">
         <Providers nonce={nonce}>
           <NextIntlClientProvider messages={messages}>

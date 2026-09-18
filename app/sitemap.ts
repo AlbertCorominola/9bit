@@ -13,6 +13,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: LEGAL_PATHS.includes(path) ? ('yearly' as const) : ('monthly' as const),
       priority: path === '' ? 1.0 : LEGAL_PATHS.includes(path) ? 0.3 : 0.8,
+      // Sin esto el sitemap lista las tres versiones como páginas sueltas, sin
+      // decirle al buscador que son la misma página en distintos idiomas.
+      alternates: {
+        languages: Object.fromEntries(LOCALES.map((l) => [l, `${SITE}/${l}${path}`])),
+      },
     }))
   );
 }
