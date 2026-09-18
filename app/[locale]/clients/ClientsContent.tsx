@@ -188,6 +188,135 @@ export default function ClientsPage() {
     },
   ];
 
+  // Los destacados van a ancho completo con el medio a un lado, alternando el
+  // lado. Cada tipo de trabajo trae un material distinto (fotos apaisadas,
+  // vídeo vertical de móvil, nada) y así cada uno se muestra a su proporción.
+  const renderHighlightedCase = (c: (typeof CASES)[number], idx: number) => {
+    const TypeIcon = CASE_TYPE_ICONS[c.type];
+    const mediaRight = idx % 2 === 1;
+
+    let media;
+    if (c.galleryLabels) {
+      media = (
+        <div className="grid h-full grid-cols-2 gap-1 p-1">
+          <div className="relative col-span-2 h-44 md:h-56">
+            <Image
+              src={EPICENTRE_GALLERY[2]}
+              alt={c.galleryLabels[2]}
+              fill
+              className="rounded-lg object-cover"
+              sizes="(min-width: 768px) 50vw, 100vw"
+            />
+            <span className="absolute bottom-2 left-2 rounded bg-black/70 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-white">
+              {c.galleryLabels[2]}
+            </span>
+          </div>
+          {[0, 1].map((i) => (
+            <div key={EPICENTRE_GALLERY[i]} className="relative h-28 md:h-32">
+              <Image
+                src={EPICENTRE_GALLERY[i]}
+                alt={c.galleryLabels![i]}
+                fill
+                className="rounded-lg object-cover"
+                sizes="(min-width: 768px) 25vw, 50vw"
+              />
+              <span className="absolute bottom-2 left-2 rounded bg-black/70 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-white">
+                {c.galleryLabels![i]}
+              </span>
+            </div>
+          ))}
+        </div>
+      );
+    } else if (c.type === 'installation') {
+      // Vídeo vertical de móvil (576x1024): se muestra por debajo de su tamaño
+      // nativo y en su proporción, nunca recortado a una tira apaisada.
+      media = (
+        <div className="flex items-center justify-center p-8">
+          <video
+            src={CAMPING_VIDEO}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            aria-hidden
+            className="aspect-[9/16] w-full max-w-[220px] rounded-xl border border-white/10 object-cover shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
+          />
+        </div>
+      );
+    } else {
+      media = (
+        <div className="grid-bg relative flex min-h-[240px] items-center justify-center p-10">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                'radial-gradient(45% 45% at 50% 50%, rgba(0,102,255,0.28), transparent 70%)',
+            }}
+          />
+          <TypeIcon
+            size={96}
+            strokeWidth={1}
+            className="relative text-primary-container drop-shadow-[0_0_30px_var(--glow-color)]"
+          />
+        </div>
+      );
+    }
+
+    return (
+      <motion.article
+        key={c.badge}
+        variants={staggerItem}
+        className="md:col-span-12 glass-panel overflow-hidden rounded-2xl border border-outline-variant/20 transition-colors hover:border-primary-container/40"
+      >
+        <div className="grid md:grid-cols-2">
+          <div className={`relative bg-surface-container/30 ${mediaRight ? 'md:order-2' : ''}`}>
+            {media}
+          </div>
+
+          <div className="flex flex-col justify-center p-8 md:p-10">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="flex items-center gap-1 rounded border border-primary-container/50 bg-black/40 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-primary-container">
+                <TypeIcon size={11} />
+                {c.badge}
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">
+                {c.industry}
+              </span>
+            </div>
+
+            <h3 className="mb-3 font-sans text-2xl font-black leading-tight tracking-tighter text-on-surface md:text-3xl">
+              {c.title}
+            </h3>
+            <p className="mb-6 leading-relaxed text-on-surface-variant">{c.desc}</p>
+
+            <div className="flex items-baseline gap-2 border-t border-outline-variant/15 pt-5">
+              <span className="font-sans text-3xl font-black text-primary-container md:text-4xl">
+                {c.metric}
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">
+                {c.metricLabel}
+              </span>
+            </div>
+
+            {c.url && (
+              <a
+                href={c.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex w-fit items-center gap-1.5 rounded-full bg-primary-container px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-white shadow-[0_0_10px_var(--glow-color)] transition-all hover:bg-primary-container/90 hover:shadow-[0_0_20px_var(--glow-color)] active:scale-95"
+              >
+                {t('go_to_project')}
+                <ExternalLink size={11} />
+              </a>
+            )}
+          </div>
+        </div>
+      </motion.article>
+    );
+  };
+
   const renderCase = (c: (typeof CASES)[number]) => {
     const TypeIcon = CASE_TYPE_ICONS[c.type];
     return (
@@ -196,66 +325,15 @@ export default function ClientsPage() {
         variants={staggerItem}
         className={`${c.colSpan} glass-panel rounded-xl border border-outline-variant/20 hover:border-primary-container/40 overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[0_0_20px_var(--glow-color)] group`}
       >
-        {/* Cabecera: galería (Epicentre) / vídeo (Camping) / degradado (resto) */}
-        {c.galleryLabels ? (
-          <div className="relative flex flex-col md:flex-row pt-14 md:pt-0 md:h-48">
-            {EPICENTRE_GALLERY.map((src, idx) => (
-              <div key={src} className="relative h-44 md:h-full md:flex-1">
-                <Image
-                  src={src}
-                  alt={c.galleryLabels![idx]}
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 768px) 33vw, 100vw"
-                />
-                <span className="absolute bottom-2 left-2 font-mono text-[9px] bg-black/70 text-white px-2 py-0.5 rounded uppercase tracking-widest">
-                  {c.galleryLabels![idx]}
-                </span>
-              </div>
-            ))}
-            <div className="absolute top-3 left-3 right-3 flex items-start justify-between z-10">
-              <span className="font-mono text-[10px] bg-black/70 text-primary-container border border-primary-container/50 px-2 py-1 rounded uppercase tracking-widest flex items-center gap-1">
-                <TypeIcon size={11} />
-                {c.badge}
-              </span>
-              <span className="font-mono text-[10px] text-white bg-black/60 px-2 py-1 rounded uppercase tracking-widest">
-                {c.industry}
-              </span>
-            </div>
-          </div>
-        ) : c.type === 'installation' ? (
-          <div className="h-64 relative">
-            <video
-              src={CAMPING_VIDEO}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="none"
-              aria-hidden
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute top-3 left-3 right-3 flex items-start justify-between z-10">
-              <span className="font-mono text-[10px] bg-black/70 text-primary-container border border-primary-container/50 px-2 py-1 rounded uppercase tracking-widest flex items-center gap-1">
-                <TypeIcon size={11} />
-                {c.badge}
-              </span>
-              <span className="font-mono text-[10px] text-white bg-black/60 px-2 py-1 rounded uppercase tracking-widest">
-                {c.industry}
-              </span>
-            </div>
-          </div>
-        ) : (
-          <div className="h-28 bg-gradient-to-br from-primary-container/30 via-primary-container/10 to-surface-container relative flex items-start justify-between p-3">
-            <span className="font-mono text-[10px] bg-black/70 text-primary-container border border-primary-container/50 px-2 py-1 rounded uppercase tracking-widest flex items-center gap-1">
-              <TypeIcon size={11} />
-              {c.badge}
-            </span>
-            <span className="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
-              {c.industry}
-            </span>
-          </div>
-        )}
+        <div className="h-28 bg-gradient-to-br from-primary-container/30 via-primary-container/10 to-surface-container relative flex items-start justify-between p-3">
+          <span className="font-mono text-[10px] bg-black/70 text-primary-container border border-primary-container/50 px-2 py-1 rounded uppercase tracking-widest flex items-center gap-1">
+            <TypeIcon size={11} />
+            {c.badge}
+          </span>
+          <span className="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
+            {c.industry}
+          </span>
+        </div>
 
         <div className="p-6">
           <h3 className="font-sans font-bold text-on-surface text-lg mb-2 leading-snug">
@@ -487,7 +565,7 @@ export default function ClientsPage() {
             viewport={{ once: true, margin: '-80px' }}
             variants={staggerContainer}
           >
-            {HIGHLIGHTED_CASES.map(renderCase)}
+            {HIGHLIGHTED_CASES.map(renderHighlightedCase)}
           </motion.div>
 
           {/* 5. Resto de proyectos */}
