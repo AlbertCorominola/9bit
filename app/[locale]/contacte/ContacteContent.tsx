@@ -48,7 +48,7 @@ export default function ContactPage() {
   const t = useTranslations('contact_page');
 
   /* form state */
-  const [form,      setForm]      = useState({ business: '', site: '', sector: '', name: '', email: '', phone: '', revenue: '', timeline: '', message: '', website: '' });
+  const [form,      setForm]      = useState({ business: '', site: '', sector: '', name: '', email: '', phone: '', message: '', website: '' });
   const [errors,    setErrors]    = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -106,8 +106,6 @@ export default function ContactPage() {
       `Negocio: ${form.business}`,
       form.site ? `Web: ${form.site}` : null,
       `Sector: ${form.sector}`,
-      form.revenue ? `Facturación: ${form.revenue}` : null,
-      form.timeline ? `Plazo: ${form.timeline}` : null,
       '',
       form.message,
     ]
@@ -140,7 +138,7 @@ export default function ContactPage() {
   };
 
   const resetForm = () => {
-    setForm({ business: '', site: '', sector: '', name: '', email: '', phone: '', revenue: '', timeline: '', message: '', website: '' });
+    setForm({ business: '', site: '', sector: '', name: '', email: '', phone: '', message: '', website: '' });
     setSubmitted(false);
     setSubmitError(null);
   };
@@ -306,14 +304,6 @@ export default function ContactPage() {
                           <div>
                             <label htmlFor="contact-phone" className="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">{t('label_phone')}</label>
                             <input id="contact-phone" type="tel" name="phone" value={form.phone} onChange={onChange} placeholder={t('placeholder_phone')} className={INPUT_CLASS(false)} />
-                          </div>
-                          <div>
-                            <label htmlFor="contact-revenue" className="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">{t('label_revenue')}</label>
-                            <input id="contact-revenue" type="text" name="revenue" value={form.revenue} onChange={onChange} placeholder={t('placeholder_revenue')} className={INPUT_CLASS(false)} />
-                          </div>
-                          <div>
-                            <label htmlFor="contact-timeline" className="block font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">{t('label_timeline')}</label>
-                            <input id="contact-timeline" type="text" name="timeline" value={form.timeline} onChange={onChange} placeholder={t('placeholder_timeline')} className={INPUT_CLASS(false)} />
                           </div>
                         </div>
 

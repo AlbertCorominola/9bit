@@ -12,6 +12,9 @@ export type ShowcaseSlide = {
   title: string;
   description: string;
   Icon: LucideIcon;
+  /** Pantallas de scroll que dura este slide. 1 por defecto; súbelo para que
+   *  un slide no se pase de largo antes de que dé tiempo a leerlo. */
+  weight?: number;
 };
 
 export interface ServicesShowcaseProps {
@@ -41,6 +44,9 @@ export default function ServicesShowcase({
 }: ServicesShowcaseProps): JSX.Element {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<number | null>(null);
+  const slidesRef = useRef(slides);
+  slidesRef.current = slides;
+  const weightKey = slides.map((s) => s.weight ?? 1).join(',');
   const [active, setActive] = useState(0);
   // Arranca en false para que SSR y el primer render cliente coincidan (variante apilada).
   const [scrollMode, setScrollMode] = useState(false);
@@ -73,8 +79,20 @@ export default function ServicesShowcase({
       // incorpora el scroll de ventana sin necesidad de sumar offsetTop de los padres
       // (que fallaría con cualquier ancestro posicionado o transformado).
       const travelled = -el.getBoundingClientRect().top;
-      const step = window.innerHeight;
-      const next = Math.min(slides.length - 1, Math.max(0, Math.floor(travelled / step)));
+      const screens = travelled / window.innerHeight;
+      // Cada slide ocupa tantas pantallas como diga su weight, así que el índice
+      // sale de en qué banda acumulada cae el scroll, no de una división directa.
+      const current = slidesRef.current;
+      let acc = 0;
+      let next = current.length - 1;
+      for (let i = 0; i < current.length; i++) {
+        acc += current[i].weight ?? 1;
+        if (screens < acc) {
+          next = i;
+          break;
+        }
+      }
+      next = Math.max(0, next);
       setActive((prev) => (prev === next ? prev : next));
     };
 
@@ -94,7 +112,9 @@ export default function ServicesShowcase({
         frameRef.current = null;
       }
     };
-  }, [scrollMode, slides.length]);
+    // `slides` se recrea en cada render, así que la dependencia es la firma de
+    // los pesos: lo único de slides que usa este efecto.
+  }, [scrollMode, weightKey]);
 
   const goToSlide = useCallback(
     (index: number) => {
@@ -103,7 +123,11 @@ export default function ServicesShowcase({
         setActive(index);
         return;
       }
-      const top = window.scrollY + el.getBoundingClientRect().top + index * window.innerHeight;
+      const screensBefore = slidesRef.current
+        .slice(0, index)
+        .reduce((sum, s) => sum + (s.weight ?? 1), 0);
+      const top =
+        window.scrollY + el.getBoundingClientRect().top + screensBefore * window.innerHeight;
       window.scrollTo({ top, behavior: 'smooth' });
     },
     [scrollMode]
@@ -118,6 +142,8 @@ export default function ServicesShowcase({
       <p className="mt-5 max-w-md text-base leading-relaxed text-on-surface-variant">{intro}</p>
     </div>
   );
+
+  const totalScreens = slides.reduce((sum, s) => sum + (s.weight ?? 1), 0);
 
   // Desplaza el glow del panel derecho según el slide activo (-12% → +12%).
   const glowShift = slides.length > 1 ? active / (slides.length - 1) - 0.5 : 0;
@@ -160,7 +186,7 @@ export default function ServicesShowcase({
 
   return (
     <section className={cn('relative', className)}>
-      <div ref={wrapperRef} style={{ height: `${slides.length * 100}vh` }}>
+      <div ref={wrapperRef} style={{ height: `${totalScreens * 100}vh` }}>
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
           <div className="mx-auto grid w-full max-w-container-max grid-cols-1 items-center gap-10 px-6 md:grid-cols-2 lg:gap-16 lg:px-10">
             {/* Columna izquierda */}

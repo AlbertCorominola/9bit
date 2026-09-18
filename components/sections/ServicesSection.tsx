@@ -36,6 +36,9 @@ export default function ServicesSection() {
     title: t(`items.${key}.title`),
     description: t(`items.${key}.desc`),
     Icon: icon,
+    // Automatización es el último y quedaba a un paso del final de la sección,
+    // así que pasaba de largo antes de que diera tiempo a leerlo.
+    weight: key === 'automation' ? 2 : 1,
   }));
 
   return (
