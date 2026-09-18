@@ -203,7 +203,7 @@ export default function ServicesShowcase({
                     onClick={() => goToSlide(i)}
                     className={cn(
                       'h-1 rounded-full transition-all duration-300 ease-out',
-                      i === active ? 'w-12 bg-primary-container' : 'w-6 bg-white/20 hover:bg-white/40'
+                      i === active ? 'w-12 bg-primary-container' : 'w-6 bg-black/15 hover:bg-black/30'
                     )}
                   />
                 ))}

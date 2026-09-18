@@ -62,7 +62,7 @@ export default function ServicesSection() {
             <RevealItem key={key} className="h-full">
               <Link
                 href={`/${locale}/serveis`}
-                className="flex h-full flex-col items-start gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 transition-colors hover:border-primary-container/30 hover:bg-white/[0.04]"
+                className="flex h-full flex-col items-start gap-3 rounded-xl border border-black/[0.08] bg-black/[0.02] p-4 transition-colors hover:border-primary-container/30 hover:bg-black/[0.04]"
               >
                 <div className="w-9 h-9 rounded-lg bg-primary-container/10 border border-primary-container/20 flex items-center justify-center">
                   <Icon size={16} className="text-primary-container" />

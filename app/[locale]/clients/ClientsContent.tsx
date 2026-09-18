@@ -244,7 +244,7 @@ export default function ClientsPage() {
             playsInline
             preload="none"
             aria-hidden
-            className="aspect-[9/16] w-full max-w-[220px] rounded-xl border border-white/10 object-cover shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
+            className="aspect-[9/16] w-full max-w-[220px] rounded-xl border border-black/10 object-cover shadow-[0_20px_60px_rgba(13,17,23,0.10)]"
           />
         </div>
       );

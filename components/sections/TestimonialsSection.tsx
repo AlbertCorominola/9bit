@@ -12,7 +12,7 @@ export default function TestimonialsSection() {
     <section className="py-20 md:py-28 px-6 lg:px-10 max-w-container-max mx-auto">
       <Parallax speed={0.16} className="mb-12 max-w-2xl">
         <Reveal direction="up">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-blue-200">
+          <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] bg-clip-text text-transparent bg-gradient-to-br from-on-surface via-on-surface to-primary-container">
             {t('heading')}
           </h2>
         </Reveal>

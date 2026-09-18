@@ -117,7 +117,7 @@ export default function AnimatedHero({ badge, titleBase, words, subtitle, ctaPri
           {offerings.map(({ icon: Icon, label }) => (
             <li
               key={label}
-              className="flex items-center justify-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.03] px-3 py-2 backdrop-blur-sm transition-colors hover:border-primary-container/40 hover:bg-white/[0.06] sm:px-4"
+              className="flex items-center justify-center gap-2 rounded-full border border-black/[0.1] bg-black/[0.02] px-3 py-2 backdrop-blur-sm transition-colors hover:border-primary-container/40 hover:bg-black/[0.04] sm:px-4"
             >
               <Icon size={15} className="text-primary-container" />
               <span className="text-xs sm:text-sm font-medium text-on-surface/90">{label}</span>

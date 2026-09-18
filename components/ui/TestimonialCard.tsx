@@ -8,7 +8,7 @@ interface Props {
 
 export default function TestimonialCard({ name, company, quote }: Props) {
   return (
-    <div className="h-full rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary-container/40 hover:bg-white/[0.04] transition-all duration-200 p-7 flex flex-col">
+    <div className="h-full rounded-2xl border border-black/[0.08] bg-black/[0.02] hover:border-primary-container/40 hover:bg-black/[0.04] transition-all duration-200 p-7 flex flex-col">
       <p className="text-on-surface text-base leading-relaxed mb-8 flex-1">
         &ldquo;{quote}&rdquo;
       </p>

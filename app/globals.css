@@ -3,25 +3,29 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0f;
-  --surface: #0a0a0f;
-  --surface-container: #1f1f1f;
-  --surface-container-low: #1b1b1b;
-  --surface-container-high: #2a2a2a;
-  --surface-variant: #353535;
-  --on-surface: #e2e2e2;
-  --on-surface-variant: #c2c6d8;
+  --background: #ffffff;
+  --surface: #ffffff;
+  --surface-container: #f4f5f7;
+  --surface-container-low: #fafbfc;
+  --surface-container-high: #eceef1;
+  --surface-variant: #e4e7eb;
+  --on-surface: #0d1117;
+  --on-surface-variant: #4a5260;
   --primary-container: #0066ff;
-  /* El azul de marca sobre el fondo casi negro da 4,1:1 y no llega a AA en
-     texto pequeño. Este tono, solo para texto, sube a ~7,9:1. */
-  --primary-text: #6aa4ff;
-  --primary: #b3c5ff;
-  --outline: #8c90a1;
-  --outline-variant: #424656;
-  --grid-line: rgba(255, 255, 255, 0.05);
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glow-color: rgba(0, 102, 255, 0.3);
+  /* El azul de marca sobre blanco da 4,84:1: justo para texto normal pero corto
+     para texto pequeño. Este tono, solo para texto, sube a ~6,8:1. */
+  --primary-text: #0052cc;
+  --primary: #0047b3;
+  --outline: #9aa2b1;
+  --outline-variant: #d8dce3;
+  --grid-line: rgba(13, 17, 23, 0.05);
+  --glass-bg: rgba(13, 17, 23, 0.025);
+  --glass-border: rgba(13, 17, 23, 0.08);
+  /* Sobre blanco un glow fuerte ensucia en vez de iluminar. */
+  --glow-color: rgba(0, 102, 255, 0.18);
+  /* Superficies invertidas: badges y chips que antes eran claros sobre oscuro. */
+  --ink-chip-bg: rgba(13, 17, 23, 0.06);
+  --ink-chip-border: rgba(13, 17, 23, 0.1);
 }
 
 html {
@@ -49,11 +53,13 @@ body {
   position: fixed;
   inset: 0;
   z-index: -2;
+  /* Sobre blanco los mismos tintes saturan y ensucian, así que van mucho más
+     bajos: aquí solo tienen que insinuar profundidad. */
   background:
-    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(0, 102, 255, 0.15), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(91, 33, 182, 0.12), transparent 60%),
-    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(162, 28, 175, 0.08), transparent 60%),
-    radial-gradient(ellipse 50% 40% at 0% 70%, rgba(0, 102, 255, 0.10), transparent 60%);
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(0, 102, 255, 0.05), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(91, 33, 182, 0.04), transparent 60%),
+    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(162, 28, 175, 0.03), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 0% 70%, rgba(0, 102, 255, 0.04), transparent 60%);
   pointer-events: none;
 }
 .ambient-bg::after {
@@ -72,10 +78,10 @@ body {
 }
 
 .glass-panel {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
 }
 
 .glow-hover {
@@ -113,7 +119,9 @@ select:focus-visible {
 }
 
 .shiny-text {
-  background-image: linear-gradient(100deg, #64CEFB 0%, #ffffff 50%, #64CEFB 100%);
+  /* El blanco del centro desaparecía sobre fondo blanco: el barrido va ahora de
+     azul de marca a azul oscuro. */
+  background-image: linear-gradient(100deg, #0066ff 0%, #002f7a 50%, #0066ff 100%);
   background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;

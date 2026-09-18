@@ -20,7 +20,7 @@ export default function PillarsSection() {
     <section id="about" className="py-20 md:py-28 px-6 lg:px-10 max-w-container-max mx-auto">
       <Parallax speed={0.18} className="mb-12 max-w-2xl">
         <Reveal direction="up">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-blue-200">
+          <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] bg-clip-text text-transparent bg-gradient-to-br from-on-surface via-on-surface to-primary-container">
             {th('how_we_work')}
           </h2>
         </Reveal>
@@ -30,7 +30,7 @@ export default function PillarsSection() {
         {PILLARS.map(({ key, icon: Icon }) => (
           <RevealItem
             key={key}
-            className="rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary-container/40 hover:bg-white/[0.04] hover:-translate-y-1 transition-all duration-200 p-6"
+            className="rounded-2xl border border-black/[0.08] bg-black/[0.02] hover:border-primary-container/40 hover:bg-black/[0.04] hover:-translate-y-1 transition-all duration-200 p-6"
           >
             <div className="w-11 h-11 rounded-xl bg-primary-container/10 border border-primary-container/20 flex items-center justify-center mb-5">
               <Icon className="text-primary-container" size={20} />

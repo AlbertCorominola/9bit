@@ -115,7 +115,7 @@ export default function ContactPopup() {
             exit={{ opacity: 0, y: 24, scale: 0.97 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-md rounded-2xl border border-white/[0.08] bg-surface-container-low p-8 shadow-[0_30px_80px_rgba(0,0,0,0.6)] overflow-hidden"
+            className="relative w-full max-w-md rounded-2xl border border-black/[0.08] bg-surface-container-low p-8 shadow-[0_30px_80px_rgba(13,17,23,0.12)] overflow-hidden"
           >
             {/* glow */}
             <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full bg-primary-container/20 blur-3xl" />

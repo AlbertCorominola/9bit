@@ -35,7 +35,7 @@ export default function ServiceCard({ icon: Icon, code, title, desc, core = fals
         'group relative overflow-hidden rounded-2xl border p-7 flex flex-col gap-4 transition-all duration-200 hover:-translate-y-1 ' +
         (core
           ? 'border-primary-container/35 bg-primary-container/[0.06] shadow-[0_0_40px_-14px_rgba(0,102,255,0.5)] hover:border-primary-container/60'
-          : 'border-white/[0.06] bg-white/[0.02] opacity-80 hover:opacity-100 hover:border-primary-container/40 hover:bg-white/[0.04]')
+          : 'border-black/[0.08] bg-black/[0.02] opacity-80 hover:opacity-100 hover:border-primary-container/40 hover:bg-black/[0.04]')
       }
     >
       {/* cursor spotlight */}
@@ -63,13 +63,13 @@ export default function ServiceCard({ icon: Icon, code, title, desc, core = fals
             {coreLabel}
           </span>
         ) : (
-          <span className="font-mono text-[10px] text-on-surface-variant/70 border border-white/[0.08] px-2 py-0.5 rounded tracking-widest">
+          <span className="font-mono text-[10px] text-on-surface-variant/70 border border-black/[0.08] px-2 py-0.5 rounded tracking-widest">
             {code}
           </span>
         )}
       </div>
       <div className="relative">
-        <h3 className="text-on-surface text-lg font-semibold tracking-tight mb-1.5 group-hover:text-white transition-colors">
+        <h3 className="text-on-surface text-lg font-semibold tracking-tight mb-1.5 group-hover:text-primary-container transition-colors">
           {title}
         </h3>
         <p className="text-on-surface-variant text-sm leading-relaxed">{desc}</p>

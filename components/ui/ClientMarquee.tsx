@@ -3,14 +3,15 @@ import LogoMarquee, { type MarqueeLogo } from '@/components/ui/LogoMarquee';
 const CLIENTS: MarqueeLogo[] = [
   {
     src: '/clients/logo_met_black.png',
+    source: 'on-light',
     alt: 'MultiEsports Ter',
     gradient: { from: '#66B2FF', via: '#0080FF', to: '#0052A3' },
   },
   {
     src: '/clients/logo_masterrats.jpg',
+    source: 'light-on-dark',
     alt: 'Mas Terrats',
     gradient: { from: '#E8C39E', via: '#C99A6B', to: '#8A6440' },
-    treatment: 'as-is',
   },
   {
     src: '/clients/logo_epicentre.png',
@@ -19,9 +20,9 @@ const CLIENTS: MarqueeLogo[] = [
   },
   {
     src: '/clients/logo_camping_les_medes.jpg',
+    source: 'on-light',
     alt: 'Camping Les Medes',
     gradient: { from: '#5EEAD4', via: '#14B8A6', to: '#0F766E' },
-    treatment: 'plate',
   },
   {
     src: '/clients/logo_fadri.webp',
@@ -30,11 +31,13 @@ const CLIENTS: MarqueeLogo[] = [
   },
   {
     src: '/clients/logo_aguilera.png',
+    source: 'on-light',
     alt: 'Aguilera Consulting',
     gradient: { from: '#7C9CE0', via: '#3B62C4', to: '#1E3A8A' },
   },
   {
     src: '/clients/OOA_logo.png',
+    source: 'light-on-dark',
     alt: 'Oxford Oil Additives',
     gradient: { from: '#FCD34D', via: '#F59E0B', to: '#B45309' },
   },

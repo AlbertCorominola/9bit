@@ -46,7 +46,7 @@ export default function CookieBanner() {
           aria-live="polite"
           aria-label={t('title')}
         >
-          <div className="rounded-2xl border border-white/10 bg-[#0a0a0f]/95 backdrop-blur-xl p-5 shadow-2xl">
+          <div className="rounded-2xl border border-black/10 bg-surface/95 backdrop-blur-xl p-5 shadow-2xl">
             <div className="flex items-start justify-between gap-3 mb-2">
               <h3 className="font-semibold text-on-surface text-sm">{t('title')}</h3>
               <button

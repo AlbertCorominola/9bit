@@ -17,11 +17,13 @@ interface GridGlowBackgroundProps {
  * above it with a higher z-index.
  */
 export const GridGlowBackground: React.FC<GridGlowBackgroundProps> = ({
-  backgroundColor = '#0a0a0f',
-  gridColor = 'rgba(255, 255, 255, 0.05)',
+  backgroundColor = '#ffffff',
+  gridColor = 'rgba(13, 17, 23, 0.05)',
   gridSize = 50,
-  glowColors = ['#0066ff', '#5B21B6', '#1E67C6'],
-  glowCount = 12,
+  // Sobre blanco los tonos saturados leen como manchas, no como luz: se usan
+  // azules muy claros y menos focos.
+  glowColors = ['#cfe0ff', '#dbe4ff', '#c7d9ff'],
+  glowCount = 7,
   className,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -68,7 +70,8 @@ export const GridGlowBackground: React.FC<GridGlowBackgroundProps> = ({
         if (Math.abs(this.targetX - this.x) < 1 && Math.abs(this.targetY - this.y) < 1) {
           this.setNewTarget();
         }
-        if (this.alpha < 1) this.alpha += 0.01;
+        // Tope bajo: a opacidad plena estos focos ensucian el fondo blanco.
+        if (this.alpha < 0.5) this.alpha += 0.005;
       }
 
       draw() {

@@ -22,8 +22,8 @@ export default function CTAPanel({ heading, subtitle, buttonLabel }: Props) {
       className="px-6 lg:px-10 py-20 md:py-28"
     >
       <div className="max-w-container-max mx-auto">
-        <div className="relative rounded-3xl border border-white/[0.06] bg-gradient-to-br from-primary-container/20 via-transparent to-purple-500/10 px-8 md:px-16 py-16 md:py-24 text-center overflow-hidden">
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-5 leading-[1.05] bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-blue-200">
+        <div className="relative rounded-3xl border border-black/[0.08] bg-gradient-to-br from-primary-container/20 via-transparent to-purple-500/10 px-8 md:px-16 py-16 md:py-24 text-center overflow-hidden">
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-5 leading-[1.05] bg-clip-text text-transparent bg-gradient-to-br from-on-surface via-on-surface to-primary-container">
             {heading}
           </h2>
           <p className="text-on-surface-variant text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed">

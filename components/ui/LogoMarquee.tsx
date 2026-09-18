@@ -8,12 +8,13 @@ export type MarqueeLogo = {
   alt: string;
   gradient: { from: string; via: string; to: string };
   /**
-   * Cómo pintar el logo sobre la tarjeta oscura, según cómo sea el archivo:
-   * - `silhouette` (por defecto): PNG/WebP con transparencia → silueta blanca uniforme.
-   * - `as-is`: ya viene claro sobre fondo oscuro → se deja tal cual, el fondo se funde.
-   * - `plate`: logo a color sobre fondo blanco opaco → placa clara para que no recorte.
+   * Cómo es el archivo de origen — medido, no supuesto: tener canal alfa no
+   * implica ser transparente, y ahí es donde esto se rompía.
+   * - `transparent` (por defecto): el fondo es realmente transparente.
+   * - `on-light`: opaco con fondo claro; ya casa con la tarjeta.
+   * - `light-on-dark`: opaco con fondo oscuro; hay que invertirlo para que funda.
    */
-  treatment?: 'silhouette' | 'as-is' | 'plate';
+  source?: 'transparent' | 'on-light' | 'light-on-dark';
 };
 
 export interface LogoMarqueeProps {
@@ -91,34 +92,30 @@ export default function LogoMarquee({
                   '--to': logo.gradient.to,
                 } as React.CSSProperties
               }
-              className="group/card relative flex h-24 w-44 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.03]"
+              className="group/card relative flex h-24 w-44 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-black/[0.08] bg-black/[0.02]"
             >
               <div
                 aria-hidden
                 className="absolute inset-0 scale-150 bg-gradient-to-br from-[var(--from)] via-[var(--via)] to-[var(--to)] opacity-0 transition-all duration-700 ease-out group-hover/card:scale-100 group-hover/card:opacity-100"
               />
-              {logo.treatment === 'plate' ? (
-                <span className="relative z-10 flex items-center justify-center rounded-lg bg-white/90 px-3 py-2">
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={150}
-                    height={48}
-                    className="h-9 w-auto max-w-full object-contain grayscale opacity-80 transition-all duration-500 group-hover/card:grayscale-0 group-hover/card:opacity-100"
-                  />
-                </span>
-              ) : (
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={150}
-                  height={48}
-                  className={cn(
-                    'relative z-10 h-11 w-auto max-w-[80%] object-contain opacity-65 transition-opacity duration-500 group-hover/card:opacity-100',
-                    logo.treatment !== 'as-is' && 'brightness-0 invert'
-                  )}
-                />
-              )}
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={150}
+                height={48}
+                className={cn(
+                  'relative z-10 h-11 w-auto max-w-[80%] object-contain opacity-70 transition-all duration-500',
+                  // Transparente: silueta de tinta, y al hacer hover recupera color
+                  // porque detrás aparece el gradiente de marca.
+                  (!logo.source || logo.source === 'transparent') &&
+                    'brightness-0 group-hover/card:filter-none',
+                  // Opacos: el filtro los funde con la tarjeta y se mantiene también
+                  // en hover, porque si no reaparece el recuadro de su fondo.
+                  logo.source === 'on-light' && 'grayscale',
+                  logo.source === 'light-on-dark' && 'grayscale invert',
+                  'group-hover/card:opacity-100'
+                )}
+              />
             </div>
           ))}
         </div>

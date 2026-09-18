@@ -82,7 +82,7 @@ export default function ServeisPage() {
 
             {/* Heading */}
             <Parallax speed={0.22}>
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-[0.95] bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-blue-200">
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-[0.95] bg-clip-text text-transparent bg-gradient-to-br from-on-surface via-on-surface to-primary-container">
                 {tp('heading')}
               </h1>
             </Parallax>
@@ -101,7 +101,7 @@ export default function ServeisPage() {
               ].map(({ value, label }) => (
                 <div
                   key={label}
-                  className="rounded-full border border-white/[0.08] bg-white/[0.02] px-4 py-2 flex items-center gap-2"
+                  className="rounded-full border border-black/[0.08] bg-black/[0.02] px-4 py-2 flex items-center gap-2"
                 >
                   <span className="font-bold text-primary-container text-sm">{value}</span>
                   <span className="font-mono text-[11px] text-on-surface-variant uppercase tracking-widest">{label}</span>
@@ -122,7 +122,7 @@ export default function ServeisPage() {
               {tp('featured_label')}
             </p>
 
-            <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:border-primary-container/30 transition-all duration-200 overflow-hidden">
+            <div className="rounded-2xl border border-black/[0.08] bg-black/[0.02] hover:border-primary-container/30 transition-all duration-200 overflow-hidden">
               <div className="grid lg:grid-cols-2">
                 {/* Left half */}
                 <div className="p-8 lg:p-12 flex flex-col">
@@ -130,12 +130,12 @@ export default function ServeisPage() {
                     <div className="w-12 h-12 rounded-xl bg-primary-container/10 border border-primary-container/20 flex items-center justify-center">
                       <Globe className="text-primary-container" size={22} />
                     </div>
-                    <span className="font-mono text-[10px] text-on-surface-variant/70 border border-white/[0.08] px-2 py-0.5 rounded tracking-widest">
+                    <span className="font-mono text-[10px] text-on-surface-variant/70 border border-black/[0.08] px-2 py-0.5 rounded tracking-widest">
                       {t('items.web.code')}
                     </span>
                   </div>
 
-                  <h2 className="text-4xl lg:text-5xl font-black tracking-tighter mb-4 leading-tight bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-blue-200">
+                  <h2 className="text-4xl lg:text-5xl font-black tracking-tighter mb-4 leading-tight bg-clip-text text-transparent bg-gradient-to-br from-on-surface via-on-surface to-primary-container">
                     {t('items.web.title')}
                   </h2>
                   <p className="text-on-surface-variant text-base leading-relaxed mb-7 max-w-md">
@@ -155,9 +155,9 @@ export default function ServeisPage() {
                 </div>
 
                 {/* Right half — code window */}
-                <div className="p-6 lg:p-8 border-t lg:border-t-0 lg:border-l border-white/[0.06] bg-black/20 flex items-center">
-                  <div className="w-full rounded-xl border border-white/[0.08] bg-[#0c1018] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.4)]">
-                    <div className="px-4 py-2 border-b border-white/[0.06] flex items-center">
+                <div className="p-6 lg:p-8 border-t lg:border-t-0 lg:border-l border-black/[0.08] bg-black/20 flex items-center">
+                  <div className="w-full rounded-xl border border-black/[0.08] bg-surface-container overflow-hidden shadow-[0_10px_40px_rgba(13,17,23,0.08)]">
+                    <div className="px-4 py-2 border-b border-black/[0.08] flex items-center">
                       <span className="font-mono text-[11px] text-on-surface-variant/70">
                         9bit-web.config.ts
                       </span>
@@ -281,7 +281,7 @@ export default function ServeisPage() {
               <p className="text-on-surface-variant text-sm uppercase tracking-wide font-medium mb-4">
                 {tp('methodology_label')}
               </p>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-blue-200">
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] bg-clip-text text-transparent bg-gradient-to-br from-on-surface via-on-surface to-primary-container">
                 {tp('methodology_heading')}
               </h2>
             </motion.div>
@@ -333,7 +333,7 @@ export default function ServeisPage() {
               <p className="text-on-surface-variant text-sm uppercase tracking-wide font-medium mb-4">
                 {tp('tech_label')}
               </p>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-blue-200">
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] bg-clip-text text-transparent bg-gradient-to-br from-on-surface via-on-surface to-primary-container">
                 {tp('tech_heading')}
               </h2>
             </motion.div>
@@ -342,7 +342,7 @@ export default function ServeisPage() {
               {TECH_STACK.map(({ category, items }) => (
                 <div
                   key={category}
-                  className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 py-4 border-b border-white/[0.06] last:border-b-0"
+                  className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 py-4 border-b border-black/[0.08] last:border-b-0"
                 >
                   <span className="text-on-surface font-semibold text-sm sm:w-40 sm:shrink-0">
                     {category}
@@ -351,7 +351,7 @@ export default function ServeisPage() {
                     {items.map((tech) => (
                       <span
                         key={tech}
-                        className="font-mono text-xs text-on-surface-variant border border-white/[0.08] bg-white/[0.02] px-3 py-1.5 rounded-full hover:border-primary-container/40 hover:text-primary-container transition-colors cursor-default"
+                        className="font-mono text-xs text-on-surface-variant border border-black/[0.08] bg-black/[0.02] px-3 py-1.5 rounded-full hover:border-primary-container/40 hover:text-primary-container transition-colors cursor-default"
                       >
                         {tech}
                       </span>
@@ -373,7 +373,7 @@ export default function ServeisPage() {
               </h2>
             </motion.div>
 
-            <div className="divide-y divide-white/[0.06] border-y border-white/[0.06]">
+            <div className="divide-y divide-black/[0.08] border-y border-black/[0.08]">
               {FAQ_ITEMS.map(({ q, a }) => (
                 <details key={q} className="group py-5">
                   <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-on-surface">

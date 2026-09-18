@@ -46,7 +46,7 @@ function MetricItem({ value, label }: Metric) {
       transition={{ duration: 0.4 }}
       className="flex flex-col gap-2 px-4 sm:px-6 py-3"
     >
-      <div className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-blue-200 leading-none tabular-nums">
+      <div className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-br from-on-surface via-on-surface to-primary-container leading-none tabular-nums">
         {display}
       </div>
       <div className="font-mono text-[10px] sm:text-[11px] text-on-surface-variant uppercase tracking-widest leading-tight">
@@ -68,7 +68,7 @@ export default function MetricsSection() {
   return (
     <section className="py-20 md:py-28 px-6 lg:px-10 max-w-container-max mx-auto">
       <Reveal direction="up">
-        <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/[0.06] border-y border-white/[0.06]">
+        <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-black/[0.08] border-y border-black/[0.08]">
           {metrics.map((m, i) => (
             <MetricItem key={i} {...m} />
           ))}

@@ -41,7 +41,7 @@ export default function LanguageSelector({
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1.5 rounded-md px-2 py-1.5 text-[11px] font-mono uppercase tracking-wider text-on-surface-variant hover:text-on-surface hover:bg-white/[0.04] transition-colors"
+        className="flex items-center gap-1.5 rounded-md px-2 py-1.5 text-[11px] font-mono uppercase tracking-wider text-on-surface-variant hover:text-on-surface hover:bg-black/[0.04] transition-colors"
         aria-haspopup="listbox"
         aria-expanded={open}
       >
@@ -58,7 +58,7 @@ export default function LanguageSelector({
             transition={{ duration: 0.15, ease: 'easeOut' }}
             role="listbox"
             className={cn(
-              'absolute min-w-[120px] rounded-xl border border-white/[0.1] bg-[#0d0f17] p-1.5 shadow-[0_20px_60px_rgba(0,0,0,0.6)] z-50',
+              'absolute min-w-[120px] rounded-xl border border-black/[0.1] bg-surface p-1.5 shadow-[0_20px_60px_rgba(13,17,23,0.12)] z-50',
               alignLeft ? 'left-0' : 'right-0',
               openUp ? 'bottom-full mb-2' : 'mt-2'
             )}
@@ -75,7 +75,7 @@ export default function LanguageSelector({
                       'flex w-full items-center justify-between gap-3 rounded-lg px-3 py-2 text-xs font-mono uppercase tracking-wider transition-colors',
                       active
                         ? 'bg-primary-container/15 text-primary-container font-bold'
-                        : 'text-on-surface-variant hover:bg-white/[0.05] hover:text-on-surface'
+                        : 'text-on-surface-variant hover:bg-black/[0.04] hover:text-on-surface'
                     )}
                   >
                     {l.toUpperCase()}
