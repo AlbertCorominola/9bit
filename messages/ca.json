@@ -289,6 +289,31 @@
         "desc": "Disseny web complet, estratègia SEO local i presència digital integral. El rellançament online va disparar les reserves i la visibilitat als cercadors.",
         "metric": "+180%",
         "metricLabel": "reserves online"
+      },
+      {
+        "badge": "Case_07",
+        "title": "Mas Terrats",
+        "industry": "Esdeveniments i casaments",
+        "desc": "Agent d'IA recepcionista per correu electrònic que gestiona consultes, disponibilitat i pressupostos, i deriva els casos complexos a l'equip humà. Integrat amb un CRM propi.",
+        "metric": "24/7",
+        "metricLabel": "atenció automatitzada"
+      },
+      {
+        "badge": "Case_08",
+        "title": "Epicentre (Palamós)",
+        "industry": "Oci nocturn",
+        "desc": "Instal·lació de panells LED en col·laboració amb Megaluz.",
+        "metric": "Megaluz",
+        "metricLabel": "instal·lació en col·laboració amb",
+        "gallery_labels": ["Abans", "Després — interior", "Després — exterior"]
+      },
+      {
+        "badge": "Case_09",
+        "title": "Camping Les Medes",
+        "industry": "Turisme / Càmping",
+        "desc": "Instal·lació de panells LED en col·laboració amb Megaluz.",
+        "metric": "Megaluz",
+        "metricLabel": "instal·lació en col·laboració amb"
       }
     ],
     "industries": [
@@ -297,7 +322,9 @@
       { "label": "Indústria" },
       { "label": "Consultoria" },
       { "label": "Allotjament" },
-      { "label": "Tecnologia" }
+      { "label": "Tecnologia" },
+      { "label": "Esdeveniments" },
+      { "label": "Il·luminació" }
     ],
     "stats": [
       { "value": "CA·ES·EN", "label": "idiomes" },

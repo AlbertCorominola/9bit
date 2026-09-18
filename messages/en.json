@@ -289,6 +289,31 @@
         "desc": "Complete web design, local SEO strategy and integral digital presence. The online relaunch drove reservations and search engine visibility.",
         "metric": "+180%",
         "metricLabel": "online reservations"
+      },
+      {
+        "badge": "Case_07",
+        "title": "Mas Terrats",
+        "industry": "Events & weddings",
+        "desc": "AI receptionist agent that handles email inquiries, availability and quotes, escalating complex cases to the human team. Integrated with a custom CRM.",
+        "metric": "24/7",
+        "metricLabel": "automated support"
+      },
+      {
+        "badge": "Case_08",
+        "title": "Epicentre (Palamós)",
+        "industry": "Nightlife venue",
+        "desc": "LED panel installation in collaboration with Megaluz.",
+        "metric": "Megaluz",
+        "metricLabel": "installation in collaboration with",
+        "gallery_labels": ["Before", "After — interior", "After — exterior"]
+      },
+      {
+        "badge": "Case_09",
+        "title": "Camping Les Medes",
+        "industry": "Tourism / Camping",
+        "desc": "LED panel installation in collaboration with Megaluz.",
+        "metric": "Megaluz",
+        "metricLabel": "installation in collaboration with"
       }
     ],
     "industries": [
@@ -297,7 +322,9 @@
       { "label": "Industry" },
       { "label": "Consulting" },
       { "label": "Accommodation" },
-      { "label": "Technology" }
+      { "label": "Technology" },
+      { "label": "Events" },
+      { "label": "Lighting" }
     ],
     "stats": [
       { "value": "CA·ES·EN", "label": "languages" },
