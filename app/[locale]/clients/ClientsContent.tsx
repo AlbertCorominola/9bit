@@ -477,7 +477,7 @@ export default function ClientsPage() {
 
           {/* Section heading */}
           <motion.div {...reveal} className="mb-16">
-            <p className="font-mono text-xs text-primary-container/70 uppercase tracking-widest mb-3">
+            <p className="font-mono text-xs text-primary-text uppercase tracking-widest mb-3">
               {t('cases_label')}
             </p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-on-surface mb-4">
@@ -591,7 +591,7 @@ export default function ClientsPage() {
       <section className="py-24 px-6 lg:px-10">
         <div className="max-w-container-max mx-auto">
           <motion.div {...reveal} className="mb-12 text-center">
-            <p className="font-mono text-xs text-primary-container/70 uppercase tracking-widest mb-3">
+            <p className="font-mono text-xs text-primary-text uppercase tracking-widest mb-3">
               {t('clients_label')}
             </p>
             <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-on-surface">
@@ -626,7 +626,7 @@ export default function ClientsPage() {
       <section className="py-24 px-6 lg:px-10">
         <div className="max-w-container-max mx-auto">
           <motion.div {...reveal} className="mb-16 text-center">
-            <p className="font-mono text-xs text-primary-container/70 uppercase tracking-widest mb-3">
+            <p className="font-mono text-xs text-primary-text uppercase tracking-widest mb-3">
               {t('feedback_label')}
             </p>
             <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-on-surface">
@@ -711,7 +711,7 @@ export default function ClientsPage() {
             />
 
             <div className="relative z-10">
-              <p className="font-mono text-xs text-primary-container/70 uppercase tracking-widest mb-6">
+              <p className="font-mono text-xs text-primary-text uppercase tracking-widest mb-6">
                 {t('next_label')}
               </p>
               <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-on-surface mb-4">

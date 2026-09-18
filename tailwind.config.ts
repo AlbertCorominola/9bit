@@ -20,6 +20,7 @@ const config: Config = {
         'on-background': 'var(--on-surface)',
         primary: 'var(--primary)',
         'primary-container': 'var(--primary-container)',
+        'primary-text': 'var(--primary-text)',
         outline: 'var(--outline)',
         'outline-variant': 'var(--outline-variant)',
       },

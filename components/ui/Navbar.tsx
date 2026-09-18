@@ -110,6 +110,15 @@ export default function Navbar() {
             className="relative"
             onMouseEnter={() => setServicesOpen(true)}
             onMouseLeave={() => setServicesOpen(false)}
+            // Sin esto el menú solo abre con el ratón y sus enlaces quedan
+            // inalcanzables tabulando.
+            onFocus={() => setServicesOpen(true)}
+            onBlur={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget as Node)) setServicesOpen(false);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') setServicesOpen(false);
+            }}
           >
             <Link
               href={serveisHref}

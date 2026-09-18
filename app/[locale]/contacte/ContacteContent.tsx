@@ -263,7 +263,7 @@ export default function ContactPage() {
                       transition={{ duration: 0.3 }}
                       className="glass-panel rounded-xl border border-outline-variant/25 p-8 md:p-10"
                     >
-                      <h3 className="text-lg font-semibold text-on-surface mb-1">{t('form_title')}</h3>
+                      <h2 className="text-lg font-semibold text-on-surface mb-1">{t('form_title')}</h2>
                       <p className="text-sm text-on-surface-variant mb-6">{t('form_subtitle')}</p>
 
                       <form onSubmit={onSubmit} className="space-y-5" noValidate>
@@ -356,7 +356,7 @@ export default function ContactPage() {
                       >
                         <CheckCircle2 className="text-primary-container" size={32} strokeWidth={1.5} />
                       </motion.div>
-                      <h3 className="text-2xl font-bold text-on-surface mb-2">{t('success_title')}</h3>
+                      <h2 className="text-2xl font-bold text-on-surface mb-2">{t('success_title')}</h2>
                       <p className="text-on-surface-variant font-mono text-sm mb-8">{t('success_sub')}</p>
                       <button
                         onClick={resetForm}

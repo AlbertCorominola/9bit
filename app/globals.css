@@ -12,6 +12,9 @@
   --on-surface: #e2e2e2;
   --on-surface-variant: #c2c6d8;
   --primary-container: #0066ff;
+  /* El azul de marca sobre el fondo casi negro da 4,1:1 y no llega a AA en
+     texto pequeño. Este tono, solo para texto, sube a ~7,9:1. */
+  --primary-text: #6aa4ff;
   --primary: #b3c5ff;
   --outline: #8c90a1;
   --outline-variant: #424656;

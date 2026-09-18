@@ -122,11 +122,28 @@ export const GridGlowBackground: React.FC<GridGlowBackgroundProps> = ({
       frameId = requestAnimationFrame(animate);
     };
 
+    // Con reduced motion se pinta un único fotograma y no se abre el bucle de
+    // rAF, que si no seguiría corriendo indefinidamente.
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const renderStatic = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawGrid();
+      glows.forEach((g) => g.draw());
+    };
+    const onResize = () => {
+      resize();
+      if (reduced) renderStatic();
+    };
+
     resize();
-    animate();
-    window.addEventListener('resize', resize);
+    if (reduced) {
+      renderStatic();
+    } else {
+      animate();
+    }
+    window.addEventListener('resize', onResize);
     return () => {
-      window.removeEventListener('resize', resize);
+      window.removeEventListener('resize', onResize);
       cancelAnimationFrame(frameId);
     };
   }, [gridColor, gridSize, glowColors, glowCount]);

@@ -222,7 +222,7 @@ export default function QuiSomPage() {
               <div className="pointer-events-none absolute -top-8 -right-8 w-32 h-32 rounded-full bg-primary-container/10 blur-2xl" />
               <div className="pointer-events-none absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary-container/40 to-transparent" />
 
-              <span className="font-mono text-[11px] text-primary-container/70 uppercase tracking-widest mb-5 block">
+              <span className="font-mono text-[11px] text-primary-text uppercase tracking-widest mb-5 block">
                 {t('about_label')}
               </span>
 
@@ -297,7 +297,7 @@ export default function QuiSomPage() {
         <div className="max-w-container-max mx-auto">
 
           <motion.div {...revealUp(0)} className="mb-4">
-            <span className="font-mono text-xs text-primary-container/70 uppercase tracking-widest">
+            <span className="font-mono text-xs text-primary-text uppercase tracking-widest">
               {t('values_label')}
             </span>
           </motion.div>
@@ -359,7 +359,7 @@ export default function QuiSomPage() {
         <div className="max-w-container-max mx-auto">
 
           <motion.div {...revealUp(0)} className="mb-4">
-            <span className="font-mono text-xs text-primary-container/70 uppercase tracking-widest">
+            <span className="font-mono text-xs text-primary-text uppercase tracking-widest">
               {t('methodology_label')}
             </span>
           </motion.div>

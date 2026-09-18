@@ -17,9 +17,13 @@ function MetricItem({ value, label }: Metric) {
 
   useEffect(() => {
     if (!inView) return;
-    const numMatch = value.match(/(\d+)/);
-    if (!numMatch) return;
-    const target = parseInt(numMatch[1], 10);
+    // Solo se cuenta un valor con UN único número y lo bastante grande: en
+    // "24/7" contar el 24 daría "0/7", "13/7"…, y en "<2h" contar hasta 2 no
+    // aporta nada.
+    const numbers = value.match(/\d+/g);
+    if (!numbers || numbers.length !== 1) return;
+    const target = parseInt(numbers[0], 10);
+    if (target < 10) return;
     const duration = 1200;
     const start = performance.now();
     let raf = 0;

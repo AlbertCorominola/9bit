@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function PortraitLock() {
+  const t = useTranslations('portrait_lock');
   const [landscape, setLandscape] = useState(false);
 
   useEffect(() => {
@@ -30,7 +32,7 @@ export default function PortraitLock() {
         <path d="M12 18h.01" />
       </svg>
       <p className="font-mono text-sm uppercase tracking-widest text-on-surface-variant">
-        Gira el dispositiu
+        {t('message')}
       </p>
     </div>
   );
