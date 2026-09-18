@@ -1,20 +1,35 @@
 'use client';
 
-import { useRef } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import { Globe, Phone, Bot, Workflow } from 'lucide-react';
 import AnimatedHero from '@/components/ui/AnimatedHero';
+import HeroParallax, { type ParallaxCase } from '@/components/ui/HeroParallax';
 
 const GridGlowBackground = dynamic(
   () => import('@/components/ui/grid-glow-background').then((m) => m.GridGlowBackground),
   { ssr: false }
 );
 
+// Capturas reales de los proyectos, no ilustraciones: el hero es la prueba de
+// trabajo antes que un adorno.
+const CASES: ParallaxCase[] = [
+  { title: 'MultiEsports Ter', thumbnail: '/cases/multiesports.webp', href: 'https://multiesportster.com/' },
+  { title: 'Creuers 2mes2', thumbnail: '/cases/creuers.webp', href: 'https://creuers2mes2.com/' },
+  { title: 'Mas Soles', thumbnail: '/cases/massoles.webp', href: 'https://massoles.com/' },
+  { title: 'Mas Terrats', thumbnail: '/cases/masterrats.webp' },
+  { title: 'Restaurant Arest Estanyol', thumbnail: '/cases/estanyol.webp', href: 'https://restaurantarestestanyol.com/' },
+  { title: 'Oxford Oil Additives', thumbnail: '/cases/ooadditives.webp', href: 'https://www.ooadditives.com/' },
+  { title: 'Gestoria Aguilera Pérez', thumbnail: '/cases/aguilera.webp', href: 'https://www.gestoriaguileraperez.com/' },
+  { title: 'Epicentre — Palamós', thumbnail: '/clients/epicentre-out.jpeg' },
+  { title: 'Epicentre — interior', thumbnail: '/clients/epicentre-in.jpeg' },
+  { title: 'Camping Les Medes', thumbnail: '/clients/video_camping_poster.jpg' },
+];
+
 export default function HeroSection() {
   const t = useTranslations('hero');
   const ts = useTranslations('services');
+  const locale = useLocale();
   const words = (t.raw('words') as string[]) ?? [];
 
   const offerings = [
@@ -24,25 +39,17 @@ export default function HeroSection() {
     { icon: Workflow, label: ts('items.automation.title') },
   ];
 
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 140]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const cases = CASES.map((c) =>
+    c.href ? c : { ...c, href: `/${locale}/clients` }
+  );
 
-  return (
-    <section
-      ref={ref}
-      className="relative min-h-[100svh] -mt-20 flex items-center justify-center py-28 sm:py-24"
-    >
-      <motion.div
-        style={{ y: bgY }}
-        className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent_0%,black_14%,black_48%,transparent_78%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_14%,black_48%,transparent_78%)]"
-      >
+  const header = (
+    <div className="relative">
+      <div className="pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%,black_60%,transparent_92%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_18%,black_60%,transparent_92%)]">
         <GridGlowBackground backgroundColor="transparent" gridSize={48} />
-      </motion.div>
+      </div>
 
-      <motion.div style={{ y: contentY, opacity: contentOpacity }} className="relative z-10 w-full">
+      <div className="relative z-10 pt-32 pb-12 md:pt-36 md:pb-16">
         <AnimatedHero
           badge={t('badge')}
           titleBase={t('title_base')}
@@ -52,7 +59,13 @@ export default function HeroSection() {
           ctaSecondary={t('cta_secondary')}
           offerings={offerings}
         />
-      </motion.div>
+      </div>
+    </div>
+  );
+
+  return (
+    <section className="-mt-20">
+      <HeroParallax cases={cases}>{header}</HeroParallax>
     </section>
   );
 }
