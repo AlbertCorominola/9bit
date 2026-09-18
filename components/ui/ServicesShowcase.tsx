@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 
 export type ShowcaseSlide = {
   /** Código corto tipo "01" o "SVC_01" */
@@ -125,35 +126,34 @@ export default function ServicesShowcase({
   if (!scrollMode) {
     return (
       <section className={cn('py-margin px-6 lg:px-10 max-w-container-max mx-auto', className)}>
-        {header}
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <Reveal>{header}</Reveal>
+        <RevealGroup className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {slides.map(({ code, title, description, Icon }) => (
-            <article
-              key={code}
-              className="glass-panel glow-hover flex flex-col gap-4 rounded-2xl p-6"
-            >
-              <div className="flex items-start justify-between">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-primary-container/30 bg-primary-container/10">
-                  <Icon size={22} className="text-primary-container" />
+            <RevealItem key={code} className="h-full">
+              <article className="glass-panel glow-hover flex h-full flex-col gap-4 rounded-2xl p-6">
+                <div className="flex items-start justify-between">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-primary-container/30 bg-primary-container/10">
+                    <Icon size={22} className="text-primary-container" />
+                  </div>
+                  <span className="font-mono text-[10px] tracking-widest text-on-surface-variant">
+                    {code}
+                  </span>
                 </div>
-                <span className="font-mono text-[10px] tracking-widest text-on-surface-variant/70">
-                  {code}
-                </span>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold tracking-tight text-on-surface">{title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-on-surface-variant">
-                  {description}
-                </p>
-              </div>
-            </article>
+                <div>
+                  <h3 className="text-lg font-semibold tracking-tight text-on-surface">{title}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-on-surface-variant">
+                    {description}
+                  </p>
+                </div>
+              </article>
+            </RevealItem>
           ))}
-        </div>
-        <div className="mt-10">
+        </RevealGroup>
+        <Reveal delay={0.1} className="mt-10">
           <Link href={ctaHref} className={CTA_CLASS}>
             {ctaLabel}
           </Link>
-        </div>
+        </Reveal>
       </section>
     );
   }

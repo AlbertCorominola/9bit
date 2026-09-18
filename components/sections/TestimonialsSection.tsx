@@ -18,15 +18,16 @@ export default function TestimonialsSection() {
         </Reveal>
       </Parallax>
 
-      {/* Mobile: horizontal scroll. Desktop: grid */}
-      <div className="md:hidden -mx-6 px-6 overflow-x-auto">
-        <div className="flex gap-4 pb-4" style={{ width: 'max-content' }}>
+      {/* Móvil: carrusel horizontal con snap para que las tarjetas no queden a
+          medias al soltar. Escritorio: rejilla. */}
+      <div className="md:hidden -mx-6 px-6 overflow-x-auto snap-x snap-mandatory scroll-pl-6">
+        <RevealGroup className="flex w-max gap-4 pb-4">
           {TESTIMONIALS.map((tt, i) => (
-            <div key={i} className="w-[300px] shrink-0">
+            <RevealItem key={i} className="w-[300px] shrink-0 snap-start">
               <TestimonialCard {...tt} />
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </div>
 
       <RevealGroup className="hidden md:grid grid-cols-3 gap-5">
