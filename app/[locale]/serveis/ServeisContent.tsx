@@ -155,10 +155,10 @@ export default function ServeisPage() {
                 </div>
 
                 {/* Right half — code window */}
-                <div className="p-6 lg:p-8 border-t lg:border-t-0 lg:border-l border-black/[0.08] bg-black/20 flex items-center">
-                  <div className="w-full rounded-xl border border-black/[0.08] bg-surface-container overflow-hidden shadow-[0_10px_40px_rgba(13,17,23,0.08)]">
-                    <div className="px-4 py-2 border-b border-black/[0.08] flex items-center">
-                      <span className="font-mono text-[11px] text-on-surface-variant/70">
+                <div className="p-6 lg:p-8 border-t lg:border-t-0 lg:border-l border-black/[0.08] bg-black/[0.03] flex items-center">
+                  <div className="w-full rounded-xl border border-white/[0.08] bg-[#0d1117] overflow-hidden shadow-[0_12px_40px_rgba(13,17,23,0.18)]">
+                    <div className="px-4 py-2 border-b border-white/[0.08] flex items-center">
+                      <span className="font-mono text-[11px] text-zinc-400">
                         9bit-web.config.ts
                       </span>
                     </div>
