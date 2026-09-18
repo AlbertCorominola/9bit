@@ -125,7 +125,7 @@ export default function ServicesShowcase({
 
   if (!scrollMode) {
     return (
-      <section className={cn('py-margin px-6 lg:px-10 max-w-container-max mx-auto', className)}>
+      <section className={cn('py-20 md:py-28 px-6 lg:px-10 max-w-container-max mx-auto', className)}>
         <Reveal>{header}</Reveal>
         <RevealGroup className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {slides.map(({ code, title, description, Icon }) => (

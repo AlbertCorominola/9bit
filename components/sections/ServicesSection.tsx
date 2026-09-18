@@ -50,7 +50,7 @@ export default function ServicesSection() {
       />
 
       {/* Servicios secundarios */}
-      <div className="py-margin px-6 lg:px-10 max-w-container-max mx-auto">
+      <div className="py-20 md:py-28 px-6 lg:px-10 max-w-container-max mx-auto">
         <p className="font-mono text-xs uppercase tracking-widest text-on-surface-variant mb-4">
           {t('more_label')}
         </p>

@@ -71,6 +71,9 @@ const EPICENTRE_GALLERY = [
 
 // Case_09 (Camping Les Medes, index 7): video instead of gradient header
 const CAMPING_VIDEO = '/clients/video_camping.mp4';
+// Fotograma del propio vídeo: con preload="none" la tarjeta se quedaría en
+// negro hasta que el vídeo empiece a cargar.
+const CAMPING_POSTER = '/clients/video_camping_poster.jpg';
 
 const FEATURED_URL = 'https://multiesportster.com/';
 
@@ -234,6 +237,7 @@ export default function ClientsPage() {
         <div className="flex items-center justify-center p-8">
           <video
             src={CAMPING_VIDEO}
+            poster={CAMPING_POSTER}
             autoPlay
             muted
             loop

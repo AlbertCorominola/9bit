@@ -38,7 +38,6 @@ const config: Config = {
       },
       spacing: {
         gutter: '24px',
-        margin: '48px',
       },
       maxWidth: {
         'container-max': '1440px',

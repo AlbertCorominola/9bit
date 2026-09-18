@@ -66,7 +66,7 @@ export default function MetricsSection() {
   ];
 
   return (
-    <section className="py-margin px-6 lg:px-10 max-w-container-max mx-auto">
+    <section className="py-20 md:py-28 px-6 lg:px-10 max-w-container-max mx-auto">
       <Reveal direction="up">
         <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/[0.06] border-y border-white/[0.06]">
           {metrics.map((m, i) => (
