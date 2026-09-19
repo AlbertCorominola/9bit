@@ -12,18 +12,20 @@ const GridGlowBackground = dynamic(
 );
 
 // Capturas reales de los proyectos, no ilustraciones: el hero es la prueba de
-// trabajo antes que un adorno.
+// trabajo antes que un adorno. El orden alterna sector y formato porque las
+// filas del muro se reparten en round-robin.
 const CASES: ParallaxCase[] = [
   { title: 'MultiEsports Ter', thumbnail: '/cases/multiesports.webp', href: 'https://multiesportster.com/' },
-  { title: 'Creuers 2mes2', thumbnail: '/cases/creuers.webp', href: 'https://creuers2mes2.com/' },
-  { title: 'Mas Soles', thumbnail: '/cases/massoles.webp', href: 'https://massoles.com/' },
-  { title: 'Mas Terrats', thumbnail: '/cases/masterrats.webp' },
   { title: 'Restaurant Arest Estanyol', thumbnail: '/cases/estanyol.webp', href: 'https://restaurantarestestanyol.com/' },
-  { title: 'Oxford Oil Additives', thumbnail: '/cases/ooadditives.webp', href: 'https://www.ooadditives.com/' },
-  { title: 'Gestoria Aguilera Pérez', thumbnail: '/cases/aguilera.webp', href: 'https://www.gestoriaguileraperez.com/' },
+  { title: 'Mas Terrats', thumbnail: '/cases/masterrats.webp' },
+  { title: 'Creuers 2mes2 — El Fadrí', thumbnail: '/cases/creuers.webp', href: 'https://creuers2mes2.com/' },
+  { title: 'Mas Soles', thumbnail: '/cases/massoles.webp', href: 'https://massoles.com/' },
   { title: 'Epicentre — Palamós', thumbnail: '/clients/epicentre-out.jpeg' },
+  { title: 'Gestoria Aguilera Pérez', thumbnail: '/cases/aguilera.webp', href: 'https://www.gestoriaguileraperez.com/' },
+  { title: 'Oxford Oil Additives', thumbnail: '/cases/ooadditives.webp', href: 'https://www.ooadditives.com/' },
+  { title: 'Camping Les Medes', thumbnail: '/clients/camping_les_medes.jpeg' },
   { title: 'Epicentre — interior', thumbnail: '/clients/epicentre-in.jpeg' },
-  { title: 'Camping Les Medes', thumbnail: '/clients/video_camping_poster.jpg' },
+  { title: 'Camping Les Medes — iluminación', thumbnail: '/clients/video_camping_poster.jpg' },
 ];
 
 export default function HeroSection() {
@@ -39,22 +41,19 @@ export default function HeroSection() {
     { icon: Workflow, label: ts('items.automation.title') },
   ];
 
-  const cases = CASES.map((c) =>
-    c.href ? c : { ...c, href: `/${locale}/clients` }
-  );
+  const cases = CASES.map((c) => (c.href ? c : { ...c, href: `/${locale}/clients` }));
 
   const header = (
     <div className="relative">
-      <div className="pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%,black_60%,transparent_92%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_18%,black_60%,transparent_92%)]">
+      <div className="pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%,black_62%,transparent_94%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_18%,black_62%,transparent_94%)]">
         <GridGlowBackground backgroundColor="transparent" gridSize={48} />
       </div>
 
-      <div className="relative z-10 pt-32 pb-12 md:pt-36 md:pb-16">
+      <div className="relative z-10 pt-28 pb-14 md:pt-32 md:pb-20">
         <AnimatedHero
           badge={t('badge')}
           titleBase={t('title_base')}
           words={words}
-          subtitle={t('subtitle')}
           ctaPrimary={t('cta_primary')}
           ctaSecondary={t('cta_secondary')}
           offerings={offerings}

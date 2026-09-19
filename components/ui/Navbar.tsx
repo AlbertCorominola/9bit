@@ -51,6 +51,7 @@ function useScroll(threshold: number) {
 export default function Navbar() {
   const t = useTranslations('nav');
   const ts = useTranslations('services');
+  const th = useTranslations('home');
   const locale = useLocale();
   const scrolled = useScroll(10);
   const [open, setOpen] = useState(false);
@@ -141,59 +142,58 @@ export default function Navbar() {
                   transition={{ duration: 0.18, ease: 'easeOut' }}
                   className="absolute left-0 top-full pt-3"
                 >
-                  <div className="w-[620px] rounded-2xl border border-black/[0.1] bg-surface p-3 shadow-[0_20px_60px_rgba(13,17,23,0.12)]">
-                    {/* Primary services */}
-                    <ul className="grid grid-cols-2 gap-1">
+                  <div className="w-[420px] rounded-2xl border border-black/[0.1] bg-surface p-2 shadow-[0_24px_70px_-20px_rgba(13,17,23,0.28)]">
+                    {/* Principales: icono + nombre. Sin descripciones: el menú
+                        es para navegar, no para vender. */}
+                    <ul className="grid grid-cols-1 gap-0.5">
                       {PRIMARY_SERVICES.map(({ key, icon: Icon }) => (
                         <li key={key}>
                           <Link
                             href={serveisHref}
-                            className="group flex items-start gap-3 rounded-xl p-3 hover:bg-black/[0.04] transition-colors"
+                            className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-black/[0.04]"
                           >
-                            <span className="flex-shrink-0 flex aspect-square w-10 items-center justify-center rounded-lg bg-primary-container/15 border border-primary-container/30">
-                              <Icon className="text-primary-container" size={18} />
+                            <span className="flex aspect-square w-8 flex-shrink-0 items-center justify-center rounded-lg border border-primary-container/25 bg-primary-container/10">
+                              <Icon className="text-primary-container" size={15} />
                             </span>
-                            <span className="flex flex-col">
-                              <span className="text-on-surface text-sm font-semibold tracking-tight normal-case">
-                                {ts(`items.${key}.title`)}
-                              </span>
-                              <span className="text-on-surface-variant/80 text-xs leading-snug normal-case line-clamp-2">
-                                {ts(`items.${key}.desc`)}
-                              </span>
+                            <span className="text-on-surface text-sm font-medium tracking-tight normal-case">
+                              {ts(`items.${key}.title`)}
                             </span>
+                            <ArrowRight
+                              size={13}
+                              className="ml-auto text-on-surface-variant/0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-on-surface-variant/70"
+                            />
                           </Link>
                         </li>
                       ))}
                     </ul>
 
-                    {/* Secondary services — de-emphasized */}
-                    <div className="mt-1 grid grid-cols-2 gap-1 border-t border-black/[0.08] pt-2">
-                      {SECONDARY_SERVICES.map(({ key, icon: Icon }) => (
-                        <Link
-                          key={key}
-                          href={serveisHref}
-                          className="group flex items-center gap-2.5 rounded-lg px-3 py-2 hover:bg-black/[0.04] transition-colors"
-                        >
-                          <Icon className="text-on-surface-variant/60 group-hover:text-on-surface-variant shrink-0" size={15} />
-                          <span className="text-on-surface-variant/70 group-hover:text-on-surface text-xs font-medium normal-case">
+                    {/* Especializados: mismo menú, otro peso visual. */}
+                    <div className="mt-2 border-t border-black/[0.08] px-3 pb-1 pt-3">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-on-surface-variant/60">
+                        {ts('more_label')}
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1.5">
+                        {SECONDARY_SERVICES.map(({ key }) => (
+                          <Link
+                            key={key}
+                            href={serveisHref}
+                            className="text-on-surface-variant/75 hover:text-on-surface text-xs font-medium normal-case transition-colors"
+                          >
                             {ts(`items.${key}.title`)}
-                          </span>
-                        </Link>
-                      ))}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
 
-                    <div className="mt-1 flex items-center justify-between rounded-xl bg-black/[0.02] border border-black/[0.08] px-4 py-3">
-                      <p className="text-on-surface-variant text-xs normal-case">
-                        {ts('subtitle').split(':')[0]}
-                      </p>
-                      <Link
-                        href={`/${locale}/contacte`}
-                        className="inline-flex items-center gap-1.5 text-primary-container hover:text-on-surface text-xs font-medium normal-case transition-colors"
-                      >
-                        {t('cta')}
-                        <ArrowRight size={13} />
-                      </Link>
-                    </div>
+                    <Link
+                      href={serveisHref}
+                      className="mt-2 flex items-center justify-between rounded-xl bg-black/[0.03] px-4 py-2.5 transition-colors hover:bg-black/[0.05]"
+                    >
+                      <span className="text-on-surface text-xs font-medium normal-case">
+                        {th('view_all')}
+                      </span>
+                      <ArrowRight size={13} className="text-primary-container" />
+                    </Link>
                   </div>
                 </motion.div>
               )}

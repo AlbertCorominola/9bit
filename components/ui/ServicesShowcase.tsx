@@ -2,13 +2,13 @@
 
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 
 export type ShowcaseSlide = {
-  /** Código corto tipo "01" o "SVC_01" */
-  code: string;
   title: string;
   description: string;
   Icon: LucideIcon;
@@ -29,9 +29,11 @@ export interface ServicesShowcaseProps {
 }
 
 const CTA_CLASS =
-  'inline-flex items-center justify-center gap-2 rounded-full bg-primary-container px-7 py-3 text-xs font-semibold uppercase tracking-widest text-white shadow-[0_0_20px_var(--glow-color)] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-container/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background';
+  'group inline-flex items-center justify-center gap-2 rounded-full bg-primary-container px-7 py-3.5 text-sm font-semibold tracking-tight text-white shadow-[0_10px_34px_-12px_rgba(0,102,255,0.8)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_44px_-12px_rgba(0,102,255,0.9)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-container/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background';
 
-const LABEL_CLASS = 'font-mono text-xs uppercase tracking-widest text-primary-container';
+const LABEL_CLASS = 'font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text';
+
+const num = (i: number) => String(i + 1).padStart(2, '0');
 
 export default function ServicesShowcase({
   label,
@@ -48,6 +50,8 @@ export default function ServicesShowcase({
   slidesRef.current = slides;
   const weightKey = slides.map((s) => s.weight ?? 1).join(',');
   const [active, setActive] = useState(0);
+  // Progreso 0→1 dentro del slide activo: alimenta la barra del índice.
+  const [slideProgress, setSlideProgress] = useState(0);
   // Arranca en false para que SSR y el primer render cliente coincidan (variante apilada).
   const [scrollMode, setScrollMode] = useState(false);
 
@@ -85,15 +89,19 @@ export default function ServicesShowcase({
       const current = slidesRef.current;
       let acc = 0;
       let next = current.length - 1;
+      let within = 1;
       for (let i = 0; i < current.length; i++) {
-        acc += current[i].weight ?? 1;
-        if (screens < acc) {
+        const w = current[i].weight ?? 1;
+        if (screens < acc + w) {
           next = i;
+          within = Math.min(Math.max((screens - acc) / w, 0), 1);
           break;
         }
+        acc += w;
       }
       next = Math.max(0, next);
       setActive((prev) => (prev === next ? prev : next));
+      setSlideProgress(within);
     };
 
     const onScroll = () => {
@@ -127,7 +135,7 @@ export default function ServicesShowcase({
         .slice(0, index)
         .reduce((sum, s) => sum + (s.weight ?? 1), 0);
       const top =
-        window.scrollY + el.getBoundingClientRect().top + screensBefore * window.innerHeight;
+        window.scrollY + el.getBoundingClientRect().top + screensBefore * window.innerHeight + 8;
       window.scrollTo({ top, behavior: 'smooth' });
     },
     [scrollMode]
@@ -136,7 +144,7 @@ export default function ServicesShowcase({
   const header = (
     <div>
       <p className={LABEL_CLASS}>{label}</p>
-      <h2 className="mt-4 text-4xl font-black tracking-tighter leading-[1.05] text-on-surface md:text-5xl lg:text-6xl">
+      <h2 className="mt-4 text-4xl font-black leading-[1.03] tracking-[-0.04em] text-on-surface md:text-5xl lg:text-[3.4rem]">
         {heading}
       </h2>
       <p className="mt-5 max-w-md text-base leading-relaxed text-on-surface-variant">{intro}</p>
@@ -144,25 +152,23 @@ export default function ServicesShowcase({
   );
 
   const totalScreens = slides.reduce((sum, s) => sum + (s.weight ?? 1), 0);
-
-  // Desplaza el glow del panel derecho según el slide activo (-12% → +12%).
-  const glowShift = slides.length > 1 ? active / (slides.length - 1) - 0.5 : 0;
   const activeSlide = slides[active];
 
+  /* ── Variante apilada: móvil y reduced-motion ─────────────────────────── */
   if (!scrollMode) {
     return (
-      <section className={cn('py-20 md:py-28 px-6 lg:px-10 max-w-container-max mx-auto', className)}>
+      <section className={cn('mx-auto max-w-container-max px-6 py-24 md:py-32 lg:px-10', className)}>
         <Reveal>{header}</Reveal>
-        <RevealGroup className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {slides.map(({ code, title, description, Icon }) => (
-            <RevealItem key={code} className="h-full">
+        <RevealGroup className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {slides.map(({ title, description, Icon }, i) => (
+            <RevealItem key={title} className="h-full">
               <article className="glass-panel glow-hover flex h-full flex-col gap-4 rounded-2xl p-6">
                 <div className="flex items-start justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-primary-container/30 bg-primary-container/10">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-primary-container/25 bg-primary-container/10">
                     <Icon size={22} className="text-primary-container" />
                   </div>
-                  <span className="font-mono text-[10px] tracking-widest text-on-surface-variant">
-                    {code}
+                  <span className="font-mono text-[11px] tracking-widest text-on-surface-variant/50">
+                    {num(i)}
                   </span>
                 </div>
                 <div>
@@ -175,108 +181,155 @@ export default function ServicesShowcase({
             </RevealItem>
           ))}
         </RevealGroup>
-        <Reveal delay={0.1} className="mt-10">
+        <Reveal delay={0.1} className="mt-12">
           <Link href={ctaHref} className={CTA_CLASS}>
             {ctaLabel}
+            <ArrowRight
+              size={16}
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
           </Link>
         </Reveal>
       </section>
     );
   }
 
+  /* ── Variante scroll: índice interactivo + panel visual ───────────────── */
   return (
     <section className={cn('relative', className)}>
       <div ref={wrapperRef} style={{ height: `${totalScreens * 100}vh` }}>
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-          <div className="mx-auto grid w-full max-w-container-max grid-cols-1 items-center gap-10 px-6 md:grid-cols-2 lg:gap-16 lg:px-10">
-            {/* Columna izquierda */}
-            <div className="md:border-r md:border-outline-variant/20 md:pr-10 lg:pr-16">
+          <div className="mx-auto grid w-full max-w-container-max grid-cols-1 items-center gap-12 px-6 md:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-20 lg:px-10">
+            {/* Columna izquierda: índice navegable. El activo se abre. */}
+            <div>
               {header}
 
-              <nav className="mt-8 flex items-center gap-2" aria-label={heading}>
-                {slides.map((slide, i) => (
-                  <button
-                    key={slide.code}
-                    type="button"
-                    aria-current={i === active}
-                    aria-label={`${slide.code} — ${slide.title}`}
-                    onClick={() => goToSlide(i)}
-                    className={cn(
-                      'h-1 rounded-full transition-all duration-300 ease-out',
-                      i === active ? 'w-12 bg-primary-container' : 'w-6 bg-black/15 hover:bg-black/30'
-                    )}
-                  />
-                ))}
-              </nav>
-
-              <div className="relative mt-8 min-h-[13rem]">
-                {slides.map((slide, i) => (
-                  <div
-                    key={slide.code}
-                    aria-hidden={i !== active}
-                    className={cn(
-                      'absolute inset-0 transition-all ease-out',
-                      i === active
-                        ? 'translate-y-0 opacity-100'
-                        : 'pointer-events-none translate-y-8 opacity-0'
-                    )}
-                    style={{ transitionDuration: '420ms' }}
-                  >
-                    <span className="font-mono text-[11px] uppercase tracking-widest text-on-surface-variant/60">
-                      {slide.code}
-                    </span>
-                    <h3 className="mt-3 text-3xl font-black tracking-tighter text-on-surface lg:text-4xl">
-                      {slide.title}
-                    </h3>
-                    <p className="mt-4 max-w-md text-base leading-relaxed text-on-surface-variant">
-                      {slide.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              <ul className="mt-10 border-t border-black/[0.08]" aria-label={heading}>
+                {slides.map((slide, i) => {
+                  const isActive = i === active;
+                  const SlideIcon = slide.Icon;
+                  return (
+                    <li key={slide.title} className="relative border-b border-black/[0.08]">
+                      {/* Barra de avance del slide activo */}
+                      <span
+                        aria-hidden
+                        className={cn(
+                          'absolute left-0 top-0 h-px w-full origin-left bg-primary-container transition-opacity duration-300',
+                          isActive ? 'opacity-100' : 'opacity-0'
+                        )}
+                        style={{ transform: `scaleX(${isActive ? slideProgress : 0})` }}
+                      />
+                      <button
+                        type="button"
+                        aria-current={isActive}
+                        onClick={() => goToSlide(i)}
+                        className="group flex w-full items-start gap-4 py-4 text-left"
+                      >
+                        <span
+                          className={cn(
+                            'mt-1.5 font-mono text-[11px] tabular-nums tracking-widest transition-colors duration-300',
+                            isActive ? 'text-primary-text' : 'text-on-surface-variant/45'
+                          )}
+                        >
+                          {num(i)}
+                        </span>
+                        <span className="flex-1">
+                          <span
+                            className={cn(
+                              'flex items-center gap-2.5 text-xl font-bold tracking-tight transition-colors duration-300 lg:text-2xl',
+                              isActive
+                                ? 'text-on-surface'
+                                : 'text-on-surface-variant/55 group-hover:text-on-surface'
+                            )}
+                          >
+                            <SlideIcon
+                              size={18}
+                              className={cn(
+                                'shrink-0 transition-colors duration-300',
+                                isActive ? 'text-primary-container' : 'text-on-surface-variant/40'
+                              )}
+                            />
+                            {slide.title}
+                          </span>
+                          <AnimatePresence initial={false}>
+                            {isActive && (
+                              <motion.span
+                                key="desc"
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+                                className="block overflow-hidden"
+                              >
+                                <span className="block max-w-md pt-2.5 text-[15px] leading-relaxed text-on-surface-variant">
+                                  {slide.description}
+                                </span>
+                              </motion.span>
+                            )}
+                          </AnimatePresence>
+                        </span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
 
               <div className="mt-10">
                 <Link href={ctaHref} className={CTA_CLASS}>
                   {ctaLabel}
+                  <ArrowRight
+                    size={16}
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  />
                 </Link>
               </div>
             </div>
 
             {/* Columna derecha: visual abstracto generado (sin imágenes) */}
             <div className="hidden md:flex md:justify-center">
-              <div className="glass-panel grid-bg relative aspect-square w-full max-w-[480px] overflow-hidden rounded-2xl">
+              <div className="glass-panel grid-bg relative aspect-square w-full max-w-[440px] overflow-hidden rounded-3xl">
                 <div
                   aria-hidden
-                  className="absolute inset-0 transition-transform duration-700 ease-out"
+                  className="absolute inset-0 transition-transform duration-[900ms] ease-out"
                   style={{
-                    transform: `translate3d(${glowShift * 22}%, ${glowShift * -18}%, 0)`,
+                    transform: `translate3d(${
+                      (active / Math.max(slides.length - 1, 1) - 0.5) * 26
+                    }%, ${(active / Math.max(slides.length - 1, 1) - 0.5) * -20}%, 0)`,
                     background:
-                      'radial-gradient(45% 45% at 50% 50%, rgba(0,102,255,0.28), transparent 70%)',
+                      'radial-gradient(45% 45% at 50% 50%, rgba(0,102,255,0.26), transparent 70%)',
                   }}
                 />
-                {slides.map((slide, i) => {
-                  const SlideIcon = slide.Icon;
-                  return (
-                    <div
-                      key={slide.code}
-                      aria-hidden
-                      className={cn(
-                        'absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out',
-                        i === active
-                          ? 'scale-100 opacity-100'
-                          : 'pointer-events-none scale-90 opacity-0'
-                      )}
-                    >
-                      <SlideIcon
-                        size={120}
-                        strokeWidth={1}
-                        className="text-primary-container drop-shadow-[0_0_30px_var(--glow-color)]"
+                {/* Anillos concéntricos: profundidad sin el peso de una imagen. */}
+                <div aria-hidden className="absolute inset-0 flex items-center justify-center">
+                  {[0.45, 0.65, 0.85].map((s) => (
+                    <span
+                      key={s}
+                      className="absolute rounded-full border border-primary-container/10"
+                      style={{ width: `${s * 100}%`, height: `${s * 100}%` }}
+                    />
+                  ))}
+                </div>
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={activeSlide?.title}
+                    initial={{ opacity: 0, scale: 0.82, filter: 'blur(10px)' }}
+                    animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                    exit={{ opacity: 0, scale: 1.12, filter: 'blur(10px)' }}
+                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute inset-0 flex items-center justify-center"
+                    aria-hidden
+                  >
+                    {activeSlide ? (
+                      <activeSlide.Icon
+                        size={128}
+                        strokeWidth={0.9}
+                        className="text-primary-container drop-shadow-[0_0_34px_var(--glow-color)]"
                       />
-                    </div>
-                  );
-                })}
-                <span className="absolute bottom-5 right-6 font-mono text-[10px] uppercase tracking-widest text-on-surface-variant/60">
-                  {activeSlide?.code}
+                    ) : null}
+                  </motion.div>
+                </AnimatePresence>
+                <span className="absolute bottom-5 right-6 font-mono text-[10px] uppercase tracking-[0.2em] tabular-nums text-on-surface-variant/55">
+                  {num(active)} / {num(slides.length - 1)}
                 </span>
               </div>
             </div>

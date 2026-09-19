@@ -11,6 +11,7 @@ import {
   Sparkles,
   Headphones,
   GraduationCap,
+  ArrowRight,
 } from 'lucide-react';
 import ServicesShowcase, { type ShowcaseSlide } from '@/components/ui/ServicesShowcase';
 import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
@@ -32,13 +33,12 @@ export default function ServicesSection() {
   const locale = useLocale();
 
   const slides: ShowcaseSlide[] = SERVICE_KEYS.filter((s) => s.core).map(({ key, icon }) => ({
-    code: t(`items.${key}.code`),
     title: t(`items.${key}.title`),
     description: t(`items.${key}.desc`),
     Icon: icon,
-    // Automatización es el último y quedaba a un paso del final de la sección,
-    // así que pasaba de largo antes de que diera tiempo a leerlo.
-    weight: key === 'automation' ? 2 : 1,
+    // Una pantalla por servicio: con el índice siempre visible ya no hace falta
+    // retener ninguno más tiempo para que se lea.
+    weight: 1,
   }));
 
   return (
@@ -53,22 +53,26 @@ export default function ServicesSection() {
       />
 
       {/* Servicios secundarios */}
-      <div className="py-20 md:py-28 px-6 lg:px-10 max-w-container-max mx-auto">
-        <p className="font-mono text-xs uppercase tracking-widest text-on-surface-variant mb-4">
+      <div className="mx-auto max-w-container-max px-6 pb-24 md:pb-32 lg:px-10">
+        <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.2em] text-on-surface-variant/60">
           {t('more_label')}
         </p>
-        <RevealGroup className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <RevealGroup className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {SERVICE_KEYS.filter((s) => !s.core).map(({ key, icon: Icon }) => (
             <RevealItem key={key} className="h-full">
               <Link
                 href={`/${locale}/serveis`}
-                className="flex h-full flex-col items-start gap-3 rounded-xl border border-black/[0.08] bg-black/[0.02] p-4 transition-colors hover:border-primary-container/30 hover:bg-black/[0.04]"
+                className="group flex h-full flex-col items-start gap-4 rounded-2xl border border-black/[0.08] bg-surface-container-low p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary-container/25 hover:shadow-[0_22px_44px_-28px_rgba(13,17,23,0.4)]"
               >
-                <div className="w-9 h-9 rounded-lg bg-primary-container/10 border border-primary-container/20 flex items-center justify-center">
-                  <Icon size={16} className="text-primary-container" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-primary-container/20 bg-primary-container/10 transition-colors duration-300 group-hover:bg-primary-container/15">
+                  <Icon size={17} className="text-primary-container" />
                 </div>
-                <span className="text-sm font-medium text-on-surface leading-tight">
+                <span className="flex w-full items-center justify-between gap-2 text-sm font-semibold leading-tight tracking-tight text-on-surface">
                   {t(`items.${key}.title`)}
+                  <ArrowRight
+                    size={14}
+                    className="shrink-0 -translate-x-1 text-on-surface-variant/0 transition-all duration-300 group-hover:translate-x-0 group-hover:text-on-surface-variant/70"
+                  />
                 </span>
               </Link>
             </RevealItem>

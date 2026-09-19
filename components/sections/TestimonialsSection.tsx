@@ -3,37 +3,40 @@
 import { useTranslations } from 'next-intl';
 import TestimonialCard from '@/components/ui/TestimonialCard';
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal';
-import Parallax from '@/components/ui/Parallax';
+
+type Item = { name: string; company: string; quote: string; initials?: string };
 
 export default function TestimonialsSection() {
   const t = useTranslations('testimonials');
-  const TESTIMONIALS = (t.raw('items') as Array<{ name: string; company: string; quote: string }>) ?? [];
-  return (
-    <section className="py-20 md:py-28 px-6 lg:px-10 max-w-container-max mx-auto">
-      <Parallax speed={0.16} className="mb-12 max-w-2xl">
-        <Reveal direction="up">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] bg-clip-text text-transparent bg-gradient-to-br from-on-surface via-on-surface to-primary-container">
-            {t('heading')}
-          </h2>
-        </Reveal>
-      </Parallax>
+  const items = (t.raw('items') as Item[]) ?? [];
 
-      {/* Móvil: carrusel horizontal con snap para que las tarjetas no queden a
-          medias al soltar. Escritorio: rejilla. */}
-      <div className="md:hidden -mx-6 px-6 overflow-x-auto snap-x snap-mandatory scroll-pl-6">
-        <RevealGroup className="flex w-max gap-4 pb-4">
-          {TESTIMONIALS.map((tt, i) => (
-            <RevealItem key={i} className="w-[300px] shrink-0 snap-start">
-              <TestimonialCard {...tt} />
+  return (
+    <section className="mx-auto max-w-container-max px-6 py-24 md:py-32 lg:px-10">
+      <Reveal direction="up" className="mb-14 max-w-2xl">
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
+          {t('label')}
+        </p>
+        <h2 className="mt-4 text-4xl font-black leading-[1.03] tracking-[-0.04em] text-on-surface md:text-5xl">
+          {t('heading')}
+        </h2>
+        <p className="mt-5 text-base leading-relaxed text-on-surface-variant">{t('intro')}</p>
+      </Reveal>
+
+      {/* Móvil: carrusel con snap para que las tarjetas no queden a medias. */}
+      <div className="-mx-6 overflow-x-auto px-6 md:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <RevealGroup className="flex w-max snap-x snap-mandatory gap-4 pb-4">
+          {items.map((item, i) => (
+            <RevealItem key={i} className="w-[310px] shrink-0 snap-start">
+              <TestimonialCard {...item} />
             </RevealItem>
           ))}
         </RevealGroup>
       </div>
 
-      <RevealGroup className="hidden md:grid grid-cols-3 gap-5">
-        {TESTIMONIALS.map((tt, i) => (
-          <RevealItem key={i}>
-            <TestimonialCard {...tt} />
+      <RevealGroup className="hidden gap-5 md:grid md:grid-cols-3">
+        {items.map((item, i) => (
+          <RevealItem key={i} className="h-full">
+            <TestimonialCard {...item} />
           </RevealItem>
         ))}
       </RevealGroup>

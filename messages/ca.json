@@ -1,5 +1,7 @@
 {
-  "portrait_lock": { "message": "Gira el dispositiu" },
+  "portrait_lock": {
+    "message": "Gira el dispositiu"
+  },
   "nav": {
     "home": "Inici",
     "services": "Serveis",
@@ -11,16 +13,34 @@
   "hero": {
     "badge": "Infraestructura amb IA · des del 2001",
     "title_base": "Oferim solucions",
-    "words": ["amb IA", "a mida", "que converteixen", "que escalen", "que perduren"],
+    "words": [
+      "amb IA",
+      "a mida",
+      "que converteixen",
+      "que escalen",
+      "que perduren"
+    ],
     "subtitle": "Capta més clients, atén-los 24/7 i redueix la feina repetitiva amb webs, agents telefònics, chatbots i automatitzacions amb IA.",
     "cta_primary": "Demana pressupost",
     "cta_secondary": "Veure casos d'èxit"
   },
   "metrics": {
-    "experience": { "value": "+24", "label": "Anys d'experiència" },
-    "interventions": { "value": "100%", "label": "A mida" },
-    "satisfaction": { "value": "24/7", "label": "Atenció amb IA" },
-    "response": { "value": "<2h", "label": "Temps de resposta" }
+    "experience": {
+      "value": "+24",
+      "label": "Anys d'experiència"
+    },
+    "interventions": {
+      "value": "100%",
+      "label": "A mida"
+    },
+    "satisfaction": {
+      "value": "24/7",
+      "label": "Atenció amb IA"
+    },
+    "response": {
+      "value": "<2h",
+      "label": "Temps de resposta"
+    }
   },
   "services": {
     "heading": "Serveis",
@@ -30,21 +50,65 @@
     "more_label": "A més a més",
     "subtitle": "T'ajudem a captar més clients, retenir-los i reduir la teva càrrega de feina amb infraestructura digital i IA: webs, agents telefònics, chatbots i automatitzacions. A més, suport in situ o remot i formacions a mida.",
     "items": {
-      "web": { "title": "Desenvolupament Web", "desc": "Webs que capten clients: ràpides, optimitzades per a conversió i SEO i a punt per integrar IA.", "code": "SV-01" },
-      "voice": { "title": "Agents Telefònics IA", "desc": "Assistents de veu que atenen cada trucada 24/7, reserven i filtren consultes — captes més i no perds cap oportunitat.", "code": "SV-02" },
-      "chatbots": { "title": "Chatbots IA", "desc": "Chatbots que responen a l'instant, qualifiquen leads i retenen els teus clients en qualsevol canal.", "code": "SV-03" },
-      "automation": { "title": "Automatització", "desc": "Automatitzem les teves tasques repetitives perquè el teu equip redueixi càrrega i es centri en el que importa.", "code": "SV-04" },
-      "infrastructure": { "title": "Infraestructura IA", "desc": "La infraestructura d'IA que connecta captació, atenció i operativa en un sol sistema.", "code": "SV-05" },
-      "consulting": { "title": "Consultoria IA", "desc": "Detectem on perds clients, temps o ingressos i tracem el full de ruta amb IA.", "code": "SV-06" },
-      "support": { "title": "Suport IT", "desc": "Resolució d'incidències in situ o en remot i manteniment proactiu perquè mai t'aturis.", "code": "SV-07" },
-      "training": { "title": "Formació", "desc": "Formacions a mida perquè el teu equip tregui el màxim partit a la tecnologia i a la IA.", "code": "SV-08" }
+      "web": {
+        "title": "Desenvolupament Web",
+        "desc": "Webs que capten clients: ràpides, optimitzades per a conversió i SEO i a punt per integrar IA.",
+        "code": "SV-01"
+      },
+      "voice": {
+        "title": "Agents Telefònics IA",
+        "desc": "Assistents de veu que atenen cada trucada 24/7, reserven i filtren consultes — captes més i no perds cap oportunitat.",
+        "code": "SV-02"
+      },
+      "chatbots": {
+        "title": "Chatbots IA",
+        "desc": "Chatbots que responen a l'instant, qualifiquen leads i retenen els teus clients en qualsevol canal.",
+        "code": "SV-03"
+      },
+      "automation": {
+        "title": "Automatització",
+        "desc": "Automatitzem les teves tasques repetitives perquè el teu equip redueixi càrrega i es centri en el que importa.",
+        "code": "SV-04"
+      },
+      "infrastructure": {
+        "title": "Infraestructura IA",
+        "desc": "La infraestructura d'IA que connecta captació, atenció i operativa en un sol sistema.",
+        "code": "SV-05"
+      },
+      "consulting": {
+        "title": "Consultoria IA",
+        "desc": "Detectem on perds clients, temps o ingressos i tracem el full de ruta amb IA.",
+        "code": "SV-06"
+      },
+      "support": {
+        "title": "Suport IT",
+        "desc": "Resolució d'incidències in situ o en remot i manteniment proactiu perquè mai t'aturis.",
+        "code": "SV-07"
+      },
+      "training": {
+        "title": "Formació",
+        "desc": "Formacions a mida perquè el teu equip tregui el màxim partit a la tecnologia i a la IA.",
+        "code": "SV-08"
+      }
     }
   },
   "pillars": {
-    "agility": { "title": "Entrega 2x més Ràpida", "desc": "Projectes en la meitat de temps que una agència tradicional sense fer atalles." },
-    "precision": { "title": "Zero Bugs en Producció", "desc": "Testing exhaustiu. Els nostres clients gaudeixen de 99.9% uptime garantit." },
-    "reliability": { "title": "Resposta <2h Sempre", "desc": "Suport presencial a Girona. Si cal, ens trobes en 24 hores." },
-    "innovation": { "title": "Stack Tecnològic Actual", "desc": "Next.js, TypeScript, React, Cloud Native. Evitem legacy que t'encadenar." }
+    "agility": {
+      "title": "Entrega 2x més Ràpida",
+      "desc": "Projectes en la meitat de temps que una agència tradicional sense fer atalles."
+    },
+    "precision": {
+      "title": "Zero Bugs en Producció",
+      "desc": "Testing exhaustiu. Els nostres clients gaudeixen de 99.9% uptime garantit."
+    },
+    "reliability": {
+      "title": "Resposta <2h Sempre",
+      "desc": "Suport presencial a Girona. Si cal, ens trobes en 24 hores."
+    },
+    "innovation": {
+      "title": "Stack Tecnològic Actual",
+      "desc": "Next.js, TypeScript, React, Cloud Native. Evitem legacy que t'encadenar."
+    }
   },
   "clients": {
     "heading": "Empreses que confien en nosaltres",
@@ -54,9 +118,13 @@
     "trust_strip": "Empreses de Girona confien en nosaltres des del 2001",
     "view_all": "Veure-ho tot",
     "how_we_work": "Com treballem",
+    "how_we_work_label": "Mètode",
+    "how_we_work_intro": "Quatre compromisos que no negociem en cap projecte.",
     "statement": "Menys feina manual. Més clients. Tota la teva operativa connectada i potenciada amb intel·ligència artificial."
   },
   "testimonials": {
+    "label": "Opinions",
+    "intro": "Empreses de Girona que ja treballen amb nosaltres.",
     "heading": "El que diuen els nostres col·laboradors",
     "items": [
       {
@@ -98,7 +166,29 @@
     "title": "Parlem per WhatsApp?",
     "subtitle": "Normalment responem en pocs minuts.",
     "cta": "Iniciar xat",
-    "aria": "Obrir xat de WhatsApp"
+    "aria": "Obrir xat de WhatsApp",
+    "teaser": "T'ajudem? Escriu-nos per WhatsApp",
+    "online": "En línia · responem en minuts",
+    "prompt": "Hola 👋 De què vols parlar?",
+    "dismiss": "Tanca l'avís",
+    "quick": [
+      {
+        "label": "Vull un web",
+        "message": "Hola! M'interessa un web nou per al meu negoci."
+      },
+      {
+        "label": "Agent telefònic IA",
+        "message": "Hola! M'interessa un agent telefònic amb IA que atengui les trucades."
+      },
+      {
+        "label": "Automatitzar tasques",
+        "message": "Hola! M'agradaria automatitzar tasques repetitives del meu negoci."
+      },
+      {
+        "label": "Una altra consulta",
+        "message": "Hola! M'agradaria saber més sobre els vostres serveis."
+      }
+    ]
   },
   "contact_page": {
     "badge": "Contacte",
@@ -170,13 +260,34 @@
       "label": "Preguntes freqüents",
       "heading": "Com s’implementa la IA en un negoci?",
       "items": [
-        { "q": "Com puc implementar IA al meu negoci?", "a": "Comencem per una auditoria: mirem on se’n van les hores i on es perden clients (trucades sense atendre, consultes sense resposta, tasques que es repeteixen cada dia). D’aquí surt una proposta prioritzada, amb què automatitzar primer i quin impacte esperar. Després ho construïm i ho deixem funcionant en producció, amb seguiment." },
-        { "q": "Quant costa implementar IA en una empresa?", "a": "Depèn de l’abast, així que no donem un preu tancat sense veure el teu cas. El que sí que fem és començar per l’auditoria i presentar-te una proposta amb el cost i el retorn esperat abans que et comprometis a res." },
-        { "q": "Quines solucions d’IA es poden aplicar a una empresa com la meva?", "a": "Les més habituals són tres: agents telefònics que atenen les trucades 24/7 i agenden o filtren, chatbots que responen a l’instant i qualifiquen contactes, i automatitzacions que eliminen tasques repetitives. Treballem amb restauració, turisme, indústria, consultoria, allotjament i esdeveniments." },
-        { "q": "He de ser una empresa gran o tenir equip tècnic?", "a": "No. La majoria dels nostres clients són pimes sense departament informàtic. Nosaltres muntem, connectem i mantenim; tu només ens has d’explicar com funciona el teu negoci." },
-        { "q": "La IA substituirà el meu equip?", "a": "No és l’objectiu. El que traiem del mig és el repetitiu: contestar vint vegades el mateix, passar dades d’un lloc a l’altre, atendre fora d’horari. El teu equip es queda amb el que necessita criteri." },
-        { "q": "Funciona en diversos idiomes?", "a": "Sí. Tenim agents en producció atenent en català, castellà, anglès i francès, que detecten l’idioma de qui escriu i responen en el seu." },
-        { "q": "Què passa amb les dades dels meus clients?", "a": "Definim des del principi quines dades es tracten, on es desen i qui hi accedeix. Treballem conforme al RGPD i només amb la informació necessària per prestar el servei." }
+        {
+          "q": "Com puc implementar IA al meu negoci?",
+          "a": "Comencem per una auditoria: mirem on se’n van les hores i on es perden clients (trucades sense atendre, consultes sense resposta, tasques que es repeteixen cada dia). D’aquí surt una proposta prioritzada, amb què automatitzar primer i quin impacte esperar. Després ho construïm i ho deixem funcionant en producció, amb seguiment."
+        },
+        {
+          "q": "Quant costa implementar IA en una empresa?",
+          "a": "Depèn de l’abast, així que no donem un preu tancat sense veure el teu cas. El que sí que fem és començar per l’auditoria i presentar-te una proposta amb el cost i el retorn esperat abans que et comprometis a res."
+        },
+        {
+          "q": "Quines solucions d’IA es poden aplicar a una empresa com la meva?",
+          "a": "Les més habituals són tres: agents telefònics que atenen les trucades 24/7 i agenden o filtren, chatbots que responen a l’instant i qualifiquen contactes, i automatitzacions que eliminen tasques repetitives. Treballem amb restauració, turisme, indústria, consultoria, allotjament i esdeveniments."
+        },
+        {
+          "q": "He de ser una empresa gran o tenir equip tècnic?",
+          "a": "No. La majoria dels nostres clients són pimes sense departament informàtic. Nosaltres muntem, connectem i mantenim; tu només ens has d’explicar com funciona el teu negoci."
+        },
+        {
+          "q": "La IA substituirà el meu equip?",
+          "a": "No és l’objectiu. El que traiem del mig és el repetitiu: contestar vint vegades el mateix, passar dades d’un lloc a l’altre, atendre fora d’horari. El teu equip es queda amb el que necessita criteri."
+        },
+        {
+          "q": "Funciona en diversos idiomes?",
+          "a": "Sí. Tenim agents en producció atenent en català, castellà, anglès i francès, que detecten l’idioma de qui escriu i responen en el seu."
+        },
+        {
+          "q": "Què passa amb les dades dels meus clients?",
+          "a": "Definim des del principi quines dades es tracten, on es desen i qui hi accedeix. Treballem conforme al RGPD i només amb la informació necessària per prestar el servei."
+        }
       ]
     },
     "badge_label": "Serveis",
@@ -196,10 +307,22 @@
     "tech_heading": "Eines que dominem",
     "tech_tools_category": "Eines",
     "process": {
-      "briefing": { "title": "Briefing", "desc": "Entendre què necessites i definir l'abast real del projecte." },
-      "plan": { "title": "Pla", "desc": "Dibuixar la solució, l'arquitectura i els lliuraments." },
-      "build": { "title": "Construcció", "desc": "Construir amb precisió, amb revisions setmanals." },
-      "launch": { "title": "Llançament", "desc": "Desplegar, monitoritzar i mantenir en producció." }
+      "briefing": {
+        "title": "Briefing",
+        "desc": "Entendre què necessites i definir l'abast real del projecte."
+      },
+      "plan": {
+        "title": "Pla",
+        "desc": "Dibuixar la solució, l'arquitectura i els lliuraments."
+      },
+      "build": {
+        "title": "Construcció",
+        "desc": "Construir amb precisió, amb revisions setmanals."
+      },
+      "launch": {
+        "title": "Llançament",
+        "desc": "Desplegar, monitoritzar i mantenir en producció."
+      }
     }
   },
   "qui_som_page": {
@@ -232,10 +355,22 @@
       "t2024": "Consolidació com a partner tecnològic amb IA i un equip d'especialistes"
     },
     "process": {
-      "discovery": { "title": "Descobriment", "desc": "Entendre el repte, els usuaris i els objectius de negoci abans d'escriure una sola línia de codi." },
-      "design": { "title": "Disseny", "desc": "Dibuixar la solució: arquitectura, UX i prototip validat amb l'equip client." },
-      "build": { "title": "Construcció", "desc": "Implementar amb precisió, lliuraments incrementals i tests continus." },
-      "support": { "title": "Suport", "desc": "Acompanyar a llarg termini: manteniment, evolució i resposta en menys de 2 h." }
+      "discovery": {
+        "title": "Descobriment",
+        "desc": "Entendre el repte, els usuaris i els objectius de negoci abans d'escriure una sola línia de codi."
+      },
+      "design": {
+        "title": "Disseny",
+        "desc": "Dibuixar la solució: arquitectura, UX i prototip validat amb l'equip client."
+      },
+      "build": {
+        "title": "Construcció",
+        "desc": "Implementar amb precisió, lliuraments incrementals i tests continus."
+      },
+      "support": {
+        "title": "Suport",
+        "desc": "Acompanyar a llarg termini: manteniment, evolució i resposta en menys de 2 h."
+      }
     }
   },
   "clients_page": {
@@ -321,7 +456,11 @@
         "desc": "Instal·lació de panells LED en col·laboració amb Megalux.",
         "metric": "Megalux",
         "metricLabel": "instal·lació en col·laboració amb",
-        "gallery_labels": ["Abans", "Després — interior", "Després — exterior"]
+        "gallery_labels": [
+          "Abans",
+          "Després — interior",
+          "Després — exterior"
+        ]
       },
       {
         "badge": "Case_09",
@@ -333,20 +472,48 @@
       }
     ],
     "industries": [
-      { "label": "Restauració" },
-      { "label": "Turisme" },
-      { "label": "Indústria" },
-      { "label": "Consultoria" },
-      { "label": "Allotjament" },
-      { "label": "Tecnologia" },
-      { "label": "Esdeveniments" },
-      { "label": "Il·luminació" }
+      {
+        "label": "Restauració"
+      },
+      {
+        "label": "Turisme"
+      },
+      {
+        "label": "Indústria"
+      },
+      {
+        "label": "Consultoria"
+      },
+      {
+        "label": "Allotjament"
+      },
+      {
+        "label": "Tecnologia"
+      },
+      {
+        "label": "Esdeveniments"
+      },
+      {
+        "label": "Il·luminació"
+      }
     ],
     "stats": [
-      { "value": "CA·ES·EN", "label": "idiomes" },
-      { "value": "+24", "label": "anys" },
-      { "value": "24/7", "label": "atenció IA" },
-      { "value": "<2h", "label": "resposta" }
+      {
+        "value": "CA·ES·EN",
+        "label": "idiomes"
+      },
+      {
+        "value": "+24",
+        "label": "anys"
+      },
+      {
+        "value": "24/7",
+        "label": "atenció IA"
+      },
+      {
+        "value": "<2h",
+        "label": "resposta"
+      }
     ],
     "testimonials": [
       {
@@ -431,13 +598,37 @@
     }
   },
   "meta": {
-    "home": { "title": "9bit · Solucions d’IA per a empreses", "description": "Implementa IA al teu negoci: agents telefònics que atenen 24/7, chatbots, automatització de tasques i webs que capten clients. Girona, des del 2001." },
-    "serveis": { "title": "Solucions d’IA per a empreses: agents, chatbots i automatització", "description": "Vols implementar IA al teu negoci? Auditem la teva operativa i desplegem agents telefònics, chatbots i automatitzacions. També desenvolupament web i suport. Girona, des del 2001." },
-    "contacte": { "title": "Contacte", "description": "Explica'ns el teu projecte i et respondrem en menys de 2 hores. Truca'ns, escriu-nos o vine a veure'ns: som a Girona, al teu costat des del 2001." },
-    "qui_som": { "title": "Qui som", "description": "Coneix l'equip darrere de 9bit. Des del 2001 ajudem empreses a créixer amb webs, intel·ligència artificial i automatització, amb tracte proper des de Girona." },
-    "clients": { "title": "Casos d’èxit en IA, automatització i web", "description": "Casos reals d’empreses que ja han implementat IA i automatització amb 9bit: agents que atenen sols, instal·lacions i webs que capten clients." },
-    "legal": { "title": "Avís legal", "description": "Avís legal de 9bit: dades identificatives, condicions d'ús i responsabilitat del lloc web 9-bit.com." },
-    "privacitat": { "title": "Política de privacitat", "description": "Descobreix com 9bit recull, utilitza i protegeix les teves dades personals quan navegues per 9-bit.com o contactes amb nosaltres." },
-    "cookies": { "title": "Política de cookies", "description": "Informació sobre les cookies que utilitza el web de 9bit, per a què serveixen i com pots gestionar-les o desactivar-les." }
+    "home": {
+      "title": "9bit · Solucions d’IA per a empreses",
+      "description": "Implementa IA al teu negoci: agents telefònics que atenen 24/7, chatbots, automatització de tasques i webs que capten clients. Girona, des del 2001."
+    },
+    "serveis": {
+      "title": "Solucions d’IA per a empreses: agents, chatbots i automatització",
+      "description": "Vols implementar IA al teu negoci? Auditem la teva operativa i desplegem agents telefònics, chatbots i automatitzacions. També desenvolupament web i suport. Girona, des del 2001."
+    },
+    "contacte": {
+      "title": "Contacte",
+      "description": "Explica'ns el teu projecte i et respondrem en menys de 2 hores. Truca'ns, escriu-nos o vine a veure'ns: som a Girona, al teu costat des del 2001."
+    },
+    "qui_som": {
+      "title": "Qui som",
+      "description": "Coneix l'equip darrere de 9bit. Des del 2001 ajudem empreses a créixer amb webs, intel·ligència artificial i automatització, amb tracte proper des de Girona."
+    },
+    "clients": {
+      "title": "Casos d’èxit en IA, automatització i web",
+      "description": "Casos reals d’empreses que ja han implementat IA i automatització amb 9bit: agents que atenen sols, instal·lacions i webs que capten clients."
+    },
+    "legal": {
+      "title": "Avís legal",
+      "description": "Avís legal de 9bit: dades identificatives, condicions d'ús i responsabilitat del lloc web 9-bit.com."
+    },
+    "privacitat": {
+      "title": "Política de privacitat",
+      "description": "Descobreix com 9bit recull, utilitza i protegeix les teves dades personals quan navegues per 9-bit.com o contactes amb nosaltres."
+    },
+    "cookies": {
+      "title": "Política de cookies",
+      "description": "Informació sobre les cookies que utilitza el web de 9bit, per a què serveixen i com pots gestionar-les o desactivar-les."
+    }
   }
 }

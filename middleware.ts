@@ -8,6 +8,11 @@ const handleI18nRouting = createMiddleware({
   localePrefix: 'always',
 });
 
+// En desarrollo Next evalua cadenas (react-refresh, source maps) y abre un
+// websocket para el HMR: sin estas dos excepciones la pagina no hidrata. En
+// produccion la politica se queda tal cual, sin 'unsafe-eval'.
+const isDev = process.env.NODE_ENV !== 'production';
+
 export default function middleware(request: NextRequest) {
   // Fresh nonce per request. Next.js picks it up from the
   // Content-Security-Policy *request* header and stamps it on all of its
@@ -19,13 +24,17 @@ export default function middleware(request: NextRequest) {
     // 'strict-dynamic' lets nonced scripts load their own chunks; the host
     // allowlist below is the fallback for browsers without strict-dynamic
     // support (e.g. Vercel Speed Insights).
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://va.vercel-scripts.com`,
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${
+      isDev ? " 'unsafe-eval'" : ''
+    } https://va.vercel-scripts.com`,
     // framer-motion and next-themes inject inline styles; nonce for styles is
     // not practical here, so styles keep 'unsafe-inline'.
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "img-src 'self' data: https:",
     "font-src 'self' data: https://fonts.gstatic.com",
-    "connect-src 'self' https://formspree.io https://vitals.vercel-insights.com https://va.vercel-scripts.com",
+    `connect-src 'self' https://formspree.io https://vitals.vercel-insights.com https://va.vercel-scripts.com${
+      isDev ? ' ws: http://localhost:*' : ''
+    }`,
     "frame-ancestors 'self'",
     "base-uri 'self'",
     "form-action 'self'",

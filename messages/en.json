@@ -1,5 +1,7 @@
 {
-  "portrait_lock": { "message": "Rotate your device" },
+  "portrait_lock": {
+    "message": "Rotate your device"
+  },
   "nav": {
     "home": "Home",
     "services": "Services",
@@ -11,16 +13,34 @@
   "hero": {
     "badge": "AI infrastructure · since 2001",
     "title_base": "We deliver solutions",
-    "words": ["with AI", "tailored", "that convert", "that scale", "that last"],
+    "words": [
+      "with AI",
+      "tailored",
+      "that convert",
+      "that scale",
+      "that last"
+    ],
     "subtitle": "Win more clients, serve them 24/7 and cut repetitive work with AI websites, phone agents, chatbots and automations.",
     "cta_primary": "Request quote",
     "cta_secondary": "View success stories"
   },
   "metrics": {
-    "experience": { "value": "+24", "label": "Years of experience" },
-    "interventions": { "value": "100%", "label": "Custom-built" },
-    "satisfaction": { "value": "24/7", "label": "AI-powered support" },
-    "response": { "value": "<2h", "label": "Response time" }
+    "experience": {
+      "value": "+24",
+      "label": "Years of experience"
+    },
+    "interventions": {
+      "value": "100%",
+      "label": "Custom-built"
+    },
+    "satisfaction": {
+      "value": "24/7",
+      "label": "AI-powered support"
+    },
+    "response": {
+      "value": "<2h",
+      "label": "Response time"
+    }
   },
   "services": {
     "heading": "Services",
@@ -30,21 +50,65 @@
     "more_label": "Also",
     "subtitle": "We help you win more clients, retain them and cut your workload with digital infrastructure and AI: websites, phone agents, chatbots and automations. Plus on-site or remote support and tailored training.",
     "items": {
-      "web": { "title": "Web Development", "desc": "Websites that win clients: fast, conversion- and SEO-optimized and ready to integrate AI.", "code": "SV-01" },
-      "voice": { "title": "AI Phone Agents", "desc": "Voice assistants that answer every call 24/7, book and screen enquiries — you capture more and never miss an opportunity.", "code": "SV-02" },
-      "chatbots": { "title": "AI Chatbots", "desc": "Chatbots that reply instantly, qualify leads and retain your customers on any channel.", "code": "SV-03" },
-      "automation": { "title": "Automation", "desc": "We automate your repetitive tasks so your team cuts workload and focuses on what matters.", "code": "SV-04" },
-      "infrastructure": { "title": "AI Infrastructure", "desc": "The AI infrastructure that connects acquisition, support and operations in a single system.", "code": "SV-05" },
-      "consulting": { "title": "AI Consulting", "desc": "We pinpoint where you lose clients, time or revenue and map out the AI roadmap.", "code": "SV-06" },
-      "support": { "title": "IT Support", "desc": "On-site or remote incident resolution and proactive maintenance so you never grind to a halt.", "code": "SV-07" },
-      "training": { "title": "Training", "desc": "Tailored training so your team gets the most out of technology and AI.", "code": "SV-08" }
+      "web": {
+        "title": "Web Development",
+        "desc": "Websites that win clients: fast, conversion- and SEO-optimized and ready to integrate AI.",
+        "code": "SV-01"
+      },
+      "voice": {
+        "title": "AI Phone Agents",
+        "desc": "Voice assistants that answer every call 24/7, book and screen enquiries — you capture more and never miss an opportunity.",
+        "code": "SV-02"
+      },
+      "chatbots": {
+        "title": "AI Chatbots",
+        "desc": "Chatbots that reply instantly, qualify leads and retain your customers on any channel.",
+        "code": "SV-03"
+      },
+      "automation": {
+        "title": "Automation",
+        "desc": "We automate your repetitive tasks so your team cuts workload and focuses on what matters.",
+        "code": "SV-04"
+      },
+      "infrastructure": {
+        "title": "AI Infrastructure",
+        "desc": "The AI infrastructure that connects acquisition, support and operations in a single system.",
+        "code": "SV-05"
+      },
+      "consulting": {
+        "title": "AI Consulting",
+        "desc": "We pinpoint where you lose clients, time or revenue and map out the AI roadmap.",
+        "code": "SV-06"
+      },
+      "support": {
+        "title": "IT Support",
+        "desc": "On-site or remote incident resolution and proactive maintenance so you never grind to a halt.",
+        "code": "SV-07"
+      },
+      "training": {
+        "title": "Training",
+        "desc": "Tailored training so your team gets the most out of technology and AI.",
+        "code": "SV-08"
+      }
     }
   },
   "pillars": {
-    "agility": { "title": "2x Faster Delivery", "desc": "Half the time of traditional agencies, zero shortcuts or technical debt." },
-    "precision": { "title": "Zero Production Bugs", "desc": "Exhaustive testing. Our clients enjoy guaranteed 99.9% uptime." },
-    "reliability": { "title": "<2h Response Always", "desc": "On-site support in Girona. Emergencies? We meet you within 24h." },
-    "innovation": { "title": "Current Tech Stack", "desc": "Next.js, TypeScript, React, Cloud Native. We avoid legacy tech chains." }
+    "agility": {
+      "title": "2x Faster Delivery",
+      "desc": "Half the time of traditional agencies, zero shortcuts or technical debt."
+    },
+    "precision": {
+      "title": "Zero Production Bugs",
+      "desc": "Exhaustive testing. Our clients enjoy guaranteed 99.9% uptime."
+    },
+    "reliability": {
+      "title": "<2h Response Always",
+      "desc": "On-site support in Girona. Emergencies? We meet you within 24h."
+    },
+    "innovation": {
+      "title": "Current Tech Stack",
+      "desc": "Next.js, TypeScript, React, Cloud Native. We avoid legacy tech chains."
+    }
   },
   "clients": {
     "heading": "Companies that trust us",
@@ -54,9 +118,13 @@
     "trust_strip": "Trusted by companies in Girona since 2001",
     "view_all": "View all",
     "how_we_work": "How we work",
+    "how_we_work_label": "Method",
+    "how_we_work_intro": "Four commitments we never trade away on any project.",
     "statement": "Less manual work. More clients. Your entire operation connected and powered by artificial intelligence."
   },
   "testimonials": {
+    "label": "Reviews",
+    "intro": "Businesses in Girona already working with us.",
     "heading": "What our partners say",
     "items": [
       {
@@ -98,7 +166,29 @@
     "title": "Chat on WhatsApp?",
     "subtitle": "We usually reply within minutes.",
     "cta": "Start chat",
-    "aria": "Open WhatsApp chat"
+    "aria": "Open WhatsApp chat",
+    "teaser": "Need a hand? Message us on WhatsApp",
+    "online": "Online · we reply in minutes",
+    "prompt": "Hi 👋 What would you like to talk about?",
+    "dismiss": "Dismiss",
+    "quick": [
+      {
+        "label": "I need a website",
+        "message": "Hi! I'm interested in a new website for my business."
+      },
+      {
+        "label": "AI phone agent",
+        "message": "Hi! I'm interested in an AI phone agent to handle my calls."
+      },
+      {
+        "label": "Automate tasks",
+        "message": "Hi! I'd like to automate repetitive tasks in my business."
+      },
+      {
+        "label": "Something else",
+        "message": "Hi! I'd like to know more about your services."
+      }
+    ]
   },
   "contact_page": {
     "badge": "Contact",
@@ -170,13 +260,34 @@
       "label": "Frequently asked questions",
       "heading": "How do you implement AI in a business?",
       "items": [
-        { "q": "How can I implement AI in my business?", "a": "We start with an audit: we look at where the hours go and where customers are lost (unanswered calls, enquiries left hanging, tasks repeated every day). That produces a prioritised proposal covering what to automate first and what impact to expect. Then we build it and leave it running in production, with follow-up." },
-        { "q": "How much does it cost to implement AI in a company?", "a": "It depends on the scope, so we do not quote a fixed price without seeing your case. What we do is start with the audit and put a proposal in front of you, with the cost and the expected return, before you commit to anything." },
-        { "q": "What AI solutions can a company like mine actually use?", "a": "Three are the most common: phone agents that answer calls 24/7 and book or screen them, chatbots that reply instantly and qualify contacts, and automations that remove repetitive tasks. We work with hospitality, tourism, industry, consulting, accommodation and events." },
-        { "q": "Do I need to be a large company or have a technical team?", "a": "No. Most of our clients are small and medium businesses with no IT department. We set it up, connect it and maintain it; you just tell us how your business works." },
-        { "q": "Is AI going to replace my team?", "a": "That is not the point. What we take off their plate is the repetitive part: answering the same thing twenty times, moving data between systems, covering out of hours. Your team keeps the work that needs judgement." },
-        { "q": "Does it work in several languages?", "a": "Yes. We have agents in production handling Catalan, Spanish, English and French, detecting the language someone writes in and replying in theirs." },
-        { "q": "What happens to my customers’ data?", "a": "We define from the start what data is processed, where it is stored and who has access. We work in line with GDPR and only with the information needed to deliver the service." }
+        {
+          "q": "How can I implement AI in my business?",
+          "a": "We start with an audit: we look at where the hours go and where customers are lost (unanswered calls, enquiries left hanging, tasks repeated every day). That produces a prioritised proposal covering what to automate first and what impact to expect. Then we build it and leave it running in production, with follow-up."
+        },
+        {
+          "q": "How much does it cost to implement AI in a company?",
+          "a": "It depends on the scope, so we do not quote a fixed price without seeing your case. What we do is start with the audit and put a proposal in front of you, with the cost and the expected return, before you commit to anything."
+        },
+        {
+          "q": "What AI solutions can a company like mine actually use?",
+          "a": "Three are the most common: phone agents that answer calls 24/7 and book or screen them, chatbots that reply instantly and qualify contacts, and automations that remove repetitive tasks. We work with hospitality, tourism, industry, consulting, accommodation and events."
+        },
+        {
+          "q": "Do I need to be a large company or have a technical team?",
+          "a": "No. Most of our clients are small and medium businesses with no IT department. We set it up, connect it and maintain it; you just tell us how your business works."
+        },
+        {
+          "q": "Is AI going to replace my team?",
+          "a": "That is not the point. What we take off their plate is the repetitive part: answering the same thing twenty times, moving data between systems, covering out of hours. Your team keeps the work that needs judgement."
+        },
+        {
+          "q": "Does it work in several languages?",
+          "a": "Yes. We have agents in production handling Catalan, Spanish, English and French, detecting the language someone writes in and replying in theirs."
+        },
+        {
+          "q": "What happens to my customers’ data?",
+          "a": "We define from the start what data is processed, where it is stored and who has access. We work in line with GDPR and only with the information needed to deliver the service."
+        }
       ]
     },
     "badge_label": "Services",
@@ -196,10 +307,22 @@
     "tech_heading": "Tools we master",
     "tech_tools_category": "Tools",
     "process": {
-      "briefing": { "title": "Briefing", "desc": "Understand what you need and define the real scope of the project." },
-      "plan": { "title": "Plan", "desc": "Design the solution, architecture and deliverables." },
-      "build": { "title": "Build", "desc": "Build with precision, with weekly reviews." },
-      "launch": { "title": "Launch", "desc": "Deploy, monitor and maintain in production." }
+      "briefing": {
+        "title": "Briefing",
+        "desc": "Understand what you need and define the real scope of the project."
+      },
+      "plan": {
+        "title": "Plan",
+        "desc": "Design the solution, architecture and deliverables."
+      },
+      "build": {
+        "title": "Build",
+        "desc": "Build with precision, with weekly reviews."
+      },
+      "launch": {
+        "title": "Launch",
+        "desc": "Deploy, monitor and maintain in production."
+      }
     }
   },
   "qui_som_page": {
@@ -232,10 +355,22 @@
       "t2024": "Established as an AI technology partner with a team of specialists"
     },
     "process": {
-      "discovery": { "title": "Discovery", "desc": "Understand the challenge, users and business goals before writing a single line of code." },
-      "design": { "title": "Design", "desc": "Design the solution: architecture, UX and prototype validated with the client team." },
-      "build": { "title": "Build", "desc": "Implement with precision, incremental deliveries and continuous tests." },
-      "support": { "title": "Support", "desc": "Long-term support: maintenance, evolution and response in under 2 hours." }
+      "discovery": {
+        "title": "Discovery",
+        "desc": "Understand the challenge, users and business goals before writing a single line of code."
+      },
+      "design": {
+        "title": "Design",
+        "desc": "Design the solution: architecture, UX and prototype validated with the client team."
+      },
+      "build": {
+        "title": "Build",
+        "desc": "Implement with precision, incremental deliveries and continuous tests."
+      },
+      "support": {
+        "title": "Support",
+        "desc": "Long-term support: maintenance, evolution and response in under 2 hours."
+      }
     }
   },
   "clients_page": {
@@ -321,7 +456,11 @@
         "desc": "LED panel installation in collaboration with Megalux.",
         "metric": "Megalux",
         "metricLabel": "installation in collaboration with",
-        "gallery_labels": ["Before", "After — interior", "After — exterior"]
+        "gallery_labels": [
+          "Before",
+          "After — interior",
+          "After — exterior"
+        ]
       },
       {
         "badge": "Case_09",
@@ -333,20 +472,48 @@
       }
     ],
     "industries": [
-      { "label": "Hospitality" },
-      { "label": "Tourism" },
-      { "label": "Industry" },
-      { "label": "Consulting" },
-      { "label": "Accommodation" },
-      { "label": "Technology" },
-      { "label": "Events" },
-      { "label": "Lighting" }
+      {
+        "label": "Hospitality"
+      },
+      {
+        "label": "Tourism"
+      },
+      {
+        "label": "Industry"
+      },
+      {
+        "label": "Consulting"
+      },
+      {
+        "label": "Accommodation"
+      },
+      {
+        "label": "Technology"
+      },
+      {
+        "label": "Events"
+      },
+      {
+        "label": "Lighting"
+      }
     ],
     "stats": [
-      { "value": "CA·ES·EN", "label": "languages" },
-      { "value": "+24", "label": "years" },
-      { "value": "24/7", "label": "AI support" },
-      { "value": "<2h", "label": "response" }
+      {
+        "value": "CA·ES·EN",
+        "label": "languages"
+      },
+      {
+        "value": "+24",
+        "label": "years"
+      },
+      {
+        "value": "24/7",
+        "label": "AI support"
+      },
+      {
+        "value": "<2h",
+        "label": "response"
+      }
     ],
     "testimonials": [
       {
@@ -431,13 +598,37 @@
     }
   },
   "meta": {
-    "home": { "title": "9bit · AI solutions for businesses", "description": "Implement AI in your business: phone agents answering 24/7, chatbots, task automation and websites that win clients. Girona, since 2001." },
-    "serveis": { "title": "AI solutions for businesses: agents, chatbots and automation", "description": "Want to implement AI in your business? We audit your operation and deploy phone agents, chatbots and automations. Plus web development and support. Girona, since 2001." },
-    "contacte": { "title": "Contact", "description": "Tell us about your project and we'll get back to you within 2 hours. Call us, write to us or drop by: we're in Girona, by your side since 2001." },
-    "qui_som": { "title": "About us", "description": "Meet the team behind 9bit. Since 2001 we've helped businesses grow with websites, artificial intelligence and automation, working closely from Girona." },
-    "clients": { "title": "Success stories in AI, automation and web", "description": "Real cases of businesses that have already implemented AI and automation with 9bit: agents that handle enquiries on their own, installations and websites that win clients." },
-    "legal": { "title": "Legal notice", "description": "9bit legal notice: company details, terms of use and liability for the 9-bit.com website." },
-    "privacitat": { "title": "Privacy policy", "description": "Learn how 9bit collects, uses and protects your personal data when you browse 9-bit.com or get in touch with us." },
-    "cookies": { "title": "Cookie policy", "description": "Information about the cookies used on the 9bit website, what they are for and how you can manage or disable them." }
+    "home": {
+      "title": "9bit · AI solutions for businesses",
+      "description": "Implement AI in your business: phone agents answering 24/7, chatbots, task automation and websites that win clients. Girona, since 2001."
+    },
+    "serveis": {
+      "title": "AI solutions for businesses: agents, chatbots and automation",
+      "description": "Want to implement AI in your business? We audit your operation and deploy phone agents, chatbots and automations. Plus web development and support. Girona, since 2001."
+    },
+    "contacte": {
+      "title": "Contact",
+      "description": "Tell us about your project and we'll get back to you within 2 hours. Call us, write to us or drop by: we're in Girona, by your side since 2001."
+    },
+    "qui_som": {
+      "title": "About us",
+      "description": "Meet the team behind 9bit. Since 2001 we've helped businesses grow with websites, artificial intelligence and automation, working closely from Girona."
+    },
+    "clients": {
+      "title": "Success stories in AI, automation and web",
+      "description": "Real cases of businesses that have already implemented AI and automation with 9bit: agents that handle enquiries on their own, installations and websites that win clients."
+    },
+    "legal": {
+      "title": "Legal notice",
+      "description": "9bit legal notice: company details, terms of use and liability for the 9-bit.com website."
+    },
+    "privacitat": {
+      "title": "Privacy policy",
+      "description": "Learn how 9bit collects, uses and protects your personal data when you browse 9-bit.com or get in touch with us."
+    },
+    "cookies": {
+      "title": "Cookie policy",
+      "description": "Information about the cookies used on the 9bit website, what they are for and how you can manage or disable them."
+    }
   }
 }

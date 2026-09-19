@@ -19,7 +19,7 @@ export default function CTAPanel({ heading, subtitle, buttonLabel }: Props) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.4 }}
-      className="px-6 lg:px-10 py-20 md:py-28"
+      className="px-6 py-24 md:py-32 lg:px-10"
     >
       <div className="max-w-container-max mx-auto">
         <div className="relative rounded-3xl border border-black/[0.08] bg-gradient-to-br from-primary-container/20 via-transparent to-purple-500/10 px-8 md:px-16 py-16 md:py-24 text-center overflow-hidden">

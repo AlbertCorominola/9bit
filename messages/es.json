@@ -1,5 +1,7 @@
 {
-  "portrait_lock": { "message": "Gira el dispositivo" },
+  "portrait_lock": {
+    "message": "Gira el dispositivo"
+  },
   "nav": {
     "home": "Inicio",
     "services": "Servicios",
@@ -11,16 +13,34 @@
   "hero": {
     "badge": "Infraestructura con IA · desde 2001",
     "title_base": "Ofrecemos soluciones",
-    "words": ["con IA", "a medida", "que convierten", "que escalan", "que perduran"],
+    "words": [
+      "con IA",
+      "a medida",
+      "que convierten",
+      "que escalan",
+      "que perduran"
+    ],
     "subtitle": "Capta más clientes, atiéndelos 24/7 y reduce el trabajo repetitivo con webs, agentes telefónicos, chatbots y automatizaciones con IA.",
     "cta_primary": "Solicita presupuesto",
     "cta_secondary": "Ver casos de éxito"
   },
   "metrics": {
-    "experience": { "value": "+24", "label": "Años de experiencia" },
-    "interventions": { "value": "100%", "label": "A medida" },
-    "satisfaction": { "value": "24/7", "label": "Atención con IA" },
-    "response": { "value": "<2h", "label": "Tiempo de respuesta" }
+    "experience": {
+      "value": "+24",
+      "label": "Años de experiencia"
+    },
+    "interventions": {
+      "value": "100%",
+      "label": "A medida"
+    },
+    "satisfaction": {
+      "value": "24/7",
+      "label": "Atención con IA"
+    },
+    "response": {
+      "value": "<2h",
+      "label": "Tiempo de respuesta"
+    }
   },
   "services": {
     "heading": "Servicios",
@@ -30,21 +50,65 @@
     "more_label": "Además",
     "subtitle": "Te ayudamos a captar más clientes, retenerlos y reducir tu carga de trabajo con infraestructura digital e IA: webs, agentes telefónicos, chatbots y automatizaciones. Además, soporte in situ o remoto y formaciones a medida.",
     "items": {
-      "web": { "title": "Desarrollo Web", "desc": "Webs que captan clientes: rápidas, optimizadas para conversión y SEO y listas para integrar IA.", "code": "SV-01" },
-      "voice": { "title": "Agentes Telefónicos IA", "desc": "Asistentes de voz que atienden cada llamada 24/7, reservan y filtran consultas — captas más y no pierdes ninguna oportunidad.", "code": "SV-02" },
-      "chatbots": { "title": "Chatbots IA", "desc": "Chatbots que responden al instante, cualifican leads y retienen a tus clientes en cualquier canal.", "code": "SV-03" },
-      "automation": { "title": "Automatización", "desc": "Automatizamos tus tareas repetitivas para que tu equipo reduzca carga y se centre en lo que importa.", "code": "SV-04" },
-      "infrastructure": { "title": "Infraestructura IA", "desc": "La infraestructura de IA que conecta captación, atención y operativa en un solo sistema.", "code": "SV-05" },
-      "consulting": { "title": "Consultoría IA", "desc": "Detectamos dónde pierdes clientes, tiempo o ingresos y trazamos la hoja de ruta con IA.", "code": "SV-06" },
-      "support": { "title": "Soporte IT", "desc": "Resolución de incidencias in situ o en remoto y mantenimiento proactivo para que nunca te pares.", "code": "SV-07" },
-      "training": { "title": "Formación", "desc": "Formaciones a medida para que tu equipo saque el máximo partido a la tecnología y a la IA.", "code": "SV-08" }
+      "web": {
+        "title": "Desarrollo Web",
+        "desc": "Webs que captan clientes: rápidas, optimizadas para conversión y SEO y listas para integrar IA.",
+        "code": "SV-01"
+      },
+      "voice": {
+        "title": "Agentes Telefónicos IA",
+        "desc": "Asistentes de voz que atienden cada llamada 24/7, reservan y filtran consultas — captas más y no pierdes ninguna oportunidad.",
+        "code": "SV-02"
+      },
+      "chatbots": {
+        "title": "Chatbots IA",
+        "desc": "Chatbots que responden al instante, cualifican leads y retienen a tus clientes en cualquier canal.",
+        "code": "SV-03"
+      },
+      "automation": {
+        "title": "Automatización",
+        "desc": "Automatizamos tus tareas repetitivas para que tu equipo reduzca carga y se centre en lo que importa.",
+        "code": "SV-04"
+      },
+      "infrastructure": {
+        "title": "Infraestructura IA",
+        "desc": "La infraestructura de IA que conecta captación, atención y operativa en un solo sistema.",
+        "code": "SV-05"
+      },
+      "consulting": {
+        "title": "Consultoría IA",
+        "desc": "Detectamos dónde pierdes clientes, tiempo o ingresos y trazamos la hoja de ruta con IA.",
+        "code": "SV-06"
+      },
+      "support": {
+        "title": "Soporte IT",
+        "desc": "Resolución de incidencias in situ o en remoto y mantenimiento proactivo para que nunca te pares.",
+        "code": "SV-07"
+      },
+      "training": {
+        "title": "Formación",
+        "desc": "Formaciones a medida para que tu equipo saque el máximo partido a la tecnología y a la IA.",
+        "code": "SV-08"
+      }
     }
   },
   "pillars": {
-    "agility": { "title": "Entrega 2x Más Rápida", "desc": "Proyectos en la mitad de tiempo que una agencia tradicional sin atajos." },
-    "precision": { "title": "Cero Bugs en Producción", "desc": "Testing exhaustivo. Nuestros clientes disfrutan de 99.9% uptime garantizado." },
-    "reliability": { "title": "Respuesta <2h Siempre", "desc": "Soporte presencial en Girona. Si es urgencia, nos ves en 24 horas." },
-    "innovation": { "title": "Stack Tecnológico Actual", "desc": "Next.js, TypeScript, React, Cloud Native. Evitamos legacy que te encadene." }
+    "agility": {
+      "title": "Entrega 2x Más Rápida",
+      "desc": "Proyectos en la mitad de tiempo que una agencia tradicional sin atajos."
+    },
+    "precision": {
+      "title": "Cero Bugs en Producción",
+      "desc": "Testing exhaustivo. Nuestros clientes disfrutan de 99.9% uptime garantizado."
+    },
+    "reliability": {
+      "title": "Respuesta <2h Siempre",
+      "desc": "Soporte presencial en Girona. Si es urgencia, nos ves en 24 horas."
+    },
+    "innovation": {
+      "title": "Stack Tecnológico Actual",
+      "desc": "Next.js, TypeScript, React, Cloud Native. Evitamos legacy que te encadene."
+    }
   },
   "clients": {
     "heading": "Empresas que confían en nosotros",
@@ -54,9 +118,13 @@
     "trust_strip": "Empresas de Girona confían en nosotros desde 2001",
     "view_all": "Ver todo",
     "how_we_work": "Cómo trabajamos",
+    "how_we_work_label": "Método",
+    "how_we_work_intro": "Cuatro compromisos que no negociamos en ningún proyecto.",
     "statement": "Menos trabajo manual. Más clientes. Toda tu operativa conectada y potenciada con inteligencia artificial."
   },
   "testimonials": {
+    "label": "Opiniones",
+    "intro": "Empresas de Girona que ya trabajan con nosotros.",
     "heading": "Lo que dicen nuestros colaboradores",
     "items": [
       {
@@ -98,7 +166,29 @@
     "title": "¿Hablamos por WhatsApp?",
     "subtitle": "Normalmente respondemos en pocos minutos.",
     "cta": "Iniciar chat",
-    "aria": "Abrir chat de WhatsApp"
+    "aria": "Abrir chat de WhatsApp",
+    "teaser": "¿Te ayudamos? Escríbenos por WhatsApp",
+    "online": "En línea · respondemos en minutos",
+    "prompt": "Hola 👋 ¿Sobre qué quieres hablar?",
+    "dismiss": "Cerrar aviso",
+    "quick": [
+      {
+        "label": "Quiero una web",
+        "message": "Hola! Me interesa una web nueva para mi negocio."
+      },
+      {
+        "label": "Agente telefónico IA",
+        "message": "Hola! Me interesa un agente telefónico con IA que atienda las llamadas."
+      },
+      {
+        "label": "Automatizar tareas",
+        "message": "Hola! Me gustaría automatizar tareas repetitivas de mi negocio."
+      },
+      {
+        "label": "Otra consulta",
+        "message": "Hola! Me gustaría saber más sobre vuestros servicios."
+      }
+    ]
   },
   "contact_page": {
     "badge": "Contacto",
@@ -170,13 +260,34 @@
       "label": "Preguntas frecuentes",
       "heading": "¿Cómo se implementa la IA en un negocio?",
       "items": [
-        { "q": "¿Cómo puedo implementar IA en mi negocio?", "a": "Empezamos por una auditoría: miramos dónde se van las horas y dónde se pierden clientes (llamadas sin atender, consultas sin responder, tareas que se repiten cada día). De ahí sale una propuesta priorizada, con qué automatizar primero y qué impacto esperar. Después lo construimos y lo dejamos funcionando en producción, con seguimiento." },
-        { "q": "¿Cuánto cuesta implementar IA en una empresa?", "a": "Depende del alcance, así que no damos un precio cerrado sin ver tu caso. Lo que sí hacemos es empezar por la auditoría y presentarte una propuesta con el coste y el retorno esperado antes de que te comprometas a nada." },
-        { "q": "¿Qué soluciones de IA se pueden aplicar a una empresa como la mía?", "a": "Las más habituales son tres: agentes telefónicos que atienden las llamadas 24/7 y agendan o filtran, chatbots que responden al instante y cualifican contactos, y automatizaciones que eliminan tareas repetitivas. Trabajamos con restauración, turismo, industria, consultoría, alojamiento y eventos." },
-        { "q": "¿Tengo que ser una empresa grande o tener equipo técnico?", "a": "No. La mayoría de nuestros clientes son pymes sin departamento informático. Nosotros montamos, conectamos y mantenemos; tú solo tienes que explicarnos cómo funciona tu negocio." },
-        { "q": "¿La IA va a sustituir a mi equipo?", "a": "No es el objetivo. Lo que quitamos de encima es lo repetitivo: contestar veinte veces lo mismo, pasar datos de un sitio a otro, atender fuera de horario. Tu equipo se queda con lo que necesita criterio." },
-        { "q": "¿Funciona en varios idiomas?", "a": "Sí. Tenemos agentes en producción atendiendo en catalán, castellano, inglés y francés, que detectan el idioma de quien escribe y responden en el suyo." },
-        { "q": "¿Qué pasa con los datos de mis clientes?", "a": "Definimos desde el principio qué datos se tratan, dónde se guardan y quién accede. Trabajamos conforme al RGPD y solo con la información necesaria para prestar el servicio." }
+        {
+          "q": "¿Cómo puedo implementar IA en mi negocio?",
+          "a": "Empezamos por una auditoría: miramos dónde se van las horas y dónde se pierden clientes (llamadas sin atender, consultas sin responder, tareas que se repiten cada día). De ahí sale una propuesta priorizada, con qué automatizar primero y qué impacto esperar. Después lo construimos y lo dejamos funcionando en producción, con seguimiento."
+        },
+        {
+          "q": "¿Cuánto cuesta implementar IA en una empresa?",
+          "a": "Depende del alcance, así que no damos un precio cerrado sin ver tu caso. Lo que sí hacemos es empezar por la auditoría y presentarte una propuesta con el coste y el retorno esperado antes de que te comprometas a nada."
+        },
+        {
+          "q": "¿Qué soluciones de IA se pueden aplicar a una empresa como la mía?",
+          "a": "Las más habituales son tres: agentes telefónicos que atienden las llamadas 24/7 y agendan o filtran, chatbots que responden al instante y cualifican contactos, y automatizaciones que eliminan tareas repetitivas. Trabajamos con restauración, turismo, industria, consultoría, alojamiento y eventos."
+        },
+        {
+          "q": "¿Tengo que ser una empresa grande o tener equipo técnico?",
+          "a": "No. La mayoría de nuestros clientes son pymes sin departamento informático. Nosotros montamos, conectamos y mantenemos; tú solo tienes que explicarnos cómo funciona tu negocio."
+        },
+        {
+          "q": "¿La IA va a sustituir a mi equipo?",
+          "a": "No es el objetivo. Lo que quitamos de encima es lo repetitivo: contestar veinte veces lo mismo, pasar datos de un sitio a otro, atender fuera de horario. Tu equipo se queda con lo que necesita criterio."
+        },
+        {
+          "q": "¿Funciona en varios idiomas?",
+          "a": "Sí. Tenemos agentes en producción atendiendo en catalán, castellano, inglés y francés, que detectan el idioma de quien escribe y responden en el suyo."
+        },
+        {
+          "q": "¿Qué pasa con los datos de mis clientes?",
+          "a": "Definimos desde el principio qué datos se tratan, dónde se guardan y quién accede. Trabajamos conforme al RGPD y solo con la información necesaria para prestar el servicio."
+        }
       ]
     },
     "badge_label": "Servicios",
@@ -196,10 +307,22 @@
     "tech_heading": "Herramientas que dominamos",
     "tech_tools_category": "Herramientas",
     "process": {
-      "briefing": { "title": "Briefing", "desc": "Entender qué necesitas y definir el alcance real del proyecto." },
-      "plan": { "title": "Plan", "desc": "Diseñar la solución, la arquitectura y los entregables." },
-      "build": { "title": "Construcción", "desc": "Construir con precisión, con revisiones semanales." },
-      "launch": { "title": "Lanzamiento", "desc": "Desplegar, monitorizar y mantener en producción." }
+      "briefing": {
+        "title": "Briefing",
+        "desc": "Entender qué necesitas y definir el alcance real del proyecto."
+      },
+      "plan": {
+        "title": "Plan",
+        "desc": "Diseñar la solución, la arquitectura y los entregables."
+      },
+      "build": {
+        "title": "Construcción",
+        "desc": "Construir con precisión, con revisiones semanales."
+      },
+      "launch": {
+        "title": "Lanzamiento",
+        "desc": "Desplegar, monitorizar y mantener en producción."
+      }
     }
   },
   "qui_som_page": {
@@ -232,10 +355,22 @@
       "t2024": "Consolidación como partner tecnológico con IA y un equipo de especialistas"
     },
     "process": {
-      "discovery": { "title": "Descubrimiento", "desc": "Entender el reto, los usuarios y los objetivos de negocio antes de escribir una sola línea de código." },
-      "design": { "title": "Diseño", "desc": "Diseñar la solución: arquitectura, UX y prototipo validado con el equipo cliente." },
-      "build": { "title": "Construcción", "desc": "Implementar con precisión, entregas incrementales y tests continuos." },
-      "support": { "title": "Soporte", "desc": "Acompañar a largo plazo: mantenimiento, evolución y respuesta en menos de 2 h." }
+      "discovery": {
+        "title": "Descubrimiento",
+        "desc": "Entender el reto, los usuarios y los objetivos de negocio antes de escribir una sola línea de código."
+      },
+      "design": {
+        "title": "Diseño",
+        "desc": "Diseñar la solución: arquitectura, UX y prototipo validado con el equipo cliente."
+      },
+      "build": {
+        "title": "Construcción",
+        "desc": "Implementar con precisión, entregas incrementales y tests continuos."
+      },
+      "support": {
+        "title": "Soporte",
+        "desc": "Acompañar a largo plazo: mantenimiento, evolución y respuesta en menos de 2 h."
+      }
     }
   },
   "clients_page": {
@@ -321,7 +456,11 @@
         "desc": "Instalación de paneles LED en colaboración con Megalux.",
         "metric": "Megalux",
         "metricLabel": "instalación en colaboración con",
-        "gallery_labels": ["Antes", "Después — interior", "Después — exterior"]
+        "gallery_labels": [
+          "Antes",
+          "Después — interior",
+          "Después — exterior"
+        ]
       },
       {
         "badge": "Case_09",
@@ -333,20 +472,48 @@
       }
     ],
     "industries": [
-      { "label": "Restauración" },
-      { "label": "Turismo" },
-      { "label": "Industria" },
-      { "label": "Consultoría" },
-      { "label": "Alojamiento" },
-      { "label": "Tecnología" },
-      { "label": "Eventos" },
-      { "label": "Iluminación" }
+      {
+        "label": "Restauración"
+      },
+      {
+        "label": "Turismo"
+      },
+      {
+        "label": "Industria"
+      },
+      {
+        "label": "Consultoría"
+      },
+      {
+        "label": "Alojamiento"
+      },
+      {
+        "label": "Tecnología"
+      },
+      {
+        "label": "Eventos"
+      },
+      {
+        "label": "Iluminación"
+      }
     ],
     "stats": [
-      { "value": "CA·ES·EN", "label": "idiomas" },
-      { "value": "+24", "label": "años" },
-      { "value": "24/7", "label": "atención IA" },
-      { "value": "<2h", "label": "respuesta" }
+      {
+        "value": "CA·ES·EN",
+        "label": "idiomas"
+      },
+      {
+        "value": "+24",
+        "label": "años"
+      },
+      {
+        "value": "24/7",
+        "label": "atención IA"
+      },
+      {
+        "value": "<2h",
+        "label": "respuesta"
+      }
     ],
     "testimonials": [
       {
@@ -431,13 +598,37 @@
     }
   },
   "meta": {
-    "home": { "title": "9bit · Soluciones de IA para empresas", "description": "Implementa IA en tu negocio: agentes telefónicos que atienden 24/7, chatbots, automatización de tareas y webs que captan clientes. Girona, desde 2001." },
-    "serveis": { "title": "Soluciones de IA para empresas: agentes, chatbots y automatización", "description": "¿Quieres implementar IA en tu negocio? Auditamos tu operativa y desplegamos agentes telefónicos, chatbots y automatizaciones. También desarrollo web y soporte. Girona, desde 2001." },
-    "contacte": { "title": "Contacto", "description": "Cuéntanos tu proyecto y te responderemos en menos de 2 horas. Llámanos, escríbenos o ven a vernos: estamos en Girona, a tu lado desde 2001." },
-    "qui_som": { "title": "Quiénes somos", "description": "Conoce al equipo detrás de 9bit. Desde 2001 ayudamos a empresas a crecer con webs, inteligencia artificial y automatización, con trato cercano desde Girona." },
-    "clients": { "title": "Casos de éxito en IA, automatización y web", "description": "Casos reales de empresas que ya han implementado IA y automatización con 9bit: agentes que atienden solos, instalaciones y webs que captan clientes." },
-    "legal": { "title": "Aviso legal", "description": "Aviso legal de 9bit: datos identificativos, condiciones de uso y responsabilidad del sitio web 9-bit.com." },
-    "privacitat": { "title": "Política de privacidad", "description": "Descubre cómo 9bit recoge, utiliza y protege tus datos personales cuando navegas por 9-bit.com o contactas con nosotros." },
-    "cookies": { "title": "Política de cookies", "description": "Información sobre las cookies que utiliza la web de 9bit, para qué sirven y cómo puedes gestionarlas o desactivarlas." }
+    "home": {
+      "title": "9bit · Soluciones de IA para empresas",
+      "description": "Implementa IA en tu negocio: agentes telefónicos que atienden 24/7, chatbots, automatización de tareas y webs que captan clientes. Girona, desde 2001."
+    },
+    "serveis": {
+      "title": "Soluciones de IA para empresas: agentes, chatbots y automatización",
+      "description": "¿Quieres implementar IA en tu negocio? Auditamos tu operativa y desplegamos agentes telefónicos, chatbots y automatizaciones. También desarrollo web y soporte. Girona, desde 2001."
+    },
+    "contacte": {
+      "title": "Contacto",
+      "description": "Cuéntanos tu proyecto y te responderemos en menos de 2 horas. Llámanos, escríbenos o ven a vernos: estamos en Girona, a tu lado desde 2001."
+    },
+    "qui_som": {
+      "title": "Quiénes somos",
+      "description": "Conoce al equipo detrás de 9bit. Desde 2001 ayudamos a empresas a crecer con webs, inteligencia artificial y automatización, con trato cercano desde Girona."
+    },
+    "clients": {
+      "title": "Casos de éxito en IA, automatización y web",
+      "description": "Casos reales de empresas que ya han implementado IA y automatización con 9bit: agentes que atienden solos, instalaciones y webs que captan clientes."
+    },
+    "legal": {
+      "title": "Aviso legal",
+      "description": "Aviso legal de 9bit: datos identificativos, condiciones de uso y responsabilidad del sitio web 9-bit.com."
+    },
+    "privacitat": {
+      "title": "Política de privacidad",
+      "description": "Descubre cómo 9bit recoge, utiliza y protege tus datos personales cuando navegas por 9-bit.com o contactas con nosotros."
+    },
+    "cookies": {
+      "title": "Política de cookies",
+      "description": "Información sobre las cookies que utiliza la web de 9bit, para qué sirven y cómo puedes gestionarlas o desactivarlas."
+    }
   }
 }

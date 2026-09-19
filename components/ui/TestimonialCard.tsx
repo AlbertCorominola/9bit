@@ -1,26 +1,52 @@
-import { User } from 'lucide-react';
+import { Quote } from 'lucide-react';
 
 interface Props {
   name: string;
   company: string;
   quote: string;
+  /** Iniciales del avatar; si no llegan se derivan del nombre. */
+  initials?: string;
 }
 
-export default function TestimonialCard({ name, company, quote }: Props) {
+function initialsOf(name: string) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('');
+}
+
+export default function TestimonialCard({ name, company, quote, initials }: Props) {
   return (
-    <div className="h-full rounded-2xl border border-black/[0.08] bg-black/[0.02] hover:border-primary-container/40 hover:bg-black/[0.04] transition-all duration-200 p-7 flex flex-col">
-      <p className="text-on-surface text-base leading-relaxed mb-8 flex-1">
-        &ldquo;{quote}&rdquo;
-      </p>
-      <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-primary-container/15 border border-primary-container/30 flex items-center justify-center shrink-0">
-          <User className="text-primary-container" size={16} />
-        </div>
-        <div>
-          <div className="text-on-surface text-sm font-semibold">{name}</div>
-          <div className="text-on-surface-variant text-xs">{company}</div>
-        </div>
-      </div>
-    </div>
+    <figure className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-black/[0.08] bg-surface-container-low p-7 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-primary-container/25 hover:shadow-[0_30px_60px_-32px_rgba(13,17,23,0.35)] md:p-8">
+      {/* Filete superior que se dibuja al pasar por encima. */}
+      <span
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-gradient-to-r from-primary-container via-primary-container/40 to-transparent transition-transform duration-500 ease-out group-hover:scale-x-100"
+      />
+      <Quote
+        aria-hidden
+        size={44}
+        strokeWidth={1.25}
+        className="mb-5 -scale-x-100 text-primary-container/20 transition-colors duration-500 group-hover:text-primary-container/35"
+      />
+
+      <blockquote className="flex-1 text-[17px] leading-[1.65] tracking-tight text-on-surface">
+        {quote}
+      </blockquote>
+
+      <figcaption className="mt-8 flex items-center gap-3.5 border-t border-black/[0.07] pt-6">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary-container to-primary text-[13px] font-bold tracking-tight text-white">
+          {initials || initialsOf(name)}
+        </span>
+        <span className="min-w-0">
+          <span className="block truncate text-sm font-semibold tracking-tight text-on-surface">
+            {name}
+          </span>
+          <span className="block truncate text-xs text-on-surface-variant">{company}</span>
+        </span>
+      </figcaption>
+    </figure>
   );
 }
