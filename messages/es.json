@@ -12,17 +12,40 @@
   },
   "hero": {
     "badge": "Infraestructura con IA · desde 2001",
-    "title_base": "Ofrecemos soluciones",
+    "title_base": "Que no se pierda",
     "words": [
-      "con IA",
-      "a medida",
-      "que convierten",
-      "que escalan",
-      "que perduran"
+      "ni una llamada",
+      "ni un cliente",
+      "ni una hora"
     ],
-    "subtitle": "Capta más clientes, atiéndelos 24/7 y reduce el trabajo repetitivo con webs, agentes telefónicos, chatbots y automatizaciones con IA.",
     "cta_primary": "Solicita presupuesto",
-    "cta_secondary": "Ver casos de éxito"
+    "cta_secondary": "Ver casos de éxito",
+    "demo": {
+      "status": "Llamada entrante",
+      "subtitle": "Agente de voz 9bit · respondiendo",
+      "agent_label": "Agente",
+      "caller_label": "Cliente",
+      "note": "Demostración de cómo atiende un agente de 9bit",
+      "result": "Reserva confirmada · 4 personas · 21:00",
+      "lines": [
+        {
+          "from": "agent",
+          "text": "Buenas tardes, le atiende el asistente de reservas. ¿En qué puedo ayudarle?"
+        },
+        {
+          "from": "caller",
+          "text": "Quería mesa para cuatro, esta noche."
+        },
+        {
+          "from": "agent",
+          "text": "Tengo mesa a las 21:00. ¿Se la confirmo?"
+        },
+        {
+          "from": "caller",
+          "text": "Sí, perfecto."
+        }
+      ]
+    }
   },
   "metrics": {
     "experience": {

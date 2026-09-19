@@ -12,17 +12,40 @@
   },
   "hero": {
     "badge": "Infraestructura amb IA · des del 2001",
-    "title_base": "Oferim solucions",
+    "title_base": "Que no es perdi",
     "words": [
-      "amb IA",
-      "a mida",
-      "que converteixen",
-      "que escalen",
-      "que perduren"
+      "ni una trucada",
+      "ni un client",
+      "ni una hora"
     ],
-    "subtitle": "Capta més clients, atén-los 24/7 i redueix la feina repetitiva amb webs, agents telefònics, chatbots i automatitzacions amb IA.",
     "cta_primary": "Demana pressupost",
-    "cta_secondary": "Veure casos d'èxit"
+    "cta_secondary": "Veure casos d'èxit",
+    "demo": {
+      "status": "Trucada entrant",
+      "subtitle": "Agent de veu 9bit · responent",
+      "agent_label": "Agent",
+      "caller_label": "Client",
+      "note": "Demostració de com atén un agent de 9bit",
+      "result": "Reserva confirmada · 4 persones · 21:00",
+      "lines": [
+        {
+          "from": "agent",
+          "text": "Bona tarda, l'atén l'assistent de reserves. En què el puc ajudar?"
+        },
+        {
+          "from": "caller",
+          "text": "Volia taula per a quatre, aquesta nit."
+        },
+        {
+          "from": "agent",
+          "text": "Tinc taula a les 21:00. L'hi confirmo?"
+        },
+        {
+          "from": "caller",
+          "text": "Sí, perfecte."
+        }
+      ]
+    }
   },
   "metrics": {
     "experience": {

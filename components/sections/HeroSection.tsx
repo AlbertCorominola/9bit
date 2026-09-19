@@ -2,8 +2,9 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
-import { Globe, Phone, Bot, Workflow } from 'lucide-react';
 import AnimatedHero from '@/components/ui/AnimatedHero';
+import LiveCallDemo, { type CallLine } from '@/components/ui/LiveCallDemo';
+import ClientMarquee from '@/components/ui/ClientMarquee';
 import HeroParallax, { type ParallaxCase } from '@/components/ui/HeroParallax';
 
 const GridGlowBackground = dynamic(
@@ -11,9 +12,8 @@ const GridGlowBackground = dynamic(
   { ssr: false }
 );
 
-// Capturas reales de los proyectos, no ilustraciones: el hero es la prueba de
-// trabajo antes que un adorno. El orden alterna sector y formato porque las
-// filas del muro se reparten en round-robin.
+// Capturas reales de los proyectos, no ilustraciones: el muro es la prueba de
+// trabajo antes que un adorno. Nueve casos, tres por fila.
 const CASES: ParallaxCase[] = [
   { title: 'MultiEsports Ter', thumbnail: '/cases/multiesports.webp', href: 'https://multiesportster.com/' },
   { title: 'Restaurant Arest Estanyol', thumbnail: '/cases/estanyol.webp', href: 'https://restaurantarestestanyol.com/' },
@@ -29,17 +29,54 @@ const CASES: ParallaxCase[] = [
 export default function HeroSection() {
   const t = useTranslations('hero');
   const ts = useTranslations('services');
+  const tm = useTranslations('metrics');
+  const th = useTranslations('home');
   const locale = useLocale();
+
   const words = (t.raw('words') as string[]) ?? [];
+  const lines = (t.raw('demo.lines') as CallLine[]) ?? [];
 
   const offerings = [
-    { icon: Globe, label: ts('items.web.title') },
-    { icon: Phone, label: ts('items.voice.title') },
-    { icon: Bot, label: ts('items.chatbots.title') },
-    { icon: Workflow, label: ts('items.automation.title') },
+    ts('items.web.title'),
+    ts('items.voice.title'),
+    ts('items.chatbots.title'),
+    ts('items.automation.title'),
+  ];
+
+  const metrics = [
+    { value: tm('experience.value'), label: tm('experience.label') },
+    { value: tm('satisfaction.value'), label: tm('satisfaction.label') },
+    { value: tm('response.value'), label: tm('response.label') },
+    { value: tm('interventions.value'), label: tm('interventions.label') },
   ];
 
   const cases = CASES.map((c) => (c.href ? c : { ...c, href: `/${locale}/clients` }));
+
+  const proof = (
+    <div className="border-t border-black/[0.08] pt-7">
+      <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:gap-x-12">
+        {metrics.map((m) => (
+          <li key={m.label} className="flex items-baseline gap-2">
+            <span className="font-sans text-xl font-black tracking-tight text-on-surface sm:text-2xl">
+              {m.value}
+            </span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-on-surface-variant">
+              {m.label}
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <p className="mt-6 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/55">
+        {th('trust_strip')}
+      </p>
+      <div className="relative mt-1">
+        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-background to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-background to-transparent" />
+        <ClientMarquee />
+      </div>
+    </div>
+  );
 
   const header = (
     <div className="relative">
@@ -47,7 +84,7 @@ export default function HeroSection() {
         <GridGlowBackground backgroundColor="transparent" gridSize={48} />
       </div>
 
-      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center pb-20 pt-28">
+      <div className="relative z-10 flex min-h-[100svh] flex-col justify-center pb-10 pt-24">
         <AnimatedHero
           badge={t('badge')}
           titleBase={t('title_base')}
@@ -55,18 +92,19 @@ export default function HeroSection() {
           ctaPrimary={t('cta_primary')}
           ctaSecondary={t('cta_secondary')}
           offerings={offerings}
+          demo={
+            <LiveCallDemo
+              status={t('demo.status')}
+              subtitle={t('demo.subtitle')}
+              agentLabel={t('demo.agent_label')}
+              callerLabel={t('demo.caller_label')}
+              note={t('demo.note')}
+              result={t('demo.result')}
+              lines={lines}
+            />
+          }
+          proof={proof}
         />
-
-        {/* Pista de scroll: el hero ocupa la pantalla entera y conviene decir
-            que debajo hay trabajo real. */}
-        <span
-          aria-hidden
-          className="pointer-events-none absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block"
-        >
-          <span className="flex h-9 w-6 items-start justify-center rounded-full border border-black/15 p-1.5">
-            <span className="h-2 w-1 animate-bounce rounded-full bg-primary-container/70" />
-          </span>
-        </span>
       </div>
     </div>
   );

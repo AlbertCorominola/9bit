@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { buildPageMetadata } from '@/lib/seo';
 import HeroSection from '@/components/sections/HeroSection';
-import TrustStripSection from '@/components/sections/TrustStripSection';
-import MetricsSection from '@/components/sections/MetricsSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import StatementSection from '@/components/sections/StatementSection';
 import PillarsSection from '@/components/sections/PillarsSection';
@@ -32,8 +30,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   return (
     <>
       <HeroSection />
-      <TrustStripSection />
-      <MetricsSection />
       <ServicesSection />
       <StatementSection />
       <PillarsSection />

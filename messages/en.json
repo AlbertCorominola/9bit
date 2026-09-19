@@ -12,17 +12,40 @@
   },
   "hero": {
     "badge": "AI infrastructure · since 2001",
-    "title_base": "We deliver solutions",
+    "title_base": "Never lose",
     "words": [
-      "with AI",
-      "tailored",
-      "that convert",
-      "that scale",
-      "that last"
+      "another call",
+      "another client",
+      "another hour"
     ],
-    "subtitle": "Win more clients, serve them 24/7 and cut repetitive work with AI websites, phone agents, chatbots and automations.",
     "cta_primary": "Request quote",
-    "cta_secondary": "View success stories"
+    "cta_secondary": "View success stories",
+    "demo": {
+      "status": "Incoming call",
+      "subtitle": "9bit voice agent · answering",
+      "agent_label": "Agent",
+      "caller_label": "Caller",
+      "note": "A demo of how a 9bit agent answers",
+      "result": "Booking confirmed · 4 people · 9:00 pm",
+      "lines": [
+        {
+          "from": "agent",
+          "text": "Good evening, you've reached the booking assistant. How can I help?"
+        },
+        {
+          "from": "caller",
+          "text": "I'd like a table for four, tonight."
+        },
+        {
+          "from": "agent",
+          "text": "I have a table at 9:00 pm. Shall I confirm it?"
+        },
+        {
+          "from": "caller",
+          "text": "Yes, perfect."
+        }
+      ]
+    }
   },
   "metrics": {
     "experience": {
