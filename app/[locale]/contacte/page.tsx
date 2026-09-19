@@ -6,18 +6,20 @@ import ContacteContent from './ContacteContent';
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'meta.contacte' });
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'meta.contacte' });
   return buildPageMetadata({
-    locale: params.locale,
+    locale,
     path: '/contacte',
     title: t('title'),
     description: t('description'),
   });
 }
 
-export default function Page({ params }: { params: { locale: string } }) {
-  setRequestLocale(params.locale);
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return <ContacteContent />;
 }

@@ -50,9 +50,10 @@ const SEO: Record<string, { title: string; description: string }> = {
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const seo = SEO[params.locale] ?? SEO.ca;
+  const { locale } = await params;
+  const seo = SEO[locale] ?? SEO.ca;
   return {
     metadataBase: new URL('https://9-bit.com'),
     title: {
@@ -79,9 +80,9 @@ export async function generateMetadata({
     openGraph: {
       title: seo.title,
       description: seo.description,
-      url: `https://9-bit.com/${params.locale}`,
+      url: `https://9-bit.com/${locale}`,
       siteName: '9bit',
-      locale: params.locale,
+      locale: locale,
       type: 'website',
     },
     twitter: {
@@ -91,7 +92,7 @@ export async function generateMetadata({
     },
     robots: { index: true, follow: true },
     alternates: {
-      canonical: `https://9-bit.com/${params.locale}`,
+      canonical: `https://9-bit.com/${locale}`,
       languages: {
         ca: 'https://9-bit.com/ca',
         es: 'https://9-bit.com/es',
@@ -111,19 +112,20 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  if (!locales.includes(params.locale as Locale)) notFound();
-  setRequestLocale(params.locale);
+  const { locale } = await params;
+  if (!locales.includes(locale as Locale)) notFound();
+  setRequestLocale(locale);
   const messages = await getMessages();
   // Nonce generated per-request in middleware.ts; next-themes needs it for
   // the inline theme script it injects before hydration.
-  const nonce = headers().get('x-nonce') ?? undefined;
+  const nonce = (await headers()).get('x-nonce') ?? undefined;
 
   return (
-    <html lang={params.locale} suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang={locale} suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
-        <StructuredData locale={params.locale} />
+        <StructuredData locale={locale} />
       </head>
       <body className="ambient-bg flex flex-col min-h-screen overflow-x-clip">
         <Providers nonce={nonce}>

@@ -17,8 +17,9 @@ const SERVICES: Record<string, string> = {
   en: 'Websites · Phone agents · Chatbots · Automation',
 };
 
-export default function Image({ params }: { params: { locale: string } }) {
-  const locale = TAGLINES[params.locale] ? params.locale : 'es';
+export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: requested } = await params;
+  const locale = TAGLINES[requested] ? requested : 'es';
 
   return new ImageResponse(
     (

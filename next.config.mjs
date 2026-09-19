@@ -1,9 +1,15 @@
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+
 import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./i18n.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Hay package-lock.json en carpetas superiores: sin esto Next escoge una de
+  // ellas como raíz y el rastreo de archivos del build sale mal.
+  outputFileTracingRoot: dirname(fileURLToPath(import.meta.url)),
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,

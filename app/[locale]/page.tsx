@@ -13,11 +13,12 @@ import CtaSection from '@/components/sections/CtaSection';
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'meta.home' });
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'meta.home' });
   return buildPageMetadata({
-    locale: params.locale,
+    locale,
     path: '',
     title: t('title'),
     description: t('description'),
@@ -25,8 +26,9 @@ export async function generateMetadata({
   });
 }
 
-export default function Home({ params }: { params: { locale: string } }) {
-  setRequestLocale(params.locale);
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return (
     <>
       <HeroSection />
