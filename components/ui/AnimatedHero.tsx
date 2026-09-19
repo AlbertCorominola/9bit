@@ -12,8 +12,6 @@ interface Props {
   words: string[];
   ctaPrimary: string;
   ctaSecondary: string;
-  /** Capacidades en una línea, sin descripciones. */
-  offerings?: string[];
   /** Demostración del agente: la prueba visual del hero. */
   demo: ReactNode;
   /** Franja de prueba bajo el pliegue: cifras + logos. */
@@ -38,7 +36,6 @@ export default function AnimatedHero({
   words,
   ctaPrimary,
   ctaSecondary,
-  offerings = [],
   demo,
   proof,
 }: Props) {
@@ -59,17 +56,14 @@ export default function AnimatedHero({
       animate="show"
       className="mx-auto w-full max-w-container-max px-6 lg:px-10"
     >
-      <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.82fr)] lg:gap-16">
+      <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:gap-20">
         {/* Columna de mensaje */}
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
           <motion.div
             variants={rise}
-            className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-black/[0.08] bg-white/60 px-4 py-1.5 backdrop-blur-md"
+            className="mb-9 inline-flex items-center gap-2.5 rounded-full border border-black/[0.08] bg-white/60 px-4 py-1.5 backdrop-blur-md"
           >
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-container/70" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary-container" />
-            </span>
+            <span className="h-1.5 w-1.5 rounded-full bg-primary-container" />
             <span className="font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-on-surface-variant">
               {badge}
             </span>
@@ -100,7 +94,7 @@ export default function AnimatedHero({
 
           <motion.div
             variants={rise}
-            className="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-3.5"
+            className="mt-11 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-3.5"
           >
             <Link
               href={`/${locale}/contacte`}
@@ -124,23 +118,6 @@ export default function AnimatedHero({
             </Link>
           </motion.div>
 
-          {offerings.length > 0 && (
-            <motion.ul
-              variants={rise}
-              className="mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 lg:justify-start"
-            >
-              {offerings.map((label, i) => (
-                <li key={label} className="flex items-center gap-3">
-                  <span className="text-[13px] font-medium tracking-tight text-on-surface-variant">
-                    {label}
-                  </span>
-                  {i < offerings.length - 1 && (
-                    <span aria-hidden className="h-3 w-px bg-black/[0.12]" />
-                  )}
-                </li>
-              ))}
-            </motion.ul>
-          )}
         </div>
 
         {/* Columna de demostración */}
@@ -149,7 +126,7 @@ export default function AnimatedHero({
         </motion.div>
       </div>
 
-      <motion.div variants={rise} className="mt-10">
+      <motion.div variants={rise} className="mt-14">
         {proof}
       </motion.div>
     </motion.div>

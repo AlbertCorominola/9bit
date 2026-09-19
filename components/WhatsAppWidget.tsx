@@ -231,20 +231,12 @@ export default function WhatsAppWidget() {
       <div className="relative">
         {/* Halo que respira: llama la atención sin moverse de sitio. */}
         {!open && !reduced && (
-          <>
-            <motion.span
-              aria-hidden
-              className="absolute inset-0 rounded-full bg-[#25D366]/35"
-              animate={{ scale: [1, 1.55], opacity: [0.5, 0] }}
-              transition={{ duration: 2.4, repeat: Infinity, ease: 'easeOut' }}
-            />
-            <motion.span
-              aria-hidden
-              className="absolute inset-0 rounded-full bg-[#25D366]/25"
-              animate={{ scale: [1, 1.55], opacity: [0.5, 0] }}
-              transition={{ duration: 2.4, repeat: Infinity, ease: 'easeOut', delay: 1.2 }}
-            />
-          </>
+          <motion.span
+            aria-hidden
+            className="absolute inset-0 rounded-full bg-[#25D366]/30"
+            animate={{ scale: [1, 1.5], opacity: [0.45, 0] }}
+            transition={{ duration: 2.8, repeat: Infinity, ease: 'easeOut' }}
+          />
         )}
 
         <motion.button

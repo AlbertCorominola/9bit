@@ -53,6 +53,12 @@ const CLIENTS: MarqueeLogo[] = [
   },
 ];
 
-export default function ClientMarquee({ reverse = false }: { reverse?: boolean }) {
-  return <LogoMarquee logos={CLIENTS} reverse={reverse} className="py-4" />;
+export default function ClientMarquee({
+  reverse = false,
+  speed = 'normal',
+}: {
+  reverse?: boolean;
+  speed?: 'slow' | 'normal' | 'fast';
+}) {
+  return <LogoMarquee logos={CLIENTS} reverse={reverse} speed={speed} className="py-4" />;
 }

@@ -153,7 +153,7 @@ export const GridGlowBackground: React.FC<GridGlowBackgroundProps> = ({
 
   return (
     <div className={className ?? 'absolute inset-0'} style={{ backgroundColor }}>
-      <canvas ref={canvasRef} className="absolute inset-0 z-0 h-full w-full opacity-60" />
+      <canvas ref={canvasRef} className="absolute inset-0 z-0 h-full w-full opacity-40" />
     </div>
   );
 };

@@ -101,7 +101,7 @@ export default function LiveCallDemo({
     <div ref={ref} className="w-full max-w-[26rem]">
       <div className="overflow-hidden rounded-[1.75rem] border border-black/[0.08] bg-surface shadow-[0_44px_90px_-40px_rgba(13,17,23,0.5)]">
         {/* Cabecera de llamada */}
-        <div className="flex items-center gap-3 border-b border-black/[0.07] bg-surface-container-low px-5 py-4">
+        <div className="flex items-center gap-3 border-b border-black/[0.07] bg-surface-container-low px-6 py-4">
           <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-primary-container/12 text-primary-container">
             {!reduced && (
               <motion.span
@@ -126,7 +126,7 @@ export default function LiveCallDemo({
         </div>
 
         {/* Transcripción */}
-        <div className="flex min-h-[16.5rem] flex-col gap-2.5 px-5 py-4">
+        <div className="flex min-h-[16rem] flex-col gap-3 px-6 py-5">
           {lines.map((l, i) => {
             const isWriting = i === line && !done;
             const isWritten = i < line || done;
@@ -142,13 +142,9 @@ export default function LiveCallDemo({
                 transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                 className={mine ? 'self-start' : 'self-end'}
               >
-                <p
-                  className={`mb-1 font-mono text-[9px] uppercase tracking-[0.18em] ${
-                    mine ? 'text-primary-text' : 'text-right text-on-surface-variant/60'
-                  }`}
-                >
-                  {mine ? agentLabel : callerLabel}
-                </p>
+                {/* El color y el lado ya dicen quién habla; la etiqueta se
+                    queda solo para quien escucha la página. */}
+                <span className="sr-only">{mine ? agentLabel : callerLabel}: </span>
                 <p
                   className={`max-w-[17rem] rounded-2xl px-4 py-2.5 text-[13px] leading-snug ${
                     mine
@@ -182,7 +178,7 @@ export default function LiveCallDemo({
         </div>
       </div>
 
-      <p className="mt-3 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-on-surface-variant/55">
+      <p className="mt-4 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-on-surface-variant/55">
         {note}
       </p>
     </div>
