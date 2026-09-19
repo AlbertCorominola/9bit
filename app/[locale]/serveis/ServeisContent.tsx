@@ -6,17 +6,19 @@ import { motion } from 'framer-motion';
 import CTAPanel from '@/components/ui/CTAPanel';
 import Parallax from '@/components/ui/Parallax';
 import ProcessRail, { type ProcessStep } from '@/components/ui/ProcessRail';
-import ScrollZoomImage from '@/components/ui/ScrollZoomImage';
+import ServiceVisual, { type VisualVariant } from '@/components/ui/ServiceVisual';
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 
 const CORE_KEYS = ['web', 'voice', 'chatbots', 'automation'] as const;
 const EXTRA_KEYS = ['infrastructure', 'consulting', 'support', 'training'] as const;
 
-const IMAGES: Record<(typeof CORE_KEYS)[number], string> = {
-  web: '/services/web.png',
-  voice: '/services/voice.png',
-  chatbots: '/services/chatbots.png',
-  automation: '/services/automation.png',
+// Las fotos de servicio ya salen en la portada. Aquí cada servicio enseña
+// cómo funciona con una pieza dibujada en código, no con la misma imagen.
+const VISUALS: Record<(typeof CORE_KEYS)[number], VisualVariant> = {
+  web: 'web',
+  voice: 'voice',
+  chatbots: 'chatbots',
+  automation: 'automation',
 };
 
 const LABEL = 'font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text';
@@ -80,26 +82,27 @@ export default function ServeisPage() {
                   key={key}
                   className="grid items-center gap-8 md:grid-cols-2 md:gap-14 lg:gap-20"
                 >
-                  {/* En móvil la foto siempre va primero: es lo que engancha. */}
+                  {/* En móvil la pieza va primero: es lo que engancha. */}
                   <Reveal
                     direction={mediaRight ? 'left' : 'right'}
                     className={mediaRight ? 'md:order-2' : ''}
                   >
-                    <ScrollZoomImage
-                      src={IMAGES[key]}
-                      alt={t(`items.${key}.title`)}
-                      priority={i === 0}
-                      className="aspect-[4/3] w-full rounded-3xl border border-black/[0.08] bg-surface-container shadow-[0_40px_80px_-52px_rgba(13,17,23,0.6)] md:aspect-square"
-                      sizes="(min-width: 768px) 46vw, 100vw"
+                    <ServiceVisual
+                      variant={VISUALS[key]}
+                      className="aspect-[4/3] w-full shadow-[0_40px_80px_-52px_rgba(13,17,23,0.55)]"
                     />
                   </Reveal>
 
                   <div className={mediaRight ? 'md:order-1' : ''}>
                     <Reveal direction="up">
-                      <span className="font-mono text-[11px] tabular-nums tracking-[0.2em] text-on-surface-variant/45">
-                        {String(i + 1).padStart(2, '0')} / 04
+                      <span
+                        aria-hidden
+                        className="block font-sans text-[3.5rem] font-black leading-none tracking-tighter text-transparent md:text-[4.5rem]"
+                        style={{ WebkitTextStroke: '1px rgba(13,17,23,0.13)' }}
+                      >
+                        {String(i + 1).padStart(2, '0')}
                       </span>
-                      <h3 className="mt-4 text-3xl font-black leading-[1.05] tracking-[-0.04em] text-on-surface md:text-4xl lg:text-5xl">
+                      <h3 className="mt-3 text-3xl font-black leading-[1.05] tracking-[-0.04em] text-on-surface md:text-4xl lg:text-5xl">
                         {t(`items.${key}.title`)}
                       </h3>
                       <p className="mt-5 max-w-md text-base leading-relaxed text-on-surface-variant">
