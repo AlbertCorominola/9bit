@@ -105,7 +105,8 @@ export default function WhatsAppWidget() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-      {/* Globo de invitación */}
+      {/* Globo de invitación. En móvil tapaba justo la demo del hero, que es lo
+          primero que hay que ver; allí basta con el halo y el contador. */}
       <AnimatePresence>
         {teaser && !open && (
           <motion.div
@@ -113,7 +114,7 @@ export default function WhatsAppWidget() {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 18, scale: 0.9 }}
             transition={{ type: 'spring', stiffness: 260, damping: 22 }}
-            className="relative max-w-[16rem] rounded-2xl rounded-br-md border border-black/[0.08] bg-surface px-4 py-3 pr-9 text-left shadow-[0_18px_44px_-18px_rgba(13,17,23,0.35)]"
+            className="relative hidden max-w-[16rem] rounded-2xl rounded-br-md border border-black/[0.08] bg-surface px-4 py-3 pr-9 text-left shadow-[0_18px_44px_-18px_rgba(13,17,23,0.35)] sm:block"
           >
             <button
               type="button"
