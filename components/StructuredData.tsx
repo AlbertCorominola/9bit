@@ -24,6 +24,9 @@ export default function StructuredData({ locale }: { locale: string }) {
       url: `${SITE}/${lang}`,
       description: DESCRIPTIONS[lang],
       email: 'hola@9-bit.com',
+      logo: `${SITE}/logo_9bit_sin_fondo.png`,
+      image: `${SITE}/opengraph-image`,
+      knowsLanguage: ['ca', 'es', 'en'],
       telephone: '+34637400350',
       foundingDate: '2001',
       priceRange: '€€',
@@ -33,7 +36,11 @@ export default function StructuredData({ locale }: { locale: string }) {
         addressRegion: 'Catalunya',
         addressCountry: 'ES',
       },
-      areaServed: { '@type': 'AdministrativeArea', name: 'Girona' },
+      areaServed: [
+        { '@type': 'AdministrativeArea', name: 'Girona' },
+        { '@type': 'AdministrativeArea', name: 'Catalunya' },
+        { '@type': 'Country', name: 'España' },
+      ],
       openingHoursSpecification: [
         {
           '@type': 'OpeningHoursSpecification',

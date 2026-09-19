@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 3;
 const ipHits = new Map<string, { count: number; reset: number }>();
+/** El mensaje admite 5.000 caracteres; 32 KB cubren eso y los demás campos. */
+const MAX_BODY_BYTES = 32_768;
 
 function checkRateLimit(ip: string): boolean {
   const now = Date.now();
@@ -47,6 +49,35 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid content type' }, { status: 415 });
     }
 
+    // Solo desde la propia web: corta el uso del endpoint desde otro origen.
+    // Sin Origin (curl, algunos clientes) se deja pasar: el resto de defensas
+    // —rate limit, honeypot, validación— siguen aplicando.
+    const origin = req.headers.get('origin');
+    if (origin) {
+      const host = req.headers.get('host');
+      let sameOrigin = false;
+      try {
+        sameOrigin = new URL(origin).host === host;
+      } catch {
+        sameOrigin = false;
+      }
+      if (!sameOrigin) {
+        return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+      }
+    }
+
+    // Tope duro antes de leer el cuerpo: sin esto un POST enorme se
+    // deserializa entero solo para acabar rechazado por longitud.
+    const declared = Number(req.headers.get('content-length') ?? '0');
+    if (declared > MAX_BODY_BYTES) {
+      return NextResponse.json({ error: 'Payload too large' }, { status: 413 });
+    }
+
+    const rawBody = await req.text();
+    if (rawBody.length > MAX_BODY_BYTES) {
+      return NextResponse.json({ error: 'Payload too large' }, { status: 413 });
+    }
+
     let body: Partial<{
       name: string;
       email: string;
@@ -55,7 +86,13 @@ export async function POST(req: NextRequest) {
       website: string; // honeypot
     }>;
     try {
-      body = await req.json();
+      const parsed: unknown = JSON.parse(rawBody);
+      // `null`, un número o una cadena también son JSON válido: sin esta
+      // comprobación el primer acceso a una propiedad revienta.
+      if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) {
+        return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+      }
+      body = parsed as typeof body;
     } catch {
       return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
     }
