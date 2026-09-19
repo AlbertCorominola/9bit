@@ -1,239 +1,146 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
-import { motion } from 'framer-motion';
-import type { TargetAndTransition } from 'framer-motion';
-import {
-  ArrowRight,
-  ExternalLink,
-  UtensilsCrossed,
-  Compass,
-  Factory,
-  Briefcase,
-  Bed,
-  Cpu,
-  PartyPopper,
-  Lightbulb,
-  Globe,
-  Sparkles,
-  Zap,
-} from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowRight, ExternalLink, Globe, Sparkles, Zap, Briefcase } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import ClientMarquee from '@/components/ui/ClientMarquee';
-import Parallax from '@/components/ui/Parallax';
+import TestimonialCard from '@/components/ui/TestimonialCard';
+import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 
-// ─── Data (non-localized) ────────────────────────────────────────────────────
+// ─── Medios y enlaces por caso (mismo orden que clients_page.cases) ──────────
 
-const TECHNOLOGIES = ['Next.js', 'Tailwind', 'SEO Local', 'Analytics', 'Google Business'];
+type Media =
+  | { kind: 'image'; src: string }
+  | { kind: 'gallery' }
+  | { kind: 'video' };
 
-type CaseType = 'web' | 'ai-agent' | 'installation';
-
-const CASE_TYPES: CaseType[] = [
-  'web', 'web', 'web', 'web', 'web',
-  'ai-agent', 'installation', 'installation',
-];
-
-const CASE_TYPE_ICONS: Record<CaseType, typeof Globe> = {
-  web: Globe,
-  'ai-agent': Sparkles,
-  installation: Zap,
-};
-
-const CASE_COL_SPANS = [
-  'md:col-span-6',
-  'md:col-span-6',
-  'md:col-span-5',
-  'md:col-span-7',
-  'md:col-span-12',
-  'md:col-span-4',
-  'md:col-span-8',
-  'md:col-span-12',
+const CASE_MEDIA: Media[] = [
+  { kind: 'image', src: '/cases/multiesports.webp' },
+  { kind: 'image', src: '/cases/masterrats.webp' },
+  { kind: 'gallery' },
+  { kind: 'video' },
+  { kind: 'image', src: '/cases/creuers.webp' },
+  { kind: 'image', src: '/cases/massoles.webp' },
+  { kind: 'image', src: '/cases/estanyol.webp' },
+  { kind: 'image', src: '/cases/aguilera.webp' },
+  { kind: 'image', src: '/cases/ooadditives.webp' },
 ];
 
 const CASE_URLS = [
+  'https://multiesportster.com/',
+  '',
+  '',
+  '',
   'https://creuers2mes2.com/',
   'https://massoles.com/',
+  'https://restaurantarestestanyol.com/',
   'https://www.gestoriaguileraperez.com/',
   'https://www.ooadditives.com/',
-  'https://restaurantarestestanyol.com/',
-  '',
-  '',
-  '',
 ];
 
-// Case_08 (Epicentre, index 6): before/after photo gallery instead of gradient header
+const CASE_ICONS: LucideIcon[] = [
+  Globe,
+  Sparkles,
+  Zap,
+  Zap,
+  Globe,
+  Globe,
+  Globe,
+  Briefcase,
+  Globe,
+];
+
+/** Los cuatro primeros encabezan la página; el resto va en la parrilla. */
+const FEATURED_COUNT = 4;
+
 const EPICENTRE_GALLERY = [
   '/clients/pre-epicentre-in.jpeg',
   '/clients/epicentre-in.jpeg',
   '/clients/epicentre-out.jpeg',
 ];
 
-// Case_09 (Camping Les Medes, index 7): video instead of gradient header
 const CAMPING_VIDEO = '/clients/video_camping.mp4';
 // Fotograma del propio vídeo: con preload="none" la tarjeta se quedaría en
 // negro hasta que el vídeo empiece a cargar.
 const CAMPING_POSTER = '/clients/video_camping_poster.jpg';
 
-const FEATURED_URL = 'https://multiesportster.com/';
-
-
-// ─── Animation variants ───────────────────────────────────────────────────────
-
-const revealInView: TargetAndTransition = { opacity: 1, y: 0, filter: 'blur(0px)' };
-const reveal = {
-  initial: { opacity: 0, y: 24, filter: 'blur(5px)' },
-  whileInView: revealInView,
-  viewport: { once: true, margin: '-80px' },
-  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+type Case = {
+  title: string;
+  industry: string;
+  tag: string;
+  desc: string;
+  metric?: string;
+  metricLabel?: string;
+  galleryLabels?: string[];
 };
 
-const staggerContainer = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
+const CHIP =
+  'inline-flex items-center gap-1.5 rounded-full border border-primary-container/25 bg-primary-container/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-primary-text';
 
-const staggerItem = {
-  hidden: { opacity: 0, y: 24, filter: 'blur(5px)' },
-  show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
-};
-
-const floatA = {
-  animate: {
-    y: [0, -24, 0],
-    x: [0, 12, 0],
-    transition: { duration: 9, repeat: Infinity, ease: 'easeInOut' },
-  },
-};
-
-const floatB = {
-  animate: {
-    y: [0, 18, 0],
-    x: [0, -14, 0],
-    transition: { duration: 11, repeat: Infinity, ease: 'easeInOut' },
-  },
-};
-
-// ─── Page ─────────────────────────────────────────────────────────────────────
+const VISIT =
+  'group/link inline-flex w-fit items-center gap-1.5 text-sm font-semibold tracking-tight text-primary-text transition-colors hover:text-primary';
 
 export default function ClientsPage() {
   const t = useTranslations('clients_page');
   const locale = useLocale();
 
-  const INDUSTRIES = [
-    { label: t('industries.0.label'), Icon: UtensilsCrossed },
-    { label: t('industries.1.label'), Icon: Compass },
-    { label: t('industries.2.label'), Icon: Factory },
-    { label: t('industries.3.label'), Icon: Briefcase },
-    { label: t('industries.4.label'), Icon: Bed },
-    { label: t('industries.5.label'), Icon: Cpu },
-    { label: t('industries.6.label'), Icon: PartyPopper },
-    { label: t('industries.7.label'), Icon: Lightbulb },
-  ];
-
-  const STATS = [
-    { value: t('stats.0.value'), label: t('stats.0.label') },
-    { value: t('stats.1.value'), label: t('stats.1.label') },
-    { value: t('stats.2.value'), label: t('stats.2.label') },
-    { value: t('stats.3.value'), label: t('stats.3.label') },
-  ];
-
-  const FEATURED_CASE = {
-    badge: 'Case_01',
-    title: t('featured_case.title'),
-    industry: t('featured_case.industry'),
-    desc: t('featured_case.desc'),
-    technologies: TECHNOLOGIES,
-    metric: t('featured_case.metric'),
-    metricLabel: t('featured_case.metricLabel'),
-  };
-
-  const CASES = [0, 1, 2, 3, 4, 5, 6, 7].map((i) => ({
-    badge: t(`cases.${i}.badge`),
-    title: t(`cases.${i}.title`),
-    industry: t(`cases.${i}.industry`),
-    desc: t(`cases.${i}.desc`),
-    metric: t(`cases.${i}.metric`),
-    metricLabel: t(`cases.${i}.metricLabel`),
-    colSpan: CASE_COL_SPANS[i],
-    url: CASE_URLS[i],
-    type: CASE_TYPES[i],
-    galleryLabels: i === 6 ? (t.raw('cases.6.gallery_labels') as string[]) : undefined,
+  const raw = (t.raw('cases') as Case[]) ?? [];
+  const cases = raw.map((c, i) => ({
+    ...c,
+    media: CASE_MEDIA[i],
+    url: CASE_URLS[i] ?? '',
+    Icon: CASE_ICONS[i] ?? Globe,
   }));
+  const featured = cases.slice(0, FEATURED_COUNT);
+  const rest = cases.slice(FEATURED_COUNT);
 
-  // Mas Terrats (agente IA) y las dos instalaciones LED encabezan la parrilla:
-  // son los trabajos que mejor representan hacia dónde va la agencia.
-  const HIGHLIGHTED_CASES = [5, 6, 7].map((i) => CASES[i]);
-  const OTHER_CASES = [0, 1, 2, 3, 4].map((i) => CASES[i]);
+  const stats = (t.raw('stats') as { value: string; label: string }[]) ?? [];
+  const testimonials =
+    (t.raw('testimonials') as { name: string; company: string; quote: string; initials?: string }[]) ??
+    [];
 
-  const TESTIMONIALS = [
-    {
-      name: t('testimonials.0.name'),
-      initials: t('testimonials.0.initials'),
-      company: t('testimonials.0.company'),
-      quote: t('testimonials.0.quote'),
-    },
-    {
-      name: t('testimonials.1.name'),
-      initials: t('testimonials.1.initials'),
-      company: t('testimonials.1.company'),
-      quote: t('testimonials.1.quote'),
-    },
-    {
-      name: t('testimonials.2.name'),
-      initials: t('testimonials.2.initials'),
-      company: t('testimonials.2.company'),
-      quote: t('testimonials.2.quote'),
-    },
-  ];
-
-  // Los destacados van a ancho completo con el medio a un lado, alternando el
-  // lado. Cada tipo de trabajo trae un material distinto (fotos apaisadas,
-  // vídeo vertical de móvil, nada) y así cada uno se muestra a su proporción.
-  const renderHighlightedCase = (c: (typeof CASES)[number], idx: number) => {
-    const TypeIcon = CASE_TYPE_ICONS[c.type];
-    const mediaRight = idx % 2 === 1;
-
-    let media;
-    if (c.galleryLabels) {
-      media = (
-        <div className="grid h-full grid-cols-2 gap-1 p-1">
-          <div className="relative col-span-2 h-44 md:h-56">
+  /* ── Medio de un caso destacado ────────────────────────────────────────── */
+  const renderMedia = (c: (typeof cases)[number]) => {
+    if (c.media?.kind === 'gallery') {
+      const labels = c.galleryLabels ?? [];
+      return (
+        <div className="grid h-full grid-cols-2 gap-2 p-2">
+          <div className="relative col-span-2 h-48 md:h-60">
             <Image
               src={EPICENTRE_GALLERY[2]}
-              alt={c.galleryLabels[2]}
+              alt={`${c.title} — ${labels[2] ?? ''}`}
               fill
-              className="rounded-lg object-cover"
+              className="rounded-xl object-cover"
               sizes="(min-width: 768px) 50vw, 100vw"
             />
-            <span className="absolute bottom-2 left-2 rounded bg-black/70 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-white">
-              {c.galleryLabels[2]}
+            <span className="absolute bottom-2 left-2 rounded-md bg-black/70 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-white">
+              {labels[2]}
             </span>
           </div>
           {[0, 1].map((i) => (
             <div key={EPICENTRE_GALLERY[i]} className="relative h-28 md:h-32">
               <Image
                 src={EPICENTRE_GALLERY[i]}
-                alt={c.galleryLabels![i]}
+                alt={`${c.title} — ${labels[i] ?? ''}`}
                 fill
-                className="rounded-lg object-cover"
+                className="rounded-xl object-cover"
                 sizes="(min-width: 768px) 25vw, 50vw"
               />
-              <span className="absolute bottom-2 left-2 rounded bg-black/70 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-white">
-                {c.galleryLabels![i]}
+              <span className="absolute bottom-2 left-2 rounded-md bg-black/70 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-white">
+                {labels[i]}
               </span>
             </div>
           ))}
         </div>
       );
-    } else if (c.type === 'installation') {
-      // Vídeo vertical de móvil (576x1024): se muestra por debajo de su tamaño
-      // nativo y en su proporción, nunca recortado a una tira apaisada.
-      media = (
+    }
+
+    if (c.media?.kind === 'video') {
+      // Vídeo vertical de móvil (576x1024): se muestra en su proporción, nunca
+      // recortado a una tira apaisada.
+      return (
         <div className="flex items-center justify-center p-8">
           <video
             src={CAMPING_VIDEO}
@@ -244,498 +151,273 @@ export default function ClientsPage() {
             playsInline
             preload="none"
             aria-hidden
-            className="aspect-[9/16] w-full max-w-[220px] rounded-xl border border-black/10 object-cover shadow-[0_20px_60px_rgba(13,17,23,0.10)]"
-          />
-        </div>
-      );
-    } else {
-      media = (
-        <div className="grid-bg relative flex min-h-[240px] items-center justify-center p-10">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                'radial-gradient(45% 45% at 50% 50%, rgba(0,102,255,0.28), transparent 70%)',
-            }}
-          />
-          <TypeIcon
-            size={96}
-            strokeWidth={1}
-            className="relative text-primary-container drop-shadow-[0_0_30px_var(--glow-color)]"
+            className="aspect-[9/16] w-full max-w-[220px] rounded-2xl border border-black/10 object-cover shadow-[0_24px_60px_-28px_rgba(13,17,23,0.5)]"
           />
         </div>
       );
     }
 
     return (
-      <motion.article
-        key={c.badge}
-        variants={staggerItem}
-        className="md:col-span-12 glass-panel overflow-hidden rounded-2xl border border-outline-variant/20 transition-colors hover:border-primary-container/40"
-      >
-        <div className="grid md:grid-cols-2">
-          <div className={`relative bg-surface-container/30 ${mediaRight ? 'md:order-2' : ''}`}>
-            {media}
-          </div>
-
-          <div className="flex flex-col justify-center p-8 md:p-10">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="flex items-center gap-1 rounded border border-primary-container/50 bg-black/40 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-primary-container">
-                <TypeIcon size={11} />
-                {c.badge}
-              </span>
-              <span className="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">
-                {c.industry}
-              </span>
-            </div>
-
-            <h3 className="mb-3 font-sans text-2xl font-black leading-tight tracking-tighter text-on-surface md:text-3xl">
-              {c.title}
-            </h3>
-            <p className="mb-6 leading-relaxed text-on-surface-variant">{c.desc}</p>
-
-            <div className="flex items-baseline gap-2 border-t border-outline-variant/15 pt-5">
-              <span className="font-sans text-3xl font-black text-primary-container md:text-4xl">
-                {c.metric}
-              </span>
-              <span className="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">
-                {c.metricLabel}
-              </span>
-            </div>
-
-            {c.url && (
-              <a
-                href={c.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex w-fit items-center gap-1.5 rounded-full bg-primary-container px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-white shadow-[0_0_10px_var(--glow-color)] transition-all hover:bg-primary-container/90 hover:shadow-[0_0_20px_var(--glow-color)] active:scale-95"
-              >
-                {t('go_to_project')}
-                <ExternalLink size={11} />
-              </a>
-            )}
-          </div>
-        </div>
-      </motion.article>
-    );
-  };
-
-  const renderCase = (c: (typeof CASES)[number]) => {
-    const TypeIcon = CASE_TYPE_ICONS[c.type];
-    return (
-      <motion.div
-        key={c.badge}
-        variants={staggerItem}
-        className={`${c.colSpan} glass-panel rounded-xl border border-outline-variant/20 hover:border-primary-container/40 overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[0_0_20px_var(--glow-color)] group`}
-      >
-        <div className="h-28 bg-gradient-to-br from-primary-container/30 via-primary-container/10 to-surface-container relative flex items-start justify-between p-3">
-          <span className="font-mono text-[10px] bg-black/70 text-primary-container border border-primary-container/50 px-2 py-1 rounded uppercase tracking-widest flex items-center gap-1">
-            <TypeIcon size={11} />
-            {c.badge}
-          </span>
-          <span className="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
-            {c.industry}
-          </span>
-        </div>
-
-        <div className="p-6">
-          <h3 className="font-sans font-bold text-on-surface text-lg mb-2 leading-snug">
-            {c.title}
-          </h3>
-          <p className="text-on-surface-variant text-sm leading-relaxed mb-5">{c.desc}</p>
-
-          <div className="flex items-baseline gap-2 pt-4 border-t border-outline-variant/15 mb-5">
-            <span className="font-sans font-black text-3xl text-primary-container">{c.metric}</span>
-            <span className="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
-              {c.metricLabel}
-            </span>
-          </div>
-          {c.url && (
-            <a
-              href={c.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-white bg-primary-container rounded-full px-4 py-2 hover:bg-primary-container/90 shadow-[0_0_10px_var(--glow-color)] hover:shadow-[0_0_20px_var(--glow-color)] transition-all active:scale-95"
-            >
-              {t('go_to_project')}
-              <ExternalLink size={11} />
-            </a>
-          )}
-        </div>
-      </motion.div>
+      <div className="relative h-full min-h-[15rem] overflow-hidden">
+        <Image
+          src={c.media.kind === 'image' ? c.media.src : ''}
+          alt={c.title}
+          fill
+          className="object-cover object-left-top"
+          sizes="(min-width: 768px) 50vw, 100vw"
+        />
+      </div>
     );
   };
 
   return (
     <div className="min-h-screen">
-
-      {/* ── 1. PAGE HERO ──────────────────────────────────────────── */}
-      <section className="relative -mt-20 pt-40 pb-24 px-6 lg:px-10 overflow-hidden">
-
-        {/* Decorative giant bg text — parallax depth */}
-        <Parallax
-          speed={0.6}
-          className="pointer-events-none select-none absolute right-[-2vw] top-1/2 -translate-y-1/2 z-0"
-        >
-          <span
-            aria-hidden="true"
-            className="font-black tracking-tighter text-primary-container opacity-[0.025] leading-none whitespace-nowrap"
-            style={{ fontSize: 'clamp(120px, 20vw, 320px)' }}
-          >
-            IA
-          </span>
-        </Parallax>
-
-        {/* Animated orbs */}
-        <motion.div
-          variants={floatA}
-          animate="animate"
-          className="pointer-events-none absolute -top-32 right-1/4 w-[480px] h-[480px] rounded-full bg-primary-container/10 blur-3xl"
-        />
-        <motion.div
-          variants={floatB}
-          animate="animate"
-          className="pointer-events-none absolute top-20 -left-20 w-[320px] h-[320px] rounded-full bg-primary-container/10 blur-3xl"
-        />
-
-        {/* Foreground */}
-        <div className="relative z-10 max-w-container-max mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 mb-8 font-mono text-xs text-primary-container bg-primary-container/10 border border-primary-container/30 px-3 py-1 rounded-full uppercase tracking-widest">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse" />
+      {/* ── 1. Cabecera ──────────────────────────────────────────────── */}
+      <section className="relative -mt-20 overflow-hidden px-6 pb-20 pt-40 lg:px-10">
+        <div className="relative z-10 mx-auto max-w-container-max">
+          <Reveal direction="up">
+            <span className="inline-flex items-center gap-2 rounded-full border border-black/[0.08] bg-white/60 px-4 py-1.5 font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-on-surface-variant backdrop-blur-md">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary-container" />
               {t('badge')}
-            </div>
-
-            {/* Heading */}
-            <Parallax speed={0.2}>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-on-surface mb-6 max-w-4xl leading-[1.05]">
-                {t('heading')}
-              </h1>
-            </Parallax>
-
-            {/* Subtitle */}
-            <p className="text-on-surface-variant max-w-2xl text-lg lg:text-xl mb-12">
+            </span>
+            <h1 className="mt-8 max-w-4xl text-5xl font-black leading-[1.02] tracking-[-0.045em] text-on-surface md:text-7xl">
+              {t('heading')}
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-on-surface-variant">
               {t('subtitle')}
             </p>
+          </Reveal>
 
-            {/* Trust stats pills */}
-            <motion.div
-              className="flex flex-wrap gap-3"
-              initial="hidden"
-              animate="show"
-              variants={staggerContainer}
-            >
-              {STATS.map((s) => (
-                <motion.div
-                  key={s.label}
-                  variants={staggerItem}
-                  className="flex items-center gap-2 glass-panel border border-primary-container/25 px-5 py-2.5 rounded-full"
-                >
-                  <span className="font-black font-mono text-primary-container text-lg leading-none">
+          <RevealGroup className="mt-12 flex flex-wrap gap-2.5">
+            {stats.map((s) => (
+              <RevealItem key={s.label}>
+                <div className="flex items-center gap-2.5 rounded-full border border-black/[0.08] bg-surface-container-low px-5 py-2.5">
+                  <span className="font-sans text-base font-black leading-none tracking-tight text-primary-text">
                     {s.value}
                   </span>
-                  <span className="font-mono text-xs text-on-surface-variant uppercase tracking-widest">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-on-surface-variant">
                     {s.label}
                   </span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
+                </div>
+              </RevealItem>
+            ))}
+          </RevealGroup>
         </div>
       </section>
 
-      {/* ── 2. MARQUEE BLOCK ──────────────────────────────────────── */}
-      <section className="py-16 px-6 lg:px-10">
-        <div className="max-w-container-max mx-auto mb-8">
-          <motion.p
-            {...reveal}
-            className="font-mono text-xs text-on-surface-variant uppercase tracking-widest text-center"
-          >
+      {/* ── 2. Logos ─────────────────────────────────────────────────── */}
+      <section className="px-6 py-16 lg:px-10">
+        <Reveal className="mx-auto mb-8 max-w-container-max">
+          <p className="text-center font-mono text-[11px] uppercase tracking-[0.2em] text-on-surface-variant/60">
             {t('marquee_title')}
-          </motion.p>
-        </div>
+          </p>
+        </Reveal>
 
-        {/* Marquee rows with edge fade masks */}
-        <motion.div {...reveal} className="relative">
-          {/* Left fade */}
-          <div className="pointer-events-none absolute left-0 top-0 h-full w-24 z-10 bg-gradient-to-r from-background to-transparent" />
-          {/* Right fade */}
-          <div className="pointer-events-none absolute right-0 top-0 h-full w-24 z-10 bg-gradient-to-l from-background to-transparent" />
-
-          <div className="border-t border-outline-variant/20">
+        <Reveal className="relative">
+          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-background to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-background to-transparent" />
+          <div className="border-y border-black/[0.07]">
             <ClientMarquee />
             <ClientMarquee reverse />
           </div>
-        </motion.div>
+        </Reveal>
       </section>
 
-      {/* ── 3–4. CASE STUDIES ─────────────────────────────────────── */}
-      <section className="py-24 px-6 lg:px-10">
-        <div className="max-w-container-max mx-auto">
-
-          {/* Section heading */}
-          <motion.div {...reveal} className="mb-16">
-            <p className="font-mono text-xs text-primary-text uppercase tracking-widest mb-3">
+      {/* ── 3. Casos de éxito ────────────────────────────────────────── */}
+      <section className="px-6 py-24 md:py-32 lg:px-10">
+        <div className="mx-auto max-w-container-max">
+          <Reveal className="mb-16 max-w-2xl">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
               {t('cases_label')}
             </p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-on-surface mb-4">
+            <h2 className="mt-4 text-4xl font-black leading-[1.03] tracking-[-0.04em] text-on-surface md:text-5xl">
               {t('cases_title')}
             </h2>
-            <p className="text-on-surface-variant max-w-xl text-lg">
+            <p className="mt-5 text-lg leading-relaxed text-on-surface-variant">
               {t('cases_subtitle')}
             </p>
-          </motion.div>
+          </Reveal>
 
-          {/* 3. Featured case */}
-          <motion.div
-            {...reveal}
-            className="mb-8 glass-panel rounded-xl border border-primary-container/30 p-10 md:p-14 glow-hover hover:border-primary-container/60 transition-all group"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-              {/* Left: case info */}
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="font-mono text-[10px] bg-primary-container/15 text-primary-container border border-primary-container/40 px-2 py-1 rounded uppercase tracking-widest">
-                    {FEATURED_CASE.badge}
-                  </span>
-                  <span className="font-mono text-[10px] bg-black/40 text-on-surface-variant border border-outline-variant/30 px-2 py-1 rounded uppercase tracking-widest">
-                    {t('featured_badge')}
-                  </span>
-                  <span className="font-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
-                    {FEATURED_CASE.industry}
-                  </span>
-                </div>
-                <h3 className="font-sans font-black text-2xl md:text-3xl text-on-surface mb-4 leading-tight">
-                  {FEATURED_CASE.title}
-                </h3>
-                <p className="text-on-surface-variant leading-relaxed mb-8">
-                  {FEATURED_CASE.desc}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {FEATURED_CASE.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="font-mono text-[10px] text-on-surface-variant bg-surface-container border border-outline-variant/30 px-2.5 py-1 rounded uppercase tracking-wider"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                {FEATURED_URL && (
-                  <a
-                    href={FEATURED_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white bg-primary-container rounded-full px-5 py-2.5 hover:bg-primary-container/90 shadow-[0_0_15px_rgba(0,102,255,0.35)] hover:shadow-[0_0_25px_rgba(0,102,255,0.6)] transition-all active:scale-95"
-                  >
-                    {t('go_to_project')}
-                    <ExternalLink size={12} />
-                  </a>
-                )}
-              </div>
-
-              {/* Right: big metric */}
-              <div className="flex flex-col items-center md:items-end justify-center text-right">
-                <span
-                  className="font-black text-primary-container leading-none"
-                  style={{ fontSize: 'clamp(72px, 10vw, 120px)' }}
-                >
-                  {FEATURED_CASE.metric}
-                </span>
-                <span className="font-mono text-sm text-on-surface-variant uppercase tracking-widest mt-2">
-                  {FEATURED_CASE.metricLabel}
-                </span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* 4. Casos destacados */}
-          <motion.p
-            {...reveal}
-            className="font-mono text-xs text-primary-container uppercase tracking-widest mb-6"
-          >
+          {/* Destacados: panel a ancho completo, con el medio alternando lado. */}
+          <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.2em] text-on-surface-variant/60">
             {t('highlighted_label')}
-          </motion.p>
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-12 gap-6"
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-80px' }}
-            variants={staggerContainer}
-          >
-            {HIGHLIGHTED_CASES.map(renderHighlightedCase)}
-          </motion.div>
+          </p>
+          <div className="flex flex-col gap-6">
+            {featured.map((c, i) => (
+              <Reveal key={c.title} direction="up">
+                <article className="group overflow-hidden rounded-3xl border border-black/[0.08] bg-surface-container-low transition-colors duration-300 hover:border-primary-container/25">
+                  <div className="grid md:grid-cols-2">
+                    <div
+                      className={`relative bg-surface-container/40 ${
+                        i % 2 === 1 ? 'md:order-2' : ''
+                      }`}
+                    >
+                      {renderMedia(c)}
+                    </div>
 
-          {/* 5. Resto de proyectos */}
-          <motion.p
-            {...reveal}
-            className="font-mono text-xs text-on-surface-variant uppercase tracking-widest mt-20 mb-6"
-          >
-            {t('more_projects_label')}
-          </motion.p>
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-12 gap-6"
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-80px' }}
-            variants={staggerContainer}
-          >
-            {OTHER_CASES.map(renderCase)}
-          </motion.div>
-        </div>
-      </section>
+                    <div className="flex flex-col justify-center p-8 md:p-12">
+                      <div className="mb-5 flex flex-wrap items-center gap-2.5">
+                        <span className={CHIP}>
+                          <c.Icon size={11} />
+                          {c.tag}
+                        </span>
+                        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-on-surface-variant/70">
+                          {c.industry}
+                        </span>
+                      </div>
 
-      {/* ── 5. INDUSTRY BREAKDOWN ─────────────────────────────────── */}
-      <section className="py-24 px-6 lg:px-10">
-        <div className="max-w-container-max mx-auto">
-          <motion.div {...reveal} className="mb-12 text-center">
-            <p className="font-mono text-xs text-primary-text uppercase tracking-widest mb-3">
-              {t('clients_label')}
-            </p>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-on-surface">
-              {t('industries_heading')}
-            </h2>
-          </motion.div>
+                      <h3 className="text-3xl font-black leading-[1.05] tracking-[-0.035em] text-on-surface md:text-4xl">
+                        {c.title}
+                      </h3>
+                      <p className="mt-4 leading-relaxed text-on-surface-variant">{c.desc}</p>
 
-          <motion.div
-            className="flex flex-wrap justify-center gap-4"
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-80px' }}
-            variants={staggerContainer}
-          >
-            {INDUSTRIES.map(({ label, Icon }) => (
-              <motion.div
-                key={label}
-                variants={staggerItem}
-                className="glass-panel rounded-full border border-outline-variant/20 hover:border-primary-container/50 px-6 py-3 flex items-center gap-3 glow-hover cursor-default transition-all"
-              >
-                <Icon size={18} className="text-primary-container" />
-                <span className="font-mono text-sm text-on-surface-variant uppercase tracking-widest">
-                  {label}
-                </span>
-              </motion.div>
+                      {c.metric && (
+                        <div className="mt-7 flex items-baseline gap-2.5 border-t border-black/[0.07] pt-6">
+                          <span className="font-sans text-4xl font-black tracking-tight text-primary-container">
+                            {c.metric}
+                          </span>
+                          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-on-surface-variant">
+                            {c.metricLabel}
+                          </span>
+                        </div>
+                      )}
+
+                      {c.url && (
+                        <a
+                          href={c.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`mt-7 ${VISIT}`}
+                        >
+                          {t('go_to_project')}
+                          <ExternalLink
+                            size={14}
+                            className="transition-transform duration-300 group-hover/link:translate-x-0.5"
+                          />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
             ))}
-          </motion.div>
+          </div>
+
+          {/* Resto: misma ficha para todos, cada una con su captura real. */}
+          <p className="mb-6 mt-20 font-mono text-[11px] uppercase tracking-[0.2em] text-on-surface-variant/60">
+            {t('more_projects_label')}
+          </p>
+          <RevealGroup className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {rest.map((c) => (
+              <RevealItem key={c.title} className="h-full">
+                <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/[0.08] bg-surface-container-low transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-container/25 hover:shadow-[0_28px_56px_-32px_rgba(13,17,23,0.4)]">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-surface-container">
+                    {c.media?.kind === 'image' && (
+                      <Image
+                        src={c.media.src}
+                        alt={c.title}
+                        fill
+                        className="object-cover object-left-top transition-transform duration-[900ms] ease-out group-hover:scale-105"
+                        sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+                      />
+                    )}
+                    <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-primary-text backdrop-blur-sm">
+                      {c.tag}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-6">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-on-surface-variant/70">
+                      {c.industry}
+                    </span>
+                    <h3 className="mt-2 text-lg font-bold leading-snug tracking-tight text-on-surface">
+                      {c.title}
+                    </h3>
+                    <p className="mt-2.5 flex-1 text-sm leading-relaxed text-on-surface-variant">
+                      {c.desc}
+                    </p>
+
+                    {c.metric && (
+                      <div className="mt-5 flex items-baseline gap-2 border-t border-black/[0.07] pt-5">
+                        <span className="font-sans text-2xl font-black tracking-tight text-primary-container">
+                          {c.metric}
+                        </span>
+                        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-on-surface-variant">
+                          {c.metricLabel}
+                        </span>
+                      </div>
+                    )}
+
+                    {c.url && (
+                      <a
+                        href={c.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`mt-5 ${VISIT}`}
+                      >
+                        {t('go_to_project')}
+                        <ExternalLink size={13} />
+                      </a>
+                    )}
+                  </div>
+                </article>
+              </RevealItem>
+            ))}
+          </RevealGroup>
         </div>
       </section>
 
-      {/* ── 6. TESTIMONIALS ───────────────────────────────────────── */}
-      <section className="py-24 px-6 lg:px-10">
-        <div className="max-w-container-max mx-auto">
-          <motion.div {...reveal} className="mb-16 text-center">
-            <p className="font-mono text-xs text-primary-text uppercase tracking-widest mb-3">
+      {/* ── 4. Opiniones ─────────────────────────────────────────────── */}
+      <section className="px-6 py-24 md:py-32 lg:px-10">
+        <div className="mx-auto max-w-container-max">
+          <Reveal className="mb-14 max-w-2xl">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
               {t('feedback_label')}
             </p>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-on-surface">
+            <h2 className="mt-4 text-4xl font-black leading-[1.03] tracking-[-0.04em] text-on-surface md:text-5xl">
               {t('testimonials_title')}
             </h2>
-          </motion.div>
+            <p className="mt-5 text-base leading-relaxed text-on-surface-variant">
+              {t('testimonials_subtitle')}
+            </p>
+          </Reveal>
 
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-80px' }}
-            variants={staggerContainer}
-          >
-            {TESTIMONIALS.map((tt) => (
-              <motion.div
-                key={tt.name}
-                variants={staggerItem}
-                className="glass-panel rounded-xl border border-outline-variant/20 hover:border-primary-container/30 p-8 flex flex-col relative overflow-hidden transition-all glow-hover"
-              >
-                {/* Decorative huge quote mark */}
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none select-none absolute -top-4 -left-2 font-black text-primary-container opacity-[0.06] leading-none"
-                  style={{ fontSize: '160px' }}
-                >
-                  &ldquo;
-                </span>
-
-                {/* 5-star row */}
-                <div className="flex gap-1 mb-6 relative z-10">
-                  {[...Array(5)].map((_, i) => (
-                    <svg
-                      key={i}
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="currentColor"
-                      className="text-primary-container"
-                    >
-                      <path d="M8 1l1.96 4.02L14 5.8l-3 2.93.71 4.1L8 10.65l-3.71 2.18.71-4.1L2 5.8l4.04-.78L8 1z" />
-                    </svg>
-                  ))}
-                </div>
-
-                {/* Quote text */}
-                <p className="text-on-surface text-base md:text-lg leading-relaxed mb-8 flex-1 relative z-10">
-                  &ldquo;{tt.quote}&rdquo;
-                </p>
-
-                {/* Author */}
-                <div className="flex items-center gap-4 pt-6 border-t border-outline-variant/15 relative z-10">
-                  {/* Avatar */}
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-container/60 to-primary-container/20 border border-primary-container/40 flex items-center justify-center shrink-0">
-                    <span className="font-black text-primary-container text-sm leading-none">
-                      {tt.initials}
-                    </span>
-                  </div>
-                  <div>
-                    <p className="font-sans font-bold text-on-surface text-sm">{tt.name}</p>
-                    <p className="font-mono text-xs text-on-surface-variant">{tt.company}</p>
-                  </div>
-                </div>
-              </motion.div>
+          <RevealGroup className="grid grid-cols-1 gap-5 md:grid-cols-3">
+            {testimonials.map((item) => (
+              <RevealItem key={item.name} className="h-full">
+                <TestimonialCard {...item} />
+              </RevealItem>
             ))}
-          </motion.div>
+          </RevealGroup>
         </div>
       </section>
 
-      {/* ── 7. CTA ────────────────────────────────────────────────── */}
-      <section className="py-24 px-6 lg:px-10">
-        <div className="max-w-container-max mx-auto">
-          <motion.div
-            {...reveal}
-            className="relative text-center glass-panel rounded-xl border border-primary-container/25 p-16 md:p-24 overflow-hidden"
-          >
-            {/* Decorative orb */}
-            <motion.div
-              variants={floatA}
-              animate="animate"
-              className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary-container/10 blur-3xl"
-            />
-
-            <div className="relative z-10">
-              <p className="font-mono text-xs text-primary-text uppercase tracking-widest mb-6">
-                {t('next_label')}
-              </p>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-on-surface mb-4">
-                {t('cta_heading')}
-              </h2>
-              <p className="text-on-surface-variant mb-10 max-w-md mx-auto text-lg">
-                {t('cta_sub')}
-              </p>
-              <Link
-                href={`/${locale}/contacte`}
-                className="inline-flex items-center gap-2 bg-primary-container text-white font-mono uppercase tracking-[0.15em] text-xs px-10 py-5 rounded-full hover:bg-primary-container/90 shadow-[0_0_20px_rgba(0,102,255,0.4)] hover:shadow-[0_0_35px_rgba(0,102,255,0.65)] transition-all active:scale-95"
-              >
-                {t('cta_button')}
-                <ArrowRight size={14} />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
+      {/* ── 5. Siguiente paso ────────────────────────────────────────── */}
+      <section className="px-6 py-24 md:py-32 lg:px-10">
+        <Reveal className="mx-auto max-w-container-max">
+          <div className="relative overflow-hidden rounded-3xl border border-black/[0.08] bg-gradient-to-br from-primary-container/15 via-transparent to-purple-500/10 px-8 py-16 text-center md:px-16 md:py-24">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
+              {t('next_label')}
+            </p>
+            <h2 className="mt-5 text-4xl font-black leading-[1.03] tracking-[-0.04em] text-on-surface md:text-5xl">
+              {t('cta_heading')}
+            </h2>
+            <p className="mx-auto mt-5 max-w-md text-lg leading-relaxed text-on-surface-variant">
+              {t('cta_sub')}
+            </p>
+            <Link
+              href={`/${locale}/contacte`}
+              className="group mt-10 inline-flex items-center gap-2 rounded-full bg-primary-container px-8 py-4 text-sm font-semibold tracking-tight text-white shadow-[0_10px_34px_-10px_rgba(0,102,255,0.8)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_44px_-10px_rgba(0,102,255,0.9)] active:translate-y-0 active:scale-[0.98]"
+            >
+              {t('cta_button')}
+              <ArrowRight
+                size={16}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </Link>
+          </div>
+        </Reveal>
       </section>
-
     </div>
   );
 }

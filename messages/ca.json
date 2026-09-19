@@ -376,11 +376,11 @@
   "clients_page": {
     "badge": "Clients",
     "heading": "Empreses que confien en nosaltres",
-    "subtitle": "Empreses del territori, de tots els sectors, han escalat amb les nostres solucions tecnològiques.",
+    "subtitle": "Empreses del territori, de tots els sectors, que han crescut amb les nostres solucions.",
     "marquee_title": "Alguns dels nostres clients",
     "cases_title": "Casos d'èxit",
-    "cases_subtitle": "Projectes reals que han generat resultats reals.",
-    "testimonials_title": "Què en diuen ells",
+    "cases_subtitle": "Nou projectes entregats: webs que capten, agents que atenen sols i instal·lacions que es veuen des del carrer.",
+    "testimonials_title": "Què diuen els nostres clients",
     "cta_heading": "Vols ser el següent?",
     "cta_sub": "Et fem un projecte a mida amb la mateixa cura que tenim amb tots els nostres clients.",
     "cta_button": "Comença el teu projecte",
@@ -390,72 +390,29 @@
     "clients_label": "Clients",
     "feedback_label": "Opinions",
     "next_label": "El següent pas",
-    "industries_heading": "Treballem amb empreses de:",
     "go_to_project": "Visitar projecte",
-    "featured_badge": "DESTACAT",
-    "featured_case": {
-      "title": "MultiEsports Ter",
-      "industry": "Gimnàs · Esport",
-      "desc": "No tenien web i la fitxa de Google estava mal configurada. Vam construir la seva presència digital completa amb SEO local i optimització de Google Business. Avui són el gimnàs de referència del poble i voltants, amb prop d'un 30% més de visibilitat.",
-      "metric": "+30%",
-      "metricLabel": "més visibilitat"
-    },
     "cases": [
       {
-        "badge": "Case_02",
-        "title": "El Fadrí — Excursions Marítimes",
-        "industry": "Turisme actiu",
-        "desc": "Web + sistema de reserves online integrat amb pagaments. Fusió de dues marques (Illes Medes i El Fadrí) en una presència digital unificada.",
-        "metric": "+250",
-        "metricLabel": "reserves/mes"
+        "title": "MultiEsports Ter",
+        "industry": "Gimnàs · Esport",
+        "tag": "Web i SEO local",
+        "desc": "No tenien web i la fitxa de Google estava mal configurada. Vam construir tota la seva presència digital, amb SEO local i Google Business optimitzat. Avui són el gimnàs de referència del poble i dels voltants.",
+        "metric": "+30%",
+        "metricLabel": "més visibilitat"
       },
       {
-        "badge": "Case_03",
-        "title": "Mas Soles",
-        "industry": "Allotjament rural",
-        "desc": "Web nova i posicionament SEO. Visibilitat millorada i reserves directes en augment.",
-        "metric": "+90%",
-        "metricLabel": "tràfic orgànic"
-      },
-      {
-        "badge": "Case_04",
-        "title": "Aguilera Consulting",
-        "industry": "Consultoria",
-        "desc": "Plataforma interna de gestió de clients i facturació feta a mida.",
-        "metric": "40h",
-        "metricLabel": "estalviades/setmana"
-      },
-      {
-        "badge": "Case_05",
-        "title": "Oxford Oil Additives",
-        "industry": "Indústria química",
-        "desc": "Portal corporatiu multilingüe i intranet per a distribuïdors.",
-        "metric": "5",
-        "metricLabel": "idiomes"
-      },
-      {
-        "badge": "Case_06",
-        "title": "Restaurant Arest Estanyol",
-        "industry": "Restauració",
-        "desc": "Disseny web complet, estratègia SEO local i presència digital integral. El rellançament online va disparar les reserves i la visibilitat als cercadors.",
-        "metric": "+180%",
-        "metricLabel": "reserves online"
-      },
-      {
-        "badge": "Case_07",
         "title": "Mas Terrats",
         "industry": "Esdeveniments i casaments",
-        "desc": "Agent d'IA recepcionista per correu electrònic que gestiona consultes, disponibilitat i pressupostos, i deriva els casos complexos a l'equip humà. Integrat amb un CRM propi.",
+        "tag": "Agent d'IA",
+        "desc": "Agent d'IA recepcionista per correu: gestiona consultes, disponibilitat i pressupostos, i deriva a l'equip humà els casos que ho necessiten. Integrat amb un CRM propi.",
         "metric": "24/7",
         "metricLabel": "atenció automatitzada"
       },
       {
-        "badge": "Case_08",
-        "title": "Epicentre (Palamós)",
-        "industry": "Oci nocturn",
-        "desc": "Instal·lació de panells LED en col·laboració amb Megalux.",
-        "metric": "Megalux",
-        "metricLabel": "instal·lació en col·laboració amb",
+        "title": "Epicentre",
+        "industry": "Coworking i publicitat",
+        "tag": "Instal·lació LED",
+        "desc": "Vam renovar la il·luminació de l'espai amb panells LED, dins i fora: el coworking guanya llum de treball i la façana es converteix en el seu millor suport publicitari a Palamós. Executat amb Megalux.",
         "gallery_labels": [
           "Abans",
           "Després — interior",
@@ -463,38 +420,50 @@
         ]
       },
       {
-        "badge": "Case_09",
         "title": "Camping Les Medes",
-        "industry": "Turisme / Càmping",
-        "desc": "Instal·lació de panells LED en col·laboració amb Megalux.",
-        "metric": "Megalux",
-        "metricLabel": "instal·lació en col·laboració amb"
-      }
-    ],
-    "industries": [
-      {
-        "label": "Restauració"
+        "industry": "Turisme · Càmping",
+        "tag": "Instal·lació LED",
+        "desc": "Il·luminació LED a l'accés del càmping, pensada perquè es llegeixi de nit des de la carretera. Executat amb Megalux."
       },
       {
-        "label": "Turisme"
+        "title": "El Fadrí — Excursions Marítimes",
+        "industry": "Turisme actiu",
+        "tag": "Web i reserves",
+        "desc": "Web i sistema de reserves online integrat amb pagaments. Fusió de dues marques, Illes Medes i El Fadrí, en una sola presència digital.",
+        "metric": "+250",
+        "metricLabel": "reserves/mes"
       },
       {
-        "label": "Indústria"
+        "title": "Mas Soles",
+        "industry": "Allotjament rural",
+        "tag": "Web i SEO",
+        "desc": "Web nova i posicionament SEO. Més visibilitat i reserves directes en augment.",
+        "metric": "+90%",
+        "metricLabel": "trànsit orgànic"
       },
       {
-        "label": "Consultoria"
+        "title": "Restaurant Arest Estanyol",
+        "industry": "Restauració",
+        "tag": "Web i SEO local",
+        "desc": "Disseny web complet, SEO local i presència digital integral. El rellançament online va disparar les reserves.",
+        "metric": "+180%",
+        "metricLabel": "reserves online"
       },
       {
-        "label": "Allotjament"
+        "title": "Aguilera Consulting",
+        "industry": "Consultoria",
+        "tag": "Plataforma a mida",
+        "desc": "Plataforma interna de gestió de clients i facturació, feta a mida.",
+        "metric": "40h",
+        "metricLabel": "estalviades/setmana"
       },
       {
-        "label": "Tecnologia"
-      },
-      {
-        "label": "Esdeveniments"
-      },
-      {
-        "label": "Il·luminació"
+        "title": "Oxford Oil Additives",
+        "industry": "Indústria química",
+        "tag": "Portal i intranet",
+        "desc": "Portal corporatiu multilingüe i intranet per a distribuïdors.",
+        "metric": "5",
+        "metricLabel": "idiomes"
       }
     ],
     "stats": [
@@ -534,7 +503,8 @@
         "company": "CEO Mas Soles",
         "quote": "Amb la nova web i el posicionament hem millorat la visibilitat. Cada cop ens troba més gent i això es nota en les reserves."
       }
-    ]
+    ],
+    "testimonials_subtitle": "Sense guió ni retocs: les seves paraules."
   },
   "footer": {
     "tagline": "Construint el futur digital de les empreses.",

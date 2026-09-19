@@ -376,11 +376,11 @@
   "clients_page": {
     "badge": "Clients",
     "heading": "Companies that trust us",
-    "subtitle": "Local companies across every sector have scaled with our technology solutions.",
+    "subtitle": "Local companies, across every sector, that have grown with our solutions.",
     "marquee_title": "Some of our clients",
     "cases_title": "Success stories",
-    "cases_subtitle": "Real projects that delivered real results.",
-    "testimonials_title": "What they say",
+    "cases_subtitle": "Nine projects delivered: websites that win clients, agents that answer on their own, and installations you can see from the street.",
+    "testimonials_title": "What our clients say",
     "cta_heading": "Want to be next?",
     "cta_sub": "We build a tailored project with the same care we give every one of our clients.",
     "cta_button": "Start your project",
@@ -390,72 +390,29 @@
     "clients_label": "Clients",
     "feedback_label": "Feedback",
     "next_label": "Next step",
-    "industries_heading": "We work with companies in:",
     "go_to_project": "Visit project",
-    "featured_badge": "FEATURED",
-    "featured_case": {
-      "title": "MultiEsports Ter",
-      "industry": "Gym · Sports",
-      "desc": "They had no website and their Google listing was misconfigured. We built their full digital presence with local SEO and Google Business optimization. Today they're the reference gym in town and the surrounding area, with around 30% more visibility.",
-      "metric": "+30%",
-      "metricLabel": "more visibility"
-    },
     "cases": [
       {
-        "badge": "Case_02",
-        "title": "El Fadrí — Maritime Excursions",
-        "industry": "Active tourism",
-        "desc": "Website + integrated online booking system with payment processing. Merger of two brands (Illes Medes and El Fadrí) into a unified digital presence.",
-        "metric": "+250",
-        "metricLabel": "reservations/month"
+        "title": "MultiEsports Ter",
+        "industry": "Gym · Sports",
+        "tag": "Web & local SEO",
+        "desc": "They had no website and their Google listing was misconfigured. We built their full digital presence, with local SEO and an optimised Google Business profile. Today they are the reference gym in town and the surrounding area.",
+        "metric": "+30%",
+        "metricLabel": "more visibility"
       },
       {
-        "badge": "Case_03",
-        "title": "Mas Soles",
-        "industry": "Rural accommodation",
-        "desc": "New website and SEO positioning. Improved visibility and direct bookings on the rise.",
-        "metric": "+90%",
-        "metricLabel": "organic traffic"
-      },
-      {
-        "badge": "Case_04",
-        "title": "Aguilera Consulting",
-        "industry": "Consulting",
-        "desc": "Custom internal platform for client management and invoicing.",
-        "metric": "40h",
-        "metricLabel": "hours saved/week"
-      },
-      {
-        "badge": "Case_05",
-        "title": "Oxford Oil Additives",
-        "industry": "Chemical industry",
-        "desc": "Multilingual corporate portal and distributor intranet.",
-        "metric": "5",
-        "metricLabel": "languages"
-      },
-      {
-        "badge": "Case_06",
-        "title": "Restaurant Arest Estanyol",
-        "industry": "Hospitality",
-        "desc": "Complete web design, local SEO strategy and integral digital presence. The online relaunch drove reservations and search engine visibility.",
-        "metric": "+180%",
-        "metricLabel": "online reservations"
-      },
-      {
-        "badge": "Case_07",
         "title": "Mas Terrats",
         "industry": "Events & weddings",
-        "desc": "AI receptionist agent that handles email inquiries, availability and quotes, escalating complex cases to the human team. Integrated with a custom CRM.",
+        "tag": "AI agent",
+        "desc": "An AI receptionist working over email: it handles enquiries, availability and quotes, and escalates to the human team whatever needs it. Integrated with a custom CRM.",
         "metric": "24/7",
-        "metricLabel": "automated support"
+        "metricLabel": "automated front desk"
       },
       {
-        "badge": "Case_08",
-        "title": "Epicentre (Palamós)",
-        "industry": "Nightlife venue",
-        "desc": "LED panel installation in collaboration with Megalux.",
-        "metric": "Megalux",
-        "metricLabel": "installation in collaboration with",
+        "title": "Epicentre",
+        "industry": "Coworking & advertising",
+        "tag": "LED installation",
+        "desc": "We reworked the lighting with LED panels, inside and out: the coworking space gains proper working light and the façade becomes its best advertising surface in Palamós. Delivered together with Megalux.",
         "gallery_labels": [
           "Before",
           "After — interior",
@@ -463,38 +420,50 @@
         ]
       },
       {
-        "badge": "Case_09",
         "title": "Camping Les Medes",
-        "industry": "Tourism / Camping",
-        "desc": "LED panel installation in collaboration with Megalux.",
-        "metric": "Megalux",
-        "metricLabel": "installation in collaboration with"
-      }
-    ],
-    "industries": [
-      {
-        "label": "Hospitality"
+        "industry": "Tourism · Camping",
+        "tag": "LED installation",
+        "desc": "LED lighting at the campsite entrance, designed to read at night from the road. Delivered together with Megalux."
       },
       {
-        "label": "Tourism"
+        "title": "El Fadrí — Maritime Excursions",
+        "industry": "Active tourism",
+        "tag": "Web & bookings",
+        "desc": "Website and online booking system with integrated payments. Two brands, Illes Medes and El Fadrí, merged into a single digital presence.",
+        "metric": "+250",
+        "metricLabel": "bookings/month"
       },
       {
-        "label": "Industry"
+        "title": "Mas Soles",
+        "industry": "Rural accommodation",
+        "tag": "Web & SEO",
+        "desc": "New website and SEO work. More visibility and direct bookings on the rise.",
+        "metric": "+90%",
+        "metricLabel": "organic traffic"
       },
       {
-        "label": "Consulting"
+        "title": "Restaurant Arest Estanyol",
+        "industry": "Hospitality",
+        "tag": "Web & local SEO",
+        "desc": "Full web design, local SEO and an integrated digital presence. The online relaunch drove reservations up.",
+        "metric": "+180%",
+        "metricLabel": "online bookings"
       },
       {
-        "label": "Accommodation"
+        "title": "Aguilera Consulting",
+        "industry": "Consulting",
+        "tag": "Custom platform",
+        "desc": "A custom internal platform for client management and invoicing.",
+        "metric": "40h",
+        "metricLabel": "saved/week"
       },
       {
-        "label": "Technology"
-      },
-      {
-        "label": "Events"
-      },
-      {
-        "label": "Lighting"
+        "title": "Oxford Oil Additives",
+        "industry": "Chemical industry",
+        "tag": "Portal & intranet",
+        "desc": "Multilingual corporate portal and a distributor intranet.",
+        "metric": "5",
+        "metricLabel": "languages"
       }
     ],
     "stats": [
@@ -534,7 +503,8 @@
         "company": "CEO Mas Soles",
         "quote": "With the new website and SEO positioning we've improved visibility. More people find us every day and that translates to more bookings."
       }
-    ]
+    ],
+    "testimonials_subtitle": "No script, no polishing: their own words."
   },
   "footer": {
     "tagline": "Building the digital future of businesses.",
