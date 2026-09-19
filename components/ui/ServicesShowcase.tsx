@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import ScrollZoomImage from '@/components/ui/ScrollZoomImage';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
@@ -161,15 +162,13 @@ export default function ServicesShowcase({
           {slides.map(({ title, description, image }, i) => (
             <RevealItem key={title} className="h-full">
               <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-black/[0.08] bg-surface-container-low">
-                <div className="relative aspect-[4/3] overflow-hidden bg-surface-container">
-                  <Image
-                    src={image}
-                    alt={title}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 640px) 45vw, 100vw"
-                  />
-                </div>
+                <ScrollZoomImage
+                  src={image}
+                  alt={title}
+                  className="aspect-[4/3] w-full bg-surface-container"
+                  sizes="(min-width: 640px) 45vw, 100vw"
+                  zoom={1.1}
+                />
                 <div className="flex flex-1 flex-col p-6">
                   <span className="font-mono text-[11px] tabular-nums tracking-widest text-on-surface-variant/45">
                     {num(i)}

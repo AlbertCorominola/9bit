@@ -110,6 +110,16 @@ export default function HeroParallax({ cases, children }: HeroParallaxProps) {
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
   const p = useSpring(scrollYProgress, SPRING);
 
+  const mobileRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: mobileProgress } = useScroll({
+    target: mobileRef,
+    offset: ['start end', 'end start'],
+  });
+  const mp = useSpring(mobileProgress, SPRING);
+  const mobileLeft = useTransform(mp, [0, 1], ['2%', '-26%']);
+  const mobileRight = useTransform(mp, [0, 1], ['-26%', '2%']);
+  const mobileOpacity = useTransform(mp, [0, 0.18, 0.85, 1], [0.35, 1, 1, 0.5]);
+
   // Desplazamiento en % del ancho de cada fila: independiente del viewport.
   const xLeft = useTransform(p, [0, 1], ['-9%', '3%']);
   const xRight = useTransform(p, [0, 1], ['7%', '-4%']);
@@ -121,12 +131,16 @@ export default function HeroParallax({ cases, children }: HeroParallaxProps) {
   const translateY = useTransform(p, [0, 0.42], [70, 0]);
   const opacity = useTransform(p, [0, 0.16], [0.35, 1]);
 
+  // Móvil: dos filas que se cruzan según avanza la sección por la pantalla.
+  const mobileRows: ParallaxCase[][] = [[], []];
+  cases.forEach((c, i) => mobileRows[i % 2].push(c));
+
   const rows: ParallaxCase[][] = Array.from({ length: ROWS }, () => []);
   cases.forEach((c, i) => rows[i % ROWS].push(c));
   const filled = rows.filter((r) => r.length > 0);
   const xs = [xLeft, xRight, xSlow];
 
-  // Móvil y reduced-motion: tira deslizable, sin recorrido 3D.
+  // Sin animación: tira deslizable a mano, que sigue enseñando los nueve casos.
   const strip = (
     <div className="-mx-6 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       <div className="flex w-max snap-x snap-mandatory gap-4 px-6">
@@ -152,7 +166,23 @@ export default function HeroParallax({ cases, children }: HeroParallaxProps) {
     <section className="relative">
       {children}
 
-      <div className="px-6 pt-8 md:hidden">{strip}</div>
+      {/* Móvil: el muro también se mueve con el scroll. Sin recorrido 3D ni
+          sticky —a esa altura solo añadiría scroll vacío—, pero las dos filas
+          se cruzan mientras la sección pasa por pantalla. */}
+      <div ref={mobileRef} className="overflow-hidden py-10 md:hidden">
+        <motion.div style={{ opacity: mobileOpacity }} className="flex flex-col gap-4">
+          <motion.div style={{ x: mobileLeft }} className="flex w-max gap-4">
+            {[...mobileRows[0], ...mobileRows[0]].map((item, i) => (
+              <CaseCard key={`m0-${i}-${item.title}`} item={item} />
+            ))}
+          </motion.div>
+          <motion.div style={{ x: mobileRight }} className="flex w-max gap-4">
+            {[...mobileRows[1], ...mobileRows[1]].map((item, i) => (
+              <CaseCard key={`m1-${i}-${item.title}`} item={item} />
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
 
       <div ref={ref} className="relative hidden h-[210vh] md:block">
         <div className="sticky top-0 flex h-screen items-center overflow-hidden [perspective:1400px] [transform-style:preserve-3d]">
