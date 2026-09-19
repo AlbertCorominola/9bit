@@ -75,35 +75,75 @@
     "items": {
       "web": {
         "title": "Desarrollo Web",
-        "desc": "Webs rápidas, optimizadas para conversión y SEO, listas para integrar IA."
+        "desc": "Webs rápidas, optimizadas para conversión y SEO, listas para integrar IA.",
+        "points": [
+          "Diseño a medida",
+          "Optimizada para buscadores",
+          "Preparada para integrar IA"
+        ]
       },
       "voice": {
         "title": "Agentes Telefónicos IA",
-        "desc": "Asistentes de voz que atienden cada llamada 24/7, reservan y filtran consultas."
+        "desc": "Asistentes de voz que atienden cada llamada 24/7, reservan y filtran consultas.",
+        "points": [
+          "Atiende 24/7",
+          "Agenda y filtra llamadas",
+          "Catalán, castellano, inglés y francés"
+        ]
       },
       "chatbots": {
         "title": "Chatbots IA",
-        "desc": "Responden al instante, cualifican leads y retienen clientes en cualquier canal."
+        "desc": "Responden al instante, cualifican leads y retienen clientes en cualquier canal.",
+        "points": [
+          "Respuesta inmediata",
+          "Cualifica contactos",
+          "Web, WhatsApp e Instagram"
+        ]
       },
       "automation": {
         "title": "Automatización",
-        "desc": "Quitamos de en medio las tareas repetitivas que frenan a tu equipo."
+        "desc": "Quitamos de en medio las tareas repetitivas que frenan a tu equipo.",
+        "points": [
+          "Auditoría de tu operativa",
+          "Conecta lo que ya usas",
+          "Menos tareas manuales"
+        ]
       },
       "infrastructure": {
         "title": "Infraestructura IA",
-        "desc": "La infraestructura que conecta captación, atención y operativa en un solo sistema."
+        "desc": "La infraestructura que conecta captación, atención y operativa en un solo sistema.",
+        "points": [
+          "Un solo sistema",
+          "Captación, atención y operativa",
+          "Crece contigo"
+        ]
       },
       "consulting": {
         "title": "Consultoría IA",
-        "desc": "Detectamos dónde pierdes clientes o tiempo y trazamos la hoja de ruta."
+        "desc": "Detectamos dónde pierdes clientes o tiempo y trazamos la hoja de ruta.",
+        "points": [
+          "Dónde pierdes tiempo",
+          "Dónde pierdes clientes",
+          "Hoja de ruta priorizada"
+        ]
       },
       "support": {
         "title": "Soporte IT",
-        "desc": "Incidencias in situ o en remoto, y mantenimiento proactivo para no pararte."
+        "desc": "Incidencias in situ o en remoto, y mantenimiento proactivo para no pararte.",
+        "points": [
+          "In situ o en remoto",
+          "Mantenimiento proactivo",
+          "Respuesta en menos de 2 h"
+        ]
       },
       "training": {
         "title": "Formación",
-        "desc": "Formaciones a medida para que tu equipo saque partido a la tecnología y la IA."
+        "desc": "Formaciones a medida para que tu equipo saque partido a la tecnología y la IA.",
+        "points": [
+          "A medida de tu equipo",
+          "Presencial u online",
+          "Con tus propios casos"
+        ]
       }
     }
   },
@@ -121,8 +161,8 @@
       "desc": "Soporte presencial en Girona. Si es urgencia, nos ves en 24 horas."
     },
     "innovation": {
-      "title": "Stack Tecnológico Actual",
-      "desc": "Next.js, TypeScript, React, Cloud Native. Evitamos legacy que te encadene."
+      "title": "Tecnología que no te ata",
+      "desc": "Elegimos las herramientas según lo que pide el proyecto, no al revés. Si un día quieres cambiar de proveedor, puedes."
     }
   },
   "clients": {
@@ -310,12 +350,7 @@
     "cta_heading": "¿Tienes un proyecto?",
     "cta_sub": "Cuéntanos el reto y encontraremos la solución adecuada para tu empresa.",
     "cta_button": "Contactar ahora",
-    "metric_services": "servicios",
-    "metric_years": "años",
-    "metric_projects": "a medida",
-    "featured_label": "Servicio destacado",
     "methodology_label": "Metodología",
-    "start_label": "Empecemos",
     "methodology_heading": "Cómo lo hacemos",
     "process": {
       "briefing": {
@@ -334,7 +369,9 @@
         "title": "Lanzamiento",
         "desc": "Desplegar, monitorizar y mantener en producción."
       }
-    }
+    },
+    "core_heading": "Cuatro maneras de no perder clientes",
+    "more_heading": "Y también"
   },
   "qui_som_page": {
     "badge": "Quiénes somos",

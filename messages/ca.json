@@ -75,35 +75,75 @@
     "items": {
       "web": {
         "title": "Desenvolupament Web",
-        "desc": "Webs ràpides, optimitzades per a conversió i SEO, llestes per integrar-hi IA."
+        "desc": "Webs ràpides, optimitzades per a conversió i SEO, llestes per integrar-hi IA.",
+        "points": [
+          "Disseny a mida",
+          "Optimitzada per a cercadors",
+          "Preparada per integrar-hi IA"
+        ]
       },
       "voice": {
         "title": "Agents Telefònics IA",
-        "desc": "Assistents de veu que atenen cada trucada 24/7, reserven i filtren consultes."
+        "desc": "Assistents de veu que atenen cada trucada 24/7, reserven i filtren consultes.",
+        "points": [
+          "Atén 24/7",
+          "Agenda i filtra trucades",
+          "Català, castellà, anglès i francès"
+        ]
       },
       "chatbots": {
         "title": "Chatbots IA",
-        "desc": "Responen a l'instant, qualifiquen leads i retenen clients a qualsevol canal."
+        "desc": "Responen a l'instant, qualifiquen leads i retenen clients a qualsevol canal.",
+        "points": [
+          "Resposta immediata",
+          "Qualifica contactes",
+          "Web, WhatsApp i Instagram"
+        ]
       },
       "automation": {
         "title": "Automatització",
-        "desc": "Traiem del mig les tasques repetitives que frenen el teu equip."
+        "desc": "Traiem del mig les tasques repetitives que frenen el teu equip.",
+        "points": [
+          "Auditoria de la teva operativa",
+          "Connecta el que ja fas servir",
+          "Menys tasques manuals"
+        ]
       },
       "infrastructure": {
         "title": "Infraestructura IA",
-        "desc": "La infraestructura que connecta captació, atenció i operativa en un sol sistema."
+        "desc": "La infraestructura que connecta captació, atenció i operativa en un sol sistema.",
+        "points": [
+          "Un sol sistema",
+          "Captació, atenció i operativa",
+          "Creix amb tu"
+        ]
       },
       "consulting": {
         "title": "Consultoria IA",
-        "desc": "Detectem on perds clients o temps i tracem el full de ruta."
+        "desc": "Detectem on perds clients o temps i tracem el full de ruta.",
+        "points": [
+          "On perds temps",
+          "On perds clients",
+          "Full de ruta prioritzat"
+        ]
       },
       "support": {
         "title": "Suport IT",
-        "desc": "Incidències in situ o en remot, i manteniment proactiu per no aturar-te."
+        "desc": "Incidències in situ o en remot, i manteniment proactiu per no aturar-te.",
+        "points": [
+          "In situ o en remot",
+          "Manteniment proactiu",
+          "Resposta en menys de 2 h"
+        ]
       },
       "training": {
         "title": "Formació",
-        "desc": "Formacions a mida perquè el teu equip tregui partit a la tecnologia i la IA."
+        "desc": "Formacions a mida perquè el teu equip tregui partit a la tecnologia i la IA.",
+        "points": [
+          "A mida del teu equip",
+          "Presencial o en línia",
+          "Amb els teus propis casos"
+        ]
       }
     }
   },
@@ -121,8 +161,8 @@
       "desc": "Suport presencial a Girona. Si cal, ens trobes en 24 hores."
     },
     "innovation": {
-      "title": "Stack Tecnològic Actual",
-      "desc": "Next.js, TypeScript, React, Cloud Native. Evitem legacy que t'encadenar."
+      "title": "Tecnologia que no et lliga",
+      "desc": "Triem les eines segons el que demana el projecte, no a l'inrevés. Si un dia vols canviar de proveïdor, pots."
     }
   },
   "clients": {
@@ -310,12 +350,7 @@
     "cta_heading": "Tens un projecte?",
     "cta_sub": "Explica'ns el repte i trobarem la solució adequada per a la teva empresa.",
     "cta_button": "Contactar ara",
-    "metric_services": "serveis",
-    "metric_years": "anys",
-    "metric_projects": "a mida",
-    "featured_label": "Servei destacat",
     "methodology_label": "Metodologia",
-    "start_label": "Comencem",
     "methodology_heading": "Com ho fem",
     "process": {
       "briefing": {
@@ -334,7 +369,9 @@
         "title": "Llançament",
         "desc": "Desplegar, monitoritzar i mantenir en producció."
       }
-    }
+    },
+    "core_heading": "Quatre maneres de no perdre clients",
+    "more_heading": "I també"
   },
   "qui_som_page": {
     "badge": "Qui som",

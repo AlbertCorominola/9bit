@@ -75,35 +75,75 @@
     "items": {
       "web": {
         "title": "Web Development",
-        "desc": "Fast websites, tuned for conversion and SEO, ready to plug AI into."
+        "desc": "Fast websites, tuned for conversion and SEO, ready to plug AI into.",
+        "points": [
+          "Custom design",
+          "Built for search",
+          "Ready for AI"
+        ]
       },
       "voice": {
         "title": "AI Phone Agents",
-        "desc": "Voice agents that answer every call 24/7, take bookings and filter enquiries."
+        "desc": "Voice agents that answer every call 24/7, take bookings and filter enquiries.",
+        "points": [
+          "Answers 24/7",
+          "Books and filters calls",
+          "Catalan, Spanish, English, French"
+        ]
       },
       "chatbots": {
         "title": "AI Chatbots",
-        "desc": "Instant answers, qualified leads and clients kept on any channel."
+        "desc": "Instant answers, qualified leads and clients kept on any channel.",
+        "points": [
+          "Instant replies",
+          "Qualifies leads",
+          "Web, WhatsApp and Instagram"
+        ]
       },
       "automation": {
         "title": "Automation",
-        "desc": "We take the repetitive work off your team's plate."
+        "desc": "We take the repetitive work off your team's plate.",
+        "points": [
+          "An audit of your operation",
+          "Connects what you already use",
+          "Less manual work"
+        ]
       },
       "infrastructure": {
         "title": "AI Infrastructure",
-        "desc": "The infrastructure that joins acquisition, support and operations in one system."
+        "desc": "The infrastructure that joins acquisition, support and operations in one system.",
+        "points": [
+          "One single system",
+          "Acquisition, support, operations",
+          "Grows with you"
+        ]
       },
       "consulting": {
         "title": "AI Consulting",
-        "desc": "We find where you lose clients or time and map the route out."
+        "desc": "We find where you lose clients or time and map the route out.",
+        "points": [
+          "Where you lose time",
+          "Where you lose clients",
+          "A prioritised roadmap"
+        ]
       },
       "support": {
         "title": "IT Support",
-        "desc": "On-site or remote incident response, plus proactive maintenance."
+        "desc": "On-site or remote incident response, plus proactive maintenance.",
+        "points": [
+          "On site or remote",
+          "Proactive maintenance",
+          "Answer in under 2 h"
+        ]
       },
       "training": {
         "title": "Training",
-        "desc": "Tailored training so your team gets real value from technology and AI."
+        "desc": "Tailored training so your team gets real value from technology and AI.",
+        "points": [
+          "Shaped around your team",
+          "In person or online",
+          "Using your own cases"
+        ]
       }
     }
   },
@@ -121,8 +161,8 @@
       "desc": "On-site support in Girona. Emergencies? We meet you within 24h."
     },
     "innovation": {
-      "title": "Current Tech Stack",
-      "desc": "Next.js, TypeScript, React, Cloud Native. We avoid legacy tech chains."
+      "title": "Technology that doesn't lock you in",
+      "desc": "We pick the tools the project asks for, not the other way round. If you ever want to switch provider, you can."
     }
   },
   "clients": {
@@ -310,12 +350,7 @@
     "cta_heading": "Have a project?",
     "cta_sub": "Tell us your challenge and we'll find the right solution for your company.",
     "cta_button": "Contact us",
-    "metric_services": "services",
-    "metric_years": "years",
-    "metric_projects": "custom-built",
-    "featured_label": "Featured service",
     "methodology_label": "Methodology",
-    "start_label": "Let's start",
     "methodology_heading": "How we do it",
     "process": {
       "briefing": {
@@ -334,7 +369,9 @@
         "title": "Launch",
         "desc": "Deploy, monitor and maintain in production."
       }
-    }
+    },
+    "core_heading": "Four ways to stop losing clients",
+    "more_heading": "And also"
   },
   "qui_som_page": {
     "badge": "About us",

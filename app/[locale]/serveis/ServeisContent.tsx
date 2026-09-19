@@ -1,301 +1,234 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import {
-  Globe,
-  Phone,
-  Bot,
-  Headphones,
-  Workflow,
-  GraduationCap,
-  Server,
-  Sparkles,
-  MessageSquare,
-  Map,
-  Hammer,
-  Rocket,
-  ChevronDown,
-  LucideIcon,
-} from 'lucide-react';
-import Image from 'next/image';
-import ServiceCard from '@/components/ui/ServiceCard';
 import CTAPanel from '@/components/ui/CTAPanel';
 import Parallax from '@/components/ui/Parallax';
+import ProcessRail, { type ProcessStep } from '@/components/ui/ProcessRail';
+import ScrollZoomImage from '@/components/ui/ScrollZoomImage';
+import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 
-const SERVICE_KEYS: { key: 'web' | 'voice' | 'chatbots' | 'automation' | 'infrastructure' | 'consulting' | 'support' | 'training'; icon: LucideIcon; core: boolean }[] = [
-  { key: 'web', icon: Globe, core: true },
-  { key: 'voice', icon: Phone, core: true },
-  { key: 'chatbots', icon: Bot, core: true },
-  { key: 'automation', icon: Workflow, core: true },
-  { key: 'infrastructure', icon: Server, core: false },
-  { key: 'consulting', icon: Sparkles, core: false },
-  { key: 'support', icon: Headphones, core: false },
-  { key: 'training', icon: GraduationCap, core: false },
-];
+const CORE_KEYS = ['web', 'voice', 'chatbots', 'automation'] as const;
+const EXTRA_KEYS = ['infrastructure', 'consulting', 'support', 'training'] as const;
 
-const fadeUp = {
-  initial: { opacity: 0, y: 24, filter: 'blur(5px)' },
-  whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
-  viewport: { once: true, margin: '-80px' },
-  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-} as const;
+const IMAGES: Record<(typeof CORE_KEYS)[number], string> = {
+  web: '/services/web.png',
+  voice: '/services/voice.png',
+  chatbots: '/services/chatbots.png',
+  automation: '/services/automation.png',
+};
+
+const LABEL = 'font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text';
+const HEADING = 'text-4xl font-black leading-[1.03] tracking-[-0.04em] text-on-surface md:text-5xl';
 
 export default function ServeisPage() {
   const t = useTranslations('services');
   const tp = useTranslations('serveis_page');
+  const locale = useLocale();
 
-  const PROCESS_STEPS = [
-    { number: '01', icon: MessageSquare, title: tp('process.briefing.title'), desc: tp('process.briefing.desc') },
-    { number: '02', icon: Map, title: tp('process.plan.title'), desc: tp('process.plan.desc') },
-    { number: '03', icon: Hammer, title: tp('process.build.title'), desc: tp('process.build.desc') },
-    { number: '04', icon: Rocket, title: tp('process.launch.title'), desc: tp('process.launch.desc') },
-  ];
+  const steps: ProcessStep[] = (['briefing', 'plan', 'build', 'launch'] as const).map((k) => ({
+    title: tp(`process.${k}.title`),
+    desc: tp(`process.${k}.desc`),
+  }));
 
-  const FAQ_ITEMS = tp.raw('faq.items') as { q: string; a: string }[];
+  const faq = tp.raw('faq.items') as { q: string; a: string }[];
 
   return (
     <div className="min-h-screen">
-      {/* ── PAGE HERO ─────────────────────────────────────────── */}
-      <section className="relative -mt-20 px-6 pb-24 pt-40 lg:px-10">
-        <div className="max-w-container-max mx-auto">
+      {/* ── Cabecera ──────────────────────────────────────────────────── */}
+      <section className="relative -mt-20 px-6 pb-20 pt-36 md:pb-28 md:pt-44 lg:px-10">
+        <div className="mx-auto max-w-container-max">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl"
           >
-            {/* Badge */}
-            <div className="mb-6">
-              <span className="inline-flex items-center gap-2 font-mono text-xs text-primary-container bg-primary-container/10 border border-primary-container/30 px-3 py-1 rounded-full uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary-container" />
-                {tp('badge_label')}
-              </span>
-            </div>
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-black/[0.08] bg-white/60 px-4 py-1.5 font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-on-surface-variant backdrop-blur-md">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary-container" />
+              {tp('badge_label')}
+            </span>
 
-            {/* Heading */}
-            <Parallax speed={0.22}>
-              <h1 className="mb-6 text-5xl font-black leading-[1.02] tracking-[-0.045em] text-on-surface md:text-7xl">
+            <Parallax speed={0.18}>
+              <h1 className="mt-8 text-[2.7rem] font-black leading-[1.02] tracking-[-0.045em] text-on-surface sm:text-6xl md:text-7xl">
                 {tp('heading')}
               </h1>
             </Parallax>
 
-            {/* Subtitle */}
-            <p className="text-on-surface-variant text-lg md:text-xl max-w-xl mb-10 leading-relaxed">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-on-surface-variant">
               {t('subtitle')}
             </p>
-
-            {/* Metric pills */}
-            <div className="flex flex-wrap gap-3">
-              {[
-                { value: '8', label: tp('metric_services') },
-                { value: '+24', label: tp('metric_years') },
-                { value: '100%', label: tp('metric_projects') },
-              ].map(({ value, label }) => (
-                <div
-                  key={label}
-                  className="rounded-full border border-black/[0.08] bg-black/[0.02] px-4 py-2 flex items-center gap-2"
-                >
-                  <span className="font-bold text-primary-container text-sm">{value}</span>
-                  <span className="font-mono text-[11px] text-on-surface-variant uppercase tracking-widest">{label}</span>
-                </div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── MAIN ──────────────────────────────────────────────── */}
-      <div className="px-6 pb-24 md:pb-32 lg:px-10">
-        <div className="mx-auto max-w-container-max space-y-28 md:space-y-40">
+      {/* ── Servicios principales: una fila por servicio ──────────────── */}
+      <section className="px-6 lg:px-10">
+        <div className="mx-auto max-w-container-max">
+          <Reveal>
+            <p className={LABEL}>{t('core_label')}</p>
+            <h2 className={`mt-4 ${HEADING}`}>{tp('core_heading')}</h2>
+          </Reveal>
 
-          {/* ── FEATURED: WEB ─────────────────────────────────── */}
-          <motion.section {...fadeUp}>
-            <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
-              {tp('featured_label')}
-            </p>
-
-            <div className="rounded-2xl border border-black/[0.08] bg-black/[0.02] hover:border-primary-container/30 transition-all duration-200 overflow-hidden">
-              <div className="grid lg:grid-cols-2">
-                {/* Left half */}
-                <div className="p-8 lg:p-12 flex flex-col">
-                  <div className="flex items-center gap-3 mb-7">
-                    <div className="w-12 h-12 rounded-xl bg-primary-container/10 border border-primary-container/20 flex items-center justify-center">
-                      <Globe className="text-primary-container" size={22} />
-                    </div>
-                    <span className="rounded-full border border-primary-container/25 bg-primary-container/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-primary-text">
-                      {t('core_tag')}
-                    </span>
-                  </div>
-
-                  <h2 className="mb-4 text-4xl font-black leading-[1.05] tracking-[-0.04em] text-on-surface lg:text-5xl">
-                    {t('items.web.title')}
-                  </h2>
-                  <p className="text-on-surface-variant text-base leading-relaxed mb-7 max-w-md">
-                    {t('items.web.desc')}
-                  </p>
-
-                </div>
-
-                {/* Right half — imagen del servicio */}
-                <div className="relative min-h-[18rem] border-t border-black/[0.08] lg:min-h-0 lg:border-l lg:border-t-0">
-                  <Image
-                    src="/services/web.png"
-                    alt={t('items.web.title')}
-                    fill
-                    priority
-                    className="object-cover"
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                  />
-                </div>
-              </div>
-            </div>
-          </motion.section>
-
-          {/* ── ALL SERVICES GRID ─────────────────────────────── */}
-          <section>
-            <motion.p {...fadeUp} className="mb-6 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
-              {t('core_label')}
-            </motion.p>
-
-            {/* Core services */}
-            <motion.div
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: '-80px' }}
-              variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05 } } }}
-              className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
-            >
-              {SERVICE_KEYS.filter((s) => s.core && s.key !== 'web').map(({ key, icon }) => (
-                <motion.div
+          <div className="mt-16 flex flex-col gap-24 md:mt-20 md:gap-32">
+            {CORE_KEYS.map((key, i) => {
+              const points = (t.raw(`items.${key}.points`) as string[]) ?? [];
+              const mediaRight = i % 2 === 0;
+              return (
+                <article
                   key={key}
-                  variants={{
-                    hidden: { opacity: 0, y: 16 },
-                    show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-                  }}
+                  className="grid items-center gap-8 md:grid-cols-2 md:gap-14 lg:gap-20"
                 >
-                  <ServiceCard
-                    icon={icon}
-                    title={t(`items.${key}.title`)}
-                    desc={t(`items.${key}.desc`)}
-                    core
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Additional services */}
-            <motion.p {...fadeUp} className="mb-6 mt-16 font-mono text-[11px] uppercase tracking-[0.2em] text-on-surface-variant/60">
-              {t('more_label')}
-            </motion.p>
-            <motion.div
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: '-80px' }}
-              variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05 } } }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
-            >
-              {SERVICE_KEYS.filter((s) => !s.core).map(({ key, icon }) => (
-                <motion.div
-                  key={key}
-                  variants={{
-                    hidden: { opacity: 0, y: 16 },
-                    show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-                  }}
-                >
-                  <ServiceCard
-                    icon={icon}
-                    title={t(`items.${key}.title`)}
-                    desc={t(`items.${key}.desc`)}
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-          </section>
-
-          {/* ── METHODOLOGY ───────────────────────────────────── */}
-          <section>
-            <motion.div {...fadeUp} className="mb-10">
-              <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
-                {tp('methodology_label')}
-              </p>
-              <h2 className="text-4xl font-black leading-[1.03] tracking-[-0.04em] text-on-surface md:text-5xl">
-                {tp('methodology_heading')}
-              </h2>
-            </motion.div>
-
-            <div className="relative">
-              {/* Connector line desktop */}
-              <div
-                aria-hidden
-                className="hidden md:block absolute top-6 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent"
-              />
-
-              <motion.div
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, margin: '-80px' }}
-                variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05 } } }}
-                className="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10"
-              >
-                {PROCESS_STEPS.map(({ number, icon: StepIcon, title, desc }) => (
-                  <motion.div
-                    key={number}
-                    variants={{
-                      hidden: { opacity: 0, y: 16 },
-                      show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-                    }}
-                    className="flex flex-col gap-4"
+                  {/* En móvil la foto siempre va primero: es lo que engancha. */}
+                  <Reveal
+                    direction={mediaRight ? 'left' : 'right'}
+                    className={mediaRight ? 'md:order-2' : ''}
                   >
-                    <div className="flex items-center gap-3">
-                      <span className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-container/10 border border-primary-container/30 flex items-center justify-center font-mono text-xs font-semibold text-primary-container">
-                        {number}
-                      </span>
-                      <StepIcon className="text-on-surface-variant/70" size={20} />
-                    </div>
-                    <div>
-                      <h3 className="text-on-surface text-lg font-semibold tracking-tight mb-1.5">
-                        {title}
-                      </h3>
-                      <p className="text-on-surface-variant text-sm leading-relaxed">{desc}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          </section>
-
-          {/* ── FAQ ───────────────────────────────────────────── */}
-          <section>
-            <motion.div {...fadeUp} className="mb-10">
-              <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
-                {tp('faq.label')}
-              </p>
-              <h2 className="text-4xl font-black leading-[1.03] tracking-[-0.04em] text-on-surface md:text-5xl">
-                {tp('faq.heading')}
-              </h2>
-            </motion.div>
-
-            <div className="divide-y divide-black/[0.08] border-y border-black/[0.08]">
-              {FAQ_ITEMS.map(({ q, a }) => (
-                <details key={q} className="group py-5">
-                  <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-on-surface">
-                    <h3 className="text-base md:text-lg font-semibold leading-snug">{q}</h3>
-                    <ChevronDown
-                      size={18}
-                      className="mt-0.5 shrink-0 text-primary-text transition-transform duration-200 group-open:rotate-180"
+                    <ScrollZoomImage
+                      src={IMAGES[key]}
+                      alt={t(`items.${key}.title`)}
+                      priority={i === 0}
+                      className="aspect-[4/3] w-full rounded-3xl border border-black/[0.08] bg-surface-container shadow-[0_40px_80px_-52px_rgba(13,17,23,0.6)] md:aspect-square"
+                      sizes="(min-width: 768px) 46vw, 100vw"
                     />
-                  </summary>
-                  <p className="mt-3 max-w-3xl text-on-surface-variant leading-relaxed">{a}</p>
-                </details>
-              ))}
-            </div>
-          </section>
+                  </Reveal>
 
+                  <div className={mediaRight ? 'md:order-1' : ''}>
+                    <Reveal direction="up">
+                      <span className="font-mono text-[11px] tabular-nums tracking-[0.2em] text-on-surface-variant/45">
+                        {String(i + 1).padStart(2, '0')} / 04
+                      </span>
+                      <h3 className="mt-4 text-3xl font-black leading-[1.05] tracking-[-0.04em] text-on-surface md:text-4xl lg:text-5xl">
+                        {t(`items.${key}.title`)}
+                      </h3>
+                      <p className="mt-5 max-w-md text-base leading-relaxed text-on-surface-variant">
+                        {t(`items.${key}.desc`)}
+                      </p>
+                    </Reveal>
+
+                    <RevealGroup className="mt-8 max-w-md border-t border-black/[0.08]">
+                      {points.map((point) => (
+                        <RevealItem key={point}>
+                          <p className="border-b border-black/[0.08] py-3 text-[15px] font-medium tracking-tight text-on-surface">
+                            {point}
+                          </p>
+                        </RevealItem>
+                      ))}
+                    </RevealGroup>
+
+                    <Reveal delay={0.1}>
+                      <Link
+                        href={`/${locale}/contacte`}
+                        className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold tracking-tight text-primary-text transition-colors hover:text-primary"
+                      >
+                        {tp('cta_button')}
+                        <span
+                          aria-hidden
+                          className="transition-transform duration-300 group-hover:translate-x-1"
+                        >
+                          →
+                        </span>
+                      </Link>
+                    </Reveal>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* ── CTA ─────────────────────────────────────────────── */}
+      {/* ── Servicios especializados ──────────────────────────────────── */}
+      <section className="px-6 py-28 md:py-40 lg:px-10">
+        <div className="mx-auto max-w-container-max">
+          <Reveal>
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-on-surface-variant/60">
+              {t('more_label')}
+            </p>
+            <h2 className={`mt-4 ${HEADING}`}>{tp('more_heading')}</h2>
+          </Reveal>
+
+          <RevealGroup className="mt-12 border-t border-black/[0.08]">
+            {EXTRA_KEYS.map((key) => (
+              <RevealItem key={key}>
+                <article className="group relative border-b border-black/[0.08] py-7 md:py-8">
+                  <span
+                    aria-hidden
+                    className="absolute left-0 top-0 h-px w-full origin-left scale-x-0 bg-primary-container transition-transform duration-500 ease-out group-hover:scale-x-100"
+                  />
+                  <div className="grid gap-3 transition-transform duration-500 ease-out group-hover:translate-x-1.5 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-baseline md:gap-10">
+                    <h3 className="text-2xl font-bold tracking-[-0.03em] text-on-surface md:text-3xl">
+                      {t(`items.${key}.title`)}
+                    </h3>
+                    <div>
+                      <p className="text-[15px] leading-relaxed text-on-surface-variant">
+                        {t(`items.${key}.desc`)}
+                      </p>
+                      <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5">
+                        {((t.raw(`items.${key}.points`) as string[]) ?? []).map((point) => (
+                          <li
+                            key={point}
+                            className="font-mono text-[11px] uppercase tracking-[0.12em] text-on-surface-variant/65"
+                          >
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </article>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+        </div>
+      </section>
+
+      {/* ── Cómo lo hacemos ───────────────────────────────────────────── */}
+      <section className="border-y border-black/[0.07] bg-surface-container/30 px-6 py-28 md:py-40 lg:px-10">
+        <div className="mx-auto max-w-container-max">
+          <Reveal className="mb-16 max-w-2xl">
+            <p className={LABEL}>{tp('methodology_label')}</p>
+            <h2 className={`mt-4 ${HEADING}`}>{tp('methodology_heading')}</h2>
+          </Reveal>
+
+          <ProcessRail steps={steps} />
+        </div>
+      </section>
+
+      {/* ── Preguntas frecuentes ──────────────────────────────────────── */}
+      <section className="px-6 py-28 md:py-40 lg:px-10">
+        <div className="mx-auto grid max-w-container-max gap-12 md:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <Reveal className="md:sticky md:top-32 md:self-start">
+            <p className={LABEL}>{tp('faq.label')}</p>
+            <h2 className={`mt-4 ${HEADING}`}>{tp('faq.heading')}</h2>
+          </Reveal>
+
+          <RevealGroup className="border-t border-black/[0.08]">
+            {faq.map(({ q, a }) => (
+              <RevealItem key={q}>
+                <details className="group border-b border-black/[0.08] py-5">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-on-surface [&::-webkit-details-marker]:hidden">
+                    <h3 className="text-base font-semibold leading-snug transition-colors group-open:text-primary-text md:text-lg">
+                      {q}
+                    </h3>
+                    {/* Signo +/− dibujado con dos barras: una pieza menos que
+                        mantener y encaja mejor que un icono importado. */}
+                    <span aria-hidden className="relative mt-2 h-3 w-3 shrink-0">
+                      <span className="absolute left-0 top-1/2 h-px w-3 -translate-y-1/2 bg-primary-text" />
+                      <span className="absolute left-1/2 top-0 h-3 w-px -translate-x-1/2 bg-primary-text transition-transform duration-300 group-open:scale-y-0" />
+                    </span>
+                  </summary>
+                  <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-on-surface-variant">
+                    {a}
+                  </p>
+                </details>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+        </div>
+      </section>
+
       <CTAPanel
         heading={tp('cta_heading')}
         subtitle={tp('cta_sub')}
