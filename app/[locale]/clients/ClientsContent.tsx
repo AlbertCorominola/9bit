@@ -3,8 +3,9 @@
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ExternalLink, Globe, Sparkles, Zap, Briefcase } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
+import ScrollZoomImage from '@/components/ui/ScrollZoomImage';
+import Parallax from '@/components/ui/Parallax';
 import ClientMarquee from '@/components/ui/ClientMarquee';
 import TestimonialCard from '@/components/ui/TestimonialCard';
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal';
@@ -38,18 +39,6 @@ const CASE_URLS = [
   'https://restaurantarestestanyol.com/',
   'https://www.gestoriaguileraperez.com/',
   'https://www.ooadditives.com/',
-];
-
-const CASE_ICONS: LucideIcon[] = [
-  Globe,
-  Sparkles,
-  Zap,
-  Zap,
-  Globe,
-  Globe,
-  Globe,
-  Briefcase,
-  Globe,
 ];
 
 /** Los cuatro primeros encabezan la página; el resto va en la parrilla. */
@@ -91,7 +80,6 @@ export default function ClientsPage() {
     ...c,
     media: CASE_MEDIA[i],
     url: CASE_URLS[i] ?? '',
-    Icon: CASE_ICONS[i] ?? Globe,
   }));
   const featured = cases.slice(0, FEATURED_COUNT);
   const rest = cases.slice(FEATURED_COUNT);
@@ -108,12 +96,12 @@ export default function ClientsPage() {
       return (
         <div className="grid h-full grid-cols-2 gap-2 p-2">
           <div className="relative col-span-2 h-48 md:h-60">
-            <Image
+            <ScrollZoomImage
               src={EPICENTRE_GALLERY[2]}
               alt={`${c.title} — ${labels[2] ?? ''}`}
-              fill
-              className="rounded-xl object-cover"
+              className="h-full w-full rounded-xl"
               sizes="(min-width: 768px) 50vw, 100vw"
+              zoom={1.1}
             />
             <span className="absolute bottom-2 left-2 rounded-md bg-black/70 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-white">
               {labels[2]}
@@ -158,15 +146,13 @@ export default function ClientsPage() {
     }
 
     return (
-      <div className="relative h-full min-h-[15rem] overflow-hidden">
-        <Image
-          src={c.media.kind === 'image' ? c.media.src : ''}
-          alt={c.title}
-          fill
-          className="object-cover object-left-top"
-          sizes="(min-width: 768px) 50vw, 100vw"
-        />
-      </div>
+      <ScrollZoomImage
+        src={c.media.kind === 'image' ? c.media.src : ''}
+        alt={c.title}
+        className="h-full min-h-[15rem] w-full"
+        sizes="(min-width: 768px) 50vw, 100vw"
+        zoom={1.1}
+      />
     );
   };
 
@@ -226,7 +212,8 @@ export default function ClientsPage() {
       {/* ── 3. Casos de éxito ────────────────────────────────────────── */}
       <section className="px-6 py-24 md:py-32 lg:px-10">
         <div className="mx-auto max-w-container-max">
-          <Reveal className="mb-16 max-w-2xl">
+          <Parallax speed={0.14} className="mb-16 max-w-2xl">
+          <Reveal>
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
               {t('cases_label')}
             </p>
@@ -237,6 +224,7 @@ export default function ClientsPage() {
               {t('cases_subtitle')}
             </p>
           </Reveal>
+          </Parallax>
 
           {/* Destacados: panel a ancho completo, con el medio alternando lado. */}
           <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.2em] text-on-surface-variant/60">
@@ -244,7 +232,7 @@ export default function ClientsPage() {
           </p>
           <div className="flex flex-col gap-6">
             {featured.map((c, i) => (
-              <Reveal key={c.title} direction="up">
+              <Reveal key={c.title} direction={i % 2 === 1 ? 'left' : 'right'}>
                 <article className="group overflow-hidden rounded-3xl border border-black/[0.08] bg-surface-container-low transition-colors duration-300 hover:border-primary-container/25">
                   <div className="grid md:grid-cols-2">
                     <div
@@ -257,10 +245,7 @@ export default function ClientsPage() {
 
                     <div className="flex flex-col justify-center p-8 md:p-12">
                       <div className="mb-5 flex flex-wrap items-center gap-2.5">
-                        <span className={CHIP}>
-                          <c.Icon size={11} />
-                          {c.tag}
-                        </span>
+                        <span className={CHIP}>{c.tag}</span>
                         <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-on-surface-variant/70">
                           {c.industry}
                         </span>
@@ -313,12 +298,12 @@ export default function ClientsPage() {
                 <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-black/[0.08] bg-surface-container-low transition-all duration-300 hover:-translate-y-1.5 hover:border-primary-container/25 hover:shadow-[0_28px_56px_-32px_rgba(13,17,23,0.4)]">
                   <div className="relative aspect-[16/10] overflow-hidden bg-surface-container">
                     {c.media?.kind === 'image' && (
-                      <Image
+                      <ScrollZoomImage
                         src={c.media.src}
                         alt={c.title}
-                        fill
-                        className="object-cover object-left-top transition-transform duration-[900ms] ease-out group-hover:scale-105"
+                        className="h-full w-full"
                         sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+                        zoom={1.08}
                       />
                     )}
                     <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-primary-text backdrop-blur-sm">
@@ -370,7 +355,8 @@ export default function ClientsPage() {
       {/* ── 4. Opiniones ─────────────────────────────────────────────── */}
       <section className="px-6 py-24 md:py-32 lg:px-10">
         <div className="mx-auto max-w-container-max">
-          <Reveal className="mb-14 max-w-2xl">
+          <Parallax speed={0.14} className="mb-14 max-w-2xl">
+          <Reveal>
             <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
               {t('feedback_label')}
             </p>
@@ -381,6 +367,7 @@ export default function ClientsPage() {
               {t('testimonials_subtitle')}
             </p>
           </Reveal>
+          </Parallax>
 
           <RevealGroup className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {testimonials.map((item) => (

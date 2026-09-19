@@ -2,11 +2,8 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import {
-  Zap, Target, ShieldCheck, Rocket,
-  Search, PenTool, Hammer, HeartHandshake,
-} from 'lucide-react';
 import Parallax from '@/components/ui/Parallax';
+import ProcessRail from '@/components/ui/ProcessRail';
 
 /* ─── animation helpers ─────────────────────────────────────────────────── */
 
@@ -35,12 +32,7 @@ const staggerItem = {
 
 /* ─── data ──────────────────────────────────────────────────────────────── */
 
-const PILLARS = [
-  { icon: Zap, key: 'agility' as const },
-  { icon: Target, key: 'precision' as const },
-  { icon: ShieldCheck, key: 'reliability' as const },
-  { icon: Rocket, key: 'innovation' as const },
-];
+const PILLARS = ['agility', 'precision', 'reliability', 'innovation'] as const;
 
 /* ─── component ─────────────────────────────────────────────────────────── */
 
@@ -57,32 +49,10 @@ export default function QuiSomPage() {
     { year: '2024', label: t('timeline.t2024') },
   ];
 
-  const PROCESS = [
-    {
-      icon: Search,
-      step: '01',
-      title: t('process.discovery.title'),
-      desc: t('process.discovery.desc'),
-    },
-    {
-      icon: PenTool,
-      step: '02',
-      title: t('process.design.title'),
-      desc: t('process.design.desc'),
-    },
-    {
-      icon: Hammer,
-      step: '03',
-      title: t('process.build.title'),
-      desc: t('process.build.desc'),
-    },
-    {
-      icon: HeartHandshake,
-      step: '04',
-      title: t('process.support.title'),
-      desc: t('process.support.desc'),
-    },
-  ];
+  const PROCESS = (['discovery', 'design', 'build', 'support'] as const).map((k) => ({
+    title: t(`process.${k}.title`),
+    desc: t(`process.${k}.desc`),
+  }));
 
   return (
     <div className="min-h-screen">
@@ -262,7 +232,7 @@ export default function QuiSomPage() {
             viewport={{ once: true, margin: '-80px' }}
             className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2"
           >
-            {PILLARS.map(({ icon: Icon, key }, i) => (
+            {PILLARS.map((key, i) => (
               <motion.article
                 key={key}
                 variants={staggerItem}
@@ -272,14 +242,9 @@ export default function QuiSomPage() {
                   aria-hidden
                   className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-gradient-to-r from-primary-container via-primary-container/40 to-transparent transition-transform duration-500 ease-out group-hover:scale-x-100"
                 />
-                <div className="mb-6 flex items-start justify-between">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-primary-container/20 bg-primary-container/10">
-                    <Icon className="text-primary-container" size={21} />
-                  </span>
-                  <span className="font-mono text-xs tabular-nums tracking-[0.2em] text-on-surface-variant/35 transition-colors duration-300 group-hover:text-primary-text">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                </div>
+                <span className="mb-6 block font-mono text-xs tabular-nums tracking-[0.2em] text-on-surface-variant/35 transition-colors duration-300 group-hover:text-primary-text">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
                 <h3 className="text-xl font-bold tracking-tight text-on-surface md:text-2xl">
                   {tp(`${key}.title`)}
                 </h3>
@@ -309,49 +274,9 @@ export default function QuiSomPage() {
             </p>
           </motion.div>
 
-          {/* Escritorio: cuatro pasos colgando de una misma linea. */}
-          <div className="relative mt-16 hidden md:block">
-            <span
-              aria-hidden
-              className="absolute left-0 right-0 top-[15px] h-px bg-gradient-to-r from-transparent via-primary-container/30 to-transparent"
-            />
-            <motion.ol
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: '-80px' }}
-              className="relative grid grid-cols-4 gap-8"
-            >
-              {PROCESS.map(({ icon: Icon, step, title, desc }) => (
-                <motion.li key={step} variants={staggerItem} className="group">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full border border-primary-container/30 bg-background font-mono text-[11px] font-bold tabular-nums text-primary-text transition-colors duration-300 group-hover:border-primary-container group-hover:bg-primary-container group-hover:text-white">
-                    {step}
-                  </span>
-                  <h3 className="mt-6 flex items-center gap-2.5 text-lg font-bold tracking-tight text-on-surface">
-                    <Icon size={17} className="shrink-0 text-primary-container" />
-                    {title}
-                  </h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-on-surface-variant">{desc}</p>
-                </motion.li>
-              ))}
-            </motion.ol>
+          <div className="mt-16">
+            <ProcessRail steps={PROCESS} />
           </div>
-
-          {/* Movil: la misma secuencia en vertical. */}
-          <ol className="relative mt-14 space-y-9 border-l border-primary-container/20 pl-8 md:hidden">
-            {PROCESS.map(({ icon: Icon, step, title, desc }, i) => (
-              <motion.li key={step} {...revealUp(i * 0.08)} className="relative">
-                <span className="absolute -left-[calc(2rem+15px)] top-0 flex h-[30px] w-[30px] items-center justify-center rounded-full border border-primary-container/30 bg-background font-mono text-[10px] font-bold tabular-nums text-primary-text">
-                  {step}
-                </span>
-                <h3 className="flex items-center gap-2 text-base font-bold tracking-tight text-on-surface">
-                  <Icon size={15} className="shrink-0 text-primary-container" />
-                  {title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-on-surface-variant">{desc}</p>
-              </motion.li>
-            ))}
-          </ol>
         </div>
       </section>
 

@@ -2,15 +2,10 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { Zap, Target, ShieldCheck, Rocket, ArrowRight, type LucideIcon } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 
-const PILLARS: { key: 'agility' | 'precision' | 'reliability' | 'innovation'; icon: LucideIcon }[] = [
-  { key: 'agility', icon: Zap },
-  { key: 'precision', icon: Target },
-  { key: 'reliability', icon: ShieldCheck },
-  { key: 'innovation', icon: Rocket },
-];
+const PILLARS = ['agility', 'precision', 'reliability', 'innovation'] as const;
 
 export default function PillarsSection() {
   const t = useTranslations('pillars');
@@ -50,7 +45,7 @@ export default function PillarsSection() {
 
         {/* Lista numerada: jerarquía clara, sin cuatro cajas iguales. */}
         <RevealGroup className="border-t border-black/[0.08]">
-          {PILLARS.map(({ key, icon: Icon }, i) => (
+          {PILLARS.map((key, i) => (
             <RevealItem key={key}>
               <article className="group relative border-b border-black/[0.08] py-7 transition-colors md:py-8">
                 <span
@@ -62,11 +57,7 @@ export default function PillarsSection() {
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <div className="flex-1">
-                    <h3 className="flex items-center gap-2.5 text-xl font-bold tracking-tight text-on-surface md:text-2xl">
-                      <Icon
-                        size={18}
-                        className="shrink-0 text-primary-container/70 transition-colors duration-300 group-hover:text-primary-container"
-                      />
+                    <h3 className="text-xl font-bold tracking-tight text-on-surface md:text-2xl">
                       {t(`${key}.title`)}
                     </h3>
                     <p className="mt-2 max-w-lg text-[15px] leading-relaxed text-on-surface-variant">

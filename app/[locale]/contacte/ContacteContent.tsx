@@ -2,20 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Send,
-  CheckCircle2,
-  Clock,
-  ShieldCheck,
-  Globe,
-  Instagram,
-  Linkedin,
-  Twitter,
-  ChevronDown,
-} from 'lucide-react';
+import { CheckCircle2, Instagram, Linkedin, Twitter } from 'lucide-react';
 import { useState } from 'react';
 import Button from '@/components/ui/Button';
 import Parallax from '@/components/ui/Parallax';
@@ -59,17 +46,13 @@ export default function ContactPage() {
 
   /* translated data */
   const INFO = [
-    { icon: Mail,   label: t('info_email_label'),    value: 'hola@9-bit.com',     href: 'mailto:hola@9-bit.com' },
-    { icon: Phone,  label: t('info_phone_label'),    value: '+34 637 400 350',    href: 'tel:+34637400350' },
-    { icon: MapPin, label: t('info_location_label'), value: t('info_location_value'),  href: null },
-    { icon: Clock,  label: t('info_hours_label'),    value: t('info_hours_value'), href: null },
+    { label: t('info_email_label'),    value: 'hola@9-bit.com',        href: 'mailto:hola@9-bit.com' },
+    { label: t('info_phone_label'),    value: '+34 637 400 350',       href: 'tel:+34637400350' },
+    { label: t('info_location_label'), value: t('info_location_value'), href: null },
+    { label: t('info_hours_label'),    value: t('info_hours_value'),    href: null },
   ];
 
-  const PILLS = [
-    { icon: Clock,       text: t('pill_response') },
-    { icon: ShieldCheck, text: t('pill_confidential') },
-    { icon: Globe,       text: t('pill_languages') },
-  ];
+  const PILLS = [t('pill_response'), t('pill_confidential'), t('pill_languages')];
 
   const FAQ = [
     { q: t('faq.q1'), a: t('faq.a1') },
@@ -177,17 +160,19 @@ export default function ContactPage() {
             </motion.p>
 
             {/* Feature pills */}
-            <motion.div variants={item} className="flex flex-wrap justify-center gap-3">
-              {PILLS.map(({ icon: Icon, text }) => (
-                <div
-                  key={text}
-                  className="inline-flex items-center gap-2 glass-panel border border-outline-variant/20 rounded-full px-4 py-2 text-sm text-on-surface-variant"
-                >
-                  <Icon size={14} className="text-primary-container shrink-0" />
-                  {text}
-                </div>
+            <motion.ul
+              variants={item}
+              className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2"
+            >
+              {PILLS.map((text, i) => (
+                <li key={text} className="flex items-center gap-4">
+                  <span className="text-sm text-on-surface-variant">{text}</span>
+                  {i < PILLS.length - 1 && (
+                    <span aria-hidden className="h-3 w-px bg-black/[0.12]" />
+                  )}
+                </li>
               ))}
-            </motion.div>
+            </motion.ul>
 
           </motion.div>
         </div>
@@ -204,27 +189,30 @@ export default function ContactPage() {
               {...inViewProps}
               className="lg:col-span-2 flex flex-col gap-5"
             >
-              {INFO.map(({ icon: Icon, label, value, href }) => (
-                <motion.div
-                  key={label}
-                  variants={item}
-                  className="glass-panel glow-hover rounded-xl p-6 border border-outline-variant/20 flex items-center gap-4"
-                >
-                  <div className="w-12 h-12 rounded-lg bg-primary-container/15 border border-primary-container/25 flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(0,102,255,0.2)]">
-                    <Icon className="text-primary-container" size={28} />
+              <motion.dl
+                variants={item}
+                className="rounded-2xl border border-black/[0.08] bg-surface-container-low px-6 py-2"
+              >
+                {INFO.map(({ label, value, href }) => (
+                  <div
+                    key={label}
+                    className="flex flex-col gap-0.5 border-b border-black/[0.07] py-5 last:border-b-0"
+                  >
+                    <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-on-surface-variant/65">
+                      {label}
+                    </dt>
+                    <dd className="font-sans text-base font-semibold tracking-tight text-on-surface">
+                      {href ? (
+                        <a href={href} className="transition-colors hover:text-primary-text">
+                          {value}
+                        </a>
+                      ) : (
+                        value
+                      )}
+                    </dd>
                   </div>
-                  <div>
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant mb-0.5">{label}</p>
-                    {href ? (
-                      <a href={href} className="font-sans font-semibold text-on-surface hover:text-primary-container transition-colors">
-                        {value}
-                      </a>
-                    ) : (
-                      <p className="font-sans font-semibold text-on-surface">{value}</p>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
+                ))}
+              </motion.dl>
 
               {/* Blurb + socials */}
               <motion.div variants={item} className="glass-panel rounded-xl p-6 border border-outline-variant/20 mt-2">
@@ -321,7 +309,6 @@ export default function ContactPage() {
                           disabled={submitting}
                           className="w-full flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
                         >
-                          <Send size={16} />
                           {submitting ? t('submitting') : t('submit')}
                         </Button>
                         {submitError && (
@@ -393,13 +380,14 @@ export default function ContactPage() {
                       <span className="font-sans font-semibold text-on-surface group-hover:text-primary-container transition-colors">
                         {q}
                       </span>
-                      <motion.span
-                        animate={{ rotate: isOpen ? 180 : 0 }}
-                        transition={{ duration: 0.25 }}
-                        className="shrink-0 text-primary-container"
-                      >
-                        <ChevronDown size={18} />
-                      </motion.span>
+                      <span aria-hidden className="relative mt-1 h-3 w-3 shrink-0">
+                        <span className="absolute left-0 top-1/2 h-px w-3 -translate-y-1/2 bg-primary-text" />
+                        <span
+                          className={`absolute left-1/2 top-0 h-3 w-px -translate-x-1/2 bg-primary-text transition-transform duration-300 ${
+                            isOpen ? 'scale-y-0' : ''
+                          }`}
+                        />
+                      </span>
                     </button>
 
                     <AnimatePresence initial={false}>
