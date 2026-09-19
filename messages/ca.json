@@ -339,9 +339,6 @@
     "fact_clients": "Operatiu",
     "fact_response": "Temps de resposta",
     "pillars_title": "Els nostres pilars",
-    "cta_heading": "Preparat per col·laborar?",
-    "cta_sub": "Comencem a construir alguna cosa junts.",
-    "cta_button": "Contactar",
     "about_label": "Sobre 9bit",
     "values_label": "Els nostres valors",
     "methodology_label": "Metodologia",
@@ -371,7 +368,9 @@
         "title": "Suport",
         "desc": "Acompanyar a llarg termini: manteniment, evolució i resposta en menys de 2 h."
       }
-    }
+    },
+    "pillars_intro": "Quatre maneres de treballar que es noten en el resultat, no en el discurs.",
+    "methodology_intro": "El mateix recorregut a tots els projectes, de la primera conversa al manteniment."
   },
   "clients_page": {
     "badge": "Clients",

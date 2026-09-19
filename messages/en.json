@@ -339,9 +339,6 @@
     "fact_clients": "Always-on",
     "fact_response": "Response time",
     "pillars_title": "Our pillars",
-    "cta_heading": "Ready to collaborate?",
-    "cta_sub": "Let's start building something together.",
-    "cta_button": "Get in touch",
     "about_label": "About 9bit",
     "values_label": "Our values",
     "methodology_label": "Methodology",
@@ -371,7 +368,9 @@
         "title": "Support",
         "desc": "Long-term support: maintenance, evolution and response in under 2 hours."
       }
-    }
+    },
+    "pillars_intro": "Four working habits you notice in the result, not in the pitch.",
+    "methodology_intro": "The same path on every project, from the first conversation to maintenance."
   },
   "clients_page": {
     "badge": "Clients",

@@ -339,9 +339,6 @@
     "fact_clients": "Operativo",
     "fact_response": "Tiempo de respuesta",
     "pillars_title": "Nuestros pilares",
-    "cta_heading": "¿Listo para colaborar?",
-    "cta_sub": "Empecemos a construir algo juntos.",
-    "cta_button": "Contactar",
     "about_label": "Sobre 9bit",
     "values_label": "Nuestros valores",
     "methodology_label": "Metodología",
@@ -371,7 +368,9 @@
         "title": "Soporte",
         "desc": "Acompañar a largo plazo: mantenimiento, evolución y respuesta en menos de 2 h."
       }
-    }
+    },
+    "pillars_intro": "Cuatro maneras de trabajar que se notan en el resultado, no en el discurso.",
+    "methodology_intro": "El mismo recorrido en todos los proyectos, de la primera conversación al mantenimiento."
   },
   "clients_page": {
     "badge": "Clientes",
