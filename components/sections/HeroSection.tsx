@@ -23,9 +23,7 @@ const CASES: ParallaxCase[] = [
   { title: 'Epicentre — Palamós', thumbnail: '/clients/epicentre-out.jpeg' },
   { title: 'Gestoria Aguilera Pérez', thumbnail: '/cases/aguilera.webp', href: 'https://www.gestoriaguileraperez.com/' },
   { title: 'Oxford Oil Additives', thumbnail: '/cases/ooadditives.webp', href: 'https://www.ooadditives.com/' },
-  { title: 'Camping Les Medes', thumbnail: '/clients/camping_les_medes.jpeg' },
   { title: 'Epicentre — interior', thumbnail: '/clients/epicentre-in.jpeg' },
-  { title: 'Camping Les Medes — iluminación', thumbnail: '/clients/video_camping_poster.jpg' },
 ];
 
 export default function HeroSection() {
@@ -49,7 +47,7 @@ export default function HeroSection() {
         <GridGlowBackground backgroundColor="transparent" gridSize={48} />
       </div>
 
-      <div className="relative z-10 pt-28 pb-14 md:pt-32 md:pb-20">
+      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center pb-20 pt-28">
         <AnimatedHero
           badge={t('badge')}
           titleBase={t('title_base')}
@@ -58,6 +56,17 @@ export default function HeroSection() {
           ctaSecondary={t('cta_secondary')}
           offerings={offerings}
         />
+
+        {/* Pista de scroll: el hero ocupa la pantalla entera y conviene decir
+            que debajo hay trabajo real. */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block"
+        >
+          <span className="flex h-9 w-6 items-start justify-center rounded-full border border-black/15 p-1.5">
+            <span className="h-2 w-1 animate-bounce rounded-full bg-primary-container/70" />
+          </span>
+        </span>
       </div>
     </div>
   );

@@ -291,13 +291,9 @@
     "metric_years": "anys",
     "metric_projects": "a mida",
     "featured_label": "Servei destacat",
-    "all_services_label": "Tots els serveis",
     "methodology_label": "Metodologia",
-    "tech_label": "Tecnologies",
     "start_label": "Comencem",
     "methodology_heading": "Com ho fem",
-    "tech_heading": "Eines que dominem",
-    "tech_tools_category": "Eines",
     "process": {
       "briefing": {
         "title": "Briefing",
@@ -502,7 +498,12 @@
     "copyright": "© 2026 9bit. Tots els drets reservats.",
     "terms": "Termes",
     "privacy": "Privacitat",
-    "cookies": "Cookies"
+    "cookies": "Cookies",
+    "nav_label": "Navegació",
+    "services_label": "Serveis",
+    "contact_label": "Contacte",
+    "cta": "Parlem-ne",
+    "legal_label": "Legal"
   },
   "cookie_banner": {
     "title": "Utilitzem cookies",

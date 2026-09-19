@@ -291,13 +291,9 @@
     "metric_years": "years",
     "metric_projects": "custom-built",
     "featured_label": "Featured service",
-    "all_services_label": "All services",
     "methodology_label": "Methodology",
-    "tech_label": "Technologies",
     "start_label": "Let's start",
     "methodology_heading": "How we do it",
-    "tech_heading": "Tools we master",
-    "tech_tools_category": "Tools",
     "process": {
       "briefing": {
         "title": "Briefing",
@@ -502,7 +498,12 @@
     "copyright": "© 2026 9bit. All rights reserved.",
     "terms": "Terms",
     "privacy": "Privacy",
-    "cookies": "Cookies"
+    "cookies": "Cookies",
+    "nav_label": "Navigation",
+    "services_label": "Services",
+    "contact_label": "Contact",
+    "cta": "Let's talk",
+    "legal_label": "Legal"
   },
   "cookie_banner": {
     "title": "We use cookies",

@@ -291,13 +291,9 @@
     "metric_years": "años",
     "metric_projects": "a medida",
     "featured_label": "Servicio destacado",
-    "all_services_label": "Todos los servicios",
     "methodology_label": "Metodología",
-    "tech_label": "Tecnologías",
     "start_label": "Empecemos",
     "methodology_heading": "Cómo lo hacemos",
-    "tech_heading": "Herramientas que dominamos",
-    "tech_tools_category": "Herramientas",
     "process": {
       "briefing": {
         "title": "Briefing",
@@ -502,7 +498,12 @@
     "copyright": "© 2026 9bit. Todos los derechos reservados.",
     "terms": "Términos",
     "privacy": "Privacidad",
-    "cookies": "Cookies"
+    "cookies": "Cookies",
+    "nav_label": "Navegación",
+    "services_label": "Servicios",
+    "contact_label": "Contacto",
+    "cta": "Hablemos",
+    "legal_label": "Legal"
   },
   "cookie_banner": {
     "title": "Usamos cookies",

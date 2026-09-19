@@ -18,6 +18,7 @@ import {
   ChevronDown,
   LucideIcon,
 } from 'lucide-react';
+import Image from 'next/image';
 import ServiceCard from '@/components/ui/ServiceCard';
 import CTAPanel from '@/components/ui/CTAPanel';
 import Parallax from '@/components/ui/Parallax';
@@ -49,14 +50,6 @@ export default function ServeisPage() {
     { number: '02', icon: Map, title: tp('process.plan.title'), desc: tp('process.plan.desc') },
     { number: '03', icon: Hammer, title: tp('process.build.title'), desc: tp('process.build.desc') },
     { number: '04', icon: Rocket, title: tp('process.launch.title'), desc: tp('process.launch.desc') },
-  ];
-
-  const TECH_STACK: { category: string; items: string[] }[] = [
-    { category: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind'] },
-    { category: 'Backend', items: ['Node.js', 'Python', 'PostgreSQL', 'MongoDB'] },
-    { category: 'Cloud / DevOps', items: ['Vercel', 'Docker', 'GitHub Actions'] },
-    { category: 'IA & Veu', items: ['OpenAI', 'Claude', 'ElevenLabs', 'Twilio', 'Retell AI', 'n8n'] },
-    { category: tp('tech_tools_category'), items: ['Stitch', 'Notion'] },
   ];
 
   const FAQ_ITEMS = tp.raw('faq.items') as { q: string; a: string }[];
@@ -142,70 +135,18 @@ export default function ServeisPage() {
                     {t('items.web.desc')}
                   </p>
 
-                  <div className="flex flex-wrap gap-2">
-                    {['React', 'Next.js', 'TypeScript'].map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-mono text-xs text-primary-container bg-primary-container/10 border border-primary-container/20 px-3 py-1 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
                 </div>
 
-                {/* Right half — code window */}
-                <div className="p-6 lg:p-8 border-t lg:border-t-0 lg:border-l border-black/[0.08] bg-black/[0.03] flex items-center">
-                  <div className="w-full rounded-xl border border-white/[0.08] bg-[#0d1117] overflow-hidden shadow-[0_12px_40px_rgba(13,17,23,0.18)]">
-                    <div className="px-4 py-2 border-b border-white/[0.08] flex items-center">
-                      <span className="font-mono text-[11px] text-zinc-400">
-                        9bit-web.config.ts
-                      </span>
-                    </div>
-                    <pre className="px-5 py-4 text-[13px] leading-[1.7] font-mono overflow-x-auto">
-                      <code>
-                        <span className="text-pink-300">import</span>
-                        <span className="text-zinc-300"> {'{ '}</span>
-                        <span className="text-blue-300">build</span>
-                        <span className="text-zinc-300">{' }'} </span>
-                        <span className="text-pink-300">from</span>
-                        <span className="text-emerald-300"> &apos;9bit/web&apos;</span>
-                        {'\n\n'}
-                        <span className="text-pink-300">export default</span>
-                        <span className="text-zinc-300"> </span>
-                        <span className="text-blue-300">build</span>
-                        <span className="text-zinc-300">{'({'}</span>
-                        {'\n  '}
-                        <span className="text-zinc-200">framework</span>
-                        <span className="text-zinc-300">: </span>
-                        <span className="text-emerald-300">&apos;next&apos;</span>
-                        <span className="text-zinc-300">,</span>
-                        {'\n  '}
-                        <span className="text-zinc-200">ssr</span>
-                        <span className="text-zinc-300">: </span>
-                        <span className="text-amber-300">true</span>
-                        <span className="text-zinc-300">,</span>
-                        {'\n  '}
-                        <span className="text-zinc-200">i18n</span>
-                        <span className="text-zinc-300">: [</span>
-                        <span className="text-emerald-300">&apos;ca&apos;</span>
-                        <span className="text-zinc-300">, </span>
-                        <span className="text-emerald-300">&apos;es&apos;</span>
-                        <span className="text-zinc-300">, </span>
-                        <span className="text-emerald-300">&apos;en&apos;</span>
-                        <span className="text-zinc-300">],</span>
-                        {'\n  '}
-                        <span className="text-zinc-200">deploy</span>
-                        <span className="text-zinc-300">: {'{ '}</span>
-                        <span className="text-zinc-200">vercel</span>
-                        <span className="text-zinc-300">: </span>
-                        <span className="text-amber-300">true</span>
-                        <span className="text-zinc-300">{' }'}</span>
-                        {'\n'}
-                        <span className="text-zinc-300">{'})'}</span>
-                      </code>
-                    </pre>
-                  </div>
+                {/* Right half — imagen del servicio */}
+                <div className="relative min-h-[18rem] border-t border-black/[0.08] lg:min-h-0 lg:border-l lg:border-t-0">
+                  <Image
+                    src="/services/web.png"
+                    alt={t('items.web.title')}
+                    fill
+                    priority
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                  />
                 </div>
               </div>
             </div>
@@ -321,41 +262,6 @@ export default function ServeisPage() {
                   </motion.div>
                 ))}
               </motion.div>
-            </div>
-          </section>
-
-          {/* ── TECH STACK ────────────────────────────────────── */}
-          <section>
-            <motion.div {...fadeUp} className="mb-10">
-              <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
-                {tp('tech_label')}
-              </p>
-              <h2 className="text-4xl font-black leading-[1.03] tracking-[-0.04em] text-on-surface md:text-5xl">
-                {tp('tech_heading')}
-              </h2>
-            </motion.div>
-
-            <div className="space-y-6">
-              {TECH_STACK.map(({ category, items }) => (
-                <div
-                  key={category}
-                  className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 py-4 border-b border-black/[0.08] last:border-b-0"
-                >
-                  <span className="text-on-surface font-semibold text-sm sm:w-40 sm:shrink-0">
-                    {category}
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {items.map((tech) => (
-                      <span
-                        key={tech}
-                        className="font-mono text-xs text-on-surface-variant border border-black/[0.08] bg-black/[0.02] px-3 py-1.5 rounded-full hover:border-primary-container/40 hover:text-primary-container transition-colors cursor-default"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
             </div>
           </section>
 

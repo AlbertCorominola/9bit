@@ -142,47 +142,54 @@ export default function Navbar() {
                   transition={{ duration: 0.18, ease: 'easeOut' }}
                   className="absolute left-0 top-full pt-3"
                 >
-                  <div className="w-[420px] rounded-2xl border border-black/[0.1] bg-surface p-2 shadow-[0_24px_70px_-20px_rgba(13,17,23,0.28)]">
-                    {/* Principales: icono + nombre. Sin descripciones: el menú
-                        es para navegar, no para vender. */}
-                    <ul className="grid grid-cols-1 gap-0.5">
+                  <div className="w-[560px] rounded-2xl border border-black/[0.1] bg-surface p-3 shadow-[0_24px_70px_-20px_rgba(13,17,23,0.28)]">
+                    {/* Dos columnas, solo el nombre del servicio: el menu es
+                        para navegar, no para volver a venderlos. */}
+                    <ul className="grid grid-cols-2 gap-1">
                       {PRIMARY_SERVICES.map(({ key, icon: Icon }) => (
                         <li key={key}>
                           <Link
                             href={serveisHref}
-                            className="group flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors hover:bg-black/[0.04]"
+                            className="group flex items-center gap-3 rounded-xl p-3 transition-colors hover:bg-black/[0.04]"
                           >
-                            <span className="flex aspect-square w-8 flex-shrink-0 items-center justify-center rounded-lg border border-primary-container/25 bg-primary-container/10">
-                              <Icon className="text-primary-container" size={15} />
+                            <span className="flex aspect-square w-10 flex-shrink-0 items-center justify-center rounded-lg border border-primary-container/25 bg-primary-container/10">
+                              <Icon className="text-primary-container" size={18} />
                             </span>
-                            <span className="text-on-surface text-sm font-medium tracking-tight normal-case">
+                            <span className="text-on-surface text-sm font-semibold tracking-tight normal-case">
                               {ts(`items.${key}.title`)}
                             </span>
                             <ArrowRight
-                              size={13}
-                              className="ml-auto text-on-surface-variant/0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-on-surface-variant/70"
+                              size={14}
+                              className="ml-auto -translate-x-1 text-on-surface-variant/0 transition-all duration-200 group-hover:translate-x-0 group-hover:text-on-surface-variant/70"
                             />
                           </Link>
                         </li>
                       ))}
                     </ul>
 
-                    {/* Especializados: mismo menú, otro peso visual. */}
-                    <div className="mt-2 border-t border-black/[0.08] px-3 pb-1 pt-3">
-                      <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-on-surface-variant/60">
+                    {/* Especializados: mismo menu, otro peso visual. */}
+                    <div className="mt-2 border-t border-black/[0.08] pt-3">
+                      <p className="px-3 font-mono text-[10px] uppercase tracking-[0.18em] text-on-surface-variant/60">
                         {ts('more_label')}
                       </p>
-                      <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1.5">
-                        {SECONDARY_SERVICES.map(({ key }) => (
-                          <Link
-                            key={key}
-                            href={serveisHref}
-                            className="text-on-surface-variant/75 hover:text-on-surface text-xs font-medium normal-case transition-colors"
-                          >
-                            {ts(`items.${key}.title`)}
-                          </Link>
+                      <ul className="mt-1 grid grid-cols-2 gap-0.5">
+                        {SECONDARY_SERVICES.map(({ key, icon: Icon }) => (
+                          <li key={key}>
+                            <Link
+                              href={serveisHref}
+                              className="group flex items-center gap-2.5 rounded-lg px-3 py-2 transition-colors hover:bg-black/[0.04]"
+                            >
+                              <Icon
+                                size={15}
+                                className="shrink-0 text-on-surface-variant/50 transition-colors group-hover:text-primary-container"
+                              />
+                              <span className="text-on-surface-variant/80 group-hover:text-on-surface text-[13px] font-medium normal-case transition-colors">
+                                {ts(`items.${key}.title`)}
+                              </span>
+                            </Link>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </div>
 
                     <Link

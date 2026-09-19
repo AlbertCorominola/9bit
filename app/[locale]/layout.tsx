@@ -3,10 +3,8 @@ import { Inter, Space_Grotesk } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { headers } from 'next/headers';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { locales, type Locale } from '@/i18n';
-import { Providers } from '@/components/providers';
 import Navbar from '@/components/ui/Navbar';
 import ScrollProgress from '@/components/ui/ScrollProgress';
 import StructuredData from '@/components/StructuredData';
@@ -118,29 +116,24 @@ export default async function LocaleLayout({
   if (!locales.includes(locale as Locale)) notFound();
   setRequestLocale(locale);
   const messages = await getMessages();
-  // Nonce generated per-request in middleware.ts; next-themes needs it for
-  // the inline theme script it injects before hydration.
-  const nonce = (await headers()).get('x-nonce') ?? undefined;
 
   return (
-    <html lang={locale} suppressHydrationWarning className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang={locale} className={`light ${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         <StructuredData locale={locale} />
       </head>
       <body className="ambient-bg flex flex-col min-h-screen overflow-x-clip">
-        <Providers nonce={nonce}>
-          <NextIntlClientProvider messages={messages}>
-            <Navbar />
-            <ScrollProgress />
-            <main className="flex-grow pt-20">{children}</main>
-            <Footer />
-            <CookieBanner />
-            <PortraitLock />
-            <WhatsAppWidget />
-            <ContactPopup />
-            <SpeedInsights />
-          </NextIntlClientProvider>
-        </Providers>
+        <NextIntlClientProvider messages={messages}>
+          <Navbar />
+          <ScrollProgress />
+          <main className="flex-grow pt-20">{children}</main>
+          <Footer />
+          <CookieBanner />
+          <PortraitLock />
+          <WhatsAppWidget />
+          <ContactPopup />
+          <SpeedInsights />
+        </NextIntlClientProvider>
       </body>
     </html>
   );
