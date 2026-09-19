@@ -5,7 +5,6 @@ import { useRef, useState } from 'react';
 
 interface Props {
   icon: LucideIcon;
-  code: string;
   title: string;
   desc: string;
   /** Core/featured service — visually emphasized vs secondary ones. */
@@ -13,7 +12,7 @@ interface Props {
   coreLabel?: string;
 }
 
-export default function ServiceCard({ icon: Icon, code, title, desc, core = false, coreLabel }: Props) {
+export default function ServiceCard({ icon: Icon, title, desc, core = false, coreLabel }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: 50, y: 50 });
   const [active, setActive] = useState(false);
@@ -34,8 +33,8 @@ export default function ServiceCard({ icon: Icon, code, title, desc, core = fals
       className={
         'group relative overflow-hidden rounded-2xl border p-7 flex flex-col gap-4 transition-all duration-200 hover:-translate-y-1 ' +
         (core
-          ? 'border-primary-container/35 bg-primary-container/[0.06] shadow-[0_0_40px_-14px_rgba(0,102,255,0.5)] hover:border-primary-container/60'
-          : 'border-black/[0.08] bg-black/[0.02] opacity-80 hover:opacity-100 hover:border-primary-container/40 hover:bg-black/[0.04]')
+          ? 'border-primary-container/30 bg-primary-container/[0.05] shadow-[0_24px_48px_-30px_rgba(0,102,255,0.6)] hover:border-primary-container/55'
+          : 'border-black/[0.08] bg-surface-container-low hover:border-primary-container/30 hover:shadow-[0_24px_48px_-30px_rgba(13,17,23,0.4)]')
       }
     >
       {/* cursor spotlight */}
@@ -58,13 +57,9 @@ export default function ServiceCard({ icon: Icon, code, title, desc, core = fals
         >
           <Icon className="text-primary-container" size={22} />
         </div>
-        {core && coreLabel ? (
-          <span className="font-mono text-[9px] text-primary-container bg-primary-container/10 border border-primary-container/30 px-2 py-0.5 rounded uppercase tracking-widest">
+        {core && coreLabel && (
+          <span className="rounded-full border border-primary-container/30 bg-primary-container/10 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.16em] text-primary-text">
             {coreLabel}
-          </span>
-        ) : (
-          <span className="font-mono text-[10px] text-on-surface-variant/70 border border-black/[0.08] px-2 py-0.5 rounded tracking-widest">
-            {code}
           </span>
         )}
       </div>

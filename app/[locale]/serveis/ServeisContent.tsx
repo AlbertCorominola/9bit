@@ -64,7 +64,7 @@ export default function ServeisPage() {
   return (
     <div className="min-h-screen">
       {/* ── PAGE HERO ─────────────────────────────────────────── */}
-      <section className="relative -mt-20 pt-40 pb-20 px-6 lg:px-10">
+      <section className="relative -mt-20 px-6 pb-24 pt-40 lg:px-10">
         <div className="max-w-container-max mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -82,7 +82,7 @@ export default function ServeisPage() {
 
             {/* Heading */}
             <Parallax speed={0.22}>
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-[0.95] bg-clip-text text-transparent bg-gradient-to-br from-on-surface via-on-surface to-primary-container">
+              <h1 className="mb-6 text-5xl font-black leading-[1.02] tracking-[-0.045em] text-on-surface md:text-7xl">
                 {tp('heading')}
               </h1>
             </Parallax>
@@ -113,12 +113,12 @@ export default function ServeisPage() {
       </section>
 
       {/* ── MAIN ──────────────────────────────────────────────── */}
-      <div className="px-6 lg:px-10 pb-20">
-        <div className="max-w-container-max mx-auto space-y-margin">
+      <div className="px-6 pb-24 md:pb-32 lg:px-10">
+        <div className="mx-auto max-w-container-max space-y-28 md:space-y-40">
 
           {/* ── FEATURED: WEB ─────────────────────────────────── */}
           <motion.section {...fadeUp}>
-            <p className="text-on-surface-variant text-sm uppercase tracking-wide font-medium mb-5">
+            <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
               {tp('featured_label')}
             </p>
 
@@ -130,12 +130,12 @@ export default function ServeisPage() {
                     <div className="w-12 h-12 rounded-xl bg-primary-container/10 border border-primary-container/20 flex items-center justify-center">
                       <Globe className="text-primary-container" size={22} />
                     </div>
-                    <span className="font-mono text-[10px] text-on-surface-variant/70 border border-black/[0.08] px-2 py-0.5 rounded tracking-widest">
-                      {t('items.web.code')}
+                    <span className="rounded-full border border-primary-container/25 bg-primary-container/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-primary-text">
+                      {t('core_tag')}
                     </span>
                   </div>
 
-                  <h2 className="text-4xl lg:text-5xl font-black tracking-tighter mb-4 leading-tight bg-clip-text text-transparent bg-gradient-to-br from-on-surface via-on-surface to-primary-container">
+                  <h2 className="mb-4 text-4xl font-black leading-[1.05] tracking-[-0.04em] text-on-surface lg:text-5xl">
                     {t('items.web.title')}
                   </h2>
                   <p className="text-on-surface-variant text-base leading-relaxed mb-7 max-w-md">
@@ -213,8 +213,8 @@ export default function ServeisPage() {
 
           {/* ── ALL SERVICES GRID ─────────────────────────────── */}
           <section>
-            <motion.p {...fadeUp} className="text-on-surface-variant text-sm uppercase tracking-wide font-medium mb-5">
-              {tp('all_services_label')}
+            <motion.p {...fadeUp} className="mb-6 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
+              {t('core_label')}
             </motion.p>
 
             {/* Core services */}
@@ -223,9 +223,9 @@ export default function ServeisPage() {
               whileInView="show"
               viewport={{ once: true, margin: '-80px' }}
               variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05 } } }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+              className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
             >
-              {SERVICE_KEYS.filter((s) => s.core).map(({ key, icon }) => (
+              {SERVICE_KEYS.filter((s) => s.core && s.key !== 'web').map(({ key, icon }) => (
                 <motion.div
                   key={key}
                   variants={{
@@ -235,18 +235,16 @@ export default function ServeisPage() {
                 >
                   <ServiceCard
                     icon={icon}
-                    code={t(`items.${key}.code`)}
                     title={t(`items.${key}.title`)}
                     desc={t(`items.${key}.desc`)}
                     core
-                    coreLabel={t('core_tag')}
                   />
                 </motion.div>
               ))}
             </motion.div>
 
             {/* Additional services */}
-            <motion.p {...fadeUp} className="text-on-surface-variant/70 text-sm uppercase tracking-wide font-medium mt-12 mb-5">
+            <motion.p {...fadeUp} className="mb-6 mt-16 font-mono text-[11px] uppercase tracking-[0.2em] text-on-surface-variant/60">
               {t('more_label')}
             </motion.p>
             <motion.div
@@ -266,7 +264,6 @@ export default function ServeisPage() {
                 >
                   <ServiceCard
                     icon={icon}
-                    code={t(`items.${key}.code`)}
                     title={t(`items.${key}.title`)}
                     desc={t(`items.${key}.desc`)}
                   />
@@ -278,10 +275,10 @@ export default function ServeisPage() {
           {/* ── METHODOLOGY ───────────────────────────────────── */}
           <section>
             <motion.div {...fadeUp} className="mb-10">
-              <p className="text-on-surface-variant text-sm uppercase tracking-wide font-medium mb-4">
+              <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
                 {tp('methodology_label')}
               </p>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] bg-clip-text text-transparent bg-gradient-to-br from-on-surface via-on-surface to-primary-container">
+              <h2 className="text-4xl font-black leading-[1.03] tracking-[-0.04em] text-on-surface md:text-5xl">
                 {tp('methodology_heading')}
               </h2>
             </motion.div>
@@ -330,10 +327,10 @@ export default function ServeisPage() {
           {/* ── TECH STACK ────────────────────────────────────── */}
           <section>
             <motion.div {...fadeUp} className="mb-10">
-              <p className="text-on-surface-variant text-sm uppercase tracking-wide font-medium mb-4">
+              <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
                 {tp('tech_label')}
               </p>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] bg-clip-text text-transparent bg-gradient-to-br from-on-surface via-on-surface to-primary-container">
+              <h2 className="text-4xl font-black leading-[1.03] tracking-[-0.04em] text-on-surface md:text-5xl">
                 {tp('tech_heading')}
               </h2>
             </motion.div>
@@ -365,10 +362,10 @@ export default function ServeisPage() {
           {/* ── FAQ ───────────────────────────────────────────── */}
           <section>
             <motion.div {...fadeUp} className="mb-10">
-              <p className="text-on-surface-variant text-sm uppercase tracking-wide font-medium mb-4">
+              <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-text">
                 {tp('faq.label')}
               </p>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] text-on-surface">
+              <h2 className="text-4xl font-black leading-[1.03] tracking-[-0.04em] text-on-surface md:text-5xl">
                 {tp('faq.heading')}
               </h2>
             </motion.div>

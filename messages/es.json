@@ -48,47 +48,39 @@
     "core_tag": "Principal",
     "core_label": "Servicios principales",
     "more_label": "Además",
-    "subtitle": "Te ayudamos a captar más clientes, retenerlos y reducir tu carga de trabajo con infraestructura digital e IA: webs, agentes telefónicos, chatbots y automatizaciones. Además, soporte in situ o remoto y formaciones a medida.",
+    "subtitle": "Infraestructura digital e IA de punta a punta, con soporte y formación incluidos.",
     "items": {
       "web": {
         "title": "Desarrollo Web",
-        "desc": "Webs que captan clientes: rápidas, optimizadas para conversión y SEO y listas para integrar IA.",
-        "code": "SV-01"
+        "desc": "Webs rápidas, optimizadas para conversión y SEO, listas para integrar IA."
       },
       "voice": {
         "title": "Agentes Telefónicos IA",
-        "desc": "Asistentes de voz que atienden cada llamada 24/7, reservan y filtran consultas — captas más y no pierdes ninguna oportunidad.",
-        "code": "SV-02"
+        "desc": "Asistentes de voz que atienden cada llamada 24/7, reservan y filtran consultas."
       },
       "chatbots": {
         "title": "Chatbots IA",
-        "desc": "Chatbots que responden al instante, cualifican leads y retienen a tus clientes en cualquier canal.",
-        "code": "SV-03"
+        "desc": "Responden al instante, cualifican leads y retienen clientes en cualquier canal."
       },
       "automation": {
         "title": "Automatización",
-        "desc": "Automatizamos tus tareas repetitivas para que tu equipo reduzca carga y se centre en lo que importa.",
-        "code": "SV-04"
+        "desc": "Quitamos de en medio las tareas repetitivas que frenan a tu equipo."
       },
       "infrastructure": {
         "title": "Infraestructura IA",
-        "desc": "La infraestructura de IA que conecta captación, atención y operativa en un solo sistema.",
-        "code": "SV-05"
+        "desc": "La infraestructura que conecta captación, atención y operativa en un solo sistema."
       },
       "consulting": {
         "title": "Consultoría IA",
-        "desc": "Detectamos dónde pierdes clientes, tiempo o ingresos y trazamos la hoja de ruta con IA.",
-        "code": "SV-06"
+        "desc": "Detectamos dónde pierdes clientes o tiempo y trazamos la hoja de ruta."
       },
       "support": {
         "title": "Soporte IT",
-        "desc": "Resolución de incidencias in situ o en remoto y mantenimiento proactivo para que nunca te pares.",
-        "code": "SV-07"
+        "desc": "Incidencias in situ o en remoto, y mantenimiento proactivo para no pararte."
       },
       "training": {
         "title": "Formación",
-        "desc": "Formaciones a medida para que tu equipo saque el máximo partido a la tecnología y a la IA.",
-        "code": "SV-08"
+        "desc": "Formaciones a medida para que tu equipo saque partido a la tecnología y la IA."
       }
     }
   },

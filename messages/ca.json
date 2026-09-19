@@ -48,47 +48,39 @@
     "core_tag": "Principal",
     "core_label": "Serveis principals",
     "more_label": "A més a més",
-    "subtitle": "T'ajudem a captar més clients, retenir-los i reduir la teva càrrega de feina amb infraestructura digital i IA: webs, agents telefònics, chatbots i automatitzacions. A més, suport in situ o remot i formacions a mida.",
+    "subtitle": "Infraestructura digital i IA de punta a punta, amb suport i formació inclosos.",
     "items": {
       "web": {
         "title": "Desenvolupament Web",
-        "desc": "Webs que capten clients: ràpides, optimitzades per a conversió i SEO i a punt per integrar IA.",
-        "code": "SV-01"
+        "desc": "Webs ràpides, optimitzades per a conversió i SEO, llestes per integrar-hi IA."
       },
       "voice": {
         "title": "Agents Telefònics IA",
-        "desc": "Assistents de veu que atenen cada trucada 24/7, reserven i filtren consultes — captes més i no perds cap oportunitat.",
-        "code": "SV-02"
+        "desc": "Assistents de veu que atenen cada trucada 24/7, reserven i filtren consultes."
       },
       "chatbots": {
         "title": "Chatbots IA",
-        "desc": "Chatbots que responen a l'instant, qualifiquen leads i retenen els teus clients en qualsevol canal.",
-        "code": "SV-03"
+        "desc": "Responen a l'instant, qualifiquen leads i retenen clients a qualsevol canal."
       },
       "automation": {
         "title": "Automatització",
-        "desc": "Automatitzem les teves tasques repetitives perquè el teu equip redueixi càrrega i es centri en el que importa.",
-        "code": "SV-04"
+        "desc": "Traiem del mig les tasques repetitives que frenen el teu equip."
       },
       "infrastructure": {
         "title": "Infraestructura IA",
-        "desc": "La infraestructura d'IA que connecta captació, atenció i operativa en un sol sistema.",
-        "code": "SV-05"
+        "desc": "La infraestructura que connecta captació, atenció i operativa en un sol sistema."
       },
       "consulting": {
         "title": "Consultoria IA",
-        "desc": "Detectem on perds clients, temps o ingressos i tracem el full de ruta amb IA.",
-        "code": "SV-06"
+        "desc": "Detectem on perds clients o temps i tracem el full de ruta."
       },
       "support": {
         "title": "Suport IT",
-        "desc": "Resolució d'incidències in situ o en remot i manteniment proactiu perquè mai t'aturis.",
-        "code": "SV-07"
+        "desc": "Incidències in situ o en remot, i manteniment proactiu per no aturar-te."
       },
       "training": {
         "title": "Formació",
-        "desc": "Formacions a mida perquè el teu equip tregui el màxim partit a la tecnologia i a la IA.",
-        "code": "SV-08"
+        "desc": "Formacions a mida perquè el teu equip tregui partit a la tecnologia i la IA."
       }
     }
   },

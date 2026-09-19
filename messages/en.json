@@ -48,47 +48,39 @@
     "core_tag": "Core",
     "core_label": "Core services",
     "more_label": "Also",
-    "subtitle": "We help you win more clients, retain them and cut your workload with digital infrastructure and AI: websites, phone agents, chatbots and automations. Plus on-site or remote support and tailored training.",
+    "subtitle": "End-to-end digital and AI infrastructure, with support and training included.",
     "items": {
       "web": {
         "title": "Web Development",
-        "desc": "Websites that win clients: fast, conversion- and SEO-optimized and ready to integrate AI.",
-        "code": "SV-01"
+        "desc": "Fast websites, tuned for conversion and SEO, ready to plug AI into."
       },
       "voice": {
         "title": "AI Phone Agents",
-        "desc": "Voice assistants that answer every call 24/7, book and screen enquiries — you capture more and never miss an opportunity.",
-        "code": "SV-02"
+        "desc": "Voice agents that answer every call 24/7, take bookings and filter enquiries."
       },
       "chatbots": {
         "title": "AI Chatbots",
-        "desc": "Chatbots that reply instantly, qualify leads and retain your customers on any channel.",
-        "code": "SV-03"
+        "desc": "Instant answers, qualified leads and clients kept on any channel."
       },
       "automation": {
         "title": "Automation",
-        "desc": "We automate your repetitive tasks so your team cuts workload and focuses on what matters.",
-        "code": "SV-04"
+        "desc": "We take the repetitive work off your team's plate."
       },
       "infrastructure": {
         "title": "AI Infrastructure",
-        "desc": "The AI infrastructure that connects acquisition, support and operations in a single system.",
-        "code": "SV-05"
+        "desc": "The infrastructure that joins acquisition, support and operations in one system."
       },
       "consulting": {
         "title": "AI Consulting",
-        "desc": "We pinpoint where you lose clients, time or revenue and map out the AI roadmap.",
-        "code": "SV-06"
+        "desc": "We find where you lose clients or time and map the route out."
       },
       "support": {
         "title": "IT Support",
-        "desc": "On-site or remote incident resolution and proactive maintenance so you never grind to a halt.",
-        "code": "SV-07"
+        "desc": "On-site or remote incident response, plus proactive maintenance."
       },
       "training": {
         "title": "Training",
-        "desc": "Tailored training so your team gets the most out of technology and AI.",
-        "code": "SV-08"
+        "desc": "Tailored training so your team gets real value from technology and AI."
       }
     }
   },
